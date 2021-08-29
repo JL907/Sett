@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1171397795
+CRC: 1247838522
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f8a43a661b1e4217f34475e9d59ffaa5
+    Hash: 717efb5e6818ae489759b260a8454ec8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5dc9ad5523fd05421114afbcc6f002cd
@@ -55,7 +55,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_emote_heart.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
 - Assets/Sett/animDisplay.controller
-- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
@@ -117,6 +116,7 @@ Assets:
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat
+- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds

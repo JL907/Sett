@@ -11,7 +11,7 @@ namespace SettMod.SkillStates
     public class Facebreaker : BaseSkillState
     {
         protected DamageType damageType = DamageType.Stun1s;
-        protected float damageCoefficient = 3.5f;
+        protected float damageCoefficient = 8f;
         protected float procCoefficient = 1f;
         protected float baseDuration = 0.5f;
         protected bool cancelled = false;
@@ -20,6 +20,9 @@ namespace SettMod.SkillStates
         protected float hitStopDuration = 0.012f;
         protected float hitHopVelocity = 4f;
         protected float attackRecoil = 0.75f;
+
+        protected float pushForce = 1500f;
+        protected Vector3 bonusForce = Vector3.forward;
 
         protected string hitboxName = "FaceBreaker";
 
@@ -69,6 +72,8 @@ namespace SettMod.SkillStates
             this.attack.damage = this.damageCoefficient * this.damageStat;
             this.attack.procCoefficient = this.procCoefficient;
             this.attack.hitEffectPrefab = this.hitEffectPrefab;
+            this.attack.forceVector = this.bonusForce;
+            this.attack.pushAwayForce = this.pushForce;
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
             this.attack.impactSound = this.impactSound;
@@ -92,6 +97,8 @@ namespace SettMod.SkillStates
         protected virtual void OnHitEnemyAuthority()
         {
             Util.PlaySound(this.hitSoundString, base.gameObject);
+
+            
 
             if (!this.hasHopped)
             {
@@ -130,6 +137,7 @@ namespace SettMod.SkillStates
                 {
                     if (this.attack.Fire())
                     {
+
                         this.OnHitEnemyAuthority();
                     }
                 }
