@@ -19,6 +19,7 @@ namespace SettMod.SkillStates
         protected float attackEndTime = 0.4f;
         protected float hitStopDuration = 0.012f;
         protected float hitHopVelocity = 4f;
+        protected float attackRecoil = 0.75f;
 
         protected string hitboxName = "FaceBreaker";
 
@@ -120,7 +121,7 @@ namespace SettMod.SkillStates
                 if (base.isAuthority)
                 {
                     //this.PlaySwingEffect();
-                    //base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
+                    base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
                     base.PlayCrossfade("Fullbody, Override", "Facebreaker_Miss", "FaceBreakerMiss.playbackRate", (this.duration * this.startUp), 0.1f);
                     Util.PlaySound("SettEVO", base.gameObject);
                 }
