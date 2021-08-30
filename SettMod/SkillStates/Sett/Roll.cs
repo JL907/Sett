@@ -12,7 +12,7 @@ namespace SettMod.SkillStates
         public static float initialSpeedCoefficient = 4f;
         public static float finalSpeedCoefficient = 2.5f;
 
-        public static string dodgeSoundString = "SettRoll";
+        public static string dodgeSoundString = "SettDash";
         public static float dodgeFOV = EntityStates.Commando.DodgeState.dodgeFOV;
 
         private float rollSpeed;
