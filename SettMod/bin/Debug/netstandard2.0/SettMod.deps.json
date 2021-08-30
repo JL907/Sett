@@ -10,13 +10,13 @@
       "SettMod/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
-          "0Harmony": "2.4.0.0",
+          "0Harmony": "2.0.0.0",
           "0Harmony20": "2.0.0.0",
           "Assembly-CSharp": "0.0.0.0",
-          "BepInEx": "5.4.9.0",
+          "BepInEx": "5.3.0.0",
           "BepInEx.Harmony": "2.0.0.0",
-          "BepInEx.Preloader": "5.4.9.0",
-          "Facepunch.Steamworks": "1.2.0.0",
+          "BepInEx.Preloader": "5.3.0.0",
+          "Facepunch.Steamworks": "0.0.0.0",
           "HarmonyXInterop": "1.0.0.0",
           "HGCSharpUtils": "0.0.0.0",
           "HGUnityUtils": "0.0.0.0",
@@ -28,8 +28,8 @@
           "Mono.Cecil.Pdb": "0.10.4.0",
           "Mono.Cecil.Rocks": "0.10.4.0",
           "Mono.Security": "4.0.0.0",
-          "MonoMod.RuntimeDetour": "21.1.11.1",
-          "MonoMod.Utils": "21.1.11.1",
+          "MonoMod.RuntimeDetour": "20.8.3.5",
+          "MonoMod.Utils": "20.8.3.5",
           "pb_Stl": "1.0.0.0",
           "Poly2Tri": "1.0.0.0",
           "ProBuilderCore": "0.0.0.0",
@@ -126,11 +126,11 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "0Harmony/2.4.0.0": {
+      "0Harmony/2.0.0.0": {
         "runtime": {
           "0Harmony.dll": {
-            "assemblyVersion": "2.4.0.0",
-            "fileVersion": "2.4.0.0"
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
           }
         }
       },
@@ -150,11 +150,11 @@
           }
         }
       },
-      "BepInEx/5.4.9.0": {
+      "BepInEx/5.3.0.0": {
         "runtime": {
           "BepInEx.dll": {
-            "assemblyVersion": "5.4.9.0",
-            "fileVersion": "5.4.9.0"
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.3.0.0"
           }
         }
       },
@@ -166,19 +166,19 @@
           }
         }
       },
-      "BepInEx.Preloader/5.4.9.0": {
+      "BepInEx.Preloader/5.3.0.0": {
         "runtime": {
           "BepInEx.Preloader.dll": {
-            "assemblyVersion": "5.4.9.0",
-            "fileVersion": "5.4.9.0"
+            "assemblyVersion": "5.3.0.0",
+            "fileVersion": "5.3.0.0"
           }
         }
       },
-      "Facepunch.Steamworks/1.2.0.0": {
+      "Facepunch.Steamworks/0.0.0.0": {
         "runtime": {
           "Facepunch.Steamworks.dll": {
-            "assemblyVersion": "1.2.0.0",
-            "fileVersion": "1.2.0.0"
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -270,19 +270,19 @@
           }
         }
       },
-      "MonoMod.RuntimeDetour/21.1.11.1": {
+      "MonoMod.RuntimeDetour/20.8.3.5": {
         "runtime": {
           "MonoMod.RuntimeDetour.dll": {
-            "assemblyVersion": "21.1.11.1",
-            "fileVersion": "21.1.11.1"
+            "assemblyVersion": "20.8.3.5",
+            "fileVersion": "20.8.3.5"
           }
         }
       },
-      "MonoMod.Utils/21.1.11.1": {
+      "MonoMod.Utils/20.8.3.5": {
         "runtime": {
           "MonoMod.Utils.dll": {
-            "assemblyVersion": "21.1.11.1",
-            "fileVersion": "21.1.11.1"
+            "assemblyVersion": "20.8.3.5",
+            "fileVersion": "20.8.3.5"
           }
         }
       },
@@ -988,7 +988,7 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "0Harmony/2.4.0.0": {
+    "0Harmony/2.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1003,7 +1003,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BepInEx/5.4.9.0": {
+    "BepInEx/5.3.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1013,12 +1013,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BepInEx.Preloader/5.4.9.0": {
+    "BepInEx.Preloader/5.3.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Facepunch.Steamworks/1.2.0.0": {
+    "Facepunch.Steamworks/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1078,12 +1078,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MonoMod.RuntimeDetour/21.1.11.1": {
+    "MonoMod.RuntimeDetour/20.8.3.5": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "MonoMod.Utils/21.1.11.1": {
+    "MonoMod.Utils/20.8.3.5": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
