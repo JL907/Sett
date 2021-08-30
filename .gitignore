@@ -46,7 +46,7 @@ sysinfo.txt
 *.asset
 *.tga
 *.unity
-SettBNK/
+
 /build/
 *.suo
 *.user
