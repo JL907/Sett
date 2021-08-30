@@ -48,11 +48,6 @@ sysinfo.txt
 *.asset
 *.tga
 *.unity
-*.unity
-*.dll
-SettMod/bin/Debug/netstandard2.0/SettMod.dll
-SettMod/bin/Debug/netstandard2.0/SettMod.dll
-*.dll
 
 /build/
 *.suo
@@ -73,4 +68,4 @@ Version.h
 Version.cpp
 */bin/*
 */obj/*
-SettMod/bin/Debug/netstandard2.0/SettMod.dll
+SettMod/bin/
