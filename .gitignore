@@ -31,22 +31,8 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-*.apk
-*.unitypackage
 *.dll
-*.anim
-*.meta
-*.mask
-*.png
-*.prefab
-*.mat
-*.mesh
-*.controller
-*.fbx
-*.asset
-*.tga
 *.unity
-SettUnityProject/
 /build/
 *.suo
 *.user
