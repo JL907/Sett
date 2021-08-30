@@ -33,7 +33,8 @@ namespace SettMod.SkillStates
             this.hasDropped = false;
 
             base.PlayAnimation("FullBody, Override", "HeatCrash", "HighJump.playbackRate", HeatCrash.jumpDuration);
-            Util.PlaySound(EntityStates.Croco.Leap.leapSoundString, base.gameObject);
+            Util.PlaySound("SettRSFX", base.gameObject);
+            Util.PlaySound("SettRVO", base.gameObject);
 
             base.characterMotor.Motor.ForceUnground();
             base.characterMotor.velocity = Vector3.zero;
@@ -45,8 +46,8 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 3f * HeatCrash.jumpDuration);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 3f * HeatCrash.jumpDuration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * HeatCrash.jumpDuration);
+                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * HeatCrash.jumpDuration);
             }
         }
 
@@ -64,7 +65,7 @@ namespace SettMod.SkillStates
             if (!this.hasDropped)
             {
                 base.characterMotor.rootMotion += this.flyVector * ((0.6f * this.moveSpeedStat) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / HeatCrash.jumpDuration) * Time.fixedDeltaTime);
-                //base.characterMotor.velocity.y = 0f;
+                base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(5f);
             }
@@ -137,7 +138,7 @@ namespace SettMod.SkillStates
             blastAttack.Fire();
 
             AkSoundEngine.SetRTPCValue("M2_Charge", 100f);
-            //Util.PlaySound(EnforcerPlugin.Sounds.NemesisSmash, base.gameObject);
+            Util.PlaySound("SettRImpact", base.gameObject);
 
             for (int i = 0; i <= 8; i += 1)
             {

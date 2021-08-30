@@ -85,6 +85,8 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+
             base.OnExit();
         }
 
