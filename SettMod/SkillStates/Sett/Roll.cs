@@ -2,13 +2,14 @@
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Linq;
 
 namespace SettMod.SkillStates
 {
     public class Roll : BaseSkillState
     {
-        public static float duration = 0.5f;
-        public static float initialSpeedCoefficient = 5f;
+        public static float duration = 0.3f;
+        public static float initialSpeedCoefficient = 4f;
         public static float finalSpeedCoefficient = 2.5f;
 
         public static string dodgeSoundString = "SettRoll";
@@ -49,10 +50,37 @@ namespace SettMod.SkillStates
             base.PlayAnimation("FullBody, Override", "Roll", "Roll.playbackRate", Roll.duration);
             Util.PlaySound(Roll.dodgeSoundString, base.gameObject);
 
-            if (NetworkServer.active)
+
+        }
+
+        private void AttemptSlam()
+        {
+            Ray aimRay = base.GetAimRay();
+
+            BullseyeSearch search = new BullseyeSearch
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 3f * Roll.duration);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 0.5f * Roll.duration);
+                teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
+                filterByLoS = false,
+                searchOrigin = base.transform.position,
+                searchDirection = Random.onUnitSphere,
+                sortMode = BullseyeSearch.SortMode.Distance,
+                maxDistanceFilter = 5f,
+                maxAngleFilter = 360f
+            };
+
+            search.RefreshCandidates();
+            search.FilterOutGameObject(base.gameObject);
+
+            HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
+            if (target)
+            {
+                if (target.healthComponent && target.healthComponent.body)
+                {
+                    this.outer.SetNextState(new HeatCrash
+                    {
+
+                    });
+                }
             }
         }
 
@@ -80,6 +108,7 @@ namespace SettMod.SkillStates
                 base.characterMotor.velocity = vector;
             }
             this.previousPosition = base.transform.position;
+            this.AttemptSlam();
 
             if (base.isAuthority && base.fixedAge >= Roll.duration)
             {
@@ -88,12 +117,15 @@ namespace SettMod.SkillStates
             }
         }
 
+
+
         public override void OnExit()
         {
             if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = -1f;
             base.OnExit();
 
             base.characterMotor.disableAirControlUntilCollision = false;
+           
         }
 
         public override void OnSerialize(NetworkWriter writer)

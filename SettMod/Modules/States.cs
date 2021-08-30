@@ -14,7 +14,7 @@ namespace SettMod.Modules
             entityStates.Add(typeof(BaseMeleeAttack));
             entityStates.Add(typeof(SlashCombo));
 
-            entityStates.Add(typeof(Shoot));
+            entityStates.Add(typeof(Facebreaker));
 
             entityStates.Add(typeof(Roll));
 
