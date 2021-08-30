@@ -46,7 +46,7 @@ sysinfo.txt
 *.asset
 *.tga
 *.unity
-
+SettUnityProject/
 /build/
 *.suo
 *.user
