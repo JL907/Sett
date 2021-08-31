@@ -17,6 +17,8 @@ namespace SettMod.SkillStates
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 5000f;
 
+        public static float dodgeFOV;
+
         protected float bonusHealth;
         private bool hasDropped;
         private Vector3 flyVector = Vector3.zero;
@@ -74,12 +76,22 @@ namespace SettMod.SkillStates
 
             if (base.fixedAge >= (0.25f * HeatCrash.jumpDuration) && !this.slamIndicatorInstance)
             {
+                if (base.cameraTargetParams)
+                {
+                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / HeatCrash.jumpDuration);
+                }
                 this.CreateIndicator();
             }
 
             if (base.fixedAge >= HeatCrash.jumpDuration && !this.hasDropped)
             {
-                this.StartDrop();
+                this.hasDropped = true;
+
+                base.characterMotor.disableAirControlUntilCollision = true;
+                base.characterMotor.velocity.y = -HeatCrash.dropForce;
+
+                base.PlayAnimation("FullBody, Override", "HeatCrashSlam", "HighJump.playbackRate", 0.2f);
+                this.AttemptGrab(10f);
             }
 
             if (this.hasDropped && base.isAuthority && !base.characterMotor.disableAirControlUntilCollision)
@@ -87,18 +99,6 @@ namespace SettMod.SkillStates
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
-        }
-
-        private void StartDrop()
-        {
-            this.hasDropped = true;
-
-            base.characterMotor.disableAirControlUntilCollision = true;
-            base.characterMotor.velocity.y = -HeatCrash.dropForce;
-
-            base.PlayAnimation("FullBody, Override", "HeatCrashSlam", "HighJump.playbackRate", 0.2f);
-
-            this.AttemptGrab(10f);
         }
 
         private void CreateIndicator()
@@ -144,14 +144,14 @@ namespace SettMod.SkillStates
             AkSoundEngine.SetRTPCValue("M2_Charge", 100f);
             Util.PlaySound("SettRImpact", base.gameObject);
 
-            for (int i = 0; i <= 8; i += 1)
+            for (int i = 0; i <= 4; i += 1)
             {
-                Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * 8f);
+                Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * 4f);
                 effectPosition.y = base.characterBody.footPosition.y;
                 EffectManager.SpawnEffect(EntityStates.LemurianBruiserMonster.SpawnState.spawnEffectPrefab, new EffectData
                 {
                     origin = effectPosition,
-                    scale = 4f
+                    scale = 2f
                 }, true);
             }
         }
@@ -183,6 +183,11 @@ namespace SettMod.SkillStates
         public override void OnExit()
         {
             base.OnExit();
+
+            if (base.cameraTargetParams)
+            {
+                base.cameraTargetParams.fovOverride = -1f;
+            }
 
             if (this.grabController) this.grabController.Release();
 
@@ -228,7 +233,7 @@ namespace SettMod.SkillStates
                     {
                         this.bonusHealth = target.healthComponent.fullCombinedHealth;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.grabController.pivotTransform = this.FindModelChild("R_Hand");
+                        this.grabController.pivotTransform = this.FindModelChild("L_Hand");
                     }
 
                     if (NetworkServer.active)
