@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {
-    public class Facebreaker : BaseSkillState
+    public class Facebreakerold : BaseSkillState
     {
         protected DamageType damageType = DamageType.Stun1s;
         protected float damageCoefficient = 8f;

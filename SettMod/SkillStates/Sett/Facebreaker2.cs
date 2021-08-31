@@ -103,8 +103,6 @@ namespace SettMod.SkillStates
 
             HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
 
-            if (targetR == targetL) targetR = null;
-
             if (targetL)
             {
                 if (targetL.healthComponent && targetL.healthComponent.body)

@@ -98,9 +98,9 @@ namespace SettMod.Modules.Survivors
             #region Secondary
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_SETT_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillName = prefix + "_SETT_BODY_FACE_BREAKER_NAME",
+                skillNameToken = prefix + "_SETT_BODY_FACE_BREAKER_NAME",
+                skillDescriptionToken = prefix + "_SETT_BODY_FACE_BREAKER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_e"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker2)),
                 activationStateMachineName = "Body",
@@ -127,9 +127,9 @@ namespace SettMod.Modules.Survivors
             #region Utility
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_UTILITY_ROLL_NAME",
-                skillNameToken = prefix + "_SETT_BODY_UTILITY_ROLL_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillName = prefix + "_SETT_BODY_THE_SHOW_STOPPER_NAME",
+                skillNameToken = prefix + "_SETT_BODY_THE_SHOW_STOPPER_NAME",
+                skillDescriptionToken = prefix + "_SETT_BODY_THE_SHOW_STOPPER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_r"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll)),
                 activationStateMachineName = "Slide",
@@ -142,7 +142,7 @@ namespace SettMod.Modules.Survivors
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = false,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
@@ -157,9 +157,9 @@ namespace SettMod.Modules.Survivors
             #region Special
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_SPECIAL_BOMB_NAME",
-                skillNameToken = prefix + "_SETT_BODY_SPECIAL_BOMB_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_SPECIAL_BOMB_DESCRIPTION",
+                skillName = prefix + "_SETT_BODY_HAYMAKER_NAME",
+                skillNameToken = prefix + "_SETT_BODY_HAYMAKER_NAME",
+                skillDescriptionToken = prefix + "_SETT_BODY_HAYMAKER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_w"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
