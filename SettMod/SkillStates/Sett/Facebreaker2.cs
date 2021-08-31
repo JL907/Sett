@@ -9,12 +9,11 @@ namespace SettMod.SkillStates
     public class Facebreaker2 : BaseSkillState
     {
         protected float startUp = 0.5f;
-        protected float baseDuration = 0.8f;
-        protected float attackEndTime = 0.4f;
+        protected float baseDuration = 0.80f;
         public float duration;
 
         public static float slamRadius = 2f;
-        public static float slamDamageCoefficient = 16f;
+        public static float slamDamageCoefficient = 10f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 10f;
 
@@ -31,8 +30,9 @@ namespace SettMod.SkillStates
             base.OnEnter();
             this.animator = base.GetModelAnimator();
             this.hasFired = false;
-            this.duration = this.baseDuration / this.attackSpeedStat;
+            this.duration = this.baseDuration;
 
+            base.characterMotor.Motor.ForceUnground();
             base.characterMotor.velocity = Vector3.zero;
 
             base.PlayAnimation("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp);
@@ -46,6 +46,7 @@ namespace SettMod.SkillStates
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.LgrabController) this.LgrabController.Release();
             if (this.RgrabController) this.RgrabController.Release();
+
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
@@ -71,7 +72,7 @@ namespace SettMod.SkillStates
                 filterByLoS = false,
                 searchOrigin = base.transform.position,
                 searchDirection = base.transform.forward,
-                sortMode = BullseyeSearch.SortMode.Distance,
+                sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
                 maxAngleFilter = 90f
             };
@@ -110,7 +111,7 @@ namespace SettMod.SkillStates
                 filterByLoS = false,
                 searchOrigin = base.transform.position,
                 searchDirection = -base.transform.forward,
-                sortMode = BullseyeSearch.SortMode.Distance,
+                sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
                 maxAngleFilter = 90f
             };

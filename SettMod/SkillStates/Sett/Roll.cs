@@ -9,8 +9,8 @@ namespace SettMod.SkillStates
     public class Roll : BaseSkillState
     {
         public static float duration = 0.3f;
-        public static float initialSpeedCoefficient = 4f;
-        public static float finalSpeedCoefficient = 2.5f;
+        public static float initialSpeedCoefficient = 3f;
+        public static float finalSpeedCoefficient = 1.5f;
 
         public static string dodgeSoundString = "SettDash";
         public static float dodgeFOV = EntityStates.Commando.DodgeState.dodgeFOV;
