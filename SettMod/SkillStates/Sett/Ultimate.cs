@@ -141,7 +141,6 @@ namespace SettMod.SkillStates
 
             base.gameObject.transform.position += new Vector3(0, 3, 0);
 
-            AkSoundEngine.SetRTPCValue("M2_Charge", 100f);
             Util.PlaySound("SettRImpact", base.gameObject);
 
             for (int i = 0; i <= 4; i += 1)

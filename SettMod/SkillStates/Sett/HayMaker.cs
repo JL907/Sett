@@ -82,8 +82,6 @@ namespace SettMod.SkillStates
                 blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
                 blastAttack.Fire();
 
-
-                AkSoundEngine.SetRTPCValue("M2_Charge", 100f);
                 Util.PlaySound("SettRImpact", base.gameObject);
 
                 for (int i = 0; i <= 4; i += 1)
