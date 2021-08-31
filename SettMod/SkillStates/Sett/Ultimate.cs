@@ -13,10 +13,11 @@ namespace SettMod.SkillStates
         public static float dropForce = 80f;
 
         public static float slamRadius = 15f;
-        public static float slamDamageCoefficient = 24f;
+        public static float slamDamageCoefficient = 12f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 5000f;
 
+        protected float bonusHealth;
         private bool hasDropped;
         private Vector3 flyVector = Vector3.zero;
         private Transform modelTransform;
@@ -28,6 +29,7 @@ namespace SettMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
+            this.bonusHealth = 0f;
             this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
@@ -37,7 +39,7 @@ namespace SettMod.SkillStates
             Util.PlaySound("SettRVO", base.gameObject);
 
             base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.velocity = Vector3.zero;
+            //base.characterMotor.velocity = Vector3.zero;
 
             base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
 
@@ -64,7 +66,7 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.6f * this.moveSpeedStat) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / HeatCrash.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.5f * (this.moveSpeedStat / 1.5f )) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / HeatCrash.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(5f);
@@ -124,18 +126,20 @@ namespace SettMod.SkillStates
             base.characterMotor.velocity *= 0.1f;
 
             BlastAttack blastAttack = new BlastAttack();
-            blastAttack.radius = SuperDededeJump.slamRadius;
-            blastAttack.procCoefficient = SuperDededeJump.slamProcCoefficient;
+            blastAttack.radius = HeatCrash.slamRadius;
+            blastAttack.procCoefficient = HeatCrash.slamProcCoefficient;
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = base.characterBody.damage * SuperDededeJump.slamDamageCoefficient;
+            blastAttack.baseDamage = (base.characterBody.damage * HeatCrash.slamDamageCoefficient) + (0.3f * this.bonusHealth) ;
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            blastAttack.baseForce = SuperDededeJump.slamForce;
+            blastAttack.baseForce = HeatCrash.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
             blastAttack.Fire();
+
+            base.gameObject.transform.position += new Vector3(0, 3, 0);
 
             AkSoundEngine.SetRTPCValue("M2_Charge", 100f);
             Util.PlaySound("SettRImpact", base.gameObject);
@@ -191,7 +195,7 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
-            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal; 
             base.characterMotor.Motor.RebuildCollidableLayers();
         }
 
@@ -222,6 +226,7 @@ namespace SettMod.SkillStates
                 {
                     if (BodyMeetsGrabConditions(target.healthComponent.body))
                     {
+                        this.bonusHealth = target.healthComponent.fullCombinedHealth;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
