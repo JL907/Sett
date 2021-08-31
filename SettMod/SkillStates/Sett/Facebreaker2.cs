@@ -3,6 +3,8 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace SettMod.SkillStates
 {
@@ -37,6 +39,9 @@ namespace SettMod.SkillStates
 
             base.PlayAnimation("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp);
             Util.PlaySound("SettESFX", base.gameObject);
+
+            base.gameObject.layer = LayerIndex.fakeActor.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
         }
 
         public override void OnExit()
@@ -60,13 +65,13 @@ namespace SettMod.SkillStates
 
         }
 
-        private void AttemptGrabL(float grabRadius)
+        private void AttemptGrab(float grabRadius)
         {
-            if (this.LgrabController) return;
+            if (this.LgrabController || this.RgrabController) return;
 
             Ray aimRay = base.GetAimRay();
 
-            BullseyeSearch search = new BullseyeSearch
+            BullseyeSearch searchL = new BullseyeSearch
             {
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = false,
@@ -77,35 +82,7 @@ namespace SettMod.SkillStates
                 maxAngleFilter = 90f
             };
 
-            search.RefreshCandidates();
-            search.FilterOutGameObject(base.gameObject);
-
-            HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
-            if (target)
-            {
-                if (target.healthComponent && target.healthComponent.body)
-                {
-                    if (BodyMeetsGrabConditions(target.healthComponent.body))
-                    {
-                        this.LgrabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.LgrabController.pivotTransform = this.FindModelChild("L_Hand");
-                    }
-
-                    if (NetworkServer.active)
-                    {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
-                    }
-                }
-            }
-        }
-
-        private void AttemptGrabR(float grabRadius)
-        {
-            if (this.RgrabController) return;
-
-            Ray aimRay = base.GetAimRay();
-
-            BullseyeSearch search = new BullseyeSearch
+            BullseyeSearch searchR = new BullseyeSearch
             {
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = false,
@@ -116,17 +93,41 @@ namespace SettMod.SkillStates
                 maxAngleFilter = 90f
             };
 
-            search.RefreshCandidates();
-            search.FilterOutGameObject(base.gameObject);
+            searchL.RefreshCandidates();
+            searchL.FilterOutGameObject(base.gameObject);
 
-            HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
-            if (target)
+            searchR.RefreshCandidates();
+            searchR.FilterOutGameObject(base.gameObject);
+
+            HurtBox targetL = searchL.GetResults().FirstOrDefault<HurtBox>();
+
+            HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
+
+            if (targetR == targetL) targetR = null;
+
+            if (targetL)
             {
-                if (target.healthComponent && target.healthComponent.body)
+                if (targetL.healthComponent && targetL.healthComponent.body)
                 {
-                    if (BodyMeetsGrabConditions(target.healthComponent.body))
+                    if (BodyMeetsGrabConditions(targetL.healthComponent.body))
                     {
-                        this.RgrabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
+                        this.LgrabController = targetL.healthComponent.body.gameObject.AddComponent<SettGrabController>();
+                        this.LgrabController.pivotTransform = this.FindModelChild("L_Hand");
+                    }
+
+                    if (NetworkServer.active)
+                    {
+                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                    }
+                }
+            }
+            if (targetR)
+            {
+                if (targetR.healthComponent && targetR.healthComponent.body)
+                {
+                    if (BodyMeetsGrabConditions(targetR.healthComponent.body))
+                    {
+                        this.RgrabController = targetR.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.RgrabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
 
@@ -153,8 +154,7 @@ namespace SettMod.SkillStates
                     {
                         Util.PlaySound("SettEVO", base.gameObject);
 
-                        this.AttemptGrabL(9f);
-                        this.AttemptGrabR(9f);
+                        this.AttemptGrab(9f);
 
                         if (this.LgrabController || this.RgrabController)
                         {

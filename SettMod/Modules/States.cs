@@ -18,7 +18,7 @@ namespace SettMod.Modules
 
             entityStates.Add(typeof(Roll));
 
-            entityStates.Add(typeof(ThrowBomb));
+            entityStates.Add(typeof(HayMaker));
         }
     }
 }
