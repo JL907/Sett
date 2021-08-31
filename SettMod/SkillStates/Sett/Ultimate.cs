@@ -15,7 +15,7 @@ namespace SettMod.SkillStates
         public static float slamRadius = 15f;
         public static float slamDamageCoefficient = 12f;
         public static float slamProcCoefficient = 1f;
-        public static float slamForce = 5000f;
+        public static float slamForce = 2000f;
 
         public static float dodgeFOV;
 
@@ -131,7 +131,7 @@ namespace SettMod.SkillStates
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (base.characterBody.damage * HeatCrash.slamDamageCoefficient) + (0.3f * this.bonusHealth) ;
+            blastAttack.baseDamage = (base.characterBody.damage * HeatCrash.slamDamageCoefficient) + (0.6f * this.bonusHealth) ;
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.baseForce = HeatCrash.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
