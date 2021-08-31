@@ -13,6 +13,12 @@ namespace SettMod.SkillStates
         protected float startUp = 0.9f;
         protected float EarlyExitTime = 1.2f;
         protected float baseDuration = 3.55f;
+
+        public static float hayMakerRadius = 55f;
+        public static float hayMakerDamageCoefficient = 8f;
+        public static float hayMakerProcCoefficient = 1f;
+        public static float hayMakerForce = 1000f;
+
         public float duration;
 
         private bool hasFired;
@@ -33,8 +39,8 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * this.duration);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * this.duration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f);
+                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f);
             }
         }
 
@@ -63,14 +69,14 @@ namespace SettMod.SkillStates
                 Util.PlaySound("SettWVO", base.gameObject);
 
                 BlastAttack blastAttack = new BlastAttack();
-                blastAttack.radius = 50f;
-                blastAttack.procCoefficient = 1f;
+                blastAttack.radius = HayMaker.hayMakerRadius;
+                blastAttack.procCoefficient = HayMaker.hayMakerProcCoefficient;
                 blastAttack.position = base.characterBody.corePosition;
                 blastAttack.attacker = base.gameObject;
                 blastAttack.crit = base.RollCrit();
-                blastAttack.baseDamage = base.characterBody.damage * 32f;
+                blastAttack.baseDamage = base.characterBody.damage * HayMaker.hayMakerDamageCoefficient;
                 blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-                blastAttack.baseForce = 1000f;
+                blastAttack.baseForce = HayMaker.hayMakerForce;
                 blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
                 blastAttack.damageType = DamageType.Stun1s;
                 blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
