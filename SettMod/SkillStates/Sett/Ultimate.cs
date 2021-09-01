@@ -71,10 +71,10 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.5f * (this.moveSpeedStat / 1.5f)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.4f * (this.moveSpeedStat / 1.5f)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
-                this.AttemptGrab(5f);
+                this.AttemptGrab(10f);
             }
 
             if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
@@ -82,7 +82,7 @@ namespace SettMod.SkillStates
 
                 if (base.cameraTargetParams)
                 {
-                    base.cameraTargetParams.fovOverride = Mathf.Lerp(90f, 120f, base.fixedAge / ShowStopper.jumpDuration);
+                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
                 }
                 this.CreateIndicator();
             }
@@ -95,10 +95,16 @@ namespace SettMod.SkillStates
                 base.characterMotor.velocity.y = -ShowStopper.dropForce;
 
                 //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
-                this.AttemptGrab(10f);
+                this.AttemptGrab(15f);
             }
 
             if (this.hasDropped && base.isAuthority && !base.characterMotor.disableAirControlUntilCollision)
+            {
+                this.LandingImpact();
+                this.outer.SetNextStateToMain();
+                return;
+            }
+            if(base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
             {
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();

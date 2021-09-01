@@ -27,7 +27,8 @@ namespace SettMod.SkillStates
         {
             get
             {
-                return base.characterDirection.forward.normalized;
+                //return base.characterDirection.forward.normalized;
+                return base.inputBank.aimDirection;
             }
         }
         private OverlapAttack attack;

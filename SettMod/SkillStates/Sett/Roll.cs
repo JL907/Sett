@@ -19,15 +19,20 @@ namespace SettMod.SkillStates
         private Vector3 forwardDirection;
         private Animator animator;
         private Vector3 previousPosition;
+        private Vector3 dashVector;
+
 
         public override void OnEnter()
         {
             base.OnEnter();
             this.animator = base.GetModelAnimator();
+            this.dashVector = base.inputBank.aimDirection;
+            base.characterMotor.Motor.RebuildCollidableLayers();
+            base.characterMotor.Motor.ForceUnground();
 
             if (base.isAuthority && base.inputBank && base.characterDirection)
             {
-                this.forwardDirection = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
+                this.forwardDirection = base.inputBank.aimDirection;
             }
 
             Vector3 rhs = base.characterDirection ? base.characterDirection.forward : this.forwardDirection;
@@ -64,7 +69,7 @@ namespace SettMod.SkillStates
                 searchOrigin = base.transform.position,
                 searchDirection = Random.onUnitSphere,
                 sortMode = BullseyeSearch.SortMode.Distance,
-                maxDistanceFilter = 5f,
+                maxDistanceFilter = 10f,
                 maxAngleFilter = 360f
             };
 
@@ -122,7 +127,9 @@ namespace SettMod.SkillStates
         public override void OnExit()
         {
             if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = -1f;
-            base.characterMotor.disableAirControlUntilCollision = false;
+
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
             base.OnExit(); 
            
         }
