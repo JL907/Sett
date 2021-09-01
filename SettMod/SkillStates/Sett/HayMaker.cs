@@ -19,7 +19,7 @@ namespace SettMod.SkillStates
         protected float baseDuration = 3.55f;
 
         public static float hayMakerRadius = 55f;
-        public static float hayMakerDamageCoefficient = 8f;
+        public static float hayMakerDamageCoefficient = 10f;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerForce = 1000f;
         private Vector3 punchVector
@@ -78,7 +78,7 @@ namespace SettMod.SkillStates
             BullseyeSearch bullseyeSearch = new BullseyeSearch();
             bullseyeSearch.teamMaskFilter = TeamMask.GetEnemyTeams(team);
             bullseyeSearch.maxAngleFilter = 60f;
-            bullseyeSearch.maxDistanceFilter = 20f;
+            bullseyeSearch.maxDistanceFilter = 40f;
             bullseyeSearch.searchOrigin = aimRay.origin;
             bullseyeSearch.searchDirection = this.punchVector;
             bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
@@ -100,13 +100,15 @@ namespace SettMod.SkillStates
                         lightningOrb.bouncedObjects = new List<HealthComponent>();
                         lightningOrb.attacker = base.gameObject;
                         lightningOrb.teamIndex = team;
-                        lightningOrb.damageValue = this.damageStat * 10f;
+                        lightningOrb.damageValue = this.damageStat * HayMaker.hayMakerDamageCoefficient;
                         lightningOrb.isCrit = base.RollCrit();
                         lightningOrb.origin = hurtBox.healthComponent.body.transform.position;
                         lightningOrb.bouncesRemaining = 0;
-                        lightningOrb.lightningType = LightningOrb.LightningType.Loader;
+                        lightningOrb.lightningType = LightningOrb.LightningType.Count;
                         lightningOrb.procCoefficient = 1f;
                         lightningOrb.target = hurtBox;
+                        lightningOrb.canBounceOnSameTarget = true;
+
                         OrbManager.instance.AddOrb(lightningOrb);
                     }
 

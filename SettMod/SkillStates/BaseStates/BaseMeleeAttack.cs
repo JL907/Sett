@@ -89,9 +89,9 @@ namespace SettMod.SkillStates.BaseStates
 
         public override void OnExit()
         {
+
             if (!this.hasFired && !this.cancelled) this.FireAttack();
             this.animator.SetBool("attacking", false);
-
             base.OnExit();
 
         }

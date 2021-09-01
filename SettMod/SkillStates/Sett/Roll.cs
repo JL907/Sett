@@ -127,6 +127,11 @@ namespace SettMod.SkillStates
            
         }
 
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
         public override void OnSerialize(NetworkWriter writer)
         {
             base.OnSerialize(writer);

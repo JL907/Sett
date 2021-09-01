@@ -28,6 +28,8 @@ namespace SettMod.SkillStates
         private Ray downRay;
         private SettGrabController grabController;
 
+        protected Animator animator;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -255,7 +257,7 @@ namespace SettMod.SkillStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.Skill;
+            return InterruptPriority.PrioritySkill;
         }
     }
 }
