@@ -7,7 +7,7 @@ using EntityStates;
 
 namespace SettMod.SkillStates
 {
-    public class HeatCrash : BaseSkillState
+    public class ShowStopper : BaseSkillState
     {
         public static float jumpDuration = 0.8f;
         public static float dropForce = 80f;
@@ -36,7 +36,7 @@ namespace SettMod.SkillStates
             this.flyVector = Vector3.up;
             this.hasDropped = false;
 
-            base.PlayAnimation("FullBody, Override", "HeatCrash", "HighJump.playbackRate", HeatCrash.jumpDuration);
+            base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
 
@@ -50,8 +50,8 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * HeatCrash.jumpDuration);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * HeatCrash.jumpDuration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * ShowStopper.jumpDuration);
+                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
             }
         }
 
@@ -68,29 +68,29 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.5f * (this.moveSpeedStat / 1.5f )) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / HeatCrash.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.5f * (this.moveSpeedStat / 1.5f )) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(5f);
             }
 
-            if (base.fixedAge >= (0.25f * HeatCrash.jumpDuration) && !this.slamIndicatorInstance)
+            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
             {
                 if (base.cameraTargetParams)
                 {
-                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / HeatCrash.jumpDuration);
+                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
                 }
                 this.CreateIndicator();
             }
 
-            if (base.fixedAge >= HeatCrash.jumpDuration && !this.hasDropped)
+            if (base.fixedAge >= ShowStopper.jumpDuration && !this.hasDropped)
             {
                 this.hasDropped = true;
 
                 base.characterMotor.disableAirControlUntilCollision = true;
-                base.characterMotor.velocity.y = -HeatCrash.dropForce;
+                base.characterMotor.velocity.y = -ShowStopper.dropForce;
 
-                base.PlayAnimation("FullBody, Override", "HeatCrashSlam", "HighJump.playbackRate", 0.2f);
+                base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
                 this.AttemptGrab(10f);
             }
 
@@ -112,10 +112,10 @@ namespace SettMod.SkillStates
                 };
 
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.localScale = Vector3.one * HeatCrash.slamRadius;
+                this.slamIndicatorInstance.localScale = Vector3.one * ShowStopper.slamRadius;
 
                 this.slamCenterIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamCenterIndicatorInstance.localScale = (Vector3.one * HeatCrash.slamRadius) / 3f;
+                this.slamCenterIndicatorInstance.localScale = (Vector3.one * ShowStopper.slamRadius) / 3f;
             }
         }
 
@@ -126,14 +126,14 @@ namespace SettMod.SkillStates
             base.characterMotor.velocity *= 0.1f;
 
             BlastAttack blastAttack = new BlastAttack();
-            blastAttack.radius = HeatCrash.slamRadius;
-            blastAttack.procCoefficient = HeatCrash.slamProcCoefficient;
+            blastAttack.radius = ShowStopper.slamRadius;
+            blastAttack.procCoefficient = ShowStopper.slamProcCoefficient;
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (base.characterBody.damage * HeatCrash.slamDamageCoefficient) + (0.6f * this.bonusHealth) ;
+            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (0.6f * this.bonusHealth) ;
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            blastAttack.baseForce = HeatCrash.slamForce;
+            blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
@@ -181,7 +181,6 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            base.OnExit();
 
             if (base.cameraTargetParams)
             {
@@ -199,8 +198,10 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
-            base.gameObject.layer = LayerIndex.defaultLayer.intVal; 
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
+
+            base.OnExit();
         }
 
         private void AttemptGrab(float grabRadius)

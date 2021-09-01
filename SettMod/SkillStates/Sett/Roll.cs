@@ -76,7 +76,7 @@ namespace SettMod.SkillStates
             {
                 if (target.healthComponent && target.healthComponent.body)
                 {
-                    this.outer.SetNextState(new HeatCrash
+                    this.outer.SetNextState(new ShowStopper
                     {
 
                     });
@@ -122,9 +122,8 @@ namespace SettMod.SkillStates
         public override void OnExit()
         {
             if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = -1f;
-            base.OnExit();
-
             base.characterMotor.disableAirControlUntilCollision = false;
+            base.OnExit(); 
            
         }
 

@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Linq;
 using System;
+using RoR2.Orbs;
+using RoR2.Projectile;
 using System.Collections.Generic;
+using UnityEngine.Networking;
+using RoR2.Audio;
 
 namespace SettMod.SkillStates
 {
@@ -18,6 +22,16 @@ namespace SettMod.SkillStates
         public static float hayMakerDamageCoefficient = 8f;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerForce = 1000f;
+        private Vector3 punchVector
+
+        {
+            get
+            {
+                return base.characterDirection.forward.normalized;
+            }
+        }
+        private OverlapAttack attack;
+
 
         public float duration;
 
@@ -57,6 +71,57 @@ namespace SettMod.SkillStates
 
         }
 
+        private void FireSecondaryRaysServer()
+        {
+            Ray aimRay = base.GetAimRay();
+            TeamIndex team = base.GetTeam();
+            BullseyeSearch bullseyeSearch = new BullseyeSearch();
+            bullseyeSearch.teamMaskFilter = TeamMask.GetEnemyTeams(team);
+            bullseyeSearch.maxAngleFilter = 60f;
+            bullseyeSearch.maxDistanceFilter = 20f;
+            bullseyeSearch.searchOrigin = aimRay.origin;
+            bullseyeSearch.searchDirection = this.punchVector;
+            bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
+            bullseyeSearch.filterByLoS = false;
+            bullseyeSearch.RefreshCandidates();
+
+
+            List<HurtBox> list = bullseyeSearch.GetResults().Where(new Func<HurtBox, bool>(Util.IsValid)).ToList<HurtBox>();
+            Transform transform = base.FindModelChild("SwingCenter");
+
+            if (transform)
+            {
+                for (int i = 0; i < Mathf.Min(list.Count, 100f); i++)
+                {
+                    HurtBox hurtBox = list[i];
+                    if (hurtBox)
+                    {
+                        LightningOrb lightningOrb = new LightningOrb();
+                        lightningOrb.bouncedObjects = new List<HealthComponent>();
+                        lightningOrb.attacker = base.gameObject;
+                        lightningOrb.teamIndex = team;
+                        lightningOrb.damageValue = this.damageStat * 10f;
+                        lightningOrb.isCrit = base.RollCrit();
+                        lightningOrb.origin = hurtBox.healthComponent.body.transform.position;
+                        lightningOrb.bouncesRemaining = 0;
+                        lightningOrb.lightningType = LightningOrb.LightningType.Loader;
+                        lightningOrb.procCoefficient = 1f;
+                        lightningOrb.target = hurtBox;
+                        OrbManager.instance.AddOrb(lightningOrb);
+                    }
+
+                }
+                FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
+                fireProjectileInfo.position = base.GetAimRay().origin;
+                fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
+                fireProjectileInfo.crit = base.RollCrit();
+                fireProjectileInfo.damage = 0f;
+                fireProjectileInfo.owner = base.gameObject;
+                fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
+                ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+            }
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -68,32 +133,15 @@ namespace SettMod.SkillStates
                 this.hasFired = true;
                 Util.PlaySound("SettWVO", base.gameObject);
 
-                BlastAttack blastAttack = new BlastAttack();
-                blastAttack.radius = HayMaker.hayMakerRadius;
-                blastAttack.procCoefficient = HayMaker.hayMakerProcCoefficient;
-                blastAttack.position = base.characterBody.corePosition;
-                blastAttack.attacker = base.gameObject;
-                blastAttack.crit = base.RollCrit();
-                blastAttack.baseDamage = base.characterBody.damage * HayMaker.hayMakerDamageCoefficient;
-                blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-                blastAttack.baseForce = HayMaker.hayMakerForce;
-                blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
-                blastAttack.damageType = DamageType.Stun1s;
-                blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
-                blastAttack.Fire();
+                this.FireSecondaryRaysServer();
 
-                Util.PlaySound("SettRImpact", base.gameObject);
-
-                for (int i = 0; i <= 4; i += 1)
+                Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * 2f);
+                effectPosition.y = base.characterBody.footPosition.y;
+                EffectManager.SpawnEffect(EntityStates.LemurianBruiserMonster.SpawnState.spawnEffectPrefab, new EffectData
                 {
-                    Vector3 effectPosition = base.characterBody.corePosition + (UnityEngine.Random.insideUnitSphere * 4f);
-                    effectPosition.y = base.characterBody.corePosition.y;
-                    EffectManager.SpawnEffect(EntityStates.LemurianBruiserMonster.SpawnState.spawnEffectPrefab, new EffectData
-                    {
-                        origin = effectPosition,
-                        scale = 2f
-                    }, true);
-                }
+                    origin = effectPosition,
+                    scale = 1f
+                }, true);
             }
 
 

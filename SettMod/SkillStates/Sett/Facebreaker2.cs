@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using RoR2.Orbs;
+using RoR2.Projectile;
 
 namespace SettMod.SkillStates
 {
@@ -40,13 +42,10 @@ namespace SettMod.SkillStates
             base.PlayAnimation("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp);
             Util.PlaySound("SettESFX", base.gameObject);
 
-            base.gameObject.layer = LayerIndex.fakeActor.intVal;
-            base.characterMotor.Motor.RebuildCollidableLayers();
-        }
 
+        }
         public override void OnExit()
         {
-            base.OnExit();
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.LgrabController) this.LgrabController.Release();
@@ -55,8 +54,7 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
 
-            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
-            base.characterMotor.Motor.RebuildCollidableLayers();
+            base.OnExit();
         }
 
 
@@ -76,10 +74,10 @@ namespace SettMod.SkillStates
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = false,
                 searchOrigin = base.transform.position,
-                searchDirection = base.transform.forward,
+                searchDirection = base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 90f
+                maxAngleFilter = 60f
             };
 
             BullseyeSearch searchR = new BullseyeSearch
@@ -87,10 +85,10 @@ namespace SettMod.SkillStates
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = false,
                 searchOrigin = base.transform.position,
-                searchDirection = -base.transform.forward,
+                searchDirection = -base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 90f
+                maxAngleFilter = 60f
             };
 
             searchL.RefreshCandidates();
@@ -103,12 +101,14 @@ namespace SettMod.SkillStates
 
             HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
 
+            float num = Mathf.Cos(60f * 0.5f * 0.017453292f);
             if (targetL)
             {
                 if (targetL.healthComponent && targetL.healthComponent.body)
                 {
                     if (BodyMeetsGrabConditions(targetL.healthComponent.body))
                     {
+
                         this.LgrabController = targetL.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.LgrabController.pivotTransform = this.FindModelChild("L_Hand");
                     }
@@ -152,7 +152,7 @@ namespace SettMod.SkillStates
                     {
                         Util.PlaySound("SettEVO", base.gameObject);
 
-                        this.AttemptGrab(9f);
+                        this.AttemptGrab(15f);
 
                         if (this.LgrabController || this.RgrabController)
                         {
