@@ -19,7 +19,7 @@ namespace SettMod.SkillStates
         protected float baseDuration = 3.55f;
 
         public static float hayMakerRadius = 55f;
-        public static float hayMakerDamageCoefficient = 10f;
+        public static float hayMakerDamageCoefficient = 16f;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerForce = 1000f;
         private Vector3 punchVector
@@ -77,9 +77,9 @@ namespace SettMod.SkillStates
             TeamIndex team = base.GetTeam();
             BullseyeSearch bullseyeSearch = new BullseyeSearch();
             bullseyeSearch.teamMaskFilter = TeamMask.GetEnemyTeams(team);
-            bullseyeSearch.maxAngleFilter = 60f;
-            bullseyeSearch.maxDistanceFilter = 40f;
-            bullseyeSearch.searchOrigin = aimRay.origin;
+            bullseyeSearch.maxAngleFilter = 45f;
+            bullseyeSearch.maxDistanceFilter = 35f;
+            bullseyeSearch.searchOrigin = base.transform.position;
             bullseyeSearch.searchDirection = this.punchVector;
             bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
             bullseyeSearch.filterByLoS = false;

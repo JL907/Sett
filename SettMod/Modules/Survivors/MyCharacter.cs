@@ -20,18 +20,18 @@ namespace SettMod.Modules.Survivors
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            armor = 20f,
-            armorGrowth = 0f,
+            armor = 33f,
+            armorGrowth = 3.7f,
             bodyName = "SettBody",
             bodyNameToken = SettPlugin.developerPrefix + "_SETT_BODY_NAME",
             bodyColor = Color.grey,
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 12f,
-            healthGrowth = 33f,
-            healthRegen = 1.5f,
+            damage = 15f,
+            healthGrowth = 43f,
+            healthRegen = 5f,
             jumpCount = 1,
-            maxHealth = 110f,
+            maxHealth = 300f,
             subtitleNameToken = SettPlugin.developerPrefix + "_SETT_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };

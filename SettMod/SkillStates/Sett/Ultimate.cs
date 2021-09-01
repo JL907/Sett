@@ -13,7 +13,7 @@ namespace SettMod.SkillStates
         public static float dropForce = 80f;
 
         public static float slamRadius = 15f;
-        public static float slamDamageCoefficient = 12f;
+        public static float slamDamageCoefficient = 24f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 2000f;
 
@@ -27,6 +27,7 @@ namespace SettMod.SkillStates
         private Transform slamCenterIndicatorInstance;
         private Ray downRay;
         private SettGrabController grabController;
+
 
         protected Animator animator;
 
@@ -70,7 +71,7 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.5f * (this.moveSpeedStat / 1.5f )) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.5f * (this.moveSpeedStat / 1.5f)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(5f);
@@ -78,9 +79,10 @@ namespace SettMod.SkillStates
 
             if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
             {
+
                 if (base.cameraTargetParams)
                 {
-                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
+                    base.cameraTargetParams.fovOverride = Mathf.Lerp(90f, 120f, base.fixedAge / ShowStopper.jumpDuration);
                 }
                 this.CreateIndicator();
             }
@@ -92,7 +94,7 @@ namespace SettMod.SkillStates
                 base.characterMotor.disableAirControlUntilCollision = true;
                 base.characterMotor.velocity.y = -ShowStopper.dropForce;
 
-                base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
+                //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
                 this.AttemptGrab(10f);
             }
 
@@ -133,7 +135,7 @@ namespace SettMod.SkillStates
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (0.6f * this.bonusHealth) ;
+            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth) ;
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
@@ -147,12 +149,12 @@ namespace SettMod.SkillStates
 
             for (int i = 0; i <= 4; i += 1)
             {
-                Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * 4f);
+                Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * 2f);
                 effectPosition.y = base.characterBody.footPosition.y;
                 EffectManager.SpawnEffect(EntityStates.LemurianBruiserMonster.SpawnState.spawnEffectPrefab, new EffectData
                 {
                     origin = effectPosition,
-                    scale = 2f
+                    scale = 0.5f
                 }, true);
             }
         }

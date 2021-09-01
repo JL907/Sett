@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1820539158
+CRC: 2663848597
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 06ae31529aa3f9e234539753a7d06798
+    Hash: 202a430f68406e7c19388d84319d6258
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5dc9ad5523fd05421114afbcc6f002cd
@@ -54,11 +54,13 @@ ClassTypes:
 Assets:
 - Assets/Sett/VFX/Textures/sett_emote_heart.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
+- Assets/Sett/VFX/Textures/New Material.mat
 - Assets/Sett/animDisplay.controller
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
 - Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
+- Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
 - Assets/Sett/VFX/Textures/sett_base_flare_star.dds
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
@@ -109,6 +111,7 @@ Assets:
 - Assets/Sett/UI/sett_buff.png
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy_erode.dds
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_mask.dds
+- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_horizontal_erode_a.dds
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
@@ -116,7 +119,6 @@ Assets:
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat
-- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds

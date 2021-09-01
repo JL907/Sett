@@ -77,7 +77,7 @@ namespace SettMod.SkillStates
                 searchDirection = base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 60f
+                maxAngleFilter = 90f
             };
 
             BullseyeSearch searchR = new BullseyeSearch
@@ -88,7 +88,7 @@ namespace SettMod.SkillStates
                 searchDirection = -base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 60f
+                maxAngleFilter = 90f
             };
 
             searchL.RefreshCandidates();
