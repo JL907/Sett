@@ -1,7 +1,7 @@
 ﻿using BepInEx;
-using SettMod.Modules.Survivors;
 using R2API.Utils;
 using RoR2;
+using SettMod.Modules.Survivors;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Permissions;

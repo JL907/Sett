@@ -1,18 +1,18 @@
 ﻿
-using RoR2;
-using UnityEngine;
-using System.Linq;
-using UnityEngine.Networking;
 using EntityStates;
+using RoR2;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {
     public class ShowStopper : BaseSkillState
     {
-        public static float jumpDuration = 0.8f;
+        public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
-        public static float slamRadius = 15f;
+        public static float slamRadius = 25f;
         public static float slamDamageCoefficient = 24f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 2000f;
@@ -44,7 +44,7 @@ namespace SettMod.SkillStates
             Util.PlaySound("SettRVO", base.gameObject);
 
             base.characterMotor.Motor.ForceUnground();
-            //base.characterMotor.velocity = Vector3.zero;
+            base.characterMotor.velocity = Vector3.zero;
 
             base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
 
@@ -71,7 +71,7 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.4f * (this.moveSpeedStat / 1.5f)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.6f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(10f);
@@ -104,7 +104,7 @@ namespace SettMod.SkillStates
                 this.outer.SetNextStateToMain();
                 return;
             }
-            if(base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
+            if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
             {
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
@@ -141,7 +141,7 @@ namespace SettMod.SkillStates
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth) ;
+            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);

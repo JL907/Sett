@@ -1,14 +1,12 @@
 ﻿using EntityStates;
 using RoR2;
-using UnityEngine;
-using UnityEngine.Networking;
-using System.Linq;
-using System;
 using RoR2.Orbs;
 using RoR2.Projectile;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.Networking;
-using RoR2.Audio;
 
 namespace SettMod.SkillStates
 {
@@ -80,7 +78,7 @@ namespace SettMod.SkillStates
             bullseyeSearch.teamMaskFilter = TeamMask.GetEnemyTeams(team);
             bullseyeSearch.maxAngleFilter = 45f;
             bullseyeSearch.maxDistanceFilter = 35f;
-            bullseyeSearch.searchOrigin = base.transform.position;
+            bullseyeSearch.searchOrigin = base.GetAimRay().origin;
             bullseyeSearch.searchDirection = this.punchVector;
             bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
             bullseyeSearch.filterByLoS = false;
@@ -118,7 +116,7 @@ namespace SettMod.SkillStates
                 fireProjectileInfo.position = base.GetAimRay().origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
                 fireProjectileInfo.crit = base.RollCrit();
-                fireProjectileInfo.damage = 0f;
+                fireProjectileInfo.damage = this.damageStat * HayMaker.hayMakerDamageCoefficient;
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
@@ -131,7 +129,7 @@ namespace SettMod.SkillStates
 
             this.stopwatch += Time.fixedDeltaTime;
 
-            if(this.stopwatch >= this.startUp && !this.hasFired && base.isAuthority)
+            if (this.stopwatch >= this.startUp && !this.hasFired && base.isAuthority)
             {
                 this.hasFired = true;
                 Util.PlaySound("SettWVO", base.gameObject);

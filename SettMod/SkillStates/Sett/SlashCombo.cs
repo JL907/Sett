@@ -1,4 +1,4 @@
-﻿using SettMod.SkillStates.BaseStates;
+﻿/*using SettMod.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
 
@@ -15,9 +15,9 @@ namespace SettMod.SkillStates
             this.procCoefficient = 1f;
             this.pushForce = 300f;
             this.bonusForce = Vector3.zero;
-            this.baseDuration = 1f;
+            this.baseDuration = swingIndex % 2 == 0 ? 0.5f : 1.5f;
             this.attackStartTime = 0.2f;
-            this.attackEndTime = 0.4f;
+            this.attackEndTime =  0.4f;
             this.baseEarlyExitTime = 0.4f;
             this.hitStopDuration = 0.012f;
             this.attackRecoil = 0.5f;
@@ -66,4 +66,4 @@ namespace SettMod.SkillStates
             base.OnExit();
         }
     }
-}
+}*/

@@ -1,7 +1,7 @@
 ﻿using SettMod.SkillStates;
 using SettMod.SkillStates.BaseStates;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace SettMod.Modules
 {
@@ -12,7 +12,6 @@ namespace SettMod.Modules
         internal static void RegisterStates()
         {
             entityStates.Add(typeof(BaseMeleeAttack));
-            entityStates.Add(typeof(SlashCombo));
 
             entityStates.Add(typeof(Facebreaker2));
 

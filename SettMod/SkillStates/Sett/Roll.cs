@@ -1,8 +1,8 @@
 ﻿using EntityStates;
 using RoR2;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Linq;
 
 namespace SettMod.SkillStates
 {
@@ -32,7 +32,7 @@ namespace SettMod.SkillStates
 
             if (base.isAuthority && base.inputBank && base.characterDirection)
             {
-                this.forwardDirection = base.inputBank.aimDirection;
+                this.forwardDirection = ((base.inputBank.moveVector == Vector3.zero) ? base.characterDirection.forward : base.inputBank.moveVector).normalized;
             }
 
             Vector3 rhs = base.characterDirection ? base.characterDirection.forward : this.forwardDirection;
@@ -130,8 +130,8 @@ namespace SettMod.SkillStates
 
             base.gameObject.layer = LayerIndex.defaultLayer.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
-            base.OnExit(); 
-           
+            base.OnExit();
+
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

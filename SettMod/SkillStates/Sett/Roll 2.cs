@@ -1,8 +1,8 @@
 ﻿using EntityStates;
 using RoR2;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Linq;
 
 namespace SettMod.SkillStates
 {
@@ -56,7 +56,7 @@ namespace SettMod.SkillStates
             BullseyeSearch search = new BullseyeSearch
             {
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                filterByLoS = false,
+                filterByLoS = true,
                 searchOrigin = base.transform.position,
                 searchDirection = Random.onUnitSphere,
                 sortMode = BullseyeSearch.SortMode.Distance,
@@ -105,6 +105,17 @@ namespace SettMod.SkillStates
             }
         }
 
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.dashVelocity);
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            this.dashVelocity = reader.ReadVector3();
+        }
 
 
         public override void OnExit()

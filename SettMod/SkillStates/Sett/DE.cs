@@ -1,9 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
-using RoR2.Audio;
-using System;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {

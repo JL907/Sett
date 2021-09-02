@@ -3,7 +3,6 @@ using RoR2;
 using RoR2.Audio;
 using System;
 using UnityEngine;
-using UnityEngine.Networking;
 
 
 namespace SettMod.SkillStates
@@ -100,7 +99,7 @@ namespace SettMod.SkillStates
         {
             Util.PlaySound(this.hitSoundString, base.gameObject);
 
-            
+
 
             if (!this.hasHopped)
             {
@@ -177,7 +176,7 @@ namespace SettMod.SkillStates
 
             if (this.stopwatch >= this.duration && base.isAuthority)
             {
-                this.outer.SetNextStateToMain(); 
+                this.outer.SetNextStateToMain();
                 return;
             }
         }

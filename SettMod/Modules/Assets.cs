@@ -1,11 +1,10 @@
-﻿using System.Reflection;
-using R2API;
+﻿using R2API;
+using RoR2;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
-using RoR2;
-using System.IO;
-using System.Collections.Generic;
-using RoR2.UI;
 
 namespace SettMod.Modules
 {
@@ -13,7 +12,7 @@ namespace SettMod.Modules
     {
         // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
-        
+
         // particle effects
         internal static GameObject swordSwingEffect;
         internal static GameObject faceBreakerEffect;
@@ -23,7 +22,7 @@ namespace SettMod.Modules
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
-        
+
         // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
         internal static List<EffectDef> effectDefs = new List<EffectDef>();

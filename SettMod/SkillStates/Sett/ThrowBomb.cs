@@ -44,15 +44,15 @@ namespace SettMod.SkillStates
                 {
                     Ray aimRay = base.GetAimRay();
 
-                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.bombPrefab, 
-                        aimRay.origin, 
-                        Util.QuaternionSafeLookRotation(aimRay.direction), 
-                        base.gameObject, 
-                        ThrowBomb.damageCoefficient * this.damageStat, 
-                        4000f, 
-                        base.RollCrit(), 
-                        DamageColorIndex.Default, 
-                        null, 
+                    ProjectileManager.instance.FireProjectile(Modules.Projectiles.bombPrefab,
+                        aimRay.origin,
+                        Util.QuaternionSafeLookRotation(aimRay.direction),
+                        base.gameObject,
+                        ThrowBomb.damageCoefficient * this.damageStat,
+                        4000f,
+                        base.RollCrit(),
+                        DamageColorIndex.Default,
+                        null,
                         ThrowBomb.throwForce);
                 }
             }

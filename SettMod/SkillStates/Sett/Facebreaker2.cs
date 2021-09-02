@@ -1,12 +1,8 @@
 ﻿using EntityStates;
 using RoR2;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.Linq;
-using System;
-using System.Collections.Generic;
-using RoR2.Orbs;
-using RoR2.Projectile;
 
 namespace SettMod.SkillStates
 {
@@ -36,8 +32,17 @@ namespace SettMod.SkillStates
             this.hasFired = false;
             this.duration = this.baseDuration;
 
+
+
             base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.disableAirControlUntilCollision = false;
             base.characterMotor.velocity = Vector3.zero;
+
+            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+
+            base.gameObject.layer = LayerIndex.fakeActor.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
+
 
             base.PlayAnimation("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp);
             Util.PlaySound("SettESFX", base.gameObject);
@@ -52,7 +57,12 @@ namespace SettMod.SkillStates
             if (this.RgrabController) this.RgrabController.Release();
 
 
+            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
 
             base.OnExit();
         }
@@ -72,7 +82,7 @@ namespace SettMod.SkillStates
             BullseyeSearch searchL = new BullseyeSearch
             {
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                filterByLoS = false,
+                filterByLoS = true,
                 searchOrigin = base.transform.position,
                 searchDirection = base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
@@ -83,7 +93,7 @@ namespace SettMod.SkillStates
             BullseyeSearch searchR = new BullseyeSearch
             {
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                filterByLoS = false,
+                filterByLoS = true,
                 searchOrigin = base.transform.position,
                 searchDirection = -base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
@@ -151,6 +161,8 @@ namespace SettMod.SkillStates
                     if (base.isAuthority)
                     {
                         Util.PlaySound("SettEVO", base.gameObject);
+
+                        base.characterMotor.disableAirControlUntilCollision = true;
 
                         this.AttemptGrab(15f);
 
