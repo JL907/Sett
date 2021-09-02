@@ -20,10 +20,10 @@ namespace SettMod.Modules
 
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
-            string fullNameString = SettPlugin.developerPrefix + "_" + namePrefix + "_BODY_NAME";
-            string fullDescString = SettPlugin.developerPrefix + "_" + namePrefix + "_BODY_DESCRIPTION";
-            string fullOutroString = SettPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FLAVOR";
-            string fullFailureString = SettPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FAILURE";
+            string fullNameString = "SETT_NAME";
+            string fullDescString = "SETT_DESCRIPTION";
+            string fullOutroString = "SETT_OUTRO_FLAVOR";
+            string fullFailureString = "SETT_OUTRO_FAILURE";
 
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = bodyPrefab;

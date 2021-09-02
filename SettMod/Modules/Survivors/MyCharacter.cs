@@ -4,6 +4,7 @@ using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using R2API;
 
 namespace SettMod.Modules.Survivors
 {
@@ -23,7 +24,7 @@ namespace SettMod.Modules.Survivors
             armor = 33f,
             armorGrowth = 3.7f,
             bodyName = "SettBody",
-            bodyNameToken = SettPlugin.developerPrefix + "_SETT_BODY_NAME",
+            bodyNameToken = "SETT_NAME",
             bodyColor = Color.grey,
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -32,7 +33,7 @@ namespace SettMod.Modules.Survivors
             healthRegen = 4f,
             jumpCount = 1,
             maxHealth = 300f,
-            subtitleNameToken = SettPlugin.developerPrefix + "_SETT_BODY_SUBTITLE",
+            subtitleNameToken = "SETT_NAME_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -63,7 +64,7 @@ namespace SettMod.Modules.Survivors
 
         internal override void InitializeUnlockables()
         {
-            masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
+            //masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
         }
 
         internal override void InitializeDoppelganger()
@@ -91,11 +92,16 @@ namespace SettMod.Modules.Survivors
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
 
+            string desc = "Sett's basic attacks alternate between left and right punch. Right punch is slightly stronger and faster. Sett also hates losing, gaining additional health regeneration based off of his missing health.";
+
+            LanguageAPI.Add(prefix + "PRIMARY_NAME", "PIT GRIT");
+            LanguageAPI.Add(prefix + "PRIMARY_DESC", desc);
+
             SkillDef mySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_FACE_PRIMARY_NAME",
-                skillNameToken = prefix + "_SETT_BODY_FACE_PRIMARY_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_FACE_PRIMARY_DESCRIPTION",
+                skillName = prefix + "PRIMARY_NAME",
+                skillNameToken = prefix + "PRIMARY_NAME",
+                skillDescriptionToken = prefix + "PRIMARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)),
                 activationStateMachineName = "Weapon",
@@ -120,11 +126,16 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Secondary
+            desc = "Sett pulls in all enemies on opposite sides of him, dealing damage and stunning them. If enemies were only on one side, they are slowed instead of stunned.";
+
+            LanguageAPI.Add(prefix + "SECONDARY_NAME", "FACEBREAKER");
+            LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
+
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_FACE_BREAKER_NAME",
-                skillNameToken = prefix + "_SETT_BODY_FACE_BREAKER_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_FACE_BREAKER_DESCRIPTION",
+                skillName = prefix + "SECONDARY_NAME",
+                skillNameToken = prefix + "SECONDARY_NAME",
+                skillDescriptionToken = prefix + "SECONDARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_e"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker2)),
                 activationStateMachineName = "Body",
@@ -149,11 +160,16 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Utility
+            desc = "Sett carries an enemy champion through the air and slams them into the ground, dealing damage and slowing all enemies near where they land.";
+
+            LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "THE SHOW STOPPER");
+            LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
+
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_THE_SHOW_STOPPER_NAME",
-                skillNameToken = prefix + "_SETT_BODY_THE_SHOW_STOPPER_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_THE_SHOW_STOPPER_DESCRIPTION",
+                skillName = prefix + "SETT_UTILITY_NAME",
+                skillNameToken = prefix + "SETT_UTILITY_NAME",
+                skillDescriptionToken = prefix + "SETT_UTILITY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_r"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll2)),
                 activationStateMachineName = "Weapon",
@@ -177,11 +193,17 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Special
+            desc = "Sett passively stores damage he takes as Grit. On cast, Sett expends all stored Grit to gain a shield and punch an area, dealing true damage in the center and physical damage on the sides.";
+
+            LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "HAYMAKER");
+            LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
+
+
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_SETT_BODY_HAYMAKER_NAME",
-                skillNameToken = prefix + "_SETT_BODY_HAYMAKER_NAME",
-                skillDescriptionToken = prefix + "_SETT_BODY_HAYMAKER_DESCRIPTION",
+                skillName = prefix + "SETT_SPECIAL_NAME",
+                skillNameToken = prefix + "SETT_SPECIAL_NAME",
+                skillDescriptionToken = prefix + "SETT_SPECIAL_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_w"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
@@ -222,7 +244,7 @@ namespace SettMod.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "_SETT_BODY_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "SETT_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRenderers,
                 mainRenderer,

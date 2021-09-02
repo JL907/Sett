@@ -108,13 +108,17 @@ namespace SettMod.SkillStates
         public override void OnSerialize(NetworkWriter writer)
         {
             base.OnSerialize(writer);
-            writer.Write(this.dashVelocity);
+            writer.Write(base.characterMotor.velocity);
+            writer.Write(base.characterDirection.forward);
+            writer.Write(base.characterBody.isSprinting);
         }
 
         public override void OnDeserialize(NetworkReader reader)
         {
             base.OnDeserialize(reader);
-            this.dashVelocity = reader.ReadVector3();
+            base.characterMotor.velocity = reader.ReadVector3();
+            base.characterDirection.forward = reader.ReadVector3();
+            base.characterBody.isSprinting = reader.ReadBoolean();
         }
 
 

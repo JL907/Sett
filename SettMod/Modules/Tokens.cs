@@ -4,15 +4,26 @@ namespace SettMod.Modules
 {
     internal static class Tokens
     {
+        public const string characterName = "Sett";
+        public const string characterSubtitle = "The Boss";
+        public const string bossSubtitle = "The Boss";
+        public const string characterOutro = "..and so he left, with newfound might to honor.";
+        public const string characterOutroFailure = "..and so he returned, infallible bastion truly immortalized.";
+        public const string characterLore = "A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.";
+
         internal static void AddTokens()
         {
-            string prefix = SettPlugin.developerPrefix + "_SETT_BODY_";
 
-            string outro = "..and so he left, bottom text.";
+            LanguageAPI.Add("SETT_NAME", characterName);
+            LanguageAPI.Add("SETT_DESCRIPTION", Modules.StaticValues.descriptionText);
+            LanguageAPI.Add("SETT_SUBTITLE", characterSubtitle);
+            LanguageAPI.Add("SETT_LORE", characterLore);
+            LanguageAPI.Add("SETT_OUTRO_FLAVOR", characterOutro);
+            LanguageAPI.Add("SETT_OUTRO_FAILURE", characterOutroFailure);
 
-            LanguageAPI.Add(prefix + "Name", "Sett");
-            LanguageAPI.Add(prefix + "DESCRIPTION", Modules.StaticValues.descriptionText);
-            LanguageAPI.Add(prefix + "OUTRO_FLAVOR", outro);
+
+
+
         }
     }
 }
