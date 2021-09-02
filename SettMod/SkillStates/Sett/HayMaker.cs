@@ -113,6 +113,8 @@ namespace SettMod.SkillStates
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+
+                base.healthComponent.AddBarrierAuthority((this.damageStat * HayMaker.hayMakerDamageCoefficient)* 0.25f);
             }
         }
 
