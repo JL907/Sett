@@ -49,12 +49,6 @@ namespace SettMod.SkillStates
             base.characterMotor.velocity = Vector3.zero;
             base.PlayAnimation("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration);
             Util.PlaySound("SettWSFX", base.gameObject);
-
-            if (NetworkServer.active)
-            {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f);
-            }
         }
 
         public override void OnExit()
@@ -107,12 +101,11 @@ namespace SettMod.SkillStates
                         lightningOrb.procCoefficient = 1f;
                         lightningOrb.target = hurtBox;
                         lightningOrb.canBounceOnSameTarget = false;
-
                         OrbManager.instance.AddOrb(lightningOrb);
                     }
-
                 }
                 FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
+
                 fireProjectileInfo.position = base.GetAimRay().origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
                 fireProjectileInfo.crit = base.RollCrit();
@@ -135,14 +128,6 @@ namespace SettMod.SkillStates
                 Util.PlaySound("SettWVO", base.gameObject);
 
                 this.FireSecondaryRaysServer();
-
-                Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * 2f);
-                effectPosition.y = base.characterBody.footPosition.y;
-                EffectManager.SpawnEffect(EntityStates.LemurianBruiserMonster.SpawnState.spawnEffectPrefab, new EffectData
-                {
-                    origin = effectPosition,
-                    scale = 1f
-                }, true);
             }
 
 

@@ -21,7 +21,7 @@ namespace SettMod.Modules.Survivors
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
             armor = 33f,
-            armorGrowth = 1f,
+            armorGrowth = 3.7f,
             bodyName = "SettBody",
             bodyNameToken = SettPlugin.developerPrefix + "_SETT_BODY_NAME",
             bodyColor = Color.grey,
@@ -29,7 +29,7 @@ namespace SettMod.Modules.Survivors
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 15f,
             healthGrowth = 23f,
-            healthRegen = 2f,
+            healthRegen = 4f,
             jumpCount = 1,
             maxHealth = 300f,
             subtitleNameToken = SettPlugin.developerPrefix + "_SETT_BODY_SUBTITLE",

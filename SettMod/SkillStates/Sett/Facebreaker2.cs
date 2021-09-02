@@ -35,7 +35,6 @@ namespace SettMod.SkillStates
 
 
             base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.disableAirControlUntilCollision = false;
             base.characterMotor.velocity = Vector3.zero;
 
             base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
@@ -87,7 +86,7 @@ namespace SettMod.SkillStates
                 searchDirection = base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 90f
+                maxAngleFilter = 45f
             };
 
             BullseyeSearch searchR = new BullseyeSearch
@@ -98,7 +97,7 @@ namespace SettMod.SkillStates
                 searchDirection = -base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 90f
+                maxAngleFilter = 45f
             };
 
             searchL.RefreshCandidates();
@@ -121,6 +120,7 @@ namespace SettMod.SkillStates
 
                         this.LgrabController = targetL.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.LgrabController.pivotTransform = this.FindModelChild("L_Hand");
+                        base.characterMotor.disableAirControlUntilCollision = false;
                     }
 
                     if (NetworkServer.active)
@@ -137,6 +137,7 @@ namespace SettMod.SkillStates
                     {
                         this.RgrabController = targetR.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.RgrabController.pivotTransform = this.FindModelChild("R_Hand");
+                        base.characterMotor.disableAirControlUntilCollision = false;
                     }
 
                     if (NetworkServer.active)

@@ -12,8 +12,8 @@ namespace SettMod.SkillStates
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
-        public static float slamRadius = 25f;
-        public static float slamDamageCoefficient = 24f;
+        public static float slamRadius = 15f;
+        public static float slamDamageCoefficient = 18f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 2000f;
 
@@ -44,9 +44,10 @@ namespace SettMod.SkillStates
             Util.PlaySound("SettRVO", base.gameObject);
 
             base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.velocity = Vector3.zero;
+            base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
 
             base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+            base.characterMotor.disableAirControlUntilCollision = false;
 
             base.gameObject.layer = LayerIndex.fakeActor.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
@@ -71,7 +72,7 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.6f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(10f);
@@ -133,6 +134,7 @@ namespace SettMod.SkillStates
         {
             if (this.grabController) this.grabController.Release();
 
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterMotor.velocity *= 0.1f;
 
             BlastAttack blastAttack = new BlastAttack();
@@ -141,15 +143,13 @@ namespace SettMod.SkillStates
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
+            blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
             blastAttack.Fire();
-
-            base.gameObject.transform.position += new Vector3(0, 3, 0);
 
             Util.PlaySound("SettRImpact", base.gameObject);
 
