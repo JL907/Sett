@@ -221,11 +221,7 @@ namespace SettMod.SkillStates.BaseStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            if (base.fixedAge >= this.baseDuration)
-            {
-                return InterruptPriority.Skill;
-            }
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
 
         public override void OnSerialize(NetworkWriter writer)

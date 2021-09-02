@@ -156,7 +156,7 @@ namespace SettMod.Modules.Survivors
                 skillDescriptionToken = prefix + "_SETT_BODY_THE_SHOW_STOPPER_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_r"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll2)),
-                activationStateMachineName = "Body",
+                activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
                 baseRechargeInterval = 10f,
                 beginSkillCooldownOnSkillEnd = false,
@@ -167,7 +167,7 @@ namespace SettMod.Modules.Survivors
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = true,
-                cancelSprintingOnActivation = false,
+                cancelSprintingOnActivation = true,
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1

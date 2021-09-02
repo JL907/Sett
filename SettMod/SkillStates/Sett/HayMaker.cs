@@ -80,8 +80,8 @@ namespace SettMod.SkillStates
             bullseyeSearch.maxDistanceFilter = 35f;
             bullseyeSearch.searchOrigin = base.GetAimRay().origin;
             bullseyeSearch.searchDirection = this.punchVector;
-            bullseyeSearch.sortMode = BullseyeSearch.SortMode.Distance;
-            bullseyeSearch.filterByLoS = false;
+            bullseyeSearch.sortMode = BullseyeSearch.SortMode.DistanceAndAngle;
+            bullseyeSearch.filterByLoS = true;
             bullseyeSearch.RefreshCandidates();
 
 
@@ -106,7 +106,7 @@ namespace SettMod.SkillStates
                         lightningOrb.lightningType = LightningOrb.LightningType.Count;
                         lightningOrb.procCoefficient = 1f;
                         lightningOrb.target = hurtBox;
-                        lightningOrb.canBounceOnSameTarget = true;
+                        lightningOrb.canBounceOnSameTarget = false;
 
                         OrbManager.instance.AddOrb(lightningOrb);
                     }
@@ -116,7 +116,7 @@ namespace SettMod.SkillStates
                 fireProjectileInfo.position = base.GetAimRay().origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
                 fireProjectileInfo.crit = base.RollCrit();
-                fireProjectileInfo.damage = this.damageStat * HayMaker.hayMakerDamageCoefficient;
+                fireProjectileInfo.damage = this.damageStat;
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
