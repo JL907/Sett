@@ -54,8 +54,8 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * ShowStopper.jumpDuration);
-                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
+                //base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * ShowStopper.jumpDuration);
+                //base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
             }
         }
 
@@ -136,7 +136,7 @@ namespace SettMod.SkillStates
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterMotor.velocity *= 0.1f;
-
+            TeamIndex team = base.GetTeam();
             BlastAttack blastAttack = new BlastAttack();
             blastAttack.radius = ShowStopper.slamRadius;
             blastAttack.procCoefficient = ShowStopper.slamProcCoefficient;
@@ -146,7 +146,7 @@ namespace SettMod.SkillStates
             blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.baseForce = ShowStopper.slamForce;
-            blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
+            blastAttack.teamIndex = team;
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
             blastAttack.Fire();
@@ -248,7 +248,7 @@ namespace SettMod.SkillStates
 
                     if (NetworkServer.active)
                     {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                        //base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     }
                 }
             }
@@ -267,5 +267,6 @@ namespace SettMod.SkillStates
         {
             return InterruptPriority.PrioritySkill;
         }
+
     }
 }

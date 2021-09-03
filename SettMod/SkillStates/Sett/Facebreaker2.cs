@@ -125,7 +125,7 @@ namespace SettMod.SkillStates
 
                     if (NetworkServer.active)
                     {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                        //base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     }
                 }
             }
@@ -142,7 +142,7 @@ namespace SettMod.SkillStates
 
                     if (NetworkServer.active)
                     {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                        //base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     }
                 }
             }

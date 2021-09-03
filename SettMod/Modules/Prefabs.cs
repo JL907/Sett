@@ -137,6 +137,8 @@ namespace SettMod.Modules
 
             bodyComponent.isChampion = false;
 
+            bodyComponent.gameObject.AddComponent<GritComponent>();
+
             bodyComponent.bodyColor = bodyInfo.bodyColor;
             #endregion
 

@@ -93,10 +93,9 @@ namespace SettMod.SkillStates
                 base.characterMotor.velocity = this.dashVelocity;
                 base.characterDirection.forward = this.dashVelocity;
                 base.characterBody.isSprinting = true;
+
+                this.AttemptSlam();
             }
-
-            this.AttemptSlam();
-
 
             if (base.isAuthority && base.fixedAge >= Roll2.duration)
             {

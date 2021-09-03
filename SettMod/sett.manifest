@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1106302408
+CRC: 1844026505
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 796a474ab5f540545d54c2d98e431b46
+    Hash: 39a10d5ed3583bf632db3e430a37cb1f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5dc9ad5523fd05421114afbcc6f002cd
+    Hash: dbcdd46bd92d45fc7dd1a77da1ec2793
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,8 +36,14 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
@@ -48,6 +54,10 @@ ClassTypes:
 - Class: 199
   Script: {instanceID: 0}
 - Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
   Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
@@ -141,6 +151,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_burst_avatar.dds
 - Assets/Sett/VFX/Textures/sett_base_mask_vert_a.dds
 - Assets/Sett/VFX/Materials/hiteffectmat.mat
+- Assets/Sett/GritGaugePanel.prefab
 - Assets/Sett/UI/sett_e.png
 - Assets/Sett/VFX/Textures/sett_base_distort_rgba.dds
 - Assets/Sett/VFX/Textures/sett_emote_blush.dds

@@ -1,10 +1,15 @@
 ﻿using BepInEx;
 using R2API.Utils;
 using RoR2;
+using RoR2.UI;
+using SettMod.Modules;
 using SettMod.Modules.Survivors;
+using SettMod.UI;
+using System;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Permissions;
+using UnityEngine;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -68,10 +73,83 @@ namespace SettMod
             //Modules.Survivors.MyCharacter.instance.SetItemDisplays();
         }
 
+        private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
+        {
+
+            CreateGritGauge(self);
+            orig(self);
+        }
+
+        private GritGauge gritGauge;
+
+        private void CreateGritGauge(RoR2.UI.HUD hud)
+        {
+            if (!gritGauge)
+            {
+                if(hud != null && hud.mainUIPanel != null)
+                {
+                    gritGauge = hud.mainUIPanel.GetComponentInChildren<GritGauge>();
+                    if (!gritGauge)
+                    {
+                        var gritGaugePanel = Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("GritGaugePanel"));
+                        gritGauge = gritGaugePanel.AddComponent<GritGauge>();
+                        gritGaugePanel.transform.SetParent(hud.mainUIPanel.transform);
+                        var rectTransform = gritGaugePanel.GetComponent<RectTransform>();
+                        rectTransform.anchorMin = new Vector2(1, 0);
+                        rectTransform.anchorMax = new Vector2(1, 0);
+                        rectTransform.pivot = new Vector2(1, 0);
+                        rectTransform.sizeDelta = new Vector2(120, 120);
+                        rectTransform.anchoredPosition = new Vector2(-20, 200);
+                        rectTransform.localScale = new Vector3(2, 2, 2);
+                        gritGaugePanel.gameObject.SetActive(false); 
+                    }
+                }
+            }
+        }
+
+        public void OnDestroy()
+        {
+            try
+            {
+                UnHooks();
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e.Message + " - " + e.StackTrace);
+            }
+        }
+
         private void Hook()
         {
-            // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            On.RoR2.UI.HUD.Awake += HUD_Awake;
+            RoR2.UI.HUD.onHudTargetChangedGlobal += HUD_onHudTargetChangedGlobal;
+        }
+
+        private void UnHooks()
+        {
+            On.RoR2.CharacterBody.RecalculateStats -= CharacterBody_RecalculateStats;
+            On.RoR2.UI.HUD.Awake -= HUD_Awake;
+            RoR2.UI.HUD.onHudTargetChangedGlobal -= HUD_onHudTargetChangedGlobal;
+        }
+
+        private void HUD_onHudTargetChangedGlobal(RoR2.UI.HUD obj)
+        {
+            if(obj && obj.targetBodyObject && gritGauge)
+            {
+                var grit = obj.targetBodyObject.GetComponent<GritComponent>();
+                if (grit)
+                {
+                    gritGauge.gameObject.SetActive(true);
+                    gritGauge.source = grit;
+                }
+                else
+                {
+                    gritGauge.gameObject.SetActive(false);
+                    gritGauge.source = null;
+
+                }
+            }
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

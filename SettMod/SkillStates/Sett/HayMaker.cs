@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Orbs;
 using RoR2.Projectile;
+using SettMod.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,12 +44,16 @@ namespace SettMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            this.animator = base.GetModelAnimator();
-            this.hasFired = false;
-            this.duration = this.baseDuration / base.attackSpeedStat;
-            base.characterMotor.velocity = Vector3.zero;
-            base.PlayAnimation("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration);
-            Util.PlaySound("SettWSFX", base.gameObject);
+            if (base.isAuthority)
+            {
+                this.animator = base.GetModelAnimator();
+                this.hasFired = false;
+                this.duration = this.baseDuration / base.attackSpeedStat;
+                base.characterMotor.velocity = Vector3.zero;
+                base.PlayAnimation("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration);
+                Util.PlaySound("SettWSFX", base.gameObject);
+            }
+
         }
 
         public override void OnExit()
@@ -77,6 +82,10 @@ namespace SettMod.SkillStates
             bullseyeSearch.sortMode = BullseyeSearch.SortMode.DistanceAndAngle;
             bullseyeSearch.filterByLoS = true;
             bullseyeSearch.RefreshCandidates();
+
+            GritComponent gritComponent = base.GetComponent<GritComponent>();
+
+            float currentGrit = gritComponent.GetCurrentGrit();
 
 
             List<HurtBox> list = bullseyeSearch.GetResults().Where(new Func<HurtBox, bool>(Util.IsValid)).ToList<HurtBox>();
@@ -114,7 +123,8 @@ namespace SettMod.SkillStates
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
 
-                base.healthComponent.AddBarrierAuthority((this.damageStat * HayMaker.hayMakerDamageCoefficient)* 0.25f);
+                base.healthComponent.AddBarrierAuthority(currentGrit);
+                base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
             }
         }
 
