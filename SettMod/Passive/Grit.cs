@@ -51,7 +51,7 @@ namespace SettMod.Modules
 
         private void AuthorityFixedUpdate()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void AddGritAuthority(float value)
