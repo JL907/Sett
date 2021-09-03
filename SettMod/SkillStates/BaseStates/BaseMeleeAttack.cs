@@ -65,6 +65,7 @@ namespace SettMod.SkillStates.BaseStates
             {
                 this.baseDuration = 1.2f;
                 this.baseEarlyExitTime = 0.68f;
+                this.damageCoefficient = 5f;
             }
 
             this.duration = this.baseDuration / this.attackSpeedStat;

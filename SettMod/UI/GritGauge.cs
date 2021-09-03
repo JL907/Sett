@@ -1,8 +1,6 @@
-﻿using RoR2;
+﻿using SettMod.Modules;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.TextCore;
-using SettMod.Modules;
 
 namespace SettMod.UI
 {
@@ -28,9 +26,9 @@ namespace SettMod.UI
 
         private void UpdateGritGauge(float deltaTime)
         {
-            if(this.source && gritText)
+            if (this.source && gritText)
             {
-                string text = "Grit: " + ((int)this.source.GetCurrentGrit()).ToString() + " / " + ((int)this.source.GetMaxGrit()).ToString();
+                string text = ((int)this.source.GetCurrentGrit()).ToString() + " / " + ((int)this.source.GetMaxGrit()).ToString();
                 gritText.text = text;
             }
         }

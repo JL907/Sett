@@ -1,10 +1,10 @@
 ﻿using BepInEx.Configuration;
+using R2API;
 using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using R2API;
 
 namespace SettMod.Modules.Survivors
 {
@@ -29,7 +29,7 @@ namespace SettMod.Modules.Survivors
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 15f,
-            healthGrowth = 23f,
+            healthGrowth = 43f,
             healthRegen = 4f,
             jumpCount = 1,
             maxHealth = 300f,
@@ -174,7 +174,7 @@ namespace SettMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll2)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = 8f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
@@ -208,7 +208,7 @@ namespace SettMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
-                baseRechargeInterval = 16f,
+                baseRechargeInterval = 10f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,

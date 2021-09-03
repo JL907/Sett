@@ -1,14 +1,11 @@
-﻿using UnityEngine;
-using EntityStates;
-using RoR2;
-using UnityEngine.Networking;
-using System.Collections;
-using System;
+﻿using RoR2;
 using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.Networking;
 
 namespace SettMod.Modules
 {
-    public class GritComponent : NetworkBehaviour , IOnDamageDealtServerReceiver , IOnTakeDamageServerReceiver
+    public class GritComponent : NetworkBehaviour, IOnDamageDealtServerReceiver, IOnTakeDamageServerReceiver
     {
         private CharacterBody body;
         private EntityStateMachine outer = null;
@@ -17,6 +14,7 @@ namespace SettMod.Modules
         public const float MaxTrottleUpdateTime = 1.0f;
         public float gritUptimeStopwatch = 0.0f;
         private float throttleUpdateTime = 0.0f;
+        private bool isDecaying = false;
         public float NetworkGrit
         {
             get
@@ -90,18 +88,18 @@ namespace SettMod.Modules
 
         private void ServerFixedUpdate()
         {
-            if(gritUptimeStopwatch < GritMaxUptime)
+            if (gritUptimeStopwatch < GritMaxUptime)
             {
                 gritUptimeStopwatch += Time.fixedDeltaTime;
             }
-            if(throttleUpdateTime < MaxTrottleUpdateTime)
+            if (throttleUpdateTime < MaxTrottleUpdateTime)
             {
                 throttleUpdateTime += Time.fixedDeltaTime;
             }
             if (throttleUpdateTime >= MaxTrottleUpdateTime)
             {
                 throttleUpdateTime = 0f;
-                var gritDecayAmount = 0.3f;
+                var gritDecayAmount = 0.2f;
                 var snapShotGrit = this.NetworkGrit;
                 this.NetworkGrit -= Mathf.Max(snapShotGrit * gritDecayAmount, 0);
             }
@@ -176,5 +174,5 @@ namespace SettMod.Modules
         public float grit = 0f;
     }
 
-    
+
 }

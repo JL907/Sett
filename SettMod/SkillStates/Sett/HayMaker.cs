@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {
@@ -18,7 +17,7 @@ namespace SettMod.SkillStates
         protected float baseDuration = 3.55f;
 
         public static float hayMakerRadius = 55f;
-        public static float hayMakerDamageCoefficient = 16f;
+        public static float hayMakerDamageCoefficient = 12f;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerGritBonus = 0.2f;
         public static float hayMakerForce = 1000f;
@@ -50,7 +49,6 @@ namespace SettMod.SkillStates
             base.OnEnter();
             if (base.isAuthority)
             {
-                this.gritSnapShot = 0;
                 this.animator = base.GetModelAnimator();
                 this.hasFired = false;
                 this.duration = this.baseDuration / base.attackSpeedStat;
@@ -113,7 +111,7 @@ namespace SettMod.SkillStates
                         lightningOrb.isCrit = base.RollCrit();
                         lightningOrb.origin = hurtBox.healthComponent.body.transform.position;
                         lightningOrb.bouncesRemaining = 0;
-                        lightningOrb.lightningType = LightningOrb.LightningType.Count;
+                        lightningOrb.lightningType = LightningOrb.LightningType.Loader;
                         lightningOrb.procCoefficient = 1f;
                         lightningOrb.target = hurtBox;
                         lightningOrb.canBounceOnSameTarget = false;
