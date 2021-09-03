@@ -123,7 +123,7 @@ namespace SettMod.Modules
 
         public void OnDamageDealtServer(DamageReport damageReport)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void OnTakeDamageServer(DamageReport damageReport)

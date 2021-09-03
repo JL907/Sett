@@ -95,13 +95,13 @@ namespace SettMod
                         gritGauge = gritGaugePanel.AddComponent<GritGauge>();
                         gritGaugePanel.transform.SetParent(hud.mainUIPanel.transform);
                         var rectTransform = gritGaugePanel.GetComponent<RectTransform>();
-                        rectTransform.anchorMin = new Vector2(1, 0);
-                        rectTransform.anchorMax = new Vector2(1, 0);
-                        rectTransform.pivot = new Vector2(1, 0);
+                        rectTransform.anchorMin = new Vector2(0, 0);
+                        rectTransform.anchorMax = new Vector2(0, 0);
+                        rectTransform.pivot = new Vector2(0, 0);
                         rectTransform.sizeDelta = new Vector2(120, 120);
-                        rectTransform.anchoredPosition = new Vector2(-20, 200);
+                        rectTransform.anchoredPosition = new Vector2(0, -155);
                         rectTransform.localScale = new Vector3(2, 2, 2);
-                        gritGaugePanel.gameObject.SetActive(false); 
+                        gritGaugePanel.gameObject.SetActive(false);
                     }
                 }
             }

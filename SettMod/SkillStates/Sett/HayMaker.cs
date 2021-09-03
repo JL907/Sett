@@ -20,7 +20,11 @@ namespace SettMod.SkillStates
         public static float hayMakerRadius = 55f;
         public static float hayMakerDamageCoefficient = 16f;
         public static float hayMakerProcCoefficient = 1f;
+        public static float hayMakerGritBonus = 0.2f;
         public static float hayMakerForce = 1000f;
+
+        private float gritSnapShot;
+
         private Vector3 punchVector
 
         {
@@ -46,12 +50,18 @@ namespace SettMod.SkillStates
             base.OnEnter();
             if (base.isAuthority)
             {
+                this.gritSnapShot = 0;
                 this.animator = base.GetModelAnimator();
                 this.hasFired = false;
                 this.duration = this.baseDuration / base.attackSpeedStat;
                 base.characterMotor.velocity = Vector3.zero;
                 base.PlayAnimation("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration);
                 Util.PlaySound("SettWSFX", base.gameObject);
+                GritComponent gritComponent = base.GetComponent<GritComponent>();
+                float currentGrit = gritComponent.GetCurrentGrit();
+                this.gritSnapShot = currentGrit;
+                base.healthComponent.AddBarrierAuthority(currentGrit);
+                base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
             }
 
         }
@@ -83,9 +93,6 @@ namespace SettMod.SkillStates
             bullseyeSearch.filterByLoS = true;
             bullseyeSearch.RefreshCandidates();
 
-            GritComponent gritComponent = base.GetComponent<GritComponent>();
-
-            float currentGrit = gritComponent.GetCurrentGrit();
 
 
             List<HurtBox> list = bullseyeSearch.GetResults().Where(new Func<HurtBox, bool>(Util.IsValid)).ToList<HurtBox>();
@@ -102,7 +109,7 @@ namespace SettMod.SkillStates
                         lightningOrb.bouncedObjects = new List<HealthComponent>();
                         lightningOrb.attacker = base.gameObject;
                         lightningOrb.teamIndex = team;
-                        lightningOrb.damageValue = this.damageStat * HayMaker.hayMakerDamageCoefficient;
+                        lightningOrb.damageValue = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (HayMaker.hayMakerGritBonus * this.gritSnapShot);
                         lightningOrb.isCrit = base.RollCrit();
                         lightningOrb.origin = hurtBox.healthComponent.body.transform.position;
                         lightningOrb.bouncesRemaining = 0;
@@ -122,9 +129,6 @@ namespace SettMod.SkillStates
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-
-                base.healthComponent.AddBarrierAuthority(currentGrit);
-                base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
             }
         }
 
