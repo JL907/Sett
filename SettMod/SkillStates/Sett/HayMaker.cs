@@ -1,6 +1,5 @@
 ﻿using EntityStates;
 using RoR2;
-using RoR2.Orbs;
 using RoR2.Projectile;
 using SettMod.Modules;
 using System;
@@ -119,7 +118,7 @@ namespace SettMod.SkillStates
                     }
                 }*/
                 FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
-                fireProjectileInfo.position = base.GetAimRay().origin;
+                fireProjectileInfo.position = base.transform.position;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
                 fireProjectileInfo.crit = base.RollCrit();
                 fireProjectileInfo.damage = ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus));

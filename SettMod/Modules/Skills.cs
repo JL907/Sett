@@ -21,6 +21,12 @@ namespace SettMod.Modules
 
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
 
+            skillLocator.passiveSkill.enabled = true;
+            skillLocator.passiveSkill.skillNameToken = "<color=#ffa700>HEART OF THE HALF-BEAST</color>";
+            skillLocator.passiveSkill.skillDescriptionToken = "Sett's base <color=#c9aa71>health regeneration</color> is <color=#008744>5</color> health per second.";
+            skillLocator.passiveSkill.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p");
+
+
             skillLocator.primary = targetPrefab.AddComponent<GenericSkill>();
             SkillFamily primaryFamily = ScriptableObject.CreateInstance<SkillFamily>();
             (primaryFamily as ScriptableObject).name = targetPrefab.name + "PrimaryFamily";

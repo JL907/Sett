@@ -20,8 +20,8 @@ namespace SettMod.SkillStates
         private bool hasFired;
         protected Animator animator;
 
-        private SettGrabController LgrabController;
-        private SettGrabController RgrabController;
+        private SettGrabController2 LgrabController;
+        private SettGrabController2 RgrabController;
         protected float stopwatch;
 
 
@@ -118,9 +118,12 @@ namespace SettMod.SkillStates
                     if (BodyMeetsGrabConditions(targetL.healthComponent.body))
                     {
 
-                        this.LgrabController = targetL.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.LgrabController.pivotTransform = this.FindModelChild("L_Ability_Loc");
+                        this.LgrabController = targetL.healthComponent.body.gameObject.AddComponent<SettGrabController2>();
+                        this.LgrabController.pivotTransform = this.FindModelChild("L_Hand");
                         base.characterMotor.disableAirControlUntilCollision = false;
+                        //this.LgrabController.parentTransform = base.GetComponent<Transform>();
+                        //this.LgrabController.parentRigidBody = base.GetComponent<Rigidbody>();
+                        this.LgrabController.disableRotation = true;
                     }
 
                     if (NetworkServer.active)
@@ -135,9 +138,12 @@ namespace SettMod.SkillStates
                 {
                     if (BodyMeetsGrabConditions(targetR.healthComponent.body))
                     {
-                        this.RgrabController = targetR.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.RgrabController.pivotTransform = this.FindModelChild("R_Ability_Loc");
+                        this.RgrabController = targetR.healthComponent.body.gameObject.AddComponent<SettGrabController2>();
+                        this.RgrabController.pivotTransform = this.FindModelChild("R_Hand");
                         base.characterMotor.disableAirControlUntilCollision = false;
+                        //this.RgrabController.parentTransform = base.GetComponent<Transform>();
+                        //this.RgrabController.parentRigidBody = base.GetComponent<Rigidbody>();
+                        this.RgrabController.disableRotation = true;
                     }
 
                     if (NetworkServer.active)

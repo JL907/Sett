@@ -7,13 +7,13 @@ namespace SettMod.Modules
     public static class Buffs
     {
         // armor buff gained during roll
-        internal static BuffDef armorBuff;
+        internal static BuffDef regenBuff;
 
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
         internal static void RegisterBuffs()
         {
-            armorBuff = AddNewBuff("SettArmorBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
+            regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
         }
 
         // simple helper method

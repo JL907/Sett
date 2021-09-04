@@ -30,7 +30,7 @@ namespace SettMod.Modules.Survivors
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 15f,
             healthGrowth = 23f,
-            healthRegen = 3f,
+            healthRegen = 5f,
             jumpCount = 1,
             maxHealth = 186f,
             subtitleNameToken = "SETT_NAME_SUBTITLE",
@@ -92,9 +92,9 @@ namespace SettMod.Modules.Survivors
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
 
-            string desc = "Sett's basic attacks alternate between a Left Punch <color=#ffa700>(350% damage)</color> and a Right Punch <color=#ffa700>(500% damage)</color>";
+            string desc = "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(350% damage)</color> and a Right Punch <color=#f68835>(500% damage)</color>";
 
-            LanguageAPI.Add(prefix + "PRIMARY_NAME", "<color=#ffa700>PIT GRIT</color>");
+            LanguageAPI.Add(prefix + "PRIMARY_NAME", "<color=#ffa700>KNUCKLE DOWN</color>");
             LanguageAPI.Add(prefix + "PRIMARY_DESC", desc);
 
             SkillDef mySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -102,7 +102,7 @@ namespace SettMod.Modules.Survivors
                 skillName = prefix + "PRIMARY_NAME",
                 skillNameToken = prefix + "PRIMARY_NAME",
                 skillDescriptionToken = prefix + "PRIMARY_DESC",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_q"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
@@ -126,7 +126,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Secondary
-            desc = "Sett pulls in all enemies on opposite sides of him, dealing <color=#ffa700>800% </color>damage and stunning them. ";
+            desc = "Sett <color=#c9aa71>pulls in</color> all enemies on opposite sides of him, dealing <color=#f68835>800% </color>damage and <color=#c9aa71>stunning</color> them. ";
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
@@ -160,7 +160,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Utility
-            desc = "Sett carries an enemy champion through the air and slams them into the ground, dealing <color=#ffa700>1200%</color> <color=#d62d20>(+10% of primary target's total health)</color> damage to all enemies near where they land.";
+            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1200%</color> <color=#d62d20>(+10% of primary target's total health)</color> damage to all enemies near where they land.";
 
             LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
             LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
@@ -193,7 +193,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Special
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#ffa700>1600%</color> <color=#d62d20>(+50% of the expended Grit)</color> damage.";
+            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1600%</color> <color=#d62d20>(+50% of the expended Grit)</color> damage.";
 
             LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);

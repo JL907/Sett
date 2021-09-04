@@ -9,6 +9,7 @@ namespace SettMod.Modules
     {
         private CharacterBody body;
         private EntityStateMachine outer = null;
+        private BodyInfo bodyInfo;
         public const float GritUpdateTime = 1.0f;
         public const float GritMaxUptime = 4.0f;
         public const float MaxTrottleUpdateTime = 1.0f;
@@ -80,11 +81,26 @@ namespace SettMod.Modules
             return this.body.maxHealth / 2f;
         }
 
+        public float GetMissingHealth()
+        {
+            return this.body.maxHealth - this.body.healthComponent.health;
+        }
+
         public float GetCurrentGrit()
         {
             return Mathf.Max(0, this.NetworkGrit);
         }
 
+        public float GetSettRegen()
+        {
+            return ((this.GetMissingHealth() / this.body.maxHealth) / 0.1f);
+        }
+
+        public float GetTotalRegen()
+        {
+            float _regen = this.body.baseRegen += this.GetSettRegen();
+            return _regen;
+        }
 
         private void ServerFixedUpdate()
         {
@@ -98,6 +114,7 @@ namespace SettMod.Modules
             }
             if (throttleUpdateTime >= MaxTrottleUpdateTime)
             {
+                //this.body.healthComponent.health += this.GetSettRegen();
                 throttleUpdateTime = 0f;
                 var gritDecayAmount = 0.2f;
                 var snapShotGrit = this.NetworkGrit;

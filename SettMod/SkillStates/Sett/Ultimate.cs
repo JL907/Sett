@@ -26,7 +26,7 @@ namespace SettMod.SkillStates
         private Transform slamIndicatorInstance;
         private Transform slamCenterIndicatorInstance;
         private Ray downRay;
-        private SettGrabController grabController;
+        private SettGrabController2 grabController;
 
 
         protected Animator animator;
@@ -54,7 +54,7 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * ShowStopper.jumpDuration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.regenBuff, 1f * ShowStopper.jumpDuration);
                 base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
             }
         }
@@ -243,8 +243,10 @@ namespace SettMod.SkillStates
                     if (BodyMeetsGrabConditions(target.healthComponent.body))
                     {
                         this.bonusHealth = target.healthComponent.fullHealth;
-                        this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.grabController.pivotTransform = this.FindModelChild("L_Ability_Loc");
+                        this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController2>();
+                        this.grabController.pivotTransform = this.FindModelChild("R_Hand");
+                        this.grabController.parentTransform = base.GetComponent<Transform>();
+                        this.grabController.parentRigidBody = base.GetComponent<Rigidbody>();
                     }
 
                     if (NetworkServer.active)
