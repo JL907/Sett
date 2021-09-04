@@ -98,7 +98,7 @@ namespace SettMod
                         rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
                         rectTransform.pivot = new Vector2(0.5f, 0.5f);
                         rectTransform.sizeDelta = new Vector2(120, 120);
-                        rectTransform.anchoredPosition = new Vector2(0, -400f);
+                        rectTransform.anchoredPosition = new Vector2(0, -430f);
                         rectTransform.localScale = new Vector3(2, 2, 2);
                         gritGaugePanel.gameObject.SetActive(false);
                     }

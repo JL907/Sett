@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1844026505
+CRC: 2086396069
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 39a10d5ed3583bf632db3e430a37cb1f
+    Hash: beafb93318ee21507627519d840e13b9
   TypeTreeHash:
     serializedVersion: 2
     Hash: dbcdd46bd92d45fc7dd1a77da1ec2793
@@ -65,6 +65,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_emote_heart.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
 - Assets/Sett/VFX/Textures/New Material.mat
+- Assets/Sett/UI/texUICombatHealthbar.png
 - Assets/Sett/animDisplay.controller
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
@@ -194,6 +195,7 @@ Assets:
 - Assets/Sett/VFX/Textures/hiteffect.dds
 - Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
+- Assets/Sett/UI/texUIMainRect.png
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
