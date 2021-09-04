@@ -12,12 +12,12 @@ namespace SettMod.SkillStates
 {
     public class HayMaker : BaseSkillState
     {
-        protected float startUp = 0.9f;
+        protected float startUp = 0.8f;
         protected float EarlyExitTime = 1.2f;
         protected float baseDuration = 3.55f;
 
         public static float hayMakerRadius = 55f;
-        public static float hayMakerDamageCoefficient = 12f;
+        public static float hayMakerDamageCoefficient = 4f;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerGritBonus = 0.2f;
         public static float hayMakerForce = 1000f;
@@ -98,7 +98,7 @@ namespace SettMod.SkillStates
 
             if (transform)
             {
-                for (int i = 0; i < Mathf.Min(list.Count, 100f); i++)
+                /*for (int i = 0; i < Mathf.Min(list.Count, 100f); i++)
                 {
                     HurtBox hurtBox = list[i];
                     if (hurtBox)
@@ -117,13 +117,12 @@ namespace SettMod.SkillStates
                         lightningOrb.canBounceOnSameTarget = false;
                         OrbManager.instance.AddOrb(lightningOrb);
                     }
-                }
+                }*/
                 FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
-
                 fireProjectileInfo.position = base.GetAimRay().origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
                 fireProjectileInfo.crit = base.RollCrit();
-                fireProjectileInfo.damage = this.damageStat;
+                fireProjectileInfo.damage = ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus));
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);

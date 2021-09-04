@@ -13,7 +13,7 @@ namespace SettMod.SkillStates
         public float duration;
 
         public static float slamRadius = 2f;
-        public static float slamDamageCoefficient = 6f;
+        public static float slamDamageCoefficient = 4f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 10f;
 
@@ -83,7 +83,7 @@ namespace SettMod.SkillStates
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = true,
                 searchOrigin = base.transform.position,
-                searchDirection = base.characterDirection.forward.normalized,
+                searchDirection = base.inputBank.aimDirection,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
                 maxAngleFilter = 45f
@@ -94,7 +94,7 @@ namespace SettMod.SkillStates
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = true,
                 searchOrigin = base.transform.position,
-                searchDirection = -base.characterDirection.forward.normalized,
+                searchDirection = -base.inputBank.aimDirection,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
                 maxAngleFilter = 45f

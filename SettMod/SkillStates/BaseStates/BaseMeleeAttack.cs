@@ -51,7 +51,6 @@ namespace SettMod.SkillStates.BaseStates
         public override void OnEnter()
         {
             base.OnEnter();
-            base.StartAimMode(2f, false);
             this.hasFired = false;
 
             base.characterBody.outOfCombatStopwatch = 0f;

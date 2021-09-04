@@ -15,7 +15,7 @@ namespace SettMod.Modules
 
             entityStates.Add(typeof(Facebreaker2));
 
-            entityStates.Add(typeof(Roll));
+            entityStates.Add(typeof(Roll2));
 
             entityStates.Add(typeof(HayMaker));
         }

@@ -13,6 +13,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SkillStates\Sett\Facebreakerold.cs" />
+    <Compile Remove="SkillStates\Sett\Roll.cs" />
+    <Compile Remove="SkillStates\Sett\SlashCombo.cs" />
+    <Compile Remove="SkillStates\Sett\ThrowBomb.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SettBank.bnk" />
     <None Remove="Modules\Survivors\Sett.cs~RF6221a098.TMP" />
     <None Remove="sett" />

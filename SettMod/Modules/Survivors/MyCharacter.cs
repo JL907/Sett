@@ -29,10 +29,10 @@ namespace SettMod.Modules.Survivors
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 15f,
-            healthGrowth = 43f,
-            healthRegen = 4f,
+            healthGrowth = 23f,
+            healthRegen = 3f,
             jumpCount = 1,
-            maxHealth = 300f,
+            maxHealth = 186f,
             subtitleNameToken = "SETT_NAME_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };

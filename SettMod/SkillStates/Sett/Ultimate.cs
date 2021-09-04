@@ -13,7 +13,7 @@ namespace SettMod.SkillStates
         public static float dropForce = 80f;
 
         public static float slamRadius = 15f;
-        public static float slamDamageCoefficient = 12f;
+        public static float slamDamageCoefficient = 6f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 2000f;
 
@@ -54,8 +54,8 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                //base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * ShowStopper.jumpDuration);
-                //base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
+                base.characterBody.AddTimedBuff(Modules.Buffs.armorBuff, 1f * ShowStopper.jumpDuration);
+                base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
             }
         }
 
@@ -243,12 +243,12 @@ namespace SettMod.SkillStates
                     {
                         this.bonusHealth = target.healthComponent.fullHealth;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.grabController.pivotTransform = this.FindModelChild("L_Hand");
+                        this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
 
                     if (NetworkServer.active)
                     {
-                        //base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     }
                 }
             }
