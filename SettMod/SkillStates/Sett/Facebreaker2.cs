@@ -119,7 +119,7 @@ namespace SettMod.SkillStates
                     {
 
                         this.LgrabController = targetL.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.LgrabController.pivotTransform = this.FindModelChild("L_Hand");
+                        this.LgrabController.pivotTransform = this.FindModelChild("L_Ability_Loc");
                         base.characterMotor.disableAirControlUntilCollision = false;
                     }
 
@@ -136,7 +136,7 @@ namespace SettMod.SkillStates
                     if (BodyMeetsGrabConditions(targetR.healthComponent.body))
                     {
                         this.RgrabController = targetR.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.RgrabController.pivotTransform = this.FindModelChild("R_Hand");
+                        this.RgrabController.pivotTransform = this.FindModelChild("R_Ability_Loc");
                         base.characterMotor.disableAirControlUntilCollision = false;
                     }
 

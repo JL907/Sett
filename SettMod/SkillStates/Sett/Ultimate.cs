@@ -135,6 +135,7 @@ namespace SettMod.SkillStates
             if (this.grabController) this.grabController.Release();
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            base.characterMotor.Motor.SetPosition(base.characterBody.transform.position);
             base.characterMotor.velocity *= 0.1f;
             TeamIndex team = base.GetTeam();
             BlastAttack blastAttack = new BlastAttack();
@@ -243,7 +244,7 @@ namespace SettMod.SkillStates
                     {
                         this.bonusHealth = target.healthComponent.fullHealth;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.grabController.pivotTransform = this.FindModelChild("Root");
+                        this.grabController.pivotTransform = this.FindModelChild("L_Ability_Loc");
                     }
 
                     if (NetworkServer.active)
