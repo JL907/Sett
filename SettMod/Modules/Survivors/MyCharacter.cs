@@ -92,9 +92,9 @@ namespace SettMod.Modules.Survivors
             #region Primary
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
 
-            string desc = "Sett's basic attacks alternate between left and right punch. Right punch is slightly stronger and faster. Sett also hates losing, gaining additional health regeneration based off of his missing health.";
+            string desc = "Sett's basic attacks alternate between a Left Punch <color=#ffa700>(350% damage)</color> and a Right Punch <color=#ffa700>(500% damage)</color>";
 
-            LanguageAPI.Add(prefix + "PRIMARY_NAME", "PIT GRIT");
+            LanguageAPI.Add(prefix + "PRIMARY_NAME", "<color=#ffa700>PIT GRIT</color>");
             LanguageAPI.Add(prefix + "PRIMARY_DESC", desc);
 
             SkillDef mySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -126,9 +126,9 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Secondary
-            desc = "Sett pulls in all enemies on opposite sides of him, dealing damage and stunning them. If enemies were only on one side, they are slowed instead of stunned.";
+            desc = "Sett pulls in all enemies on opposite sides of him, dealing <color=#ffa700>800% </color>damage and stunning them. ";
 
-            LanguageAPI.Add(prefix + "SECONDARY_NAME", "FACEBREAKER");
+            LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
 
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -160,9 +160,9 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Utility
-            desc = "Sett carries an enemy champion through the air and slams them into the ground, dealing damage and slowing all enemies near where they land.";
+            desc = "Sett carries an enemy champion through the air and slams them into the ground, dealing <color=#ffa700>1200%</color> <color=#d62d20>(+10% of primary target's total health)</color> damage to all enemies near where they land.";
 
-            LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "THE SHOW STOPPER");
+            LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
             LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
 
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
@@ -193,9 +193,9 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Special
-            desc = "Sett passively stores damage he takes as Grit. On cast, Sett expends all stored Grit to gain a shield and punch an area, dealing true damage in the center and physical damage on the sides.";
+            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#ffa700>1600%</color> <color=#d62d20>(+50% of the expended Grit)</color> damage.";
 
-            LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "HAYMAKER");
+            LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
 
 

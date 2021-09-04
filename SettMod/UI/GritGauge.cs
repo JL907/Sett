@@ -35,7 +35,7 @@ namespace SettMod.UI
                 gritBar.fillAmount = this.source.GetCurrentGrit() / this.source.GetMaxGrit();
                 if (gritBar.fillAmount >= 1)
                 {
-                    gritBar.color = new Color(255, 206, 0, 255);
+                    gritBar.color = new Color(255, 167, 0, 255);
                 }
                 else if (gritBar.fillAmount < 1)
                 {

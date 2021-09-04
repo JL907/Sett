@@ -4,7 +4,7 @@ namespace SettMod.Modules
 {
     internal static class Tokens
     {
-        public const string characterName = "Sett";
+        public const string characterName = "<color=#ffa700>Sett</color>";
         public const string characterSubtitle = "The Boss";
         public const string bossSubtitle = "The Boss";
         public const string characterOutro = "..and so he left, with newfound might to honor.";

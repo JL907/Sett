@@ -17,9 +17,9 @@ namespace SettMod.SkillStates
         protected float baseDuration = 3.55f;
 
         public static float hayMakerRadius = 55f;
-        public static float hayMakerDamageCoefficient = 4f;
+        public static float hayMakerDamageCoefficient = 16f;
         public static float hayMakerProcCoefficient = 1f;
-        public static float hayMakerGritBonus = 0.2f;
+        public static float hayMakerGritBonus = 0.5f;
         public static float hayMakerForce = 1000f;
 
         private float gritSnapShot;
@@ -125,6 +125,7 @@ namespace SettMod.SkillStates
                 fireProjectileInfo.damage = ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus));
                 fireProjectileInfo.owner = base.gameObject;
                 fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
+                fireProjectileInfo.projectilePrefab.GetComponent<ProjectileProximityBeamController>().damageCoefficient = 1;
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
         }

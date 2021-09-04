@@ -13,7 +13,7 @@ namespace SettMod.SkillStates
         public float duration;
 
         public static float slamRadius = 2f;
-        public static float slamDamageCoefficient = 4f;
+        public static float slamDamageCoefficient = 8f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 10f;
 
