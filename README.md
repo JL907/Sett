@@ -42,9 +42,11 @@ https://discord.gg/aYuS9Wsxxx
 * The Show Stopper may clip you or enemies into the floor if the primary target is big enough
 * Face Breaker may also clip you or enemies into the floor
 * Face Breaker may sometimes not grab enemies directly infront of you
+* Haymaker may sometimes not damage enemies directly in front of you
 
 ## Future Plans
 * Death Animation
+* Indicators for facebreaker
 * Better Networking for multiplayer play
 
 ## Technical Mumbo Jumbo
