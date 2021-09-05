@@ -37,7 +37,7 @@ https://discord.gg/aYuS9Wsxxx
 * All the Testers: Tehbudderking, Samilton, Fancy Mango, Bonji
 
 ## Known Issues
-* Multiplier has not been tested intensively. He may or may not work in multiplayer environments. 
+* Multiplayer has not been tested intensively. He may or may not work in multiplayer environments. 
 * The Show Stopper may clip you or enemies into the floor if the primary target is big enough
 * Face Breaker may also clip you or enemies into the floor
 * Face Breaker may sometimes not grab enemies directly infront of you
