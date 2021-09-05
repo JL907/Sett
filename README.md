@@ -49,6 +49,15 @@ https://discord.gg/aYuS9Wsxxx
 * Indicators for facebreaker
 * Better Networking for multiplayer play
 
+## Patch Notes 1.0.0
+* Initial Release
+
+## Patch Notes 1.0.2
+* Fixed aiming with Knuckle Down and Facebreaker
+* Knuckle Down has Increased hitbox on the sides
+* Sett has ragdoll on death
+* Footstep sounds
+
 ## Technical Mumbo Jumbo
 * 168 Health
 * 23 Health per level
