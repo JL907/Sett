@@ -15,7 +15,6 @@
   <ItemGroup>
     <Compile Remove="SkillStates\Sett\DE.cs" />
     <Compile Remove="SkillStates\Sett\Facebreakerold.cs" />
-    <Compile Remove="SkillStates\Sett\Roll.cs" />
     <Compile Remove="SkillStates\Sett\SlashCombo.cs" />
     <Compile Remove="SkillStates\Sett\ThrowBomb.cs" />
   </ItemGroup>

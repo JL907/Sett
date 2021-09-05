@@ -94,7 +94,7 @@ namespace SettMod.SkillStates
 
                 base.characterMotor.disableAirControlUntilCollision = true;
                 base.characterMotor.velocity.y = -ShowStopper.dropForce;
-
+                this.characterMotor.Motor.SetMovementCollisionsSolvingActivation(true);
                 //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
                 this.AttemptGrab(15f);
             }
