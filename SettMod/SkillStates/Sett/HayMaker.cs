@@ -51,7 +51,6 @@ namespace SettMod.SkillStates
                 this.animator = base.GetModelAnimator();
                 this.hasFired = false;
                 this.duration = this.baseDuration / base.attackSpeedStat;
-                base.StartAimMode(0.5f + this.duration, false);
                 base.characterMotor.velocity = Vector3.zero;
                 base.PlayAnimation("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration);
                 Util.PlaySound("SettWSFX", base.gameObject);

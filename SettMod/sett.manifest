@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 789624326
+CRC: 1132174314
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e092e9a8abeafb7ea7b24d40ce4ac936
+    Hash: cba46b8dab08c8d2ad5e286eb732f1fc
   TypeTreeHash:
     serializedVersion: 2
     Hash: dbcdd46bd92d45fc7dd1a77da1ec2793
@@ -114,7 +114,6 @@ Assets:
 - Assets/Sett/Falling Idle.anim
 - Assets/Sett/VFX/Textures/sett_base_w_smoke_2_erosion.dds
 - Assets/Sett/VFX/Textures/texPunchImpact.png
-- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/texSmoke.png
 - Assets/Sett/VFX/Textures/sett_base_air_swoosh.dds
 - Assets/Sett/Sett.fbx
@@ -199,6 +198,7 @@ Assets:
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
+- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Materials/matFistSwing.mat
 - Assets/Sett/VFX/Textures/sett_base_distort_ring.dds
 - Assets/Sett/VFX/Textures/sett_base_energy_trail.dds
