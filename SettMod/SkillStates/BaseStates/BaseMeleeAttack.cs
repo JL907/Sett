@@ -82,6 +82,7 @@ namespace SettMod.SkillStates.BaseStates
 
             this.modelBaseTransform = base.GetModelTransform();
             this.animator = base.GetModelAnimator();
+            base.StartAimMode(0.5f + this.duration, false);
 
             hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 

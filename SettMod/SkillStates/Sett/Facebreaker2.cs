@@ -33,7 +33,7 @@ namespace SettMod.SkillStates
             this.duration = this.baseDuration;
 
 
-
+            base.StartAimMode(0.5f + this.duration, false);
             base.characterMotor.Motor.ForceUnground();
             base.characterMotor.velocity = Vector3.zero;
 
