@@ -28,7 +28,7 @@ namespace SettMod.SkillStates
                 base.characterMotor.velocity = this.dashVelocity;
                 base.characterDirection.forward = base.characterMotor.velocity.normalized;
                 this.dashSpeed = base.characterMotor.velocity.magnitude;
-
+                base.StartAimMode(0.5f + duration, false);
                 base.PlayAnimation("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f);
                 Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
             }
