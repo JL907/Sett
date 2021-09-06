@@ -344,8 +344,8 @@ namespace SettMod.Modules
         private static void SetupFootstepController(GameObject model)
         {
             FootstepHandler footstepHandler = model.AddComponent<FootstepHandler>();
-            footstepHandler.baseFootstepString = "Base";
-            footstepHandler.sprintFootstepOverrideString = "Haste";
+            footstepHandler.baseFootstepString = "Play_player_footstep";
+            footstepHandler.sprintFootstepOverrideString = "";
             footstepHandler.enableFootstepDust = true;
             footstepHandler.footstepDustPrefab = Resources.Load<GameObject>("Prefabs/GenericFootstepDust");
         }

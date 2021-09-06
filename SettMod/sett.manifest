@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 826876427
+CRC: 339472954
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1e9afbf1747a5dd9e847651f94e8b9cf
+    Hash: fb612ad352703e94cbce2f4eb0904cc9
   TypeTreeHash:
     serializedVersion: 2
     Hash: b6e8b56ed1927214e4f0977b66c63810
@@ -183,11 +183,11 @@ Assets:
 - Assets/Sett/Jumping UP.anim
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_alpha.dds
 - Assets/Sett/VFX/Textures/sett_base_p_radial_soft.dds
-- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Mesh/meshBoxingGlove.mesh
 - Assets/Sett/VFX/Textures/texEmbers.png
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
 - Assets/Sett/VFX/Materials/matTrail.mat
+- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/texPunchImpactShadow.png
 - Assets/Sett/settUpper.mask
 - Assets/Sett/animSett.controller
