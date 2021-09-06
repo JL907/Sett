@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 836341527
+CRC: 826876427
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 553afd02407f1e3cf121302f18239cb3
+    Hash: 1e9afbf1747a5dd9e847651f94e8b9cf
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f8433151a3181525b525bdd258e1cb1b
+    Hash: b6e8b56ed1927214e4f0977b66c63810
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -45,8 +45,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 1f614a7e494406347a5ab8313eadbc6b, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -185,6 +183,7 @@ Assets:
 - Assets/Sett/Jumping UP.anim
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_alpha.dds
 - Assets/Sett/VFX/Textures/sett_base_p_radial_soft.dds
+- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Mesh/meshBoxingGlove.mesh
 - Assets/Sett/VFX/Textures/texEmbers.png
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
@@ -206,7 +205,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
 - Assets/Sett/mdlSett.prefab
 - Assets/Sett/VFX/Textures/hiteffect.dds
-- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
 - Assets/Sett/UI/texUIMainRect.png
