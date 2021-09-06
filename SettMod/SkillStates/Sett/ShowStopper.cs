@@ -4,11 +4,14 @@ using RoR2;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using R2API.Networking.Interfaces;
 
 namespace SettMod.SkillStates
 {
-    public class ShowStopper : BaseSkillState
+    public class ShowStopper : BaseSkillState 
     {
+        NetworkInstanceId netId;
+
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
@@ -272,6 +275,5 @@ namespace SettMod.SkillStates
         {
             return InterruptPriority.PrioritySkill;
         }
-
     }
 }

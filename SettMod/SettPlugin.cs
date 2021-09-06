@@ -25,6 +25,7 @@ namespace SettMod
         "PrefabAPI",
         "LanguageAPI",
         "SoundAPI",
+        "NetworkingAPi",
     })]
 
     public class SettPlugin : BaseUnityPlugin

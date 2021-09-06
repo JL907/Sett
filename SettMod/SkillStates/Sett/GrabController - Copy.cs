@@ -78,7 +78,7 @@ namespace SettMod.SkillStates
             if (this.transform)
             {
                 this.transform.rotation = this.originalRotation;
-                this.transform.position = newParentPosition;
+                //this.transform.position = newParentPosition;
             }
             if (this.parentRigidBody) this.parentRigidBody.MovePosition(newParentPosition);
             if (this.parentTransform) this.parentTransform.position = newParentPosition;
