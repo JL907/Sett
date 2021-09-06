@@ -15,7 +15,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Facebreaker now has a wider angle and and now originates from character position rather than camera origin
 * Sett has ragdoll on death
 * Voiceline when selected in character select
-* Grit now decays four seconds after not taking any damage
+* Grit now decays 4 seconds after not taking any damage
 * Footstep sounds and dust effect while running/sprinting
 
 ## Discord
