@@ -112,7 +112,7 @@ namespace SettMod.Modules
             {
                 throttleUpdateTime += Time.fixedDeltaTime;
             }
-            if (throttleUpdateTime >= MaxTrottleUpdateTime)
+            if (throttleUpdateTime >= MaxTrottleUpdateTime && gritUptimeStopwatch > GritMaxUptime)
             {
                 //this.body.healthComponent.health += this.GetSettRegen();
                 throttleUpdateTime = 0f;
@@ -143,6 +143,7 @@ namespace SettMod.Modules
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
+            gritUptimeStopwatch = 0f;
             AddGritAuthority(damageReport.damageInfo.damage);
         }
 

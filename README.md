@@ -39,13 +39,13 @@ https://discord.gg/aYuS9Wsxxx
 
 ## Known Issues
 * Multiplayer has not been tested extensively. He may or may not work in multiplayer environments. 
-* The Show Stopper may clip you or enemies into the floor if the primary target is big enough
-* Face Breaker may also clip you or enemies into the floor
-* Face Breaker may sometimes not grab enemies directly infront of you
-* Haymaker may sometimes not damage enemies directly in front of you
+* The Show Stopper may clip you or enemies into the floor if the primary target is big enough.
+* Face Breaker may also clip you or enemies into the floor.
+* Face Breaker may sometimes not grab enemies directly infront of you.
+* Haymaker may sometimes not damage enemies directly in front of you.
+* Sett may ignore fall damage in certain situations.
 
 ## Future Plans
-* Death Animation
 * Indicators for facebreaker
 * Better Networking for multiplayer play
 
@@ -56,7 +56,8 @@ https://discord.gg/aYuS9Wsxxx
 * Fixed aiming with Knuckle Down and Facebreaker
 * Knuckle Down has Increased hitbox on the sides
 * Sett has ragdoll on death
-* Footstep sounds
+* Voiceline when selected in character select
+* Grit now decays four seconds after not taking any damage
 
 ## Technical Mumbo Jumbo
 * 168 Health
