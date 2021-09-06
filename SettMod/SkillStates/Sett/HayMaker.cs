@@ -80,15 +80,16 @@ namespace SettMod.SkillStates
             {
                 Ray aimRay = base.GetAimRay();
 
-                FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
-                fireProjectileInfo.position = aimRay.origin;
-                fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
-                fireProjectileInfo.crit = base.RollCrit();
-                fireProjectileInfo.damage = ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus));
-                fireProjectileInfo.owner = base.gameObject;
-                fireProjectileInfo.damageColorIndex = DamageColorIndex.Default;
-                fireProjectileInfo.projectilePrefab = Modules.Projectiles.conePrefab;
-                ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+                ProjectileManager.instance.FireProjectile(Modules.Projectiles.conePrefab,
+                        aimRay.origin,
+                        Util.QuaternionSafeLookRotation(aimRay.direction),
+                        base.gameObject,
+                        ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus)),
+                        100f,
+                        base.RollCrit(),
+                        DamageColorIndex.Default,
+                        null,
+                        -1f);
             }
         }
 

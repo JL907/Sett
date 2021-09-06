@@ -68,6 +68,20 @@ namespace SettMod
             Hook();
         }
 
+        private void PickupPickerController_FixedUpdateServer(On.RoR2.PickupPickerController.orig_FixedUpdateServer orig, PickupPickerController self)
+        {
+            CharacterMaster currentParticipantMaster = self.networkUIPromptController.currentParticipantMaster;
+            if (currentParticipantMaster)
+            {
+                CharacterBody body = currentParticipantMaster.GetBody();
+                var interactor = (body) ? body.GetComponent<Interactor>() : null;
+                if (!body || (body.inputBank.aimOrigin - self.transform.position).sqrMagnitude > ((interactor) ? Math.Pow((interactor.maxInteractionDistance + self.cutoffDistance), 2f) : (self.cutoffDistance * self.cutoffDistance)))
+                {
+                    self.networkUIPromptController.SetParticipantMaster(null);
+                }
+            }
+        }
+
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             // have to set item displays later now because they require direct object references..
@@ -125,6 +139,7 @@ namespace SettMod
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.UI.HUD.Awake += HUD_Awake;
             RoR2.UI.HUD.onHudTargetChangedGlobal += HUD_onHudTargetChangedGlobal;
+            On.RoR2.PickupPickerController.FixedUpdateServer += PickupPickerController_FixedUpdateServer;
         }
 
         private void UnHooks()
@@ -132,6 +147,7 @@ namespace SettMod
             On.RoR2.CharacterBody.RecalculateStats -= CharacterBody_RecalculateStats;
             On.RoR2.UI.HUD.Awake -= HUD_Awake;
             RoR2.UI.HUD.onHudTargetChangedGlobal -= HUD_onHudTargetChangedGlobal;
+            On.RoR2.PickupPickerController.FixedUpdateServer -= PickupPickerController_FixedUpdateServer;
         }
 
         private void HUD_onHudTargetChangedGlobal(RoR2.UI.HUD obj)
