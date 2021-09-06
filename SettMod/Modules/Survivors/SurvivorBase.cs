@@ -56,7 +56,7 @@ namespace SettMod.Modules.Survivors
                 displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
                 displayPrefab.AddComponent<MenuSound>();
 
-                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, sortPosition);
+                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, new Color(.3781f, .1324f, .4894f), bodyName.ToUpper(), characterUnlockableDef, sortPosition);
 
                 InitializeHitboxes();
                 InitializeSkills();

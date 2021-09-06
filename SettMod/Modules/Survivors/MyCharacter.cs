@@ -25,7 +25,7 @@ namespace SettMod.Modules.Survivors
             armorGrowth = 3.7f,
             bodyName = "SettBody",
             bodyNameToken = "SETT_NAME",
-            bodyColor = Color.grey,
+            bodyColor = new Color(.3781f, .1324f, .4894f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 15f,

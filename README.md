@@ -18,6 +18,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Grit now decays 4 seconds after not taking any damage
 * Footstep sounds and dust effect while running/sprinting
 * Haymaker should now work in multiplayer environments
+* Updated Sett's color theme
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -48,7 +49,8 @@ https://discord.gg/aYuS9Wsxxx
 * Grab Handler & Heat Crash by Rob & Enforcer Team
 * Mico 27 for helping me out with the grit resource and the grit bar
 * Nines for giving me the inspiration to create a league of legends champion in Risk of Rain 2
-* All the Testers: Tehbudderking, Samilton, Fancy Mango, Bonji
+* All the Testers: Tehbudderking, Samilton, Fancy Mango, Bonji, Zeuslaz3r
+* League of Legends
 
 ## Known Issues
 * Multiplayer has not been tested extensively. He may or may not work in multiplayer environments. 
@@ -63,7 +65,7 @@ https://discord.gg/aYuS9Wsxxx
 * Better Networking for multiplayer play
 
 ## Change Log
-Patch 1.0.0
+==Patch 1.0.0==
 * Initial Release
 
 ## Technical Mumbo Jumbo
