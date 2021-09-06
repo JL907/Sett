@@ -4,10 +4,11 @@ using RoR2;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using R2API.Networking.Interfaces;
 
 namespace SettMod.SkillStates
 {
-    public class ShowStopper : BaseSkillState
+    public class ShowStopper : BaseSkillState 
     {
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
@@ -27,7 +28,7 @@ namespace SettMod.SkillStates
         private Transform slamCenterIndicatorInstance;
         private Ray downRay;
         private SettGrabController2 grabController;
-
+        private Rigidbody rigidbody;
 
         protected Animator animator;
 
@@ -35,10 +36,11 @@ namespace SettMod.SkillStates
         {
             base.OnEnter();
             this.bonusHealth = 0f;
+            this.animator = base.GetModelAnimator();
             this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
-
+            this.rigidbody = base.GetComponent<Rigidbody>();
             base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
@@ -69,46 +71,49 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            if (!this.hasDropped)
-            {
-                base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
-                base.characterMotor.velocity.y = 0f;
-
-                this.AttemptGrab(10f);
-            }
-
-            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
-            {
-
-                if (base.cameraTargetParams)
+            if (base.isAuthority)
                 {
-                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
+                if (!this.hasDropped)
+                {
+                    base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                    base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                    base.characterMotor.velocity.y = 0f;
+
+                    this.AttemptGrab(10f);
                 }
-                this.CreateIndicator();
-            }
 
-            if (base.fixedAge >= ShowStopper.jumpDuration && !this.hasDropped)
-            {
-                this.hasDropped = true;
+                if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
+                {
 
-                base.characterMotor.disableAirControlUntilCollision = true;
-                base.characterMotor.velocity.y = -ShowStopper.dropForce;
-                this.characterMotor.Motor.SetMovementCollisionsSolvingActivation(true);
-                //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
-                this.AttemptGrab(15f);
-            }
+                    if (base.cameraTargetParams)
+                    {
+                        base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
+                    }
+                    this.CreateIndicator();
+                }
 
-            if (this.hasDropped && base.isAuthority && !base.characterMotor.disableAirControlUntilCollision)
-            {
-                this.LandingImpact();
-                this.outer.SetNextStateToMain();
-                return;
-            }
-            if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
-            {
-                this.LandingImpact();
-                this.outer.SetNextStateToMain();
+                if (base.fixedAge >= ShowStopper.jumpDuration && !this.hasDropped)
+                {
+                    this.hasDropped = true;
+
+                    base.characterMotor.disableAirControlUntilCollision = true;
+                    base.characterMotor.velocity.y = -ShowStopper.dropForce;
+                    this.characterMotor.Motor.SetMovementCollisionsSolvingActivation(true);
+                    //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
+                    this.AttemptGrab(15f);
+                }
+
+                if (this.hasDropped && base.isAuthority && !base.characterMotor.disableAirControlUntilCollision)
+                {
+                    this.LandingImpact();
+                    this.outer.SetNextStateToMain();
+                    return;
+                }
+                if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
+                {
+                    this.LandingImpact();
+                    this.outer.SetNextStateToMain();
+                }
             }
         }
 
@@ -150,7 +155,7 @@ namespace SettMod.SkillStates
             blastAttack.teamIndex = team;
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
-            blastAttack.Fire();
+            blastAttack.Fire(); 
 
             Util.PlaySound("SettRImpact", base.gameObject);
 
@@ -270,6 +275,5 @@ namespace SettMod.SkillStates
         {
             return InterruptPriority.PrioritySkill;
         }
-
     }
 }
