@@ -16,6 +16,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Sett has ragdoll on death
 * Voiceline when selected in character select
 * Grit now decays four seconds after not taking any damage
+* Footstep sounds and dust effect while running/sprinting
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
