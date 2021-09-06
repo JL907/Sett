@@ -387,3 +387,5 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 .vs/SettMod/v16/.suo
+SettMod-1.1.0.zip
+SettMod.dll
