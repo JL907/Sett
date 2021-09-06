@@ -10,8 +10,6 @@ namespace SettMod.SkillStates
 {
     public class ShowStopper : BaseSkillState 
     {
-        NetworkInstanceId netId;
-
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
@@ -30,7 +28,7 @@ namespace SettMod.SkillStates
         private Transform slamCenterIndicatorInstance;
         private Ray downRay;
         private SettGrabController2 grabController;
-
+        private Rigidbody rigidbody;
 
         protected Animator animator;
 
@@ -38,10 +36,11 @@ namespace SettMod.SkillStates
         {
             base.OnEnter();
             this.bonusHealth = 0f;
+            this.animator = base.GetModelAnimator();
             this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
-
+            this.rigidbody = base.GetComponent<Rigidbody>();
             base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
@@ -76,6 +75,7 @@ namespace SettMod.SkillStates
                 {
                 if (!this.hasDropped)
                 {
+                    base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                     base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                     base.characterMotor.velocity.y = 0f;
 
@@ -155,7 +155,7 @@ namespace SettMod.SkillStates
             blastAttack.teamIndex = team;
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
-            blastAttack.Fire();
+            blastAttack.Fire(); 
 
             Util.PlaySound("SettRImpact", base.gameObject);
 
