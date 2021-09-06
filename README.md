@@ -9,15 +9,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.1.0`
-* Fixed aiming with Knuckle Down and Facebreaker
-* Knuckle Down has Increased hitbox on the sides
-* Facebreaker now has a wider angle and and now originates from character position rather than camera origin
-* Sett has ragdoll on death
-* Voiceline when selected in character select
-* Grit now decays 4 seconds after not taking any damage
-* Footstep sounds and dust effect while running/sprinting
-* Updated Sett's color theme
+## Latest Patch Notes `1.1.1`
+* Show Stopper now checks if there is stable ground before detonating.
+
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -66,6 +60,16 @@ https://discord.gg/aYuS9Wsxxx
 ## Change Log
 `Patch 1.0.0`
 * Initial Release
+
+`Patch 1.0.2`
+* Fixed aiming with Knuckle Down and Facebreaker
+* Knuckle Down has Increased hitbox on the sides
+* Facebreaker now has a wider angle and and now originates from character position rather than camera origin
+* Sett has ragdoll on death
+* Voiceline when selected in character select
+* Grit now decays 4 seconds after not taking any damage
+* Footstep sounds and dust effect while running/sprinting
+* Updated Sett's color theme
 
 ## Technical Mumbo Jumbo
 * 168 Health
