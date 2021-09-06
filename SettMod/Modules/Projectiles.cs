@@ -9,12 +9,15 @@ namespace SettMod.Modules
     internal static class Projectiles
     {
         internal static GameObject bombPrefab;
+        internal static GameObject conePrefab;
 
         internal static void RegisterProjectiles()
         {
             // only separating into separate methods for my sanity
-            CreateBomb();
 
+            CreateBomb();
+            CreateCone();
+            AddProjectile(conePrefab);
             AddProjectile(bombPrefab);
         }
 
@@ -41,6 +44,15 @@ namespace SettMod.Modules
             ProjectileController bombController = bombPrefab.GetComponent<ProjectileController>();
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("SettBombGhost") != null) bombController.ghostPrefab = CreateGhostPrefab("SettBombGhost");
             bombController.startSound = "";
+        }
+
+        private static void CreateCone()
+        {
+            conePrefab = CloneProjectilePrefab("LoaderZapCone", "SettconeProjectile");
+
+            ProjectileProximityBeamController projectileProximityBeamController = conePrefab.GetComponent<ProjectileProximityBeamController>();
+
+            projectileProximityBeamController.damageCoefficient = 1f;
         }
 
         private static void InitializeImpactExplosion(ProjectileImpactExplosion projectileImpactExplosion)

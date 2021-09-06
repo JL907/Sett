@@ -17,6 +17,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Voiceline when selected in character select
 * Grit now decays 4 seconds after not taking any damage
 * Footstep sounds and dust effect while running/sprinting
+* Haymaker should now work in multiplayer environments
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
