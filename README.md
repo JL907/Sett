@@ -58,6 +58,7 @@ https://discord.gg/aYuS9Wsxxx
 ## Patch Notes 1.0.2
 * Fixed aiming with Knuckle Down and Facebreaker
 * Knuckle Down has Increased hitbox on the sides
+* Facebreaker now has a wider angle and and now originates from character position rather than camera origin
 * Sett has ragdoll on death
 * Voiceline when selected in character select
 * Grit now decays four seconds after not taking any damage
