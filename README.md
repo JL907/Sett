@@ -1,5 +1,8 @@
 # Sett
 
+![2021-09-05 18_14_10-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151072-612bf88e-646b-4e07-ba25-01cf6aea3555.png)
+![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
+
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
