@@ -18,6 +18,8 @@ namespace SettMod.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
+
+
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
             string fullNameString = "SETT_NAME";
@@ -209,6 +211,7 @@ namespace SettMod.Modules
             return GameObject.Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName));
         }
 
+
         internal static void SetupCharacterModel(GameObject prefab, CustomRendererInfo[] rendererInfo, int mainRendererIndex)
         {
             CharacterModel characterModel = prefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<CharacterModel>();
@@ -341,8 +344,8 @@ namespace SettMod.Modules
         private static void SetupFootstepController(GameObject model)
         {
             FootstepHandler footstepHandler = model.AddComponent<FootstepHandler>();
-            footstepHandler.baseFootstepString = "Play_player_footstep";
-            footstepHandler.sprintFootstepOverrideString = "";
+            footstepHandler.baseFootstepString = "Base";
+            footstepHandler.sprintFootstepOverrideString = "Haste";
             footstepHandler.enableFootstepDust = true;
             footstepHandler.footstepDustPrefab = Resources.Load<GameObject>("Prefabs/GenericFootstepDust");
         }

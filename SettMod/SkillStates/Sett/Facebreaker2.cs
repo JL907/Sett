@@ -83,10 +83,10 @@ namespace SettMod.SkillStates
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = true,
                 searchOrigin = base.transform.position,
-                searchDirection = base.inputBank.aimDirection,
+                searchDirection = base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 45f
+                maxAngleFilter = 60f
             };
 
             BullseyeSearch searchR = new BullseyeSearch
@@ -94,10 +94,10 @@ namespace SettMod.SkillStates
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
                 filterByLoS = true,
                 searchOrigin = base.transform.position,
-                searchDirection = -base.inputBank.aimDirection,
+                searchDirection = -base.characterDirection.forward.normalized,
                 sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
                 maxDistanceFilter = grabRadius,
-                maxAngleFilter = 45f
+                maxAngleFilter = 60f
             };
 
             searchL.RefreshCandidates();
@@ -107,8 +107,8 @@ namespace SettMod.SkillStates
             searchR.FilterOutGameObject(base.gameObject);
 
             HurtBox targetL = searchL.GetResults().FirstOrDefault<HurtBox>();
-
             HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
+
 
             float num = Mathf.Cos(60f * 0.5f * 0.017453292f);
             if (targetL)
