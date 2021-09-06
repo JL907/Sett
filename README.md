@@ -1,10 +1,23 @@
 # Sett
 
+![2021-09-05 18_14_10-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151072-612bf88e-646b-4e07-ba25-01cf6aea3555.png)
+![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
+
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
+
+## Latest Patch Notes 1.0.2
+* Fixed aiming with Knuckle Down and Facebreaker
+* Knuckle Down has Increased hitbox on the sides
+* Facebreaker now has a wider angle and and now originates from character position rather than camera origin
+* Sett has ragdoll on death
+* Voiceline when selected in character select
+* Grit now decays 4 seconds after not taking any damage
+* Footstep sounds and dust effect while running/sprinting
+* Haymaker should now work in multiplayer environments
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -39,15 +52,19 @@ https://discord.gg/aYuS9Wsxxx
 
 ## Known Issues
 * Multiplayer has not been tested extensively. He may or may not work in multiplayer environments. 
-* The Show Stopper may clip you or enemies into the floor if the primary target is big enough
-* Face Breaker may also clip you or enemies into the floor
-* Face Breaker may sometimes not grab enemies directly infront of you
-* Haymaker may sometimes not damage enemies directly in front of you
+* The Show Stopper may clip you or enemies into the floor if the primary target is big enough.
+* Face Breaker may also clip you or enemies into the floor.
+* Face Breaker may sometimes not grab enemies directly infront of you.
+* Haymaker may sometimes not damage enemies directly in front of you.
+* Sett may ignore fall damage in certain situations.
 
 ## Future Plans
-* Death Animation
 * Indicators for facebreaker
 * Better Networking for multiplayer play
+
+## Change Log
+Patch 1.0.0
+* Initial Release
 
 ## Technical Mumbo Jumbo
 * 168 Health

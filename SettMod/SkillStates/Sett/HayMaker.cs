@@ -2,9 +2,6 @@
 using RoR2;
 using RoR2.Projectile;
 using SettMod.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace SettMod.SkillStates
@@ -14,7 +11,6 @@ namespace SettMod.SkillStates
         protected float startUp = 0.8f;
         protected float EarlyExitTime = 1.2f;
         protected float baseDuration = 3.55f;
-
         public static float hayMakerRadius = 55f;
         public static float hayMakerDamageCoefficient = 16f;
         public static float hayMakerProcCoefficient = 1f;
@@ -32,7 +28,9 @@ namespace SettMod.SkillStates
                 return base.inputBank.aimDirection;
             }
         }
+#pragma warning disable CS0169 // The field 'HayMaker.attack' is never used
         private OverlapAttack attack;
+#pragma warning restore CS0169 // The field 'HayMaker.attack' is never used
 
 
         public float duration;
@@ -76,55 +74,20 @@ namespace SettMod.SkillStates
 
         }
 
-        private void FireSecondaryRaysServer()
+        private void Fire()
         {
-            Ray aimRay = base.GetAimRay();
-            TeamIndex team = base.GetTeam();
-            BullseyeSearch bullseyeSearch = new BullseyeSearch();
-            bullseyeSearch.teamMaskFilter = TeamMask.GetEnemyTeams(team);
-            bullseyeSearch.maxAngleFilter = 45f;
-            bullseyeSearch.maxDistanceFilter = 35f;
-            bullseyeSearch.searchOrigin = base.GetAimRay().origin;
-            bullseyeSearch.searchDirection = this.punchVector;
-            bullseyeSearch.sortMode = BullseyeSearch.SortMode.DistanceAndAngle;
-            bullseyeSearch.filterByLoS = true;
-            bullseyeSearch.RefreshCandidates();
-
-
-
-            List<HurtBox> list = bullseyeSearch.GetResults().Where(new Func<HurtBox, bool>(Util.IsValid)).ToList<HurtBox>();
-            Transform transform = base.FindModelChild("SwingCenter");
-
-            if (transform)
+            if (base.isAuthority)
             {
-                /*for (int i = 0; i < Mathf.Min(list.Count, 100f); i++)
-                {
-                    HurtBox hurtBox = list[i];
-                    if (hurtBox)
-                    {
-                        LightningOrb lightningOrb = new LightningOrb();
-                        lightningOrb.bouncedObjects = new List<HealthComponent>();
-                        lightningOrb.attacker = base.gameObject;
-                        lightningOrb.teamIndex = team;
-                        lightningOrb.damageValue = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (HayMaker.hayMakerGritBonus * this.gritSnapShot);
-                        lightningOrb.isCrit = base.RollCrit();
-                        lightningOrb.origin = hurtBox.healthComponent.body.transform.position;
-                        lightningOrb.bouncesRemaining = 0;
-                        lightningOrb.lightningType = LightningOrb.LightningType.Loader;
-                        lightningOrb.procCoefficient = 1f;
-                        lightningOrb.target = hurtBox;
-                        lightningOrb.canBounceOnSameTarget = false;
-                        OrbManager.instance.AddOrb(lightningOrb);
-                    }
-                }*/
+                Ray aimRay = base.GetAimRay();
+
                 FireProjectileInfo fireProjectileInfo = default(FireProjectileInfo);
-                fireProjectileInfo.position = base.transform.position;
+                fireProjectileInfo.position = aimRay.origin;
                 fireProjectileInfo.rotation = Quaternion.LookRotation(this.punchVector);
                 fireProjectileInfo.crit = base.RollCrit();
                 fireProjectileInfo.damage = ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus));
                 fireProjectileInfo.owner = base.gameObject;
-                fireProjectileInfo.projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectiles/LoaderZapCone");
-                fireProjectileInfo.projectilePrefab.GetComponent<ProjectileProximityBeamController>().damageCoefficient = 1;
+                fireProjectileInfo.damageColorIndex = DamageColorIndex.Default;
+                fireProjectileInfo.projectilePrefab = Modules.Projectiles.conePrefab;
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
         }
@@ -140,7 +103,7 @@ namespace SettMod.SkillStates
                 this.hasFired = true;
                 Util.PlaySound("SettWVO", base.gameObject);
 
-                this.FireSecondaryRaysServer();
+                this.Fire();
             }
 
 

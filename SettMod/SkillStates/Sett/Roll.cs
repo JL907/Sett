@@ -33,7 +33,9 @@ namespace SettMod.SkillStates
             }
         }
 
+#pragma warning disable CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
         protected Ray GetAimRay()
+#pragma warning restore CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
         {
             if (base.inputBank)
             {

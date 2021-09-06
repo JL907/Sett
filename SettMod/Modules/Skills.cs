@@ -230,5 +230,7 @@ internal class SkillDefInfo
     public int requiredStock;
     public int stockToConsume;
 
+#pragma warning disable CS0649 // Field 'SkillDefInfo.keywordTokens' is never assigned to, and will always have its default value null
     public string[] keywordTokens;
+#pragma warning restore CS0649 // Field 'SkillDefInfo.keywordTokens' is never assigned to, and will always have its default value null
 }

@@ -9,13 +9,17 @@ namespace SettMod.Modules
     {
         private CharacterBody body;
         private EntityStateMachine outer = null;
+#pragma warning disable CS0169 // The field 'GritComponent.bodyInfo' is never used
         private BodyInfo bodyInfo;
+#pragma warning restore CS0169 // The field 'GritComponent.bodyInfo' is never used
         public const float GritUpdateTime = 1.0f;
         public const float GritMaxUptime = 4.0f;
         public const float MaxTrottleUpdateTime = 1.0f;
         public float gritUptimeStopwatch = 0.0f;
         private float throttleUpdateTime = 0.0f;
+#pragma warning disable CS0414 // The field 'GritComponent.isDecaying' is assigned but its value is never used
         private bool isDecaying = false;
+#pragma warning restore CS0414 // The field 'GritComponent.isDecaying' is assigned but its value is never used
         public float NetworkGrit
         {
             get
@@ -112,7 +116,7 @@ namespace SettMod.Modules
             {
                 throttleUpdateTime += Time.fixedDeltaTime;
             }
-            if (throttleUpdateTime >= MaxTrottleUpdateTime)
+            if (throttleUpdateTime >= MaxTrottleUpdateTime && gritUptimeStopwatch > GritMaxUptime)
             {
                 //this.body.healthComponent.health += this.GetSettRegen();
                 throttleUpdateTime = 0f;
@@ -143,6 +147,7 @@ namespace SettMod.Modules
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
+            gritUptimeStopwatch = 0f;
             AddGritAuthority(damageReport.damageInfo.damage);
         }
 

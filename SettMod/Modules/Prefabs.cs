@@ -18,6 +18,8 @@ namespace SettMod.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
+
+
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
             string fullNameString = "SETT_NAME";
@@ -208,6 +210,7 @@ namespace SettMod.Modules
 
             return GameObject.Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName));
         }
+
 
         internal static void SetupCharacterModel(GameObject prefab, CustomRendererInfo[] rendererInfo, int mainRendererIndex)
         {
@@ -474,5 +477,7 @@ internal class CustomRendererInfo
 {
     internal string childName;
     internal Material material;
+#pragma warning disable CS0649 // Field 'CustomRendererInfo.ignoreOverlays' is never assigned to, and will always have its default value false
     internal bool ignoreOverlays;
+#pragma warning restore CS0649 // Field 'CustomRendererInfo.ignoreOverlays' is never assigned to, and will always have its default value false
 }

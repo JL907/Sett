@@ -55,7 +55,9 @@ namespace SettMod.Modules.Survivors
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
+#pragma warning disable CS0169 // The field 'MyCharacter.masterySkinUnlockableDef' is never used
         private static UnlockableDef masterySkinUnlockableDef;
+#pragma warning restore CS0169 // The field 'MyCharacter.masterySkinUnlockableDef' is never used
 
         internal override void InitializeCharacter()
         {
@@ -245,71 +247,52 @@ namespace SettMod.Modules.Survivors
 
             #region DefaultSkin
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "SETT_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+                Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square"),
                 defaultRenderers,
                 mainRenderer,
                 model);
-            /*
+
             defaultSkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshSettSword"),
-                    renderer = defaultRenderers[0].renderer
+                    mesh = mainRenderer.sharedMesh,
+                    renderer = mainRenderer
                 },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshSettGun"),
-                    renderer = defaultRenderers[1].renderer
-                },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshSett"),
-                    renderer = defaultRenderers[instance.mainRendererIndex].renderer
-                }
-            };*/
+            };
 
 
             skins.Add(defaultSkin);
             #endregion
-
-            #region MasterySkin
             /*
-            Material masteryMat = Modules.Assets.CreateMaterial("matSettAlt");
+            #region Obsidian
+
+            Material masteryMat = Modules.Assets.CreateMaterial("SettObsidianMat");
             CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
             {
-                masteryMat,
-                masteryMat,
-                masteryMat,
                 masteryMat
             });
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "_SETT_BODY_MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
+            SkinDef masterySkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "SETT_OBSIDIAN_SKIN_NAME",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("sett_circle_8"),
                 masteryRendererInfos,
                 mainRenderer,
-                model,
-                masterySkinUnlockableDef);
+                model);
 
             masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshSettSwordAlt"),
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Mesh_8"),
                     renderer = defaultRenderers[0].renderer
                 },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshSettAlt"),
-                    renderer = defaultRenderers[instance.mainRendererIndex].renderer
-                }
             };
             
-             */
 
-            //skins.Add(masterySkin);
+            skins.Add(masterySkin);
             #endregion
 
+            */
             skinController.skins = skins.ToArray();
 
         }
