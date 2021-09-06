@@ -30,6 +30,11 @@ namespace SettMod.SkillStates
         private SettGrabController2 grabController;
         private Rigidbody rigidbody;
 
+        private float previousAirControl;
+        public static float airControl;
+        private bool detonateNextFrame;
+
+
         protected Animator animator;
 
         public override void OnEnter()
@@ -44,21 +49,31 @@ namespace SettMod.SkillStates
             base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
+            if (isAuthority)
+            {
+                base.characterMotor.onMovementHit += this.OnMovementHit;
+                base.characterMotor.Motor.ForceUnground();
+                base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
 
-            base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
+                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
 
-            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-            base.characterMotor.disableAirControlUntilCollision = false;
+                this.previousAirControl = base.characterMotor.airControl;
+                base.characterMotor.airControl = ShowStopper.airControl;
+                base.characterMotor.disableAirControlUntilCollision = false;
 
-            base.gameObject.layer = LayerIndex.fakeActor.intVal;
-            base.characterMotor.Motor.RebuildCollidableLayers();
-
+                //base.gameObject.layer = LayerIndex.fakeActor.intVal;
+                //base.characterMotor.Motor.RebuildCollidableLayers();
+            }
             if (NetworkServer.active)
             {
                 base.characterBody.AddTimedBuff(Modules.Buffs.regenBuff, 1f * ShowStopper.jumpDuration);
                 base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
             }
+        }
+
+        private void OnMovementHit(ref CharacterMotor.MovementHitInfo movementHitInfo)
+        {
+            this.detonateNextFrame = true;
         }
 
         public override void Update()
@@ -75,7 +90,6 @@ namespace SettMod.SkillStates
                 {
                 if (!this.hasDropped)
                 {
-                    base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                     base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                     base.characterMotor.velocity.y = 0f;
 
@@ -98,18 +112,17 @@ namespace SettMod.SkillStates
 
                     base.characterMotor.disableAirControlUntilCollision = true;
                     base.characterMotor.velocity.y = -ShowStopper.dropForce;
-                    this.characterMotor.Motor.SetMovementCollisionsSolvingActivation(true);
                     //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
                     this.AttemptGrab(15f);
                 }
 
-                if (this.hasDropped && base.isAuthority && !base.characterMotor.disableAirControlUntilCollision)
+                if (this.hasDropped && !base.characterMotor.disableAirControlUntilCollision && base.isAuthority && base.characterMotor.Motor.GroundingStatus.IsStableOnGround)
                 {
                     this.LandingImpact();
                     this.outer.SetNextStateToMain();
                     return;
                 }
-                if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
+                if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround))
                 {
                     this.LandingImpact();
                     this.outer.SetNextStateToMain();
@@ -197,26 +210,22 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-
-            if (base.cameraTargetParams)
+            if (base.isAuthority)
             {
-                base.cameraTargetParams.fovOverride = -1f;
+                if (base.cameraTargetParams)
+                {
+                    base.cameraTargetParams.fovOverride = -1f;
+                }
+                //base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+                //base.characterMotor.Motor.RebuildCollidableLayers();
+                base.PlayAnimation("FullBody, Override", "BufferEmpty");
+                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+                base.characterMotor.airControl = this.previousAirControl;
             }
-
+            if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
             if (this.grabController) this.grabController.Release();
-
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
-
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
-
-            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
-
-            if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
-
-            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
-            base.characterMotor.Motor.RebuildCollidableLayers();
-
             base.OnExit();
         }
 
