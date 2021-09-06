@@ -14,7 +14,9 @@ namespace SettMod.SkillStates
         private Rigidbody rigidBody;
         private CharacterMotor motor;
         private Quaternion originalRotation;
+#pragma warning disable CS0108 // 'SettGrabController2.transform' hides inherited member 'Component.transform'. Use the new keyword if hiding was intended.
         private Transform transform;
+#pragma warning restore CS0108 // 'SettGrabController2.transform' hides inherited member 'Component.transform'. Use the new keyword if hiding was intended.
         private ModelLocator modelLocator;
         private CharacterDirection direction;
 

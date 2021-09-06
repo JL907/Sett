@@ -1,13 +1,8 @@
 ﻿using EntityStates;
 using RoR2;
-using RoR2.Orbs;
 using RoR2.Projectile;
 using SettMod.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {
@@ -33,7 +28,9 @@ namespace SettMod.SkillStates
                 return base.inputBank.aimDirection;
             }
         }
+#pragma warning disable CS0169 // The field 'HayMaker.attack' is never used
         private OverlapAttack attack;
+#pragma warning restore CS0169 // The field 'HayMaker.attack' is never used
 
 
         public float duration;

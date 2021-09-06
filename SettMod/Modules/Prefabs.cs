@@ -477,5 +477,7 @@ internal class CustomRendererInfo
 {
     internal string childName;
     internal Material material;
+#pragma warning disable CS0649 // Field 'CustomRendererInfo.ignoreOverlays' is never assigned to, and will always have its default value false
     internal bool ignoreOverlays;
+#pragma warning restore CS0649 // Field 'CustomRendererInfo.ignoreOverlays' is never assigned to, and will always have its default value false
 }

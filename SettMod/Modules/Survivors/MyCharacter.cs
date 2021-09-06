@@ -55,7 +55,9 @@ namespace SettMod.Modules.Survivors
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
+#pragma warning disable CS0169 // The field 'MyCharacter.masterySkinUnlockableDef' is never used
         private static UnlockableDef masterySkinUnlockableDef;
+#pragma warning restore CS0169 // The field 'MyCharacter.masterySkinUnlockableDef' is never used
 
         internal override void InitializeCharacter()
         {

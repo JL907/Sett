@@ -66,13 +66,17 @@ namespace SettMod.Modules
             projectileImpactExplosion.childrenProjectilePrefab = null;
             projectileImpactExplosion.destroyOnEnemy = false;
             projectileImpactExplosion.destroyOnWorld = false;
+#pragma warning disable CS0618 // 'ProjectileExplosion.explosionSoundString' is obsolete: 'This sound will not play over the network. Provide the sound via the prefab referenced by explosionEffect instead.'
             projectileImpactExplosion.explosionSoundString = "";
+#pragma warning restore CS0618 // 'ProjectileExplosion.explosionSoundString' is obsolete: 'This sound will not play over the network. Provide the sound via the prefab referenced by explosionEffect instead.'
             projectileImpactExplosion.falloffModel = RoR2.BlastAttack.FalloffModel.None;
             projectileImpactExplosion.fireChildren = false;
             projectileImpactExplosion.impactEffect = null;
             projectileImpactExplosion.lifetime = 0f;
             projectileImpactExplosion.lifetimeAfterImpact = 0f;
+#pragma warning disable CS0618 // 'ProjectileImpactExplosion.lifetimeExpiredSoundString' is obsolete: 'This sound will not play over the network. Use lifetimeExpiredSound instead.'
             projectileImpactExplosion.lifetimeExpiredSoundString = "";
+#pragma warning restore CS0618 // 'ProjectileImpactExplosion.lifetimeExpiredSoundString' is obsolete: 'This sound will not play over the network. Use lifetimeExpiredSound instead.'
             projectileImpactExplosion.lifetimeRandomOffset = 0f;
             projectileImpactExplosion.offsetForLifetimeExpiredSound = 0f;
             projectileImpactExplosion.timerAfterImpact = false;

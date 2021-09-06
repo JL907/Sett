@@ -11,7 +11,9 @@ using System.Security.Permissions;
 using UnityEngine;
 
 [module: UnverifiableCode]
+#pragma warning disable CS0618 // 'SecurityAction.RequestMinimum' is obsolete: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+#pragma warning restore CS0618 // 'SecurityAction.RequestMinimum' is obsolete: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
 
 namespace SettMod
 {
