@@ -32,8 +32,8 @@ https://discord.gg/aYuS9Wsxxx
  * Bread and Butter
 
  ## Secondary
- ![Face Breaker](https://user-images.githubusercontent.com/7343912/132110159-06720eaf-7c82-4df9-b7cf-9c23daff491f.png)
- * Can grapple enemies infront or behind you.
+![face breaker updated](https://user-images.githubusercontent.com/7343912/132367905-94605128-1f78-401d-aeb2-f3693c1fd929.png)
+* Pulls in all enemies within 30 unit radius.
 
 ## Utility
 ![Show Stopper](https://user-images.githubusercontent.com/7343912/132110170-d8f6869e-f2a0-49e2-9f82-9566a546c3c1.png)
