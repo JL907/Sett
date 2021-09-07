@@ -42,7 +42,7 @@ https://discord.gg/aYuS9Wsxxx
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
 * Grab Handler & Heat Crash by Rob & Enforcer Team
-* Mico 27 for helping me out with the grit resource and the grit bar
+* Mico 27 for helping me out with the grit resource and grit bar and facebreaker suction
 * Nines for giving me the inspiration to create a league of legends champion in Risk of Rain 2
 * All the Testers: Tehbudderking, Samilton, Fancy Mango, Bonji, Zeuslaz3r
 * League of Legends
