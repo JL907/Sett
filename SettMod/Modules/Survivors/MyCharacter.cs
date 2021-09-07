@@ -82,6 +82,11 @@ namespace SettMod.Modules.Survivors
 
             Transform hitboxTransform = childLocator.FindChild("SwordHitbox");
             Modules.Prefabs.SetupHitbox(model, hitboxTransform, "Sword");
+
+            Transform fbhitboxTransform = childLocator.FindChild("FaceBreakerHitbox");
+            Modules.Prefabs.SetupHitbox(model, fbhitboxTransform, "FaceBreaker");
+
+
         }
 
         internal override void InitializeSkills()
@@ -139,7 +144,7 @@ namespace SettMod.Modules.Survivors
                 skillNameToken = prefix + "SECONDARY_NAME",
                 skillDescriptionToken = prefix + "SECONDARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_e"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker2)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker3)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
                 baseRechargeInterval = 6f,
