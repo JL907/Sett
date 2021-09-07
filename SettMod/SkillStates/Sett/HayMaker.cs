@@ -100,7 +100,7 @@ namespace SettMod.SkillStates
             Collider[] enemies = Physics.OverlapSphere(this.characterBody.corePosition + this.characterDirection.forward.normalized * 3f, this.hitSphereScale.x / 2, LayerIndex.defaultLayer.mask) ;
             int num = 0;
             int num2 = 0;
-            while (num < enemies.Length && num2 < 100000000000f)
+            while (num < enemies.Length && num2 < 100f)
             {
                 HealthComponent component = enemies[num].GetComponent<HealthComponent>();
                 if (component)
@@ -130,7 +130,7 @@ namespace SettMod.SkillStates
                 }
                 num++;
             }
-            for (int i = 0; i <= 45; i ++)
+            for (int i = 0; i <= 10; i ++)
             {
                 float coneSize = 45f;
                 Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
@@ -152,9 +152,9 @@ namespace SettMod.SkillStates
 
             this.stopwatch += Time.fixedDeltaTime;
 
-            if (this.stopwatch >= this.startUp && !this.hasFired && base.isAuthority)
+            if (this.stopwatch >= this.startUp && !this.hasFired)
             {
-                this.hasFired = true;
+                if(base.isAuthority) this.hasFired = true;
                 Util.PlaySound("SettWVO", base.gameObject);
                 if (NetworkServer.active)
                 { 

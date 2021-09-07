@@ -254,7 +254,7 @@ namespace SettMod.SkillStates
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController2>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                         this.grabController.parentTransform = base.GetComponent<Transform>();
-                        this.grabController.parentRigidBody = base.GetComponent<Rigidbody>();
+                        //this.grabController.parentRigidBody = base.GetComponent<Rigidbody>();
                     }
 
                     if (NetworkServer.active)
