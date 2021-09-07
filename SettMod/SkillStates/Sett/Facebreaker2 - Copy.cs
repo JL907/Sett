@@ -27,7 +27,7 @@ namespace SettMod.SkillStates
         private Transform slamIndicatorInstance;
         //private Transform slamCenterIndicatorInstance;
         private Ray downRay;
-
+        public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         protected NetworkSoundEventIndex impactSound;
 
         public Transform pullOrigin;
@@ -147,6 +147,20 @@ namespace SettMod.SkillStates
 
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
                 this.slamIndicatorInstance.localScale = Vector3.one * Facebreaker3.pullRadius;
+
+
+                for (int i = 0; i <= 18; i += 1)
+                {
+                    Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * Facebreaker3.pullRadius);
+                    Vector3 _direction = (base.characterBody.footPosition - effectPosition).normalized;
+                    effectPosition.y = base.characterBody.footPosition.y;
+                    EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
+                    {
+                        origin = effectPosition,
+                        scale = 1f * Facebreaker3.pullRadius,
+                        rotation = Quaternion.LookRotation(_direction)
+                    }, true);
+                }
 
                 //this.slamCenterIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
                 //this.slamCenterIndicatorInstance.localScale = (Vector3.one * Facebreaker3.pullRadius) / 3f;
