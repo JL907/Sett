@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Projectile;
 using SettMod.Modules;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SettMod.SkillStates
@@ -16,9 +17,9 @@ namespace SettMod.SkillStates
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerGritBonus = 0.5f;
         public static float hayMakerForce = 1000f;
-
+        public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         private float gritSnapShot;
-
+        private Vector3 hitSphereScale = new Vector3(50f, 14f, 14f);
         private Vector3 punchVector
 
         {
@@ -46,6 +47,7 @@ namespace SettMod.SkillStates
             base.OnEnter();
             if (base.isAuthority)
             {
+                base.StartAimMode(0.5f + this.duration, false);
                 this.animator = base.GetModelAnimator();
                 this.hasFired = false;
                 this.duration = this.baseDuration / base.attackSpeedStat;
@@ -74,13 +76,18 @@ namespace SettMod.SkillStates
 
         }
 
+        private Collider[] CollectEnemies(Vector3 position, Vector3 scale)
+        {
+            return Physics.OverlapSphere(position, scale.x / 2f, LayerIndex.entityPrecise.mask);
+        }
+
         private void Fire()
         {
             if (base.isAuthority)
             {
                 Ray aimRay = base.GetAimRay();
 
-                ProjectileManager.instance.FireProjectile(Modules.Projectiles.conePrefab,
+                /*ProjectileManager.instance.FireProjectile(Modules.Projectiles.conePrefab,
                         aimRay.origin,
                         Util.QuaternionSafeLookRotation(aimRay.direction),
                         base.gameObject,
@@ -89,7 +96,56 @@ namespace SettMod.SkillStates
                         base.RollCrit(),
                         DamageColorIndex.Default,
                         null,
-                        -1f);
+                        -1f);*/
+
+
+                Collider[] enemies = Physics.OverlapSphere(this.characterBody.corePosition + this.characterDirection.forward.normalized * 3f, this.hitSphereScale.x / 2, LayerIndex.defaultLayer.mask) ;
+                int num = 0;
+                int num2 = 0;
+                while (num < enemies.Length && num2 < 100000000000f)
+                {
+                    HealthComponent component = enemies[num].GetComponent<HealthComponent>();
+                    if (component)
+                    {
+                        TeamComponent component2 = component.GetComponent<TeamComponent>();
+                        bool flag = false;
+                        if (component2)
+                        {
+                            flag = (component2.teamIndex == base.GetTeam());
+                        }
+                        if (!flag)
+                        {
+                            DamageInfo damageInfo = new DamageInfo();
+                            damageInfo.damage = (this.damageStat * hayMakerDamageCoefficient) + (gritSnapShot * hayMakerGritBonus);
+                            damageInfo.attacker = base.gameObject;
+                            damageInfo.inflictor = base.gameObject;
+                            damageInfo.force = Vector3.zero;
+                            damageInfo.crit = base.RollCrit();
+                            damageInfo.procCoefficient = hayMakerDamageCoefficient;
+                            damageInfo.position = component.transform.position;
+                            damageInfo.damageType = DamageType.BypassArmor;
+                            component.TakeDamage(damageInfo);
+                            GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
+                            GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
+                            num2++;
+                        }
+                    }
+                    num++;
+                }
+                for (int i = 0; i <= 45; i ++)
+                {
+                    float coneSize = 45f;
+                    Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
+                    float spreadFactor = 0.01f;
+                    punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
+                    punchRot.y += Random.Range(-spreadFactor, spreadFactor) * coneSize;
+                    EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
+                    {
+                        origin = this.characterBody.corePosition,
+                        scale = 100f,
+                        rotation = punchRot
+                    }, true);
+                }
             }
         }
 
