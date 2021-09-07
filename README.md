@@ -18,7 +18,11 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 `Facebreaker`
 * Facebreaker now pulls `all` enemies around sett. 
 * Facebreaker now has an indicator.
+* Facebreaker updated visual effect
 * Facebreaker has an updated description.
+`Haymaker`
+* Haymaker updated visual effect
+* Haymaker now does TRUE damage
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
