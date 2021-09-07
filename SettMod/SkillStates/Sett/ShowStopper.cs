@@ -43,21 +43,18 @@ namespace SettMod.SkillStates
             this.flyVector = Vector3.up;
             this.hasDropped = false;
             this.rigidbody = base.GetComponent<Rigidbody>();
-            if (base.isAuthority)
-            {
-                base.characterMotor.onMovementHit += this.OnMovementHit;
-                base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
-                Util.PlaySound("SettRSFX", base.gameObject);
-                Util.PlaySound("SettRVO", base.gameObject);
-                base.characterMotor.Motor.ForceUnground();
-                base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
+            base.characterMotor.onMovementHit += this.OnMovementHit;
+            base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
+            Util.PlaySound("SettRSFX", base.gameObject);
+            Util.PlaySound("SettRVO", base.gameObject);
 
-                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                base.characterMotor.disableAirControlUntilCollision = false;
+            base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
+            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+            base.characterMotor.disableAirControlUntilCollision = false;
+            base.gameObject.layer = LayerIndex.fakeActor.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
 
-                base.gameObject.layer = LayerIndex.fakeActor.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-            }
 
             if (NetworkServer.active)
             {
@@ -81,49 +78,47 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (base.isAuthority)
-                {
-                if (!this.hasDropped)
-                {
-                    //base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
-                    base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
-                    base.characterMotor.velocity.y = 0f;
+            if (!this.hasDropped)
+            {
+                //base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.velocity.y = 0f;
 
-                    this.AttemptGrab(10f);
+                this.AttemptGrab(10f);
+            }
+
+            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
+            {
+
+                if (base.cameraTargetParams)
+                {
+                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
                 }
+                this.CreateIndicator();
+            }
 
-                if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
-                {
+            if (base.fixedAge >= ShowStopper.jumpDuration && !this.hasDropped)
+            {
+                this.hasDropped = true;
 
-                    if (base.cameraTargetParams)
-                    {
-                        base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
-                    }
-                    this.CreateIndicator();
-                }
+                base.characterMotor.disableAirControlUntilCollision = true;
+                base.characterMotor.velocity.y = -ShowStopper.dropForce;
+                //this.characterMotor.Motor.SetMovementCollisionsSolvingActivation(true);
+                //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
+                this.AttemptGrab(15f);
+            }
 
-                if (base.fixedAge >= ShowStopper.jumpDuration && !this.hasDropped)
-                {
-                    this.hasDropped = true;
+            if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround))
+            {
+                this.LandingImpact();
+                this.outer.SetNextStateToMain();
+                return;
+            }
 
-                    base.characterMotor.disableAirControlUntilCollision = true;
-                    base.characterMotor.velocity.y = -ShowStopper.dropForce;
-                    //this.characterMotor.Motor.SetMovementCollisionsSolvingActivation(true);
-                    //base.PlayAnimation("FullBody, Override", "ShowStopperSlam", "HighJump.playbackRate", 0.2f);
-                    this.AttemptGrab(15f);
-                }
-
-                if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround))
-                {
-                    this.LandingImpact();
-                    this.outer.SetNextStateToMain();
-                    return;
-                }
-                if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
-                {
-                    this.LandingImpact();
-                    this.outer.SetNextStateToMain();
-                }
+            if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
+            {
+                this.LandingImpact();
+                this.outer.SetNextStateToMain();
             }
         }
 
@@ -209,14 +204,12 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            if (base.isAuthority)
-            {
-                base.characterMotor.onMovementHit -= this.OnMovementHit;
-                base.PlayAnimation("FullBody, Override", "BufferEmpty");
-                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
-                base.gameObject.layer = LayerIndex.defaultLayer.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-            }
+            base.characterMotor.onMovementHit -= this.OnMovementHit;
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
+
             if (base.cameraTargetParams)
             {
                 base.cameraTargetParams.fovOverride = -1f;

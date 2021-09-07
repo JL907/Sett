@@ -314,7 +314,7 @@ namespace SettMod.SkillStates
                 }
             }
 
-            if(this.stopwatch <= this.duration && base.isAuthority) this.PullEnemies(Time.fixedDeltaTime);
+            if(this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
 
             if(this.stopwatch >= (this.duration * this.startUp) && base.isAuthority)
             {

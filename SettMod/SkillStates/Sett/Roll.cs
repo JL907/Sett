@@ -20,7 +20,7 @@ namespace SettMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            if (base.isAuthority)
+            if (isAuthority)
             {
                 base.characterMotor.Motor.ForceUnground();
                 base.characterMotor.disableAirControlUntilCollision = false;
@@ -28,9 +28,10 @@ namespace SettMod.SkillStates
                 base.characterMotor.velocity = this.dashVelocity;
                 base.characterDirection.forward = base.characterMotor.velocity.normalized;
                 this.dashSpeed = base.characterMotor.velocity.magnitude;
-                base.PlayAnimation("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f);
-                Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
             }
+            base.PlayAnimation("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f);
+            Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
+
         }
 
 #pragma warning disable CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
@@ -71,7 +72,7 @@ namespace SettMod.SkillStates
             HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
             if (target)
             {
-                if (target.healthComponent && target.healthComponent.body)
+                if (target.healthComponent && target.healthComponent.body && base.isAuthority)
                 {
                     this.outer.SetNextState(new ShowStopper
                     {
@@ -94,33 +95,16 @@ namespace SettMod.SkillStates
                 base.characterMotor.velocity = this.dashVelocity;
                 base.characterDirection.forward = this.dashVelocity;
                 base.characterBody.isSprinting = true;
-
-                this.AttemptSlam();
             }
 
-            if (base.isAuthority && base.fixedAge >= Roll2.duration)
+            this.AttemptSlam();
+
+            if (base.fixedAge >= Roll2.duration && isAuthority)
             {
                 this.outer.SetNextStateToMain();
                 return;
             }
         }
-
-        public override void OnSerialize(NetworkWriter writer)
-        {
-            base.OnSerialize(writer);
-            writer.Write(base.characterMotor.velocity);
-            writer.Write(base.characterDirection.forward);
-            writer.Write(base.characterBody.isSprinting);
-        }
-
-        public override void OnDeserialize(NetworkReader reader)
-        {
-            base.OnDeserialize(reader);
-            base.characterMotor.velocity = reader.ReadVector3();
-            base.characterDirection.forward = reader.ReadVector3();
-            base.characterBody.isSprinting = reader.ReadBoolean();
-        }
-
 
         public override void OnExit()
         {
