@@ -13,7 +13,7 @@ namespace SettMod.Modules
         {
             entityStates.Add(typeof(BaseMeleeAttack));
 
-            entityStates.Add(typeof(Facebreaker3));
+            entityStates.Add(typeof(Facebreaker));
 
             entityStates.Add(typeof(Roll2));
 

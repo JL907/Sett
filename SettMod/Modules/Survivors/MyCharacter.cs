@@ -144,7 +144,7 @@ namespace SettMod.Modules.Survivors
                 skillNameToken = prefix + "SECONDARY_NAME",
                 skillDescriptionToken = prefix + "SECONDARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_e"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker3)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
                 baseRechargeInterval = 6f,

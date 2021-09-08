@@ -58,7 +58,6 @@ namespace SettMod.SkillStates
 
             if (NetworkServer.active)
             {
-                base.characterBody.AddTimedBuff(Modules.Buffs.regenBuff, 1f * ShowStopper.jumpDuration);
                 base.characterBody.AddTimedBuff(RoR2Content.Buffs.HiddenInvincibility, 1f * ShowStopper.jumpDuration);
             }
         }
@@ -110,14 +109,12 @@ namespace SettMod.SkillStates
 
             if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround))
             {
-                this.LandingImpact();
                 this.outer.SetNextStateToMain();
                 return;
             }
 
             if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
             {
-                this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
         }
@@ -142,27 +139,26 @@ namespace SettMod.SkillStates
 
         private void LandingImpact()
         {
-            if (this.grabController) this.grabController.Release();
-
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterMotor.Motor.SetPosition(base.characterBody.transform.position);
             base.characterMotor.velocity *= 0.1f;
             TeamIndex team = base.GetTeam();
-            BlastAttack blastAttack = new BlastAttack();
-            blastAttack.radius = ShowStopper.slamRadius;
-            blastAttack.procCoefficient = ShowStopper.slamProcCoefficient;
-            blastAttack.position = base.characterBody.footPosition;
-            blastAttack.attacker = base.gameObject;
-            blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
-            blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
-            blastAttack.baseForce = ShowStopper.slamForce;
-            blastAttack.teamIndex = team;
-            blastAttack.damageType = DamageType.Stun1s;
-            blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
-            blastAttack.Fire();
-
-            if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+            if (NetworkServer.active)
+            {
+                BlastAttack blastAttack = new BlastAttack();
+                blastAttack.radius = ShowStopper.slamRadius;
+                blastAttack.procCoefficient = ShowStopper.slamProcCoefficient;
+                blastAttack.position = base.characterBody.footPosition;
+                blastAttack.attacker = base.gameObject;
+                blastAttack.crit = base.RollCrit();
+                blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
+                blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+                blastAttack.baseForce = ShowStopper.slamForce;
+                blastAttack.teamIndex = team;
+                blastAttack.damageType = DamageType.Stun1s;
+                blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
+                blastAttack.Fire();
+            }
 
             Util.PlaySound("SettRImpact", base.gameObject);
 
@@ -174,7 +170,7 @@ namespace SettMod.SkillStates
                 {
                     origin = effectPosition,
                     scale = 0.5f
-                }, true);
+                }, false);
             }
         }
 
@@ -204,6 +200,8 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
+            this.LandingImpact();
+            if (this.grabController) this.grabController.Release();
             base.characterMotor.onMovementHit -= this.OnMovementHit;
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
@@ -214,8 +212,6 @@ namespace SettMod.SkillStates
             {
                 base.cameraTargetParams.fovOverride = -1f;
             }
-            if (this.grabController) this.grabController.Release();
-
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
@@ -254,12 +250,7 @@ namespace SettMod.SkillStates
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController2>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                         this.grabController.parentTransform = base.GetComponent<Transform>();
-                        //this.grabController.parentRigidBody = base.GetComponent<Rigidbody>();
-                    }
-
-                    if (NetworkServer.active)
-                    {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                        this.grabController.parentRigidBody = base.GetComponent<Rigidbody>();
                     }
                 }
             }

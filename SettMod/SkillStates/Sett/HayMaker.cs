@@ -142,7 +142,7 @@ namespace SettMod.SkillStates
                     origin = this.characterBody.corePosition,
                     scale = 100f,
                     rotation = punchRot
-                }, true);
+                }, false);
             }
         }
 
@@ -154,7 +154,7 @@ namespace SettMod.SkillStates
 
             if (this.stopwatch >= this.startUp && !this.hasFired)
             {
-                if(base.isAuthority) this.hasFired = true;
+                this.hasFired = true;
                 Util.PlaySound("SettWVO", base.gameObject);
                 if (NetworkServer.active)
                 { 

@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace SettMod.SkillStates
 {
-    public class Facebreaker3 : BaseSkillState
+    public class Facebreaker : BaseSkillState
     {
         protected float startUp = 0.5f;
         protected float baseDuration = 0.80f;
@@ -87,7 +87,7 @@ namespace SettMod.SkillStates
                 return;
             }
             this.pulling = true;
-            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker3.pullRadius, LayerIndex.defaultLayer.mask);
+            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius, LayerIndex.defaultLayer.mask);
             int num = 0;
             int num2 = 0;
             while (num < array.Length && num2 < this.maximumPullCount)
@@ -146,24 +146,24 @@ namespace SettMod.SkillStates
                 };
 
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.localScale = Vector3.one * Facebreaker3.pullRadius;
+                this.slamIndicatorInstance.localScale = Vector3.one * Facebreaker.pullRadius;
 
 
                 for (int i = 0; i <= 18; i += 1)
                 {
-                    Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * Facebreaker3.pullRadius);
+                    Vector3 effectPosition = base.characterBody.footPosition + (UnityEngine.Random.insideUnitSphere * Facebreaker.pullRadius);
                     Vector3 _direction = (base.characterBody.footPosition - effectPosition).normalized;
                     effectPosition.y = base.characterBody.footPosition.y;
                     EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
                     {
                         origin = effectPosition,
-                        scale = 1f * Facebreaker3.pullRadius,
+                        scale = 1f * Facebreaker.pullRadius,
                         rotation = Quaternion.LookRotation(_direction)
-                    }, true);
+                    }, false);
                 }
 
                 //this.slamCenterIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                //this.slamCenterIndicatorInstance.localScale = (Vector3.one * Facebreaker3.pullRadius) / 3f;
+                //this.slamCenterIndicatorInstance.localScale = (Vector3.one * Facebreaker.pullRadius) / 3f;
             }
         }
 
@@ -178,7 +178,7 @@ namespace SettMod.SkillStates
 
         protected virtual void OnHitEnemyAuthority()
         {
-
+            Util.PlaySound("Hit", base.gameObject);
         }
 
         private void PullEnemies(float deltaTime)
@@ -193,8 +193,8 @@ namespace SettMod.SkillStates
                 if (characterBody && characterBody.transform)
                 {
                     Vector3 vector = ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position) - characterBody.corePosition;
-                    float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker3.pullRadius);
-                    Vector3 b = vector.normalized * d * deltaTime * Facebreaker3.pullForce;
+                    float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
+                    Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
                     if (component)
                     {
@@ -246,83 +246,84 @@ namespace SettMod.SkillStates
                 if (!this.hasFired)
                 {
                     this.hasFired = true;
-                    if (base.isAuthority)
+
+                    Util.PlaySound("SettEVO", base.gameObject);
+
+                    BullseyeSearch searchL = new BullseyeSearch
                     {
-                        Util.PlaySound("SettEVO", base.gameObject);
+                        teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
+                        filterByLoS = true,
+                        searchOrigin = base.transform.position,
+                        searchDirection = base.characterDirection.forward.normalized,
+                        sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
+                        maxDistanceFilter = 6f,
+                        maxAngleFilter = 90f
+                    };
 
-                        BullseyeSearch searchL = new BullseyeSearch
+                    BullseyeSearch searchR = new BullseyeSearch
+                    {
+                        teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
+                        filterByLoS = true,
+                        searchOrigin = base.transform.position,
+                        searchDirection = -base.characterDirection.forward.normalized,
+                        sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
+                        maxDistanceFilter = 6f,
+                        maxAngleFilter = 90f
+                    };
+
+                    searchL.RefreshCandidates();
+                    searchL.FilterOutGameObject(base.gameObject);
+
+                    searchR.RefreshCandidates();
+                    searchR.FilterOutGameObject(base.gameObject);
+
+                    HurtBox targetL = searchL.GetResults().FirstOrDefault<HurtBox>();
+                    HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
+
+                    bool foundL = false;
+                    bool foundR = false;
+
+                    if (targetL && targetL.healthComponent) foundL = true;
+                    if (targetR && targetR.healthComponent) foundR = true;
+
+                    if ((foundL || foundR))
+                    {
+                        string clip = "";
+                        if (foundL && foundR)
                         {
-                            teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                            filterByLoS = true,
-                            searchOrigin = base.transform.position,
-                            searchDirection = base.characterDirection.forward.normalized,
-                            sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                            maxDistanceFilter = 6f,
-                            maxAngleFilter = 90f
-                        };
-
-                        BullseyeSearch searchR = new BullseyeSearch
-                        {
-                            teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                            filterByLoS = true,
-                            searchOrigin = base.transform.position,
-                            searchDirection = -base.characterDirection.forward.normalized,
-                            sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                            maxDistanceFilter = 6f,
-                            maxAngleFilter = 90f
-                        };
-
-                        searchL.RefreshCandidates();
-                        searchL.FilterOutGameObject(base.gameObject);
-
-                        searchR.RefreshCandidates();
-                        searchR.FilterOutGameObject(base.gameObject);
-
-                        HurtBox targetL = searchL.GetResults().FirstOrDefault<HurtBox>();
-                        HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
-
-                        bool foundL = false;
-                        bool foundR = false;
-
-                        if (targetL && targetL.healthComponent) foundL = true;
-                        if (targetR && targetR.healthComponent) foundR = true;
-
-                        if ((foundL || foundR))
-                        {
-                            string clip = "";
-                            if (foundL && foundR)
-                            {
-                                clip = "Facebreaker_Both";
-                            }
-                            else if (foundR)
-                            {
-                                clip = "Facebreaker_Back";
-                            }
-                            else if (foundL)
-                             {
-                                clip = "Facebreaker_Front";
-                            }
-
-                            base.PlayAnimation("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration);
-                             
+                            clip = "Facebreaker_Both";
                         }
-                        if (!foundL && !foundR)
+                        else if (foundR)
                         {
-                            base.PlayAnimation("Fullbody, Override", "Facebreaker_Miss", "FaceBreaker.playbackRate", this.duration);
+                            clip = "Facebreaker_Back";
                         }
+                        else if (foundL)
+                        {
+                            clip = "Facebreaker_Front";
+                        }
+
+                        base.PlayAnimation("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration);
+
+                    }
+                    if (!foundL && !foundR)
+                    {
+                        base.PlayAnimation("Fullbody, Override", "Facebreaker_Miss", "FaceBreaker.playbackRate", this.duration);
                     }
                 }
             }
 
             if(this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
 
-            if(this.stopwatch >= (this.duration * this.startUp) && base.isAuthority)
+            if(this.stopwatch >= (this.duration * this.startUp))
             {
-                if (this.attack.Fire())
+                if (base.isAuthority)
                 {
-                    Util.PlaySound("Hit", base.gameObject);
-                    this.OnHitEnemyAuthority();
+                    if (this.attack.Fire())
+                    {
+                        this.OnHitEnemyAuthority();
+                    }
                 }
+                
             }
 
 
