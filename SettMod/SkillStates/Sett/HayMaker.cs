@@ -20,7 +20,9 @@ namespace SettMod.SkillStates
         public static float hayMakerForce = 1000f;
         public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         private float gritSnapShot;
+        private Ray downRay;
         private Vector3 hitSphereScale = new Vector3(50f, 14f, 14f);
+        private Transform slamIndicatorInstance;
         private Vector3 punchVector
 
         {
@@ -46,7 +48,6 @@ namespace SettMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-
             base.StartAimMode(0.5f + this.duration, false);
             this.animator = base.GetModelAnimator();
             this.hasFired = false;
@@ -59,14 +60,14 @@ namespace SettMod.SkillStates
             this.gritSnapShot = currentGrit;
             base.healthComponent.AddBarrierAuthority(currentGrit);
             base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
-
+            
 
         }
 
         public override void OnExit()
         {
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-
+            if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             base.OnExit();
         }
 
@@ -76,13 +77,46 @@ namespace SettMod.SkillStates
 
         }
 
-        private Collider[] CollectEnemies(Vector3 position, Vector3 scale)
+        private void UpdateSlamIndicator()
         {
-            return Physics.OverlapSphere(position, scale.x / 2f, LayerIndex.entityPrecise.mask);
+            if (this.slamIndicatorInstance)
+            {
+                float maxDistance = 250f;
+
+                this.downRay = new Ray
+                {
+                    direction = Vector3.down,
+                    origin = (base.transform.position + base.characterDirection.forward * 24f)
+                };
+
+                RaycastHit raycastHit;
+                if (Physics.Raycast(this.downRay, out raycastHit, maxDistance, LayerIndex.world.mask))
+                {
+                    this.slamIndicatorInstance.transform.position = raycastHit.point;
+                    this.slamIndicatorInstance.transform.up = raycastHit.normal;
+                }
+            }
         }
+
+        private void CreateIndicator()
+        {
+            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
+            {
+                this.downRay = new Ray
+                {
+                    direction = Vector3.down,
+                    origin = (base.transform.position + base.characterDirection.forward * 24f)
+                };
+
+                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
+                this.slamIndicatorInstance.localScale = Vector3.one * 25f;
+            }
+        }
+
 
         private void Fire()
         {
+            
             Ray aimRay = base.GetAimRay();
 
             /*ProjectileManager.instance.FireProjectile(Modules.Projectiles.conePrefab,
@@ -130,9 +164,9 @@ namespace SettMod.SkillStates
                 }
                 num++;
             }
-            for (int i = 0; i <= 10; i ++)
+            for (int i = 0; i <= 20; i ++)
             {
-                float coneSize = 45f;
+                float coneSize = 90f;
                 Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
                 float spreadFactor = 0.01f;
                 punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
@@ -151,7 +185,8 @@ namespace SettMod.SkillStates
             base.FixedUpdate();
 
             this.stopwatch += Time.fixedDeltaTime;
-
+            if (!this.slamIndicatorInstance) this.CreateIndicator();
+            if (this.slamIndicatorInstance) this.UpdateSlamIndicator();
             if (this.stopwatch >= this.startUp && !this.hasFired)
             {
                 this.hasFired = true;
