@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1311157302
+CRC: 126345257
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 95a98f0a2643cb8ae33e12d7ba25b84c
+    Hash: 9273e47fc0cbbcab0b814d29d81353e5
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b6e8b56ed1927214e4f0977b66c63810
+    Hash: bd604f5f668e30fe3aaefc8d2f68c167
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -44,6 +44,10 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
   Script: {instanceID: 0}
@@ -75,8 +79,10 @@ Assets:
 - Assets/Sett/animDisplay.controller
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
+- Assets/Sett/RiskofRainFont 1.ttf
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
 - Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
+- Assets/Sett/fontSquaresbold.otf
 - Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
 - Assets/Sett/RunHasteFootsteps.anim
@@ -89,6 +95,7 @@ Assets:
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/skin8_0.png
 - Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
+- Assets/Sett/VCR_OSD_MONO.ttf
 - Assets/Sett/VFX/Textures/sett_base_r_impact.dds
 - Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
 - Assets/Sett/VFX/Textures/texSlash.png
@@ -115,6 +122,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_mask_horizontal_a.dds
 - Assets/Sett/VFX/Materials/matSlash.mat
 - Assets/Sett/Obsidian.fbx
+- Assets/Sett/BOMBARD_ SDF.asset
 - Assets/Sett/VFX/Textures/sett_base_w_glow05_firepulse.dds
 - Assets/Sett/VFX/Materials/matSettE.mat
 - Assets/Sett/VFX/Materials/matAnimeShapes.mat
@@ -137,6 +145,7 @@ Assets:
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
+- Assets/Sett/NotoSans-Regular.ttf
 - Assets/Sett/riskofrainfont.ttf
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
@@ -164,8 +173,10 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_burst_avatar.dds
 - Assets/Sett/VFX/Textures/sett_base_mask_vert_a.dds
 - Assets/Sett/VFX/Materials/hiteffectmat.mat
+- Assets/Sett/TRACER__.ttf
 - Assets/Sett/GritGaugePanel.prefab
 - Assets/Sett/UI/sett_e.png
+- Assets/Sett/BOMBARD_.ttf
 - Assets/Sett/VFX/Textures/sett_base_distort_rgba.dds
 - Assets/Sett/VFX/Textures/sett_emote_blush.dds
 - Assets/Sett/UI/sett_circle_8.dds
@@ -194,9 +205,11 @@ Assets:
 - Assets/Sett/animSett.controller
 - Assets/Sett/VFX/Textures/texHitSpark.png
 - Assets/Sett/VFX/Textures/sett_base_energy_round.dds
+- Assets/Sett/Bazaronite.ttf
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_center.dds
 - Assets/Sett/UI/sett_square.png
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
+- Assets/Sett/NotoSansCJKsc-Regular.otf
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/VFX/Materials/matEmbers.mat

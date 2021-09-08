@@ -1,6 +1,7 @@
 ﻿using SettMod.Modules;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace SettMod.UI
 {
@@ -11,7 +12,7 @@ namespace SettMod.UI
 
         private void Awake()
         {
-            gritText = this.gameObject.GetComponentInChildren<Text>();
+            gritText = this.gameObject.GetComponentInChildren<TextMeshProUGUI> ();
             var _gritBar = this.gameObject.GetComponentInChildren<Transform>().Find("Grit");
             gritBar = _gritBar.GetComponent<Image>();
 
@@ -44,7 +45,7 @@ namespace SettMod.UI
             }
         }
 
-        private Text gritText;
+        private TextMeshProUGUI gritText;
         private Image gritBar;
     }
 }
