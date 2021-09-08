@@ -9,17 +9,18 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.1.1`
+## Latest Patch Notes `1.2.0`
 
 * Show Stopper now checks if sett is on stable ground before detonating. 
 * Show Stopper detonates early if hits collision.
 * Show Stopper detonates after a fixed amount of time if sett can't find any collision.
 * Facebreaker now pulls all enemies around sett. 
 * Facebreaker now has an indicator.
-* Facebreaker updated visual effect
+* Facebreaker updated visual effect.
 * Facebreaker has an updated description.
-* Haymaker updated visual effect
-* Haymaker now does TRUE damage
+* Haymaker updated visual effect.
+* Haymaker now does TRUE damage.
+* Haymaker should now hit enemies directly infront of Sett.
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
