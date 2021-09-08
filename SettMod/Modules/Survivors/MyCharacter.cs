@@ -167,7 +167,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Utility
-            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1200%</color> <color=#d62d20>(+5% of primary target's total health)</color> damage to all enemies near where they land.";
+            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1200%</color> <color=#d62d20>(+10% of primary target's total health)</color> damage to all enemies near where they land.";
 
             LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
             LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);

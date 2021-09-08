@@ -9,8 +9,8 @@ namespace SettMod.SkillStates
     public class Roll2 : BaseSkillState
     {
         public static float duration = 0.4f;
-        public static float maxSpeed = 20f;
-        public static float minSpeed = 5f;
+        public static float maxSpeed = 35f;
+        public static float minSpeed = 15f;
         public static string dodgeSoundString = "SettDash";
         public static float dodgeFOV = EntityStates.Commando.DodgeState.dodgeFOV;
 
