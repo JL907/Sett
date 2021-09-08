@@ -14,7 +14,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Show Stopper now checks if sett is on stable ground before detonating. 
 * Show Stopper detonates early if hits collision.
 * Show Stopper detonates after a fixed amount of time if sett can't find any collision.
-* Facebreaker now pulls `all` enemies around sett. 
+* Facebreaker now pulls all enemies around sett. 
 * Facebreaker now has an indicator.
 * Facebreaker updated visual effect
 * Facebreaker has an updated description.
@@ -26,11 +26,11 @@ https://discord.gg/aYuS9Wsxxx
  
  ## Passive
 ![Passive](https://user-images.githubusercontent.com/7343912/132110165-93e1bc81-5dc4-4a44-af1f-373a7a6fbdcc.png)
-* Start the game off with good sustain to stay in those fights longer
+* Start the game off with good sustain to stay in those fights longer.
 
  ## Primary
 ![Knuckle Down](https://user-images.githubusercontent.com/7343912/132110163-bdda3595-dab5-426a-897a-2bc12ff95898.png)
- * Bread and Butter
+ * Bread and Butter.
 
  ## Secondary
 ![face breaker updated](https://user-images.githubusercontent.com/7343912/132367905-94605128-1f78-401d-aeb2-f3693c1fd929.png)
@@ -38,12 +38,12 @@ https://discord.gg/aYuS9Wsxxx
 
 ## Utility
 ![Show Stopper](https://user-images.githubusercontent.com/7343912/132110170-d8f6869e-f2a0-49e2-9f82-9566a546c3c1.png)
-	
 * Has an initial dash with a fixed distance.
 
 ## Special 
-![Haymaker](https://user-images.githubusercontent.com/7343912/132110173-c96efabb-1451-4e48-935e-a54e986c9079.png)
-* Grit is a unique resource bar. Damage taken is stored as Grit. Grit can be used to apply a shield and buff Haymaker's damage
+![Haymaker updated](https://user-images.githubusercontent.com/7343912/132424862-2f6520ae-306c-42cc-aa78-88ef6eeb4348.png)
+* Grit is a unique resource bar. Damage taken is stored as Grit. Grit can be used to apply a shield and buff Haymaker's damage.
+* Haymaker's damage bypasses all armor.
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
@@ -56,9 +56,6 @@ https://discord.gg/aYuS9Wsxxx
 ## Known Issues
 * Multiplayer has not been tested extensively. He may or may not work in multiplayer environments. 
 * The Show Stopper may clip you or enemies into the floor if the primary target is big enough.
-* Face Breaker may also clip you or enemies into the floor.
-* Face Breaker may sometimes not grab enemies directly infront of you.
-* Haymaker may sometimes not damage enemies directly in front of you.
 * Sett may ignore fall damage in certain situations.
 
 ## Future Plans
@@ -70,14 +67,14 @@ https://discord.gg/aYuS9Wsxxx
 * Initial Release
 
 `Patch 1.1.0`
-* Fixed aiming with Knuckle Down and Facebreaker
-* Knuckle Down has Increased hitbox on the sides
-* Facebreaker now has a wider angle and and now originates from character position rather than camera origin
-* Sett has ragdoll on death
-* Voiceline when selected in character select
-* Grit now decays 4 seconds after not taking any damage
-* Footstep sounds and dust effect while running/sprinting
-* Updated Sett's color theme
+* Fixed aiming with Knuckle Down and Facebreaker.
+* Knuckle Down has Increased hitbox on the sides.
+* Facebreaker now has a wider angle and and now originates from character position rather than camera origin.
+* Sett has ragdoll on death.
+* Voiceline when selected in character select.
+* Grit now decays 4 seconds after not taking any damage.
+* Footstep sounds and dust effect while running/sprinting.
+* Updated Sett's color theme.
 
 ## Technical Mumbo Jumbo
 * 168 Health
