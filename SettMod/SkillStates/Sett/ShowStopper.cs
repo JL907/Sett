@@ -80,7 +80,7 @@ namespace SettMod.SkillStates
             if (!this.hasDropped)
             {
                 //base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
-                base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.8f * 10f) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(10f);

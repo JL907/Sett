@@ -14,9 +14,9 @@ namespace SettMod.SkillStates
         protected float EarlyExitTime = 1.2f;
         protected float baseDuration = 3.55f;
         public static float hayMakerRadius = 55f;
-        public static float hayMakerDamageCoefficient = 16f;
+        public static float hayMakerDamageCoefficient = 14f;
         public static float hayMakerProcCoefficient = 1f;
-        public static float hayMakerGritBonus = 0.5f;
+        public static float hayMakerGritBonus = 3f;
         public static float hayMakerForce = 1000f;
         public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         private float gritSnapShot;
@@ -97,7 +97,7 @@ namespace SettMod.SkillStates
                     -1f);*/
 
 
-            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 24f, this.hitSphereScale.x / 2, LayerIndex.defaultLayer.mask) ;
+            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 24f, this.hitSphereScale.x / 2) ;
             int num = 0;
             int num2 = 0;
             while (num < enemies.Length && num2 < 100f)

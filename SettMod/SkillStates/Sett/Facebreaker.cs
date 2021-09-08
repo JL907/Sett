@@ -37,7 +37,7 @@ namespace SettMod.SkillStates
         private bool pulling;
 
         static public float pullRadius = 20f;
-        static public float pullForce = 80f;
+        static public float pullForce = 100f;
 
         public override void OnEnter()
         {
@@ -87,7 +87,7 @@ namespace SettMod.SkillStates
                 return;
             }
             this.pulling = true;
-            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius, LayerIndex.defaultLayer.mask);
+            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius);
             int num = 0;
             int num2 = 0;
             while (num < array.Length && num2 < this.maximumPullCount)
@@ -256,8 +256,8 @@ namespace SettMod.SkillStates
                         searchOrigin = base.transform.position,
                         searchDirection = base.characterDirection.forward.normalized,
                         sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 6f,
-                        maxAngleFilter = 90f
+                        maxDistanceFilter = 7f,
+                        maxAngleFilter = 180f
                     };
 
                     BullseyeSearch searchR = new BullseyeSearch
@@ -267,8 +267,8 @@ namespace SettMod.SkillStates
                         searchOrigin = base.transform.position,
                         searchDirection = -base.characterDirection.forward.normalized,
                         sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 6f,
-                        maxAngleFilter = 90f
+                        maxDistanceFilter = 7f,
+                        maxAngleFilter = 180f
                     };
 
                     searchL.RefreshCandidates();

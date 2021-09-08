@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2981135325
+CRC: 1311157302
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2c033a4b48ce67ad125a9f3d4b978db4
+    Hash: 95a98f0a2643cb8ae33e12d7ba25b84c
   TypeTreeHash:
     serializedVersion: 2
     Hash: b6e8b56ed1927214e4f0977b66c63810
@@ -137,6 +137,7 @@ Assets:
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
+- Assets/Sett/riskofrainfont.ttf
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat

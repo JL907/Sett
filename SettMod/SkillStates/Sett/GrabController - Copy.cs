@@ -70,7 +70,7 @@ namespace SettMod.SkillStates
             if (this.modelLocator) this.modelLocator.enabled = true;
             if (this.modelTransform) this.modelTransform.rotation = this.originalRotation;
             if (this.direction) this.direction.enabled = true;
-            Vector3 newParentPosition = new Vector3(this.modelTransform.position.x, this.modelTransform.position.y + 5, this.modelTransform.position.z);
+            Vector3 newParentPosition = new Vector3(this.modelTransform.position.x, this.modelTransform.position.y + 8, this.modelTransform.position.z);
             if (this.parentRigidBody) this.parentRigidBody.MovePosition(newParentPosition);
             if (this.parentTransform) this.parentTransform.position = newParentPosition;
 

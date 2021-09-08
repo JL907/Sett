@@ -11,7 +11,7 @@ namespace SettMod.UI
 
         private void Awake()
         {
-            //gritText = this.gameObject.GetComponentInChildren<Text>();
+            gritText = this.gameObject.GetComponentInChildren<Text>();
             var _gritBar = this.gameObject.GetComponentInChildren<Transform>().Find("Grit");
             gritBar = _gritBar.GetComponent<Image>();
 
@@ -30,8 +30,8 @@ namespace SettMod.UI
         {
             if (this.source && gritBar)
             {
-                //string text = "+" + this.source.GetTotalRegen().ToString();
-                //gritText.text = text;
+                string text = ((int)this.source.GetCurrentGrit()).ToString() + " / " + ((int)this.source.GetMaxGrit()).ToString();
+                gritText.text = text;
                 gritBar.fillAmount = this.source.GetCurrentGrit() / this.source.GetMaxGrit();
                 if (gritBar.fillAmount >= 1)
                 {
@@ -44,7 +44,7 @@ namespace SettMod.UI
             }
         }
 
-        //private Text gritText;
+        private Text gritText;
         private Image gritBar;
     }
 }
