@@ -74,7 +74,6 @@ namespace SettMod.SkillStates
             if (this.parentRigidBody) this.parentRigidBody.MovePosition(newParentPosition);
             if (this.parentTransform) this.parentTransform.position = newParentPosition;
 
-
             Destroy(this);
         }
     }
