@@ -60,8 +60,8 @@ https://discord.gg/aYuS9Wsxxx
 * Sett may ignore fall damage in certain situations.
 
 ## Future Plans
-* Indicators for facebreaker
-* Better Networking for multiplayer play
+* Better Networking for multiplayer play.
+* Alternate skills for different playstyles.
 
 ## Change Log
 `Patch 1.0.0`
