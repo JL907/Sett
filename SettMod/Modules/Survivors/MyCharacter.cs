@@ -200,7 +200,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Special
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1600%</color> <color=#d62d20>(+50% of the expended Grit)</color> damage.";
+            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1600%</color> <color=#d62d20>(+50% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
 
             LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
@@ -215,7 +215,7 @@ namespace SettMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 10f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
