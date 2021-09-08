@@ -21,6 +21,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Haymaker updated visual effect.
 * Haymaker now does TRUE damage.
 * Haymaker should now hit enemies directly infront of Sett.
+* Fixed an issue that caused Show Stopper to retain its hidden invincibility after the skill ended
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -60,8 +61,8 @@ https://discord.gg/aYuS9Wsxxx
 * Sett may ignore fall damage in certain situations.
 
 ## Future Plans
-* Indicators for facebreaker
-* Better Networking for multiplayer play
+* Better Networking for multiplayer play.
+* Alternate skills for different playstyles.
 
 ## Change Log
 `Patch 1.0.0`
