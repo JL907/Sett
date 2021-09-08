@@ -139,6 +139,7 @@ namespace SettMod.SkillStates
 
         private void LandingImpact()
         {
+            if (this.grabController) this.grabController.Release();
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterMotor.Motor.SetPosition(base.characterBody.transform.position);
             base.characterMotor.velocity *= 0.1f;
