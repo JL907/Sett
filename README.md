@@ -1,6 +1,6 @@
 # Sett
 
-![2021-09-05 18_14_10-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151072-612bf88e-646b-4e07-ba25-01cf6aea3555.png)
+![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132432219-c2832363-2e27-4d47-b6b4-aed5db921989.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
@@ -9,19 +9,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.0`
+## Latest Patch Notes `1.2.1`
 
-* Show Stopper now checks if sett is on stable ground before detonating. 
-* Show Stopper detonates early if hits collision.
-* Show Stopper detonates after a fixed amount of time if sett can't find any collision.
-* Facebreaker now pulls all enemies around sett. 
-* Facebreaker now has an indicator.
-* Facebreaker updated visual effect.
-* Facebreaker has an updated description.
-* Haymaker updated visual effect.
-* Haymaker now does TRUE damage.
-* Haymaker should now hit enemies directly infront of Sett.
-* Fixed an issue that caused Show Stopper to retain its hidden invincibility after the skill ended
+* Fixed an Issue with Show Stopper not bouncing Sett upon landing.
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -77,6 +67,19 @@ https://discord.gg/aYuS9Wsxxx
 * Grit now decays 4 seconds after not taking any damage.
 * Footstep sounds and dust effect while running/sprinting.
 * Updated Sett's color theme.
+
+`Patch 1.2.0`
+* Show Stopper now checks if sett is on stable ground before detonating. 
+* Show Stopper detonates early if hits collision.
+* Show Stopper detonates after a fixed amount of time if sett can't find any collision.
+* Facebreaker now pulls all enemies around sett. 
+* Facebreaker now has an indicator.
+* Facebreaker updated visual effect.
+* Facebreaker has an updated description.
+* Haymaker updated visual effect.
+* Haymaker now does TRUE damage.
+* Haymaker should now hit enemies directly infront of Sett.
+* Fixed an issue that caused Show Stopper to retain its hidden invincibility after the skill ended
 
 ## Technical Mumbo Jumbo
 * 168 Health
