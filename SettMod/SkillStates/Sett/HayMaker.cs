@@ -131,7 +131,7 @@ namespace SettMod.SkillStates
                     -1f);*/
 
 
-            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 24f, this.hitSphereScale.x / 2, LayerIndex.entityPrecise.mask | LayerIndex.fakeActor.mask | LayerIndex.defaultLayer.mask) ;
+            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 24f, this.hitSphereScale.x / 2, LayerIndex.entityPrecise.mask | LayerIndex.fakeActor.mask) ;
             int num = 0;
             int num2 = 0;
             while (num < enemies.Length && num2 < 100f)
