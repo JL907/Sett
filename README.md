@@ -1,6 +1,6 @@
 # Sett
 
-![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132432219-c2832363-2e27-4d47-b6b4-aed5db921989.png)
+![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132609017-2f51f913-94c9-4142-b004-7af0fd7c2209.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
@@ -15,7 +15,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * The Show Stopper bounces Sett a bit higher on impact to prevent clipping.
 * The Show Stopper has a fixed height and no longer scales height with movement speed.
 * The Show Stopper's initial dash velocity is faster.
-* Haymaker has 200% less base damage however the bonus grit damage has increased to +300% of Setts expended grit from 50%.
+* Haymaker has 200% less base damage however the bonus Grit damage has increased to +300% from 50%.
 * Haymaker now has an indicator
 * Haymaker has a slightly tweaked visual effect.
 * Grit now displays numerical value on the bar.
@@ -40,7 +40,7 @@ https://discord.gg/aYuS9Wsxxx
 * Has an initial dash with a fixed distance.
 
 ## Special 
-![Haymaker updated](https://user-images.githubusercontent.com/7343912/132424862-2f6520ae-306c-42cc-aa78-88ef6eeb4348.png)
+![Haymaker updated](https://user-images.githubusercontent.com/7343912/132608961-63c05755-dd6a-4a8a-b4df-82eca8e0c366.png)
 * Grit is a unique resource bar. Damage taken is stored as Grit. Grit can be used to apply a shield and buff Haymaker's damage.
 * Haymaker's damage bypasses all armor.
 
