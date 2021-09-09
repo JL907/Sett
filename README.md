@@ -16,8 +16,9 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * The Show Stopper has a fixed height and no longer scales height with movement speed.
 * The Show Stopper's initial dash velocity is faster.
 * Haymaker has 200% less base damage however the bonus Grit damage has increased to +300% from 50%.
-* Haymaker now has an indicator
+* Haymaker now has an indicator (Indicator may sometimes not appear, this is a known issue.)
 * Haymaker has a slightly tweaked visual effect.
+* Haymaker hitbox overlaps Sett a bit more.
 * Grit now displays numerical value on the bar.
 
 ## Discord

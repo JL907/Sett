@@ -1,13 +1,10 @@
-﻿using RoR2;
-using UnityEngine;
-using EntityStates;
+﻿using EntityStates;
+using RoR2;
 using RoR2.Audio;
 using System;
-using UnityEngine.Networking;
 using System.Collections.Generic;
-using EntityStates.Merc;
-using EntityStates.Huntress;
 using System.Linq;
+using UnityEngine;
 
 namespace SettMod.SkillStates
 {
@@ -55,7 +52,7 @@ namespace SettMod.SkillStates
 
             this.pullStrengthCurve = AnimationCurve.EaseInOut(0.1f, 0f, 1f, 1f);
 
-            
+
             Util.PlaySound("SettESFX", base.gameObject);
 
             this.impactSound = Modules.Assets.swordHitSoundEvent.index;
@@ -87,7 +84,7 @@ namespace SettMod.SkillStates
                 return;
             }
             this.pulling = true;
-            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius, LayerIndex.entityPrecise.mask | LayerIndex.fakeActor.mask);
+            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius);
             int num = 0;
             int num2 = 0;
             while (num < array.Length && num2 < this.maximumPullCount)
@@ -312,9 +309,9 @@ namespace SettMod.SkillStates
                 }
             }
 
-            if(this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
+            if (this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
 
-            if(this.stopwatch >= (this.duration * this.startUp))
+            if (this.stopwatch >= (this.duration * this.startUp))
             {
                 if (base.isAuthority)
                 {
@@ -323,7 +320,7 @@ namespace SettMod.SkillStates
                         this.OnHitEnemyAuthority();
                     }
                 }
-                
+
             }
 
 

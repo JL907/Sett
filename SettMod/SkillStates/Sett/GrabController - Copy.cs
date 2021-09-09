@@ -45,7 +45,7 @@ namespace SettMod.SkillStates
 
                 this.motor.Motor.SetPosition(this.pivotTransform.position, false);
                 if (!this.disableRotation) this.motor.Motor.SetRotation(this.pivotTransform.rotation, false);
- 
+
             }
 
             if (this.pivotTransform)

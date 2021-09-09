@@ -1,8 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
-using RoR2.Projectile;
 using SettMod.Modules;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -60,7 +58,7 @@ namespace SettMod.SkillStates
             this.gritSnapShot = currentGrit;
             base.healthComponent.AddBarrierAuthority(currentGrit);
             base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
-            
+            if (!this.slamIndicatorInstance) this.CreateIndicator();
 
         }
 
@@ -86,7 +84,7 @@ namespace SettMod.SkillStates
                 this.downRay = new Ray
                 {
                     direction = Vector3.down,
-                    origin = (base.transform.position + base.characterDirection.forward * 24f)
+                    origin = base.transform.position + base.characterDirection.forward * 23f
                 };
 
                 RaycastHit raycastHit;
@@ -105,9 +103,8 @@ namespace SettMod.SkillStates
                 this.downRay = new Ray
                 {
                     direction = Vector3.down,
-                    origin = (base.transform.position + base.characterDirection.forward * 24f)
+                    origin = base.transform.position + base.characterDirection.forward * 23f
                 };
-
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
                 this.slamIndicatorInstance.localScale = Vector3.one * 25f;
             }
@@ -116,25 +113,11 @@ namespace SettMod.SkillStates
 
         private void Fire()
         {
-            
             Ray aimRay = base.GetAimRay();
-
-            /*ProjectileManager.instance.FireProjectile(Modules.Projectiles.conePrefab,
-                    aimRay.origin,
-                    Util.QuaternionSafeLookRotation(aimRay.direction),
-                    base.gameObject,
-                    ((this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus)),
-                    100f,
-                    base.RollCrit(),
-                    DamageColorIndex.Default,
-                    null,
-                    -1f);*/
-
-
-            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 24f, this.hitSphereScale.x / 2, LayerIndex.entityPrecise.mask | LayerIndex.fakeActor.mask) ;
+            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 23f, this.hitSphereScale.x / 2);
             int num = 0;
             int num2 = 0;
-            while (num < enemies.Length && num2 < 100f)
+            while (num < enemies.Length && num2 < 1000000f)
             {
                 HealthComponent component = enemies[num].GetComponent<HealthComponent>();
                 if (component)
@@ -148,12 +131,12 @@ namespace SettMod.SkillStates
                     if (!flag)
                     {
                         DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = (this.damageStat * hayMakerDamageCoefficient) + (gritSnapShot * hayMakerGritBonus);
+                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus);
                         damageInfo.attacker = base.gameObject;
                         damageInfo.inflictor = base.gameObject;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = hayMakerDamageCoefficient;
+                        damageInfo.procCoefficient = HayMaker.hayMakerDamageCoefficient;
                         damageInfo.position = component.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         component.TakeDamage(damageInfo);
@@ -164,9 +147,9 @@ namespace SettMod.SkillStates
                 }
                 num++;
             }
-            for (int i = 0; i <= 20; i ++)
+            for (int i = 0; i <= 20; i++)
             {
-                float coneSize = 90f;
+                float coneSize = 60f;
                 Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
                 float spreadFactor = 0.01f;
                 punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
@@ -185,14 +168,17 @@ namespace SettMod.SkillStates
             base.FixedUpdate();
 
             this.stopwatch += Time.fixedDeltaTime;
+
             if (!this.slamIndicatorInstance) this.CreateIndicator();
-            if (this.slamIndicatorInstance) this.UpdateSlamIndicator();
+
+            this.UpdateSlamIndicator();
+
             if (this.stopwatch >= this.startUp && !this.hasFired)
             {
                 this.hasFired = true;
                 Util.PlaySound("SettWVO", base.gameObject);
                 if (NetworkServer.active)
-                { 
+                {
                     this.Fire();
                 }
             }
