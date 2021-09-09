@@ -1,13 +1,10 @@
-﻿using RoR2;
-using UnityEngine;
-using EntityStates;
+﻿using EntityStates;
+using RoR2;
 using RoR2.Audio;
 using System;
-using UnityEngine.Networking;
 using System.Collections.Generic;
-using EntityStates.Merc;
-using EntityStates.Huntress;
 using System.Linq;
+using UnityEngine;
 
 namespace SettMod.SkillStates
 {
@@ -37,7 +34,7 @@ namespace SettMod.SkillStates
         private bool pulling;
 
         static public float pullRadius = 20f;
-        static public float pullForce = 80f;
+        static public float pullForce = 100f;
 
         public override void OnEnter()
         {
@@ -55,7 +52,7 @@ namespace SettMod.SkillStates
 
             this.pullStrengthCurve = AnimationCurve.EaseInOut(0.1f, 0f, 1f, 1f);
 
-            
+
             Util.PlaySound("SettESFX", base.gameObject);
 
             this.impactSound = Modules.Assets.swordHitSoundEvent.index;
@@ -87,7 +84,7 @@ namespace SettMod.SkillStates
                 return;
             }
             this.pulling = true;
-            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius, LayerIndex.defaultLayer.mask);
+            Collider[] array = Physics.OverlapSphere(((this.pullOrigin) ? this.pullOrigin.position : base.transform.position), Facebreaker.pullRadius);
             int num = 0;
             int num2 = 0;
             while (num < array.Length && num2 < this.maximumPullCount)
@@ -256,8 +253,8 @@ namespace SettMod.SkillStates
                         searchOrigin = base.transform.position,
                         searchDirection = base.characterDirection.forward.normalized,
                         sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 6f,
-                        maxAngleFilter = 90f
+                        maxDistanceFilter = 5f,
+                        maxAngleFilter = 160f
                     };
 
                     BullseyeSearch searchR = new BullseyeSearch
@@ -267,8 +264,8 @@ namespace SettMod.SkillStates
                         searchOrigin = base.transform.position,
                         searchDirection = -base.characterDirection.forward.normalized,
                         sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 6f,
-                        maxAngleFilter = 90f
+                        maxDistanceFilter = 5f,
+                        maxAngleFilter = 160f
                     };
 
                     searchL.RefreshCandidates();
@@ -312,9 +309,9 @@ namespace SettMod.SkillStates
                 }
             }
 
-            if(this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
+            if (this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
 
-            if(this.stopwatch >= (this.duration * this.startUp))
+            if (this.stopwatch >= (this.duration * this.startUp))
             {
                 if (base.isAuthority)
                 {
@@ -323,7 +320,7 @@ namespace SettMod.SkillStates
                         this.OnHitEnemyAuthority();
                     }
                 }
-                
+
             }
 
 

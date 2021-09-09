@@ -4,11 +4,10 @@ using RoR2;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
-using R2API.Networking.Interfaces;
 
 namespace SettMod.SkillStates
 {
-    public class ShowStopper : BaseSkillState 
+    public class ShowStopper : BaseSkillState
     {
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
@@ -80,7 +79,7 @@ namespace SettMod.SkillStates
             if (!this.hasDropped)
             {
                 //base.rigidbody.position += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
-                base.characterMotor.rootMotion += this.flyVector * ((0.8f * (this.moveSpeedStat)) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * ((0.8f * 10f) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(10f);
@@ -109,12 +108,14 @@ namespace SettMod.SkillStates
 
             if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround))
             {
+                this.LandingImpact();
                 this.outer.SetNextStateToMain();
                 return;
             }
 
             if (base.fixedAge >= ShowStopper.jumpDuration + 2f && this.hasDropped && base.isAuthority)
             {
+                this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
         }
@@ -199,10 +200,10 @@ namespace SettMod.SkillStates
             }
         }
 
+
+
         public override void OnExit()
         {
-            this.LandingImpact();
-            if (this.grabController) this.grabController.Release();
             base.characterMotor.onMovementHit -= this.OnMovementHit;
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
@@ -216,7 +217,6 @@ namespace SettMod.SkillStates
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
-
             base.OnExit();
         }
 

@@ -1,6 +1,6 @@
 # Sett
 
-![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132432219-c2832363-2e27-4d47-b6b4-aed5db921989.png)
+![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132609017-2f51f913-94c9-4142-b004-7af0fd7c2209.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
@@ -9,9 +9,17 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.1`
-
-* Fixed an Issue with Show Stopper not bouncing Sett upon landing.
+## Latest Patch Notes `1.2.2`
+* Fixed an issue where Haymaker was doing no damage to some bosses
+* Fixed an issue where Facebreaker was not sucking in some enemies
+* The Show Stopper bounces Sett a bit higher on impact to prevent clipping.
+* The Show Stopper has a fixed height and no longer scales height with movement speed.
+* The Show Stopper's initial dash velocity is faster.
+* Haymaker has 200% less base damage however the bonus Grit damage has increased to +300% from 50%.
+* Haymaker now has an indicator (Indicator may sometimes not appear, this is a known issue.)
+* Haymaker has a slightly tweaked visual effect.
+* Haymaker hitbox overlaps Sett a bit more.
+* Grit now displays numerical value on the bar.
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -33,7 +41,7 @@ https://discord.gg/aYuS9Wsxxx
 * Has an initial dash with a fixed distance.
 
 ## Special 
-![Haymaker updated](https://user-images.githubusercontent.com/7343912/132424862-2f6520ae-306c-42cc-aa78-88ef6eeb4348.png)
+![Haymaker updated](https://user-images.githubusercontent.com/7343912/132608961-63c05755-dd6a-4a8a-b4df-82eca8e0c366.png)
 * Grit is a unique resource bar. Damage taken is stored as Grit. Grit can be used to apply a shield and buff Haymaker's damage.
 * Haymaker's damage bypasses all armor.
 
@@ -80,6 +88,9 @@ https://discord.gg/aYuS9Wsxxx
 * Haymaker now does TRUE damage.
 * Haymaker should now hit enemies directly infront of Sett.
 * Fixed an issue that caused Show Stopper to retain its hidden invincibility after the skill ended
+
+`Patch 1.2.1`
+* Fixed an Issue with Show Stopper not bouncing Sett upon landing.
 
 ## Technical Mumbo Jumbo
 * 168 Health

@@ -133,7 +133,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Secondary
-            desc = "Sett <color=#c9aa71>pulls in</color> all enemies around a <color=#0057e7>30 unit</color> radius of him, dealing <color=#f68835>800% </color>damage and <color=#c9aa71>stunning</color> them. ";
+            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>30 unit</color> radius of him, dealing <color=#f68835>800% </color>damage and <color=#c9aa71>stunning</color> them. ";
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
@@ -200,7 +200,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Special
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1600%</color> <color=#d62d20>(+50% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
+            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1400%</color> <color=#d62d20>(+300% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
 
             LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
