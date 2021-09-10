@@ -18,9 +18,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Fixed an issue where The Haymaker was not showing visual effect during multiplayer games
 * Fixed an issue where The Haymaker would update the position of its indicator incorrectly.
 * Fixed an issue where Setts primary visual would display twice during its duration during multiplayer games
-
-
-
+* Fixed an issue where the mod's file size was tripled.
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
