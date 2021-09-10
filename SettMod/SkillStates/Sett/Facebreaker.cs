@@ -44,7 +44,7 @@ namespace SettMod.SkillStates
             this.hasFired = false;
             this.animator = base.GetModelAnimator();
 
-            base.PlayAnimation("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp);
+            base.PlayCrossfade("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp,0.05f);
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
@@ -299,12 +299,12 @@ namespace SettMod.SkillStates
                             clip = "Facebreaker_Front";
                         }
 
-                        base.PlayAnimation("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration);
+                        base.PlayCrossfade("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration,0.05f);
 
                     }
                     if (!foundL && !foundR)
                     {
-                        base.PlayAnimation("Fullbody, Override", "Facebreaker_Miss", "FaceBreaker.playbackRate", this.duration);
+                        base.PlayCrossfade("Fullbody, Override", "Facebreaker_Miss", "FaceBreaker.playbackRate", this.duration,0.05f);
                     }
                 }
             }

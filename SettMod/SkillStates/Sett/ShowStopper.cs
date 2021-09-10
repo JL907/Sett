@@ -42,7 +42,7 @@ namespace SettMod.SkillStates
 
             base.characterMotor.onMovementHit += this.OnMovementHit;
 
-            base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
+            base.PlayCrossfade("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
 
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
