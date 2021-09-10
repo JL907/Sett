@@ -9,16 +9,11 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.3`
+## Latest Patch Notes `1.2.4`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue where The Show Stopper was doing 0 damage during multiplayer games
-* Fixed an issue where The Show Stopper would damage Sett during multiplayer games
-* Fixed an issue where The Show Stopper impact wouldn't pop sett up during multiplayer games
-* Fixed an issue where The Haymaker was not showing visual effect during multiplayer games
-* Fixed an issue where The Haymaker would update the position of its indicator incorrectly.
-* Fixed an issue where Setts primary visual would display twice during its duration during multiplayer games
-* Fixed an issue where the mod's file size was tripled.
+* The Show Stopper slam radius has increased to 30 units up from 25 units.
+* Sett now regenerates 1 health per second every 5% missing health. Base health regen has changed to 1 from 5.
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -62,6 +57,16 @@ https://discord.gg/aYuS9Wsxxx
 * Alternate skills for different playstyles.
 
 ## Change Log
+
+`Patch 1.2.3`
+* Fixed an issue where The Show Stopper was doing 0 damage during multiplayer games
+* Fixed an issue where The Show Stopper would damage Sett during multiplayer games
+* Fixed an issue where The Show Stopper impact wouldn't pop sett up during multiplayer games
+* Fixed an issue where The Haymaker was not showing visual effect during multiplayer games
+* Fixed an issue where The Haymaker would update the position of its indicator incorrectly.
+* Fixed an issue where Setts primary visual would display twice during its duration during multiplayer games
+* Fixed an issue where the mod's file size was tripled.
+
 `Patch 1.2.2`
 * Fixed an issue where Haymaker was doing no damage to some bosses
 * Fixed an issue where Facebreaker was not sucking in some enemies
