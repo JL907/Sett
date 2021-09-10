@@ -79,12 +79,12 @@ namespace SettMod.SkillStates
         {
             if (this.slamIndicatorInstance)
             {
-                float maxDistance = 250f;
-
+                float maxDistance = 25f;
+                Vector3 topPosition = new Vector3(base.characterBody.corePosition.x, base.characterBody.corePosition.y + 10, base.characterBody.corePosition.z);
                 this.downRay = new Ray
                 {
                     direction = Vector3.down,
-                    origin = Vector3.up + base.transform.position + base.characterDirection.forward * 23f
+                    origin = topPosition + base.characterDirection.forward * 23f
                 };
 
                 RaycastHit raycastHit;
@@ -100,10 +100,11 @@ namespace SettMod.SkillStates
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
+                Vector3 topPosition = new Vector3(base.characterBody.corePosition.x, base.characterBody.corePosition.y + 10, base.characterBody.corePosition.z);
                 this.downRay = new Ray
                 {
                     direction = Vector3.down,
-                    origin = Vector3.up + base.transform.position + base.characterDirection.forward * 23f
+                    origin = topPosition + base.characterDirection.forward * 23f
                 };
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
                 this.slamIndicatorInstance.localScale = Vector3.one * 25f;
@@ -155,9 +156,7 @@ namespace SettMod.SkillStates
 
             this.stopwatch += Time.fixedDeltaTime;
 
-            if (!this.slamIndicatorInstance) this.CreateIndicator();
-
-            this.UpdateSlamIndicator();
+            if (!this.slamIndicatorInstance) this.CreateIndicator(); this.UpdateSlamIndicator();
 
             if (this.stopwatch >= this.startUp && !this.hasFired)
             {
