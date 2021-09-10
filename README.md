@@ -9,17 +9,17 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.2`
-* Fixed an issue where Haymaker was doing no damage to some bosses
-* Fixed an issue where Facebreaker was not sucking in some enemies
-* The Show Stopper bounces Sett a bit higher on impact to prevent clipping.
-* The Show Stopper has a fixed height and no longer scales height with movement speed.
-* The Show Stopper's initial dash velocity is faster.
-* Haymaker has 200% less base damage however the bonus Grit damage has increased to +300% from 50%.
-* Haymaker now has an indicator (Indicator may sometimes not appear, this is a known issue.)
-* Haymaker has a slightly tweaked visual effect.
-* Haymaker hitbox overlaps Sett a bit more.
-* Grit now displays numerical value on the bar.
+## Latest Patch Notes `1.2.3`
+`Bug reports can be posted in discord https://discord.gg/aYuS9Wsxxx`
+
+*Fixed an issue where The Show Stopper was doing 0 damage during multiplayer games
+*Fixed an issue where The Show Stopper would damage Sett during multiplayer games
+*Fixed an issue where The Show Stopper impact wouldn't pop sett up during multiplayer games
+*Fixed an issue where The Haymaker was not showing visual effect during multiplayer games
+*Fixed an issue where Setts primary visual would display twice during its duration during multiplayer games
+
+
+
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -30,7 +30,7 @@ https://discord.gg/aYuS9Wsxxx
 
  ## Primary
 ![Knuckle Down](https://user-images.githubusercontent.com/7343912/132110163-bdda3595-dab5-426a-897a-2bc12ff95898.png)
- * Bread and Butter.
+ * The right fist can proc items like Runald's Band and Kjaro's Band.
 
  ## Secondary
 ![face breaker updated](https://user-images.githubusercontent.com/7343912/132367905-94605128-1f78-401d-aeb2-f3693c1fd929.png)
@@ -63,18 +63,20 @@ https://discord.gg/aYuS9Wsxxx
 * Alternate skills for different playstyles.
 
 ## Change Log
-`Patch 1.0.0`
-* Initial Release
+`Patch 1.2.2`
+* Fixed an issue where Haymaker was doing no damage to some bosses
+* Fixed an issue where Facebreaker was not sucking in some enemies
+* The Show Stopper bounces Sett a bit higher on impact to prevent clipping.
+* The Show Stopper has a fixed height and no longer scales height with movement speed.
+* The Show Stopper's initial dash velocity is faster.
+* Haymaker has 200% less base damage however the bonus Grit damage has increased to +300% from 50%.
+* Haymaker now has an indicator (Indicator may sometimes not appear, this is a known issue.)
+* Haymaker has a slightly tweaked visual effect.
+* Haymaker hitbox overlaps Sett a bit more.
+* Grit now displays numerical value on the bar.
 
-`Patch 1.1.0`
-* Fixed aiming with Knuckle Down and Facebreaker.
-* Knuckle Down has Increased hitbox on the sides.
-* Facebreaker now has a wider angle and and now originates from character position rather than camera origin.
-* Sett has ragdoll on death.
-* Voiceline when selected in character select.
-* Grit now decays 4 seconds after not taking any damage.
-* Footstep sounds and dust effect while running/sprinting.
-* Updated Sett's color theme.
+`Patch 1.2.1`
+* Fixed an Issue with Show Stopper not bouncing Sett upon landing.
 
 `Patch 1.2.0`
 * Show Stopper now checks if sett is on stable ground before detonating. 
@@ -89,8 +91,18 @@ https://discord.gg/aYuS9Wsxxx
 * Haymaker should now hit enemies directly infront of Sett.
 * Fixed an issue that caused Show Stopper to retain its hidden invincibility after the skill ended
 
-`Patch 1.2.1`
-* Fixed an Issue with Show Stopper not bouncing Sett upon landing.
+`Patch 1.1.0`
+* Fixed aiming with Knuckle Down and Facebreaker.
+* Knuckle Down has Increased hitbox on the sides.
+* Facebreaker now has a wider angle and and now originates from character position rather than camera origin.
+* Sett has ragdoll on death.
+* Voiceline when selected in character select.
+* Grit now decays 4 seconds after not taking any damage.
+* Footstep sounds and dust effect while running/sprinting.
+* Updated Sett's color theme.
+
+`Patch 1.0.0`
+* Initial Release
 
 ## Technical Mumbo Jumbo
 * 168 Health
