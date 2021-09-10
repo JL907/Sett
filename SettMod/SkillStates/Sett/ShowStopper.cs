@@ -12,7 +12,7 @@ namespace SettMod.SkillStates
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
-        public static float slamRadius = 15f;
+        public static float slamRadius = 20f;
         public static float slamDamageCoefficient = 12f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 2000f;

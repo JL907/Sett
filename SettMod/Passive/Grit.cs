@@ -85,29 +85,42 @@ namespace SettMod.Modules
             return this.body.maxHealth / 2f;
         }
 
-        public float GetMissingHealth()
-        {
-            return this.body.maxHealth - this.body.healthComponent.health;
-        }
-
         public float GetCurrentGrit()
         {
             return Mathf.Max(0, this.NetworkGrit);
         }
 
-        public float GetSettRegen()
+        public float GetMissingHealth()
         {
-            return ((this.GetMissingHealth() / this.body.maxHealth) / 0.1f);
+            return this.body.maxHealth - this.body.healthComponent.health;
         }
 
-        public float GetTotalRegen()
+        public float GetSettRegen()
         {
-            float _regen = this.body.baseRegen += this.GetSettRegen();
-            return _regen;
+            return ((this.GetMissingHealth() / this.body.maxHealth) / 0.05f);
+        }
+
+        public void BuffRegen()
+        {
+            int missingHealthPer10 = (int)Mathf.Round(this.GetSettRegen());
+            if (NetworkServer.active)
+            {
+                int buffCount = this.body.GetBuffCount(Modules.Buffs.regenBuff);
+                
+                if(buffCount < missingHealthPer10)
+                {
+                    this.body.AddBuff(Modules.Buffs.regenBuff);
+                }
+                if(buffCount > missingHealthPer10)
+                {
+                    this.body.RemoveBuff(Modules.Buffs.regenBuff);
+                }
+            }
         }
 
         private void ServerFixedUpdate()
         {
+            this.BuffRegen();
             if (gritUptimeStopwatch < GritMaxUptime)
             {
                 gritUptimeStopwatch += Time.fixedDeltaTime;
@@ -118,7 +131,7 @@ namespace SettMod.Modules
             }
             if (throttleUpdateTime >= MaxTrottleUpdateTime && gritUptimeStopwatch > GritMaxUptime)
             {
-                //this.body.healthComponent.health += this.GetSettRegen();
+
                 throttleUpdateTime = 0f;
                 var gritDecayAmount = 0.2f;
                 var snapShotGrit = this.NetworkGrit;
