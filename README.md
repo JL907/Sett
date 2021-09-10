@@ -10,13 +10,14 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
 ## Latest Patch Notes `1.2.3`
-`Bug reports can be posted in discord https://discord.gg/aYuS9Wsxxx`
+`Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-*Fixed an issue where The Show Stopper was doing 0 damage during multiplayer games
-*Fixed an issue where The Show Stopper would damage Sett during multiplayer games
-*Fixed an issue where The Show Stopper impact wouldn't pop sett up during multiplayer games
-*Fixed an issue where The Haymaker was not showing visual effect during multiplayer games
-*Fixed an issue where Setts primary visual would display twice during its duration during multiplayer games
+* Fixed an issue where The Show Stopper was doing 0 damage during multiplayer games
+* Fixed an issue where The Show Stopper would damage Sett during multiplayer games
+* Fixed an issue where The Show Stopper impact wouldn't pop sett up during multiplayer games
+* Fixed an issue where The Haymaker was not showing visual effect during multiplayer games
+* Fixed an issue where The Haymaker would update the position of its indicator incorrectly.
+* Fixed an issue where Setts primary visual would display twice during its duration during multiplayer games
 
 
 
