@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 126345257
+CRC: 2956265762
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9273e47fc0cbbcab0b814d29d81353e5
+    Hash: 0ccb368dc07c3e918047405b86e4ec73
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -79,10 +79,8 @@ Assets:
 - Assets/Sett/animDisplay.controller
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
-- Assets/Sett/RiskofRainFont 1.ttf
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
 - Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
-- Assets/Sett/fontSquaresbold.otf
 - Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
 - Assets/Sett/RunHasteFootsteps.anim
@@ -95,7 +93,6 @@ Assets:
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/skin8_0.png
 - Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
-- Assets/Sett/VCR_OSD_MONO.ttf
 - Assets/Sett/VFX/Textures/sett_base_r_impact.dds
 - Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
 - Assets/Sett/VFX/Textures/texSlash.png
@@ -145,8 +142,6 @@ Assets:
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
-- Assets/Sett/NotoSans-Regular.ttf
-- Assets/Sett/riskofrainfont.ttf
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat
@@ -173,7 +168,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_burst_avatar.dds
 - Assets/Sett/VFX/Textures/sett_base_mask_vert_a.dds
 - Assets/Sett/VFX/Materials/hiteffectmat.mat
-- Assets/Sett/TRACER__.ttf
 - Assets/Sett/GritGaugePanel.prefab
 - Assets/Sett/UI/sett_e.png
 - Assets/Sett/BOMBARD_.ttf
@@ -205,11 +199,9 @@ Assets:
 - Assets/Sett/animSett.controller
 - Assets/Sett/VFX/Textures/texHitSpark.png
 - Assets/Sett/VFX/Textures/sett_base_energy_round.dds
-- Assets/Sett/Bazaronite.ttf
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_center.dds
 - Assets/Sett/UI/sett_square.png
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
-- Assets/Sett/NotoSansCJKsc-Regular.otf
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/VFX/Materials/matEmbers.mat

@@ -79,12 +79,12 @@ namespace SettMod.SkillStates
         {
             if (this.slamIndicatorInstance)
             {
-                float maxDistance = 250f;
-
+                float maxDistance = 25f;
+                Vector3 topPosition = new Vector3(base.characterBody.corePosition.x, base.characterBody.corePosition.y + 10, base.characterBody.corePosition.z);
                 this.downRay = new Ray
                 {
                     direction = Vector3.down,
-                    origin = base.transform.position + base.characterDirection.forward * 23f
+                    origin = topPosition + base.characterDirection.forward * 23f
                 };
 
                 RaycastHit raycastHit;
@@ -100,10 +100,11 @@ namespace SettMod.SkillStates
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
+                Vector3 topPosition = new Vector3(base.characterBody.corePosition.x, base.characterBody.corePosition.y + 10, base.characterBody.corePosition.z);
                 this.downRay = new Ray
                 {
                     direction = Vector3.down,
-                    origin = base.transform.position + base.characterDirection.forward * 23f
+                    origin = topPosition + base.characterDirection.forward * 23f
                 };
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
                 this.slamIndicatorInstance.localScale = Vector3.one * 25f;
@@ -147,20 +148,6 @@ namespace SettMod.SkillStates
                 }
                 num++;
             }
-            for (int i = 0; i <= 20; i++)
-            {
-                float coneSize = 60f;
-                Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
-                float spreadFactor = 0.01f;
-                punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
-                punchRot.y += Random.Range(-spreadFactor, spreadFactor) * coneSize;
-                EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
-                {
-                    origin = this.characterBody.corePosition,
-                    scale = 100f,
-                    rotation = punchRot
-                }, false);
-            }
         }
 
         public override void FixedUpdate()
@@ -169,9 +156,7 @@ namespace SettMod.SkillStates
 
             this.stopwatch += Time.fixedDeltaTime;
 
-            if (!this.slamIndicatorInstance) this.CreateIndicator();
-
-            this.UpdateSlamIndicator();
+            if (!this.slamIndicatorInstance) this.CreateIndicator(); this.UpdateSlamIndicator();
 
             if (this.stopwatch >= this.startUp && !this.hasFired)
             {
@@ -180,6 +165,20 @@ namespace SettMod.SkillStates
                 if (NetworkServer.active)
                 {
                     this.Fire();
+                }
+                for (int i = 0; i <= 20; i++)
+                {
+                    float coneSize = 60f;
+                    Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
+                    float spreadFactor = 0.01f;
+                    punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
+                    punchRot.y += Random.Range(-spreadFactor, spreadFactor) * coneSize;
+                    EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
+                    {
+                        origin = this.characterBody.corePosition,
+                        scale = 100f,
+                        rotation = punchRot
+                    }, false);
                 }
             }
 
