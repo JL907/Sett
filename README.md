@@ -1,6 +1,6 @@
 # Sett
 
-![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132927530-c1c010b5-6287-4d3b-8a17-45606ddc8bee.png)
+![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132930020-e1f6560b-121f-406d-801a-e3efb93cd697.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
@@ -19,7 +19,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 https://discord.gg/aYuS9Wsxxx
  
  ## Passive
-![Passive updated](https://user-images.githubusercontent.com/7343912/132927562-64213d06-72ad-4de9-95f7-7c95f4d8b299.png)
+![Passive updated](https://user-images.githubusercontent.com/7343912/132930029-eeb9a12a-e695-4df9-938d-5341a29b31dc.png)
 * Sett hates losing, gaining additional health regeneration based off of his missing health.
 
  ## Primary
