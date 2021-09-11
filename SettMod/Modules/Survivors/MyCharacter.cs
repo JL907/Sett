@@ -30,7 +30,7 @@ namespace SettMod.Modules.Survivors
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 15f,
             healthGrowth = 23f,
-            healthRegen = 5f,
+            healthRegen = 1f,
             jumpCount = 1,
             maxHealth = 186f,
             subtitleNameToken = "SETT_NAME_SUBTITLE",

@@ -12,7 +12,7 @@ namespace SettMod.SkillStates
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
-        public static float slamRadius = 15f;
+        public static float slamRadius = 20f;
         public static float slamDamageCoefficient = 12f;
         public static float slamProcCoefficient = 1f;
         public static float slamForce = 2000f;
@@ -42,7 +42,7 @@ namespace SettMod.SkillStates
 
             base.characterMotor.onMovementHit += this.OnMovementHit;
 
-            base.PlayAnimation("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration);
+            base.PlayCrossfade("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
 
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);

@@ -13,7 +13,7 @@ namespace SettMod.Modules
 
         internal static void RegisterBuffs()
         {
-            regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
+            regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("textures/bufficons/texBuffRegenBoostIcon"), Color.green, true, false);
         }
 
         // simple helper method
@@ -26,10 +26,8 @@ namespace SettMod.Modules
             buffDef.isDebuff = isDebuff;
             buffDef.eliteDef = null;
             buffDef.iconSprite = buffIcon;
-
             buffDefs.Add(buffDef);
-
             return buffDef;
-        }
+        }  
     }
 }

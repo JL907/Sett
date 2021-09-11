@@ -35,7 +35,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
         public const string MODNAME = "Sett";
-        public const string MODVERSION = "1.2.3";
+        public const string MODVERSION = "1.2.4";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "Jojo";
@@ -174,12 +174,13 @@ namespace SettMod
         {
             orig(self);
 
-            // a simple stat hook, adds armor after stats are recalculated
             if (self)
             {
                 if (self.HasBuff(Modules.Buffs.regenBuff))
                 {
-                    self.armor += 300f;
+                    float count = self.GetBuffCount(Modules.Buffs.regenBuff);
+                    float _level = Mathf.Ceil(self.level / 4);
+                    self.regen += count * (0.25f * _level);
                 }
             }
         }
