@@ -12,7 +12,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ## Latest Patch Notes `1.2.4`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* The Show Stopper slam radius has increased to 30 units up from 25 units.
+* The Show Stopper slam radius has increased to 20 units up from 15 units.
 * Sett now regenerates 0.25 (+0.25 every 4 levels) health per second every 5% missing health. Base health regen has changed down to 1 from 5.
 
 ## Discord
