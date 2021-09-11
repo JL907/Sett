@@ -178,7 +178,9 @@ namespace SettMod
             {
                 if (self.HasBuff(Modules.Buffs.regenBuff))
                 {
-                    self.regen += 1;
+                    float count = self.GetBuffCount(Modules.Buffs.regenBuff);
+                    float _level = Mathf.Ceil(self.level / 4);
+                    self.regen += count * (0.25f * _level);
                 }
             }
         }
