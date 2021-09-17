@@ -253,7 +253,7 @@ namespace SettMod.SkillStates
                         searchOrigin = base.transform.position,
                         searchDirection = base.characterDirection.forward.normalized,
                         sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 5f,
+                        maxDistanceFilter = 10f,
                         maxAngleFilter = 160f
                     };
 
@@ -264,7 +264,7 @@ namespace SettMod.SkillStates
                         searchOrigin = base.transform.position,
                         searchDirection = -base.characterDirection.forward.normalized,
                         sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 5f,
+                        maxDistanceFilter = 10f,
                         maxAngleFilter = 160f
                     };
 
@@ -283,7 +283,7 @@ namespace SettMod.SkillStates
                     if (targetL && targetL.healthComponent) foundL = true;
                     if (targetR && targetR.healthComponent) foundR = true;
 
-                    if ((foundL || foundR))
+                    if (foundL || foundR)
                     {
                         string clip = "";
                         if (foundL && foundR)
