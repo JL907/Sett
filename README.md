@@ -9,11 +9,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.4`
+## Latest Patch Notes `1.2.5`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* The Show Stopper slam radius has increased to 20 units up from 15 units.
-* Sett now regenerates 0.25 (+0.25 every 4 levels) health per second every 5% missing health. Base health regen has changed down to 1 from 5.
+* Fixed an issue that allowed Sett to become Invincibile
 
 ## Discord
 https://discord.gg/aYuS9Wsxxx
@@ -57,6 +56,10 @@ https://discord.gg/aYuS9Wsxxx
 * Alternate skills for different playstyles.
 
 ## Change Log
+
+`1.2.4`
+* The Show Stopper slam radius has increased to 20 units up from 15 units.
+* Sett now regenerates 0.25 (+0.25 every 4 levels) health per second every 5% missing health. Base health regen has changed down to 1 from 5.
 
 `Patch 1.2.3`
 * Fixed an issue where The Show Stopper was doing 0 damage during multiplayer games
