@@ -160,6 +160,7 @@ namespace SettMod.SkillStates
 
             Vector3 newPosition = new Vector3(base.characterBody.footPosition.x, base.characterBody.footPosition.y + 10, base.characterBody.footPosition.z);
             if (base.characterMotor) base.characterMotor.Motor.SetPosition(newPosition);
+            if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
         }
 
         private void UpdateSlamIndicator()
@@ -190,8 +191,6 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            base.OnExit();
-
             base.characterMotor.onMovementHit -= this.OnMovementHit;
 
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
@@ -209,7 +208,7 @@ namespace SettMod.SkillStates
             base.gameObject.layer = LayerIndex.defaultLayer.intVal;
             base.characterMotor.Motor.RebuildCollidableLayers();
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
-            
+            base.OnExit();
         }
 
         private void AttemptGrab(float grabRadius)
@@ -243,7 +242,7 @@ namespace SettMod.SkillStates
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
-                    if (NetworkServer.active)
+                    if (NetworkServer.active && !base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
                     {
                         base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
                     }
