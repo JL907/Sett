@@ -34,7 +34,7 @@ namespace SettMod.SkillStates
         private bool pulling;
 
         static public float pullRadius = 20f;
-        static public float pullForce = 100f;
+        static public float pullForce = 200f;
 
         public override void OnEnter()
         {
