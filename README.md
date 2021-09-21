@@ -25,26 +25,15 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
   <img width="40%" border="0" align="center"  src="https://uploads-ssl.webflow.com/5c14e387dab576fe667689cf/5cbed8a4cf61eceb26012821_SupportMe_red.png"/>
 </a>
 
- ## Passive
-![Passive updated](https://user-images.githubusercontent.com/7343912/132930029-eeb9a12a-e695-4df9-938d-5341a29b31dc.png)
-* Sett hates losing, gaining additional health regeneration based off of his missing health.
+## Skills
 
- ## Primary
-![Knuckle Down](https://user-images.githubusercontent.com/7343912/132110163-bdda3595-dab5-426a-897a-2bc12ff95898.png)
- * The right fist can proc items like Runald's Band and Kjaro's Band.
-
- ## Secondary
-![face breaker updated](https://user-images.githubusercontent.com/7343912/132367905-94605128-1f78-401d-aeb2-f3693c1fd929.png)
-* Pulls in all enemies within 30 unit radius.
-
-## Utility
-![Show Stopper](https://user-images.githubusercontent.com/7343912/132110170-d8f6869e-f2a0-49e2-9f82-9566a546c3c1.png)
-* Has an initial dash with a fixed distance.
-
-## Special 
-![Haymaker updated](https://user-images.githubusercontent.com/7343912/132608961-63c05755-dd6a-4a8a-b4df-82eca8e0c366.png)
-* Grit is a unique resource bar. Damage taken is stored as Grit. Grit can be used to apply a shield and buff Haymaker's damage.
-* Haymaker's damage bypasses all armor.
+| Skill | |
+|:-|-|
+| Passive | ![Passive updated](https://user-images.githubusercontent.com/7343912/132930029-eeb9a12a-e695-4df9-938d-5341a29b31dc.png) |
+| Primary | ![Knuckle Down](https://user-images.githubusercontent.com/7343912/132110163-bdda3595-dab5-426a-897a-2bc12ff95898.png) | 
+| Secondary | ![face breaker updated](https://user-images.githubusercontent.com/7343912/132367905-94605128-1f78-401d-aeb2-f3693c1fd929.png) | 
+| Utility | ![Show Stopper](https://user-images.githubusercontent.com/7343912/132110170-d8f6869e-f2a0-49e2-9f82-9566a546c3c1.png) | 
+| Special | ![Haymaker updated](https://user-images.githubusercontent.com/7343912/132608961-63c05755-dd6a-4a8a-b4df-82eca8e0c366.png)| 
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
