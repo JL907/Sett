@@ -1,6 +1,5 @@
 # Sett
 
-![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132930020-e1f6560b-121f-406d-801a-e3efb93cd697.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
@@ -27,13 +26,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Skills
 
-| Skill | |
-|:-|-|
-| Passive | ![Passive updated](https://user-images.githubusercontent.com/7343912/132930029-eeb9a12a-e695-4df9-938d-5341a29b31dc.png) |
-| Primary | ![Knuckle Down](https://user-images.githubusercontent.com/7343912/132110163-bdda3595-dab5-426a-897a-2bc12ff95898.png) | 
-| Secondary | ![face breaker updated](https://user-images.githubusercontent.com/7343912/132367905-94605128-1f78-401d-aeb2-f3693c1fd929.png) | 
-| Utility | ![Show Stopper](https://user-images.githubusercontent.com/7343912/132110170-d8f6869e-f2a0-49e2-9f82-9566a546c3c1.png) | 
-| Special | ![Haymaker updated](https://user-images.githubusercontent.com/7343912/132608961-63c05755-dd6a-4a8a-b4df-82eca8e0c366.png)| 
+![abilities](https://user-images.githubusercontent.com/7343912/134162707-2c525103-509a-493b-99fe-9130e9f24f00.png)
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
