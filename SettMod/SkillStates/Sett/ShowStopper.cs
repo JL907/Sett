@@ -40,25 +40,31 @@ namespace SettMod.SkillStates
             this.flyVector = Vector3.up;
             this.hasDropped = false;
 
-            base.characterMotor.onMovementHit += this.OnMovementHit;
+            if (base.isAuthority)
+            {
+                base.characterMotor.onMovementHit += this.OnMovementHit;
+                base.characterMotor.Motor.ForceUnground();
+                base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
+                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                base.gameObject.layer = LayerIndex.fakeActor.intVal;
+                base.characterMotor.Motor.RebuildCollidableLayers();
+            }
 
             base.PlayCrossfade("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
 
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
-
-            base.characterMotor.Motor.ForceUnground();
-            base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
-
-            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-
-            base.gameObject.layer = LayerIndex.fakeActor.intVal;
-            base.characterMotor.Motor.RebuildCollidableLayers();
         }
 
         private void OnMovementHit(ref CharacterMotor.MovementHitInfo movementHitInfo)
         {
-            this.detonateNextFrame = true;
+            HealthComponent healthComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<HealthComponent>();
+            TeamComponent teamComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<TeamComponent>();
+            if (healthComponent && teamComponent.teamIndex != base.GetTeam())
+            {
+                this.detonateNextFrame = false;
+            }
+            else this.detonateNextFrame = true;
         }
 
         public override void Update()
@@ -191,22 +197,25 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            base.characterMotor.onMovementHit -= this.OnMovementHit;
+            if (base.isAuthority)
+            {
+                base.characterMotor.onMovementHit -= this.OnMovementHit;
+                base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+                base.characterMotor.Motor.RebuildCollidableLayers();
+                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+            }
 
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
-            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
-
             if (base.cameraTargetParams)
             {
                 base.cameraTargetParams.fovOverride = -1f;
             }
             
-            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
-            base.characterMotor.Motor.RebuildCollidableLayers();
+            
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
             base.OnExit();
         }

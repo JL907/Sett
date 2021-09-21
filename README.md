@@ -9,14 +9,22 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.5`
+## Latest Patch Notes `1.2.6`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue that allowed Sett to become Invincibile
+* Fixed an issue with The Show Stopper impacting itself on enemy colliders such as Greater Wisps.
+* Facebreaker now has 200 units of suction up from 100 units.
 
 ## Discord
-https://discord.gg/aYuS9Wsxxx
- 
+<a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
+  <img width="40%" border="0" align="center"  src="https://user-images.githubusercontent.com/7343912/134153480-837a1d90-18de-46cc-a58f-64920c58b7f9.png"/>
+</a>
+
+## Ko-Fi
+<a href="https://ko-fi.com/lemonlust" target="_blank">
+  <img width="40%" border="0" align="center"  src="https://uploads-ssl.webflow.com/5c14e387dab576fe667689cf/5cbed8a4cf61eceb26012821_SupportMe_red.png"/>
+</a>
+
  ## Passive
 ![Passive updated](https://user-images.githubusercontent.com/7343912/132930029-eeb9a12a-e695-4df9-938d-5341a29b31dc.png)
 * Sett hates losing, gaining additional health regeneration based off of his missing health.
@@ -47,15 +55,16 @@ https://discord.gg/aYuS9Wsxxx
 * League of Legends
 
 ## Known Issues
-* Multiplayer has not been tested extensively. He may or may not work in multiplayer environments. 
 * The Show Stopper may clip you or enemies into the floor if the primary target is big enough.
-* Sett may ignore fall damage in certain situations.
 
 ## Future Plans
 * Better Networking for multiplayer play.
 * Alternate skills for different playstyles.
 
 ## Change Log
+
+`1.2.5`
+* Fixed an issue that allowed Sett to become Invincibile
 
 `1.2.4`
 * The Show Stopper slam radius has increased to 20 units up from 15 units.
