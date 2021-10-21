@@ -59,12 +59,13 @@ namespace SettMod.SkillStates.BaseStates
             {
                 this.baseDuration = 0.7f;
                 this.baseEarlyExitTime = 0.48f;
+                this.damageCoefficient = Modules.Config.leftPunchDamageCoefficient.Value;
             }
             else if (this.swingIndex == 1)
             {
                 this.baseDuration = 1.2f;
                 this.baseEarlyExitTime = 0.68f;
-                this.damageCoefficient = 5f;
+                this.damageCoefficient = Modules.Config.rightPunchDamageCoefficient.Value;
             }
 
             this.duration = this.baseDuration / this.attackSpeedStat;
