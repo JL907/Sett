@@ -9,11 +9,13 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.6`
+## Latest Patch Notes `1.2.7`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue with The Show Stopper impacting itself on enemy colliders such as Greater Wisps.
-* Facebreaker now has 200 units of suction up from 100 units.
+* Sett now gains 46 health per level (up from 23)
+* Sett Configuration file now has options to change Setts base attributes as well as his skill's damage, cooldowns, ect.
+* The Show Stopper now pops Sett lower than before
+
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -45,6 +47,10 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Alternate skills for different playstyles.
 
 ## Change Log
+
+`1.2.6`
+* Fixed an issue with The Show Stopper impacting itself on enemy colliders such as Greater Wisps.
+* Facebreaker now has 200 units of suction up from 100 units.
 
 `1.2.5`
 * Fixed an issue that allowed Sett to become Invincibile

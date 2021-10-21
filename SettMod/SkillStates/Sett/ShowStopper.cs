@@ -12,10 +12,11 @@ namespace SettMod.SkillStates
         public static float jumpDuration = 0.6f;
         public static float dropForce = 80f;
 
-        public static float slamRadius = 20f;
-        public static float slamDamageCoefficient = 12f;
+        public static float slamRadius = Modules.Config.slamRadius.Value;
+        public static float slamDamageCoefficient = Modules.Config.slamDamageCoefficient.Value;
         public static float slamProcCoefficient = 1f;
-        public static float slamForce = 2000f;
+        public static float slamForce = Modules.Config.slamForce.Value;
+        public static float bonusHealthCoefficient = Modules.Config.bonusHealthCoefficient.Value;
 
         public static float dodgeFOV;
 
@@ -164,7 +165,7 @@ namespace SettMod.SkillStates
                 }, false);
             }
 
-            Vector3 newPosition = new Vector3(base.characterBody.footPosition.x, base.characterBody.footPosition.y + 10, base.characterBody.footPosition.z);
+            Vector3 newPosition = new Vector3(base.characterBody.footPosition.x, base.characterBody.footPosition.y + 5, base.characterBody.footPosition.z);
             if (base.characterMotor) base.characterMotor.Motor.SetPosition(newPosition);
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
         }
