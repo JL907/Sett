@@ -10,6 +10,8 @@ namespace SettMod.SkillStates
 {
     public class Facebreaker : BaseSkillState
     {
+        protected float damageCoefficient = 6f;
+
         protected float startUp = 0.5f;
         protected float baseDuration = 0.80f;
         public float duration;
@@ -33,12 +35,13 @@ namespace SettMod.SkillStates
         private List<CharacterBody> pullList = new List<CharacterBody>();
         private bool pulling;
 
-        static public float pullRadius = 20f;
-        static public float pullForce = 200f;
+        static public float pullRadius = Modules.Config.faceBreakerPullRadius.Value;
+        static public float pullForce = Modules.Config.faceBreakerPullForce.Value;
 
         public override void OnEnter()
         {
             base.OnEnter();
+            this.damageCoefficient = Modules.Config.faceBreakerDamageCoefficient.Value;
             base.characterBody.SetAimTimer(2f);
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.hasFired = false;
@@ -220,7 +223,7 @@ namespace SettMod.SkillStates
             attack.attacker = base.gameObject;
             attack.inflictor = base.gameObject;
             attack.teamIndex = base.GetTeam();
-            attack.damage = 8f * this.damageStat;
+            attack.damage = this.damageCoefficient * this.damageStat;
             attack.procCoefficient = 1f;
             attack.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
             attack.forceVector = Vector3.zero;

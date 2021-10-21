@@ -1,5 +1,6 @@
 ﻿using R2API;
 using RoR2;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -102,7 +103,7 @@ namespace SettMod.Modules
             bodyComponent.levelMaxHealth = bodyInfo.healthGrowth;
 
             bodyComponent.baseRegen = bodyInfo.healthRegen;
-            bodyComponent.levelRegen = bodyComponent.baseRegen * 0.2f;
+            bodyComponent.levelRegen = bodyInfo.regenGrowth;
 
             bodyComponent.baseMaxShield = bodyInfo.shield;
             bodyComponent.levelMaxShield = bodyInfo.shieldGrowth;
@@ -116,7 +117,7 @@ namespace SettMod.Modules
             bodyComponent.levelJumpPower = bodyInfo.jumpPowerGrowth;
 
             bodyComponent.baseDamage = bodyInfo.damage;
-            bodyComponent.levelDamage = bodyComponent.baseDamage * 0.2f;
+            bodyComponent.levelDamage = bodyInfo.damageGrowth;
 
             bodyComponent.baseAttackSpeed = bodyInfo.attackSpeed;
             bodyComponent.levelAttackSpeed = bodyInfo.attackSpeedGrowth;
@@ -440,6 +441,7 @@ internal class BodyInfo
     internal float healthGrowth = 2f;
 
     internal float healthRegen = 0f;
+    internal float regenGrowth = 0f;
 
     internal float shield = 0f;// base shield is a thing apparently. neat
     internal float shieldGrowth = 0f;
@@ -453,6 +455,7 @@ internal class BodyInfo
     internal float jumpPowerGrowth = 0f;// jump power per level exists for some reason
 
     internal float damage = 12f;
+    internal float damageGrowth = 0f;
 
     internal float attackSpeed = 1f;
     internal float attackSpeedGrowth = 0f;

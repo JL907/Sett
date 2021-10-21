@@ -21,20 +21,31 @@ namespace SettMod.Modules.Survivors
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            armor = 33f,
-            armorGrowth = 3.7f,
             bodyName = "SettBody",
             bodyNameToken = "SETT_NAME",
             bodyColor = new Color(.3781f, .1324f, .4894f),
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 15f,
-            healthGrowth = 23f,
-            healthRegen = 1f,
-            jumpCount = 1,
-            maxHealth = 186f,
             subtitleNameToken = "SETT_NAME_SUBTITLE",
-            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+
+            maxHealth = Modules.Config.baseHealth.Value,
+            healthGrowth = Modules.Config.healthGrowth.Value,
+
+            healthRegen = Modules.Config.baseHealth.Value,
+            regenGrowth = Modules.Config.regenGrowth.Value,
+
+            moveSpeed = Modules.Config.baseMovementSpeed.Value,
+
+            damage = Modules.Config.baseDamage.Value,
+            damageGrowth = Modules.Config.damageGrowth.Value,
+
+            armor = Modules.Config.baseArmor.Value,
+            armorGrowth = Modules.Config.armorGrowth.Value,
+
+            crit = Modules.Config.baseCrit.Value,
+
+            jumpCount = Modules.Config.jumpCount.Value
         };
 
 
@@ -147,7 +158,7 @@ namespace SettMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
-                baseRechargeInterval = 6f,
+                baseRechargeInterval = Modules.Config.faceBreakerCD.Value,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -181,7 +192,7 @@ namespace SettMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll2)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 8f,
+                baseRechargeInterval = Modules.Config.slamCD.Value,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
@@ -215,7 +226,7 @@ namespace SettMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
                 baseMaxStock = 1,
-                baseRechargeInterval = 10f,
+                baseRechargeInterval = Modules.Config.hayMakerCD.Value,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
