@@ -105,7 +105,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Technical Mumbo Jumbo
 * 168 Health
-* 23 Health per level
+* 46 Health per level
 * 33 Armor
 * 3.7 Armor per level
 * 15 Base damage
