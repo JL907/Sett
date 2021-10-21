@@ -14,7 +14,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 * Sett now gains 46 health per level (up from 23)
 * Sett Configuration file now has options to change Setts base attributes as well as his skill's damage, cooldowns, ect.
-* The Show Stopper now pops Sett lower than before
+* The Show Stopper now pops Sett up 5 units from the ground (down from 10)
 
 
 ## Discord
