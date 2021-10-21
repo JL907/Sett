@@ -67,9 +67,6 @@ namespace SettMod.Modules
             hayMakerDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Damage Coefficient"), 14f, new ConfigDescription("", null, Array.Empty<object>()));
             hayMakerGritBonus = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Grit Bonus Damage Coefficient"), 3f, new ConfigDescription("Bonus Damage Based On Expended Grit Coefficient", null, Array.Empty<object>()));
             hayMakerCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Cooldown"), 10f, new ConfigDescription("", null, Array.Empty<object>()));
-
-
-
         }
 
         // this helper automatically makes config entries for disabling survivors
