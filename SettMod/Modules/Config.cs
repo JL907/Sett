@@ -7,14 +7,20 @@ namespace SettMod.Modules
     {
         public static ConfigEntry<float> baseHealth;
         public static ConfigEntry<float> healthGrowth;
-        public static ConfigEntry<float> baseDamage;
-        public static ConfigEntry<float> damageGrowth;
-        public static ConfigEntry<float> baseArmor;
-        public static ConfigEntry<float> armorGrowth;
-        public static ConfigEntry<float> baseMovementSpeed;
-        public static ConfigEntry<float> baseCrit;
+
         public static ConfigEntry<float> baseRegen;
         public static ConfigEntry<float> regenGrowth;
+
+        public static ConfigEntry<float> baseArmor;
+        public static ConfigEntry<float> armorGrowth;
+
+        public static ConfigEntry<float> baseDamage;
+        public static ConfigEntry<float> damageGrowth;
+
+        public static ConfigEntry<float> baseMovementSpeed;
+
+        public static ConfigEntry<float> baseCrit;
+
         public static ConfigEntry<int> jumpCount;
 
 
@@ -40,18 +46,24 @@ namespace SettMod.Modules
         {
             baseHealth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Health"), 180f, new ConfigDescription("", null, Array.Empty<object>()));
             healthGrowth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Health Growth"), 48f, new ConfigDescription("", null, Array.Empty<object>()));
+
             baseRegen = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Health Regen"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             regenGrowth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Health Regen Growth"), 0.2f, new ConfigDescription("", null, Array.Empty<object>()));
+
             baseArmor = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Armor"), 20f, new ConfigDescription("", null, Array.Empty<object>()));
             armorGrowth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Armor Growth"), 0f, new ConfigDescription("", null, Array.Empty<object>()));
+
             baseDamage = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Damage"), 12f, new ConfigDescription("", null, Array.Empty<object>()));
             damageGrowth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Damage Growth"), 2.8f, new ConfigDescription("", null, Array.Empty<object>()));
+
             baseMovementSpeed = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Movement Speed"), 8f, new ConfigDescription("", null, Array.Empty<object>()));
+
             baseCrit = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Crit"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
+
             jumpCount = SettPlugin.instance.Config.Bind<int>(new ConfigDefinition("01 - Character Stats", "Jump Count"), 1, new ConfigDescription("", null, Array.Empty<object>()));
 
             leftPunchDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("02 - Kunckle Down", "Kunckle Down Left Punch Damage Coefficient"), 2.8f, new ConfigDescription("", null, Array.Empty<object>()));
-            leftPunchDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("02 - Kunckle Down", "Kunckle Down Right Punch Damage Coefficient"), 3.6f, new ConfigDescription("", null, Array.Empty<object>()));
+            rightPunchDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("02 - Kunckle Down", "Kunckle Down Right Punch Damage Coefficient"), 3.6f, new ConfigDescription("", null, Array.Empty<object>()));
 
             faceBreakerDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Damage Coefficient"), 4f, new ConfigDescription("", null, Array.Empty<object>()));
             faceBreakerPullRadius = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Pull Radius"), 20f, new ConfigDescription("", null, Array.Empty<object>()));

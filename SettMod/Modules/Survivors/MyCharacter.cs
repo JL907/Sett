@@ -32,7 +32,7 @@ namespace SettMod.Modules.Survivors
             maxHealth = Modules.Config.baseHealth.Value,
             healthGrowth = Modules.Config.healthGrowth.Value,
 
-            healthRegen = Modules.Config.baseHealth.Value,
+            healthRegen = Modules.Config.baseRegen.Value,
             regenGrowth = Modules.Config.regenGrowth.Value,
 
             moveSpeed = Modules.Config.baseMovementSpeed.Value,
