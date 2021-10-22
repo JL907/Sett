@@ -12,6 +12,8 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ## Latest Patch Notes `1.2.8`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
+* Bug Fix: Problem from 1.2.7 where Sett would only left punch.
+* Bug Fix: Health regen was using the wrong value causing instant healing.
 * Setts Base Health is now 180 (up from 168)
 * Setts Gains 48 Health Per Level (up from 46)
 * Setts Health Regen Per Level is 0.2 (up from 0)
