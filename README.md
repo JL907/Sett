@@ -42,7 +42,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Skills
 
-![abilities](https://user-images.githubusercontent.com/7343912/134162707-2c525103-509a-493b-99fe-9130e9f24f00.png)
+![abilities](https://user-images.githubusercontent.com/7343912/138391634-f0305f9f-102f-493e-aaa3-ac69bad40854.png)
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
