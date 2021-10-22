@@ -13,7 +13,7 @@ namespace SettMod.SkillStates
         protected float baseDuration = 3.55f;
         public static float hayMakerRadius = 55f;
         public static float hayMakerDamageCoefficient = Modules.Config.hayMakerDamageCoefficient.Value;
-        public static float hayMakerProcCoefficient = 1;
+        public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerGritBonus = Modules.Config.hayMakerGritBonus.Value;
         public static float hayMakerForce = 1000f;
         public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
