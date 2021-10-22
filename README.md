@@ -9,13 +9,21 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.7`
+## Latest Patch Notes `1.2.8`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Sett now gains 46 health per level (up from 23)
-* Sett Configuration file now has options to change Setts base attributes as well as his skill's damage, cooldowns, ect.
-* The Show Stopper now pops Sett up 5 units from the ground (down from 10)
-
+* Bug Fix: Problem from 1.2.7 where Sett would only left punch.
+* Bug Fix: Health regen was using the wrong value causing instant healing.
+* Setts Base Health is now 180 (up from 168)
+* Setts Gains 48 Health Per Level (up from 46)
+* Setts Health Regen Per Level is 0.2 (up from 0)
+* Setts Base Armor is now 20 (down from 33)
+* Setts Armor Growth Per Level is now 0 (down from 3.3)
+* Setts Base Damage is now 12 (down from 15)
+* Setts Damage Growth Per Level is now 2.8 (down from 3.0)
+* Knuckle Down Damage is now 280%/360% (Down from 350%/500%)
+* Face Breaker Damage is now 400% (Down from 800%)
+* The Show Stopper's Bonus Damage is now 5% of Primary Target's Maximum Health (Down from 10%)
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -27,9 +35,16 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
   <img width="40%" border="0" align="center"  src="https://uploads-ssl.webflow.com/5c14e387dab576fe667689cf/5cbed8a4cf61eceb26012821_SupportMe_red.png"/>
 </a>
 
+## Sett Base Attributes
+* Health: 180 +48
+* Health Regen: 1/s + 0.2
+* Damage: 12 + 2.8
+* Speed: 8 m/s
+* Armor: 20
+
 ## Skills
 
-![abilities](https://user-images.githubusercontent.com/7343912/134162707-2c525103-509a-493b-99fe-9130e9f24f00.png)
+![abilities](https://user-images.githubusercontent.com/7343912/138391634-f0305f9f-102f-493e-aaa3-ac69bad40854.png)
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
@@ -47,6 +62,10 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Alternate skills for different playstyles.
 
 ## Change Log
+`1.2.7`
+* Sett now gains 46 health per level (up from 23)
+* Sett Configuration file now has options to change Setts base attributes as well as his skill's damage, cooldowns, ect.
+* The Show Stopper now pops Sett up 5 units from the ground (down from 10)
 
 `1.2.6`
 * Fixed an issue with The Show Stopper impacting itself on enemy colliders such as Greater Wisps.
@@ -108,11 +127,3 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 `Patch 1.0.0`
 * Initial Release
-
-## Technical Mumbo Jumbo
-* 168 Health
-* 46 Health per level
-* 33 Armor
-* 3.7 Armor per level
-* 15 Base damage
-* 1 Jump
