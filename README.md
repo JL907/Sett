@@ -14,9 +14,11 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 * Fixed an issue where Facebreaker wasn't displaying the onHit animation
 * Added swing sound effect to Knuckle Down and reduced the frequency of grunt sound effect
+* Lowered volume on hit sound effects.
 * Sett's Movement Speed is now 8 M/S (up from 7 M/S)
 * Facebreaker now properly displays correct radius in description.
 * Facebreaker now applies a slow as well as a stun.
+* Fixed issue where The Show Stopper was canceling sprint.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
