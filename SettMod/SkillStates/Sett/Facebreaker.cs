@@ -229,7 +229,7 @@ namespace SettMod.SkillStates
         protected OverlapAttack CreateAttack(HitBoxGroup hitBoxGroup)
         {
             var attack = new OverlapAttack();
-            attack.damageType = DamageType.Stun1s;
+            attack.damageType = DamageType.Stun1s | DamageType.SlowOnHit;
             attack.attacker = base.gameObject;
             attack.inflictor = base.gameObject;
             attack.teamIndex = base.GetTeam();
