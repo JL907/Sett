@@ -144,7 +144,7 @@ namespace SettMod.Modules.Survivors
             #endregion
 
             #region Secondary
-            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 unit</color> radius of him, dealing <color=#f68835>400% </color>damage.<color=#c9aa71>Stun & Slows</color> on hit.";
+            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 unit</color> radius of him, dealing <color=#f68835>400% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.";
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
