@@ -3,7 +3,6 @@ using RoR2;
 using RoR2.Audio;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace SettMod.SkillStates
@@ -38,8 +37,8 @@ namespace SettMod.SkillStates
         private bool front;
         private bool back;
 
-        static public float pullRadius = Modules.Config.faceBreakerPullRadius.Value;
-        static public float pullForce = Modules.Config.faceBreakerPullForce.Value;
+        public static float pullRadius = Modules.Config.faceBreakerPullRadius.Value;
+        public static float pullForce = Modules.Config.faceBreakerPullForce.Value;
 
         public override void OnEnter()
         {
@@ -50,7 +49,7 @@ namespace SettMod.SkillStates
             this.hasFired = false;
             this.animator = base.GetModelAnimator();
 
-            base.PlayCrossfade("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp,0.05f);
+            base.PlayCrossfade("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp, 0.05f);
 
             HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();

@@ -51,7 +51,7 @@ namespace SettMod.SkillStates
             this.hasFired = false;
             this.duration = this.baseDuration / base.attackSpeedStat;
             base.characterMotor.velocity = Vector3.zero;
-            base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration,0.05f);
+            base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.05f);
             Util.PlaySound("SettWSFX", base.gameObject);
             GritComponent gritComponent = base.GetComponent<GritComponent>();
             float currentGrit = gritComponent.GetCurrentGrit();

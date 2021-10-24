@@ -28,6 +28,6 @@ namespace SettMod.Modules
             buffDef.iconSprite = buffIcon;
             buffDefs.Add(buffDef);
             return buffDef;
-        }  
+        }
     }
 }

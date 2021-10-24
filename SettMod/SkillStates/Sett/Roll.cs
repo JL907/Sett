@@ -28,7 +28,7 @@ namespace SettMod.SkillStates
                 base.characterDirection.forward = base.characterMotor.velocity.normalized;
                 this.dashSpeed = base.characterMotor.velocity.magnitude;
             }
-            base.PlayCrossfade("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f,0.05f);
+            base.PlayCrossfade("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f, 0.05f);
             Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
 
         }

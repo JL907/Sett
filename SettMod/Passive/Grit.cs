@@ -106,12 +106,12 @@ namespace SettMod.Modules
             if (NetworkServer.active)
             {
                 int buffCount = this.body.GetBuffCount(Modules.Buffs.regenBuff);
-                
-                if(buffCount < missingHealthPer10)
+
+                if (buffCount < missingHealthPer10)
                 {
                     this.body.AddBuff(Modules.Buffs.regenBuff);
                 }
-                if(buffCount > missingHealthPer10)
+                if (buffCount > missingHealthPer10)
                 {
                     this.body.RemoveBuff(Modules.Buffs.regenBuff);
                 }

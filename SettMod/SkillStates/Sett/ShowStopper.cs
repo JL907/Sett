@@ -215,8 +215,8 @@ namespace SettMod.SkillStates
             {
                 base.cameraTargetParams.fovOverride = -1f;
             }
-            
-            
+
+
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
             base.OnExit();
         }
