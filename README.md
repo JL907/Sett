@@ -1,6 +1,6 @@
 # Sett
 
-![2021-09-07 17_38_16-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132930020-e1f6560b-121f-406d-801a-e3efb93cd697.png)
+![Risk_of_Rain_2_IBWNMzbDVt](https://user-images.githubusercontent.com/7343912/138583896-3c8a6f6e-ce8e-435a-944d-55cf74f1be0e.jpg)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
@@ -9,21 +9,14 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.2.8`
+## Latest Patch Notes `1.3.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Bug Fix: Problem from 1.2.7 where Sett would only left punch.
-* Bug Fix: Health regen was using the wrong value causing instant healing.
-* Setts Base Health is now 180 (up from 168)
-* Setts Gains 48 Health Per Level (up from 46)
-* Setts Health Regen Per Level is 0.2 (up from 0)
-* Setts Base Armor is now 20 (down from 33)
-* Setts Armor Growth Per Level is now 0 (down from 3.3)
-* Setts Base Damage is now 12 (down from 15)
-* Setts Damage Growth Per Level is now 2.8 (down from 3.0)
-* Knuckle Down Damage is now 280%/360% (Down from 350%/500%)
-* Face Breaker Damage is now 400% (Down from 800%)
-* The Show Stopper's Bonus Damage is now 5% of Primary Target's Maximum Health (Down from 10%)
+* Fixed an issue where Facebreaker wasn't displaying the onHit animation
+* Added swing sound effect to Knuckle Down and reduced the frequency of grunt sound effect
+* Sett's Movement Speed is now 8 M/S (up from 7 M/S)
+* Facebreaker now properly displays correct radius in description.
+* Facebreaker now applies a slow as well as a stun.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -44,7 +37,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Skills
 
-![abilities](https://user-images.githubusercontent.com/7343912/138391634-f0305f9f-102f-493e-aaa3-ac69bad40854.png)
+![abilities](https://user-images.githubusercontent.com/7343912/138583971-c89ca378-eeaf-475f-b8d5-8aa77d85c969.png)
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
@@ -62,6 +55,20 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Alternate skills for different playstyles.
 
 ## Change Log
+`1.2.8`
+* Bug Fix: Problem from 1.2.7 where Sett would only left punch.
+* Bug Fix: Health regen was using the wrong value causing instant healing.
+* Setts Base Health is now 180 (up from 168)
+* Setts Gains 48 Health Per Level (up from 46)
+* Setts Health Regen Per Level is 0.2 (up from 0)
+* Setts Base Armor is now 20 (down from 33)
+* Setts Armor Growth Per Level is now 0 (down from 3.3)
+* Setts Base Damage is now 12 (down from 15)
+* Setts Damage Growth Per Level is now 2.8 (down from 3.0)
+* Knuckle Down Damage is now 280%/360% (Down from 350%/500%)
+* Face Breaker Damage is now 400% (Down from 800%)
+* The Show Stopper's Bonus Damage is now 5% of Primary Target's Maximum Health (Down from 10%)
+
 `1.2.7`
 * Sett now gains 46 health per level (up from 23)
 * Sett Configuration file now has options to change Setts base attributes as well as his skill's damage, cooldowns, ect.
