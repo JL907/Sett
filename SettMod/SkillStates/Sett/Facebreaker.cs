@@ -199,7 +199,7 @@ namespace SettMod.SkillStates
                 {
                     Vector3 vector = ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position) - characterBody.corePosition;
                     float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
-                    float dot = Vector3.Dot(vector.normalized, base.transform.forward);
+                    float dot = Vector3.Dot(vector, base.transform.forward);
                     Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
                     if (component)
@@ -208,8 +208,8 @@ namespace SettMod.SkillStates
                         if (component.useGravity)
                         {
                             component.rootMotion.y -= (Physics.gravity.y * deltaTime * d);
-                            if (dot < 0f) front = true;
-                            else if (dot > 0f) back = true;
+                            if (dot > 0f) front = true;
+                            else if (dot < 0f) back = true;
                         }
                     }
                     else
@@ -218,8 +218,8 @@ namespace SettMod.SkillStates
                         if (component2)
                         {
                             component2.velocity += b;
-                            if (dot < 0f) front = true;
-                            else if (dot > 0f) back = true;
+                            if (dot > 0f) front = true;
+                            else if (dot < 0f) back = true;
                         }
                     }
                 }
