@@ -35,6 +35,9 @@ namespace SettMod.SkillStates
         private List<CharacterBody> pullList = new List<CharacterBody>();
         private bool pulling;
 
+        private bool front;
+        private bool back;
+
         static public float pullRadius = Modules.Config.faceBreakerPullRadius.Value;
         static public float pullForce = Modules.Config.faceBreakerPullForce.Value;
 
@@ -187,6 +190,8 @@ namespace SettMod.SkillStates
             {
                 this.InitializePull();
             }
+            this.front = false;
+            this.back = false;
             for (int i = 0; i < this.pullList.Count; i++)
             {
                 CharacterBody characterBody = this.pullList[i];
@@ -194,6 +199,7 @@ namespace SettMod.SkillStates
                 {
                     Vector3 vector = ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position) - characterBody.corePosition;
                     float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
+                    float dot = Vector3.Dot(vector, base.transform.forward);
                     Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
                     if (component)
@@ -202,6 +208,8 @@ namespace SettMod.SkillStates
                         if (component.useGravity)
                         {
                             component.rootMotion.y -= (Physics.gravity.y * deltaTime * d);
+                            if (dot > 0f) front = true;
+                            else if (dot < 0f) back = true;
                         }
                     }
                     else
@@ -210,6 +218,8 @@ namespace SettMod.SkillStates
                         if (component2)
                         {
                             component2.velocity += b;
+                            if (dot > 0f) front = true;
+                            else if (dot < 0f) back = true;
                         }
                     }
                 }
@@ -219,7 +229,7 @@ namespace SettMod.SkillStates
         protected OverlapAttack CreateAttack(HitBoxGroup hitBoxGroup)
         {
             var attack = new OverlapAttack();
-            attack.damageType = DamageType.Stun1s;
+            attack.damageType = DamageType.Stun1s | DamageType.SlowOnHit;
             attack.attacker = base.gameObject;
             attack.inflictor = base.gameObject;
             attack.teamIndex = base.GetTeam();
@@ -249,66 +259,24 @@ namespace SettMod.SkillStates
 
                     Util.PlaySound("SettEVO", base.gameObject);
 
-                    BullseyeSearch searchL = new BullseyeSearch
+                    string clip = "";
+                    if (front && back)
                     {
-                        teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                        filterByLoS = true,
-                        searchOrigin = base.transform.position,
-                        searchDirection = base.characterDirection.forward.normalized,
-                        sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 10f,
-                        maxAngleFilter = 160f
-                    };
-
-                    BullseyeSearch searchR = new BullseyeSearch
-                    {
-                        teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                        filterByLoS = true,
-                        searchOrigin = base.transform.position,
-                        searchDirection = -base.characterDirection.forward.normalized,
-                        sortMode = BullseyeSearch.SortMode.DistanceAndAngle,
-                        maxDistanceFilter = 10f,
-                        maxAngleFilter = 160f
-                    };
-
-                    searchL.RefreshCandidates();
-                    searchL.FilterOutGameObject(base.gameObject);
-
-                    searchR.RefreshCandidates();
-                    searchR.FilterOutGameObject(base.gameObject);
-
-                    HurtBox targetL = searchL.GetResults().FirstOrDefault<HurtBox>();
-                    HurtBox targetR = searchR.GetResults().FirstOrDefault<HurtBox>();
-
-                    bool foundL = false;
-                    bool foundR = false;
-
-                    if (targetL && targetL.healthComponent) foundL = true;
-                    if (targetR && targetR.healthComponent) foundR = true;
-
-                    if (foundL || foundR)
-                    {
-                        string clip = "";
-                        if (foundL && foundR)
-                        {
-                            clip = "Facebreaker_Both";
-                        }
-                        else if (foundR)
-                        {
-                            clip = "Facebreaker_Back";
-                        }
-                        else if (foundL)
-                        {
-                            clip = "Facebreaker_Front";
-                        }
-
-                        base.PlayCrossfade("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration,0.05f);
-
+                        clip = "Facebreaker_Both";
                     }
-                    if (!foundL && !foundR)
+                    else if (back && !front)
                     {
-                        base.PlayCrossfade("Fullbody, Override", "Facebreaker_Miss", "FaceBreaker.playbackRate", this.duration,0.05f);
+                        clip = "Facebreaker_Back";
                     }
+                    else if (front && !back)
+                    {
+                        clip = "Facebreaker_Front";
+                    }
+                    else if (!front && !back)
+                    {
+                        clip = "Facebreaker_Miss";
+                    }
+                    base.PlayCrossfade("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration, 0.05f);
                 }
             }
 
