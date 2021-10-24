@@ -198,17 +198,19 @@ namespace SettMod.SkillStates
                 {
                     Vector3 vector = ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position) - characterBody.corePosition;
                     float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
-                    float dot = Vector3.Dot(vector, base.transform.forward);
                     Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
+                    Vector3 forward = this.transform.TransformDirection(Vector3.forward);
+                    Vector3 toEnemy = characterBody.transform.position - base.transform.position;
                     if (component)
                     {
                         component.rootMotion += b;
                         if (component.useGravity)
                         {
                             component.rootMotion.y -= (Physics.gravity.y * deltaTime * d);
-                            if (dot > 0f) front = true;
-                            else if (dot < 0f) back = true;
+                            if (Vector3.Dot(forward, toEnemy) < 0) back = true;
+                            else if (Vector3.Dot(forward, toEnemy) > 0) front = true;
+                            else if (Vector3.Dot(forward, toEnemy) == 0) front = true;
                         }
                     }
                     else
@@ -217,8 +219,9 @@ namespace SettMod.SkillStates
                         if (component2)
                         {
                             component2.velocity += b;
-                            if (dot > 0f) front = true;
-                            else if (dot < 0f) back = true;
+                            if (Vector3.Dot(forward, toEnemy) < 0) back = true;
+                            else if (Vector3.Dot(forward, toEnemy) > 0) front = true;
+                            else if (Vector3.Dot(forward, toEnemy) == 0) front = true;
                         }
                     }
                 }
