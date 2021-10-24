@@ -199,7 +199,7 @@ namespace SettMod.SkillStates
                 {
                     Vector3 vector = ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position) - characterBody.corePosition;
                     float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
-                    float dot = Vector3.Dot(vector, base.transform.forward);
+                    float dot = Vector3.Dot(vector.normalized, base.transform.forward);
                     Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
                     if (component)
