@@ -12,10 +12,10 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ## Latest Patch Notes `1.3.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
+* Fixed an issue where Sett's Grit had weird interaction with the item Transcendance.
 * Fixed an issue where Facebreaker was using the wrong onhit animation
 * Camera now zooms out during The Show Stopper
 * Adjusted Sett's M1 sound.
-
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
