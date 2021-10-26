@@ -34,6 +34,9 @@ namespace SettMod.SkillStates
         private List<CharacterBody> pullList = new List<CharacterBody>();
         private bool pulling;
 
+        public static Vector3 CameraPosition = new Vector3(0f, -2.4f, -25f);
+        private float initialTime;
+
         private bool front;
         private bool back;
 
@@ -250,6 +253,12 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            CameraTargetParams ctp = base.cameraTargetParams;
+            float denom = (1 + Time.fixedTime - this.initialTime);
+            float smoothFactor = 8 / Mathf.Pow(denom, 2);
+            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
+            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
 
             this.stopwatch += Time.fixedDeltaTime;
 
