@@ -214,6 +214,7 @@ namespace SettMod.SkillStates.BaseStates
                 if (component && component.state.isAuthority 
                     && (!(component.state is Roll2))
                     && (!(component.state is HayMaker))
+                    && (!(component.state is Facebreaker))
                     && (!(component.state is ShowStopper)))
                 {
                     this.outer.SetNextState(new BaseMeleeAttack

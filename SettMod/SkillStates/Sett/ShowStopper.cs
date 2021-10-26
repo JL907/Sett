@@ -48,7 +48,7 @@ namespace SettMod.SkillStates
             {
                 base.characterMotor.onMovementHit += this.OnMovementHit;
                 base.characterMotor.Motor.ForceUnground();
-                base.characterMotor.velocity = base.characterMotor.velocity * 0.5f;
+                base.characterMotor.velocity = base.characterMotor.velocity * 0.65f;
                 base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
                 base.gameObject.layer = LayerIndex.fakeActor.intVal;
                 base.characterMotor.Motor.RebuildCollidableLayers();
@@ -90,7 +90,7 @@ namespace SettMod.SkillStates
 
             if (!this.hasDropped)
             {
-                base.characterMotor.rootMotion += this.flyVector * ((0.8f * 10f) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.flyVector * (8f * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
                 this.AttemptGrab(10f);
@@ -98,11 +98,6 @@ namespace SettMod.SkillStates
 
             if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
             {
-
-                //if (base.cameraTargetParams)
-                //{
-                //    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
-                //}
                 this.CreateIndicator();
             }
 
@@ -119,6 +114,12 @@ namespace SettMod.SkillStates
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
+            if (base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround))
+            {
+                this.LandingImpact();
+                this.outer.SetNextStateToMain();
+            }
+
         }
 
         private void CreateIndicator()
@@ -174,7 +175,7 @@ namespace SettMod.SkillStates
                 }, false);
             }
 
-            Vector3 newPosition = new Vector3(base.characterBody.footPosition.x, base.characterBody.footPosition.y + 5, base.characterBody.footPosition.z);
+            Vector3 newPosition = new Vector3(base.characterBody.footPosition.x, base.characterBody.footPosition.y + 4f, base.characterBody.footPosition.z);
             if (base.characterMotor) base.characterMotor.Motor.SetPosition(newPosition);
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
         }
@@ -219,12 +220,6 @@ namespace SettMod.SkillStates
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-
-            //if (base.cameraTargetParams)
-            //{
-            //    base.cameraTargetParams.fovOverride = -1f;
-            //}
-
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
             base.OnExit();
