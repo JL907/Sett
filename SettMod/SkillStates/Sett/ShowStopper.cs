@@ -18,6 +18,8 @@ namespace SettMod.SkillStates
         public static float slamForce = Modules.Config.slamForce.Value;
         public static float bonusHealthCoefficient = Modules.Config.bonusHealthCoefficient.Value;
 
+        public static Vector3 CameraPosition = new Vector3(0f, 2f, -25f);
+
         public static float dodgeFOV;
 
         protected float bonusHealth;
@@ -31,6 +33,7 @@ namespace SettMod.SkillStates
 
         private bool detonateNextFrame;
 
+        private float initialTime;
         protected Animator animator;
 
         public override void OnEnter()
@@ -40,7 +43,7 @@ namespace SettMod.SkillStates
             this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
-
+            this.initialTime = Time.fixedTime;
             if (base.isAuthority)
             {
                 base.characterMotor.onMovementHit += this.OnMovementHit;
@@ -78,6 +81,13 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+
+            CameraTargetParams ctp = base.cameraTargetParams;
+            float denom = (1 + Time.fixedTime - this.initialTime);
+            float smoothFactor = 8 / Mathf.Pow(denom, 2);
+            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
+            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+
             if (!this.hasDropped)
             {
                 base.characterMotor.rootMotion += this.flyVector * ((0.8f * 10f) * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
@@ -89,10 +99,10 @@ namespace SettMod.SkillStates
             if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
             {
 
-                if (base.cameraTargetParams)
-                {
-                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
-                }
+                //if (base.cameraTargetParams)
+                //{
+                //    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
+                //}
                 this.CreateIndicator();
             }
 
@@ -101,7 +111,6 @@ namespace SettMod.SkillStates
                 this.hasDropped = true;
                 base.characterMotor.disableAirControlUntilCollision = true;
                 base.characterMotor.velocity.y = -ShowStopper.dropForce;
-
                 this.AttemptGrab(15f);
             }
 
@@ -211,10 +220,10 @@ namespace SettMod.SkillStates
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
-            if (base.cameraTargetParams)
-            {
-                base.cameraTargetParams.fovOverride = -1f;
-            }
+            //if (base.cameraTargetParams)
+            //{
+            //    base.cameraTargetParams.fovOverride = -1f;
+            //}
 
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);

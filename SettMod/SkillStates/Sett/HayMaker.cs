@@ -20,6 +20,9 @@ namespace SettMod.SkillStates
         private float gritSnapShot;
         private Ray downRay;
         private Vector3 hitSphereScale = new Vector3(50f, 14f, 14f);
+
+        public static Vector3 CameraPosition = new Vector3(1.8f, -2.4f, -8f);
+        private float initialTime;
         private Transform slamIndicatorInstance;
         private Vector3 punchVector
 
@@ -153,7 +156,13 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            /*
+            CameraTargetParams ctp = base.cameraTargetParams;
+            float denom = (1 + Time.fixedTime - this.initialTime);
+            float smoothFactor = 8 / Mathf.Pow(denom, 2);
+            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
+            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+            */
             this.stopwatch += Time.fixedDeltaTime;
 
             if (!this.slamIndicatorInstance) this.CreateIndicator(); this.UpdateSlamIndicator();

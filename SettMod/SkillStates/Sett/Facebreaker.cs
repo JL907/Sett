@@ -34,6 +34,9 @@ namespace SettMod.SkillStates
         private List<CharacterBody> pullList = new List<CharacterBody>();
         private bool pulling;
 
+        public static Vector3 CameraPosition = new Vector3(0f, -1.3f, -10f);
+        private float initialTime;
+
         private bool front;
         private bool back;
 
@@ -198,17 +201,19 @@ namespace SettMod.SkillStates
                 {
                     Vector3 vector = ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position) - characterBody.corePosition;
                     float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
-                    float dot = Vector3.Dot(vector, base.transform.forward);
                     Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
+                    Vector3 forward = this.transform.TransformDirection(Vector3.forward);
+                    Vector3 toEnemy = characterBody.transform.position - base.transform.position;
                     if (component)
                     {
                         component.rootMotion += b;
                         if (component.useGravity)
                         {
                             component.rootMotion.y -= (Physics.gravity.y * deltaTime * d);
-                            if (dot > 0f) front = true;
-                            else if (dot < 0f) back = true;
+                            if (Vector3.Dot(forward, toEnemy) < 0) back = true;
+                            else if (Vector3.Dot(forward, toEnemy) > 0) front = true;
+                            else if (Vector3.Dot(forward, toEnemy) == 0) front = true;
                         }
                     }
                     else
@@ -217,8 +222,9 @@ namespace SettMod.SkillStates
                         if (component2)
                         {
                             component2.velocity += b;
-                            if (dot > 0f) front = true;
-                            else if (dot < 0f) back = true;
+                            if (Vector3.Dot(forward, toEnemy) < 0) back = true;
+                            else if (Vector3.Dot(forward, toEnemy) > 0) front = true;
+                            else if (Vector3.Dot(forward, toEnemy) == 0) front = true;
                         }
                     }
                 }
@@ -247,7 +253,13 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
+            /*
+            CameraTargetParams ctp = base.cameraTargetParams;
+            float denom = (1 + Time.fixedTime - this.initialTime);
+            float smoothFactor = 8 / Mathf.Pow(denom, 2);
+            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
+            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+            */
             this.stopwatch += Time.fixedDeltaTime;
 
             if (this.stopwatch >= this.startUp)
