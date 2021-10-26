@@ -21,7 +21,7 @@ namespace SettMod.SkillStates
         private Ray downRay;
         private Vector3 hitSphereScale = new Vector3(50f, 14f, 14f);
 
-        public static Vector3 CameraPosition = new Vector3(0f, -2.4f, -25f);
+        public static Vector3 CameraPosition = new Vector3(0f, 1.3f, -13f);
         private float initialTime;
         private Transform slamIndicatorInstance;
         private Vector3 punchVector

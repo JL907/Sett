@@ -34,7 +34,7 @@ namespace SettMod.SkillStates
         private List<CharacterBody> pullList = new List<CharacterBody>();
         private bool pulling;
 
-        public static Vector3 CameraPosition = new Vector3(0f, -2.4f, -25f);
+        public static Vector3 CameraPosition = new Vector3(0f, 5f, -25f);
         private float initialTime;
 
         private bool front;

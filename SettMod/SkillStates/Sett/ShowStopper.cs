@@ -18,7 +18,7 @@ namespace SettMod.SkillStates
         public static float slamForce = Modules.Config.slamForce.Value;
         public static float bonusHealthCoefficient = Modules.Config.bonusHealthCoefficient.Value;
 
-        public static Vector3 CameraPosition = new Vector3(0f, -2.4f, -25f);
+        public static Vector3 CameraPosition = new Vector3(0f, 2f, -25f);
 
         public static float dodgeFOV;
 
@@ -99,10 +99,10 @@ namespace SettMod.SkillStates
             if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
             {
 
-                if (base.cameraTargetParams)
-                {
-                    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
-                }
+                //if (base.cameraTargetParams)
+                //{
+                //    base.cameraTargetParams.fovOverride = Mathf.Lerp(60f, 90f, base.fixedAge / ShowStopper.jumpDuration);
+                //}
                 this.CreateIndicator();
             }
 
@@ -220,10 +220,10 @@ namespace SettMod.SkillStates
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
-            if (base.cameraTargetParams)
-            {
-                base.cameraTargetParams.fovOverride = -1f;
-            }
+            //if (base.cameraTargetParams)
+            //{
+            //    base.cameraTargetParams.fovOverride = -1f;
+            //}
 
 
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
