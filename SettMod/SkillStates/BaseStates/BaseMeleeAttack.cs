@@ -205,17 +205,23 @@ namespace SettMod.SkillStates.BaseStates
             {
                 this.FireAttack();
             }
-
             if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
             {
                 int index = this.swingIndex;
                 if (index == 0) index = 1;
                 else index = 0;
-
-                this.outer.SetNextState(new BaseMeleeAttack
+                EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
+                if (component && component.state.isAuthority 
+                    && (!(component.state is Roll2))
+                    && (!(component.state is HayMaker))
+                    && (!(component.state is Facebreaker))
+                    && (!(component.state is ShowStopper)))
                 {
-                    swingIndex = index
-                });
+                    this.outer.SetNextState(new BaseMeleeAttack
+                    {
+                        swingIndex = index
+                    });
+                }
                 return;
             }
 
