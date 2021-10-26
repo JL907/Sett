@@ -13,6 +13,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Fixed an issue where Sett's M1 was usable during skills
+* Added extra collision check on The Show Stopper to reduce chances of clipping through terrain
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
