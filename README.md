@@ -13,9 +13,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Fixed an issue where Facebreaker was using the wrong onhit animation
-* Camera now zooms out during The Slam Portion of The Show Stopper
-* Camera now zooms out during Facebreaker
-* Camera now zooms out slightly during Hay Maker
+* Camera now zooms out during The Show Stopper
 * Adjusted Sett's M1 sound.
 
 
