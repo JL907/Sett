@@ -82,7 +82,7 @@ namespace SettMod.Modules
 
         public float GetMaxGrit()
         {
-            return this.body.maxHealth / 2f;
+            return this.GetMaxHealth() / 2f;
         }
 
         public float GetCurrentGrit()
@@ -90,28 +90,45 @@ namespace SettMod.Modules
             return Mathf.Max(0, this.NetworkGrit);
         }
 
+        public float GetMaxHealth()
+        {
+            if (this.body.inventory.GetItemCount(RoR2Content.Items.ShieldOnly) > 0) {
+                return this.body.maxShield;
+            }
+            return this.body.maxHealth;
+        }
+
+        public float GetCurrentHealth()
+        {
+            if (this.body.inventory.GetItemCount(RoR2Content.Items.ShieldOnly) > 0)
+            {
+                return this.body.healthComponent.shield;
+            }
+            return this.body.healthComponent.health;
+        }
+
         public float GetMissingHealth()
         {
-            return this.body.maxHealth - this.body.healthComponent.health;
+            return this.GetMaxHealth() - GetCurrentHealth();
         }
 
         public float GetSettRegen()
         {
-            return ((this.GetMissingHealth() / this.body.maxHealth) / 0.05f);
+            return ((this.GetMissingHealth() / this.GetMaxHealth()) / 0.05f);
         }
 
         public void BuffRegen()
         {
-            int missingHealthPer10 = (int)Mathf.Round(this.GetSettRegen());
+            int missingHealthPer5 = (int)Mathf.Round(this.GetSettRegen());
             if (NetworkServer.active)
             {
                 int buffCount = this.body.GetBuffCount(Modules.Buffs.regenBuff);
 
-                if (buffCount < missingHealthPer10)
+                if (buffCount < missingHealthPer5)
                 {
                     this.body.AddBuff(Modules.Buffs.regenBuff);
                 }
-                if (buffCount > missingHealthPer10)
+                if (buffCount > missingHealthPer5)
                 {
                     this.body.RemoveBuff(Modules.Buffs.regenBuff);
                 }
