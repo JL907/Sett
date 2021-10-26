@@ -9,13 +9,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use FaceBreaker to interrupt incoming damage and slam your opponents in the ground with The Show Stopper. He has no good mobility early on except the initial dash of The Show Stopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Show Stopper is scaled based on the primary target's max health. Slam a big opponnent to deal more damage around you.
 
-## Latest Patch Notes `1.3.1`
+## Latest Patch Notes `1.3.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue where Sett's Grit had weird interaction with the item Transcendance.
-* Fixed an issue where Facebreaker was using the wrong onhit animation
-* Camera now zooms out during The Show Stopper
-* Adjusted Sett's M1 sound.
+* Fixed an issue where Sett's M1 was usable during skills
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -54,6 +51,12 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Alternate skills for different playstyles.
 
 ## Change Log
+`1.3.1`
+* Fixed an issue where Sett's Grit had weird interaction with the item Transcendance.
+* Fixed an issue where Facebreaker was using the wrong onhit animation
+* Camera now zooms out during The Show Stopper
+* Adjusted Sett's M1 sound.
+
 `1.3.0`
 * Fixed an issue where Facebreaker wasn't displaying the onHit animation
 * Added swing sound effect to Knuckle Down and reduced the frequency of grunt sound effect
