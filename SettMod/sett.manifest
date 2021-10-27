@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2042683121
+CRC: 905142658
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b20ed53eead60c6bbd7dadf6e4946685
+    Hash: 9c90ccc48ce91662cd8e3c4a86c230ac
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -81,6 +81,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
 - Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
+- Assets/Sett/punch.anim
 - Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
 - Assets/Sett/RunHasteFootsteps.anim
