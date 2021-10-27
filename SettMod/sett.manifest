@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3045910823
+CRC: 2251005848
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8da35e88033bceb0baa88e2c9d473057
+    Hash: 91eb37834cea2116b606311a1f0c9b21
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -122,6 +122,7 @@ Assets:
 - Assets/Sett/BOMBARD_ SDF.asset
 - Assets/Sett/VFX/Textures/sett_base_w_glow05_firepulse.dds
 - Assets/Sett/VFX/Materials/matSettE.mat
+- Assets/Sett/settLower.mask
 - Assets/Sett/VFX/Materials/matAnimeShapes.mat
 - Assets/Sett/VFX/Textures/sett_base_mask_horizontal_b.dds
 - Assets/Sett/VFX/Textures/sett_base_fire_erode.dds

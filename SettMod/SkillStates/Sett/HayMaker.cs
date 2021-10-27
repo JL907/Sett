@@ -8,7 +8,7 @@ namespace SettMod.SkillStates
 {
     public class HayMaker : BaseSkillState
     {
-        protected float startUp = 0.8f;
+        protected float startUp = 0.836f;
         protected float EarlyExitTime = 1.2f;
         protected float baseDuration = 3.55f;
         public static float hayMakerRadius = 55f;
