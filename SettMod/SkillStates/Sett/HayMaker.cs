@@ -140,7 +140,7 @@ namespace SettMod.SkillStates
                         damageInfo.inflictor = base.gameObject;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = HayMaker.hayMakerDamageCoefficient;
+                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
                         damageInfo.position = component.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         component.TakeDamage(damageInfo);

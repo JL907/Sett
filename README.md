@@ -19,6 +19,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * The Showstopper now has 2 new animations and will pick randomly between three on cast.
 * Facebreaker start up and duration now scale off attack speed
 * Haymaker startup duration is 0.836 (up from 0.8)
+* Fixed Haymaker using it's damage coefficient as it's proc coefficient. Proc coefficient is now 1 (down from 14)
 
 
 ## Discord
