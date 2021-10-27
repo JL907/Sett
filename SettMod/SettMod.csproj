@@ -290,7 +290,7 @@
 
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="XCOPY &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y" />
+    <Exec Command="XCOPY &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', '$(ProjectDir)icon.png', '$(TargetDir)manifest.json', '$(ProjectDir)README.md' -DestinationPath '$(ProjectDir)\$(ProjectName) $(Version).zip' -Force" />
   </Target>
 
 </Project>
