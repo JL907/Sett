@@ -35,7 +35,6 @@ namespace SettMod.SkillStates
         private bool pulling;
 
         public static Vector3 CameraPosition = new Vector3(0f, -1.3f, -10f);
-        private float initialTime;
 
         private bool front;
         private bool back;
@@ -49,6 +48,7 @@ namespace SettMod.SkillStates
             this.damageCoefficient = Modules.Config.faceBreakerDamageCoefficient.Value;
             base.characterBody.SetAimTimer(2f);
             this.duration = this.baseDuration / this.attackSpeedStat;
+            this.startUp = this.startUp / this.attackSpeedStat;
             this.hasFired = false;
             this.animator = base.GetModelAnimator();
 
@@ -315,7 +315,7 @@ namespace SettMod.SkillStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
     }
 }

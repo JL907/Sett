@@ -8,7 +8,7 @@ namespace SettMod.SkillStates
 {
     public class HayMaker : BaseSkillState
     {
-        protected float startUp = 0.8f;
+        protected float startUp = 0.836f;
         protected float EarlyExitTime = 1.2f;
         protected float baseDuration = 3.55f;
         public static float hayMakerRadius = 55f;
@@ -140,7 +140,7 @@ namespace SettMod.SkillStates
                         damageInfo.inflictor = base.gameObject;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = HayMaker.hayMakerDamageCoefficient;
+                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
                         damageInfo.position = component.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         component.TakeDamage(damageInfo);
@@ -201,7 +201,7 @@ namespace SettMod.SkillStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
     }
 }
