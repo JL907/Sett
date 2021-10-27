@@ -9,18 +9,17 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Facebreaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
 
-## Latest Patch Notes `1.4.0`
+## Latest Patch Notes `1.4.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue where Sett's M1 was usable during skills
-* Fixed an issue where Sett can cancel his dash into other skills
-* Added extra check to detonate The Showstopper early if Sett hits terrain
-* The Showstopper now bounces sett up 4 units (down from 5)
-* The Showstopper now has 2 new animations and will pick randomly between three on cast.
-* Facebreaker start up and duration now scale off attack speed
-* Haymaker startup duration is 0.836 (up from 0.8)
-* Fixed Haymaker using it's damage coefficient as it's proc coefficient. Proc coefficient is now 1 (down from 14)
-
+* Fixed Standing Knuckle Down animation interrupt on movement
+* Facebreaker now has an idle animation after cast while not moving
+* Facebreaker on hit animations now have an idle animation on hit while not moving
+* Haymaker now has a new animation if cast with full grit
+* Haymaker startup duration is now 0.78 (down from 0.836)
+* Haymaker now has an idle animation after cast while not moving
+* Fixed Haymaker animation interrupt on movement
+* The Showstopper impact effect is now less pronounced
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -59,6 +58,16 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Alternate skills for different play styles.
 
 ## Change Log
+`1.4.0`
+* Fixed an issue where Sett's M1 was usable during skills
+* Fixed an issue where Sett can cancel his dash into other skills
+* Added extra check to detonate The Showstopper early if Sett hits terrain
+* The Showstopper now bounces sett up 4 units (down from 5)
+* The Showstopper now has 2 new animations and will pick randomly between three on cast.
+* Facebreaker start up and duration now scale off attack speed
+* Haymaker startup duration is 0.836 (up from 0.8)
+* Fixed Haymaker using it's damage coefficient as it's proc coefficient. Proc coefficient is now 1 (down from 14)
+
 `1.3.1`
 * Fixed an issue where Sett's Grit had weird interaction with the item Transcendence.
 * Fixed an issue where Facebreaker was using the wrong on hit animation
