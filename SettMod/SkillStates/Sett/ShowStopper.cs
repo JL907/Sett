@@ -4,6 +4,7 @@ using RoR2;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Runtime;
 
 namespace SettMod.SkillStates
 {
@@ -53,8 +54,10 @@ namespace SettMod.SkillStates
                 base.gameObject.layer = LayerIndex.fakeActor.intVal;
                 base.characterMotor.Motor.RebuildCollidableLayers();
             }
-
-            base.PlayCrossfade("FullBody, Override", "ShowStopper", "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
+            string[] Showstopperanim = new string[] { "ShowStopper", "ShowStopper2", "ShowStopper3" };
+            System.Random random = new System.Random();
+            int index = random.Next(Showstopperanim.Length);
+            base.PlayCrossfade("FullBody, Override", Showstopperanim[index], "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
 
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
