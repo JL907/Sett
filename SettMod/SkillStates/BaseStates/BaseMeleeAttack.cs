@@ -87,11 +87,11 @@ namespace SettMod.SkillStates.BaseStates
 
             hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 
-            if (this.animator.GetBool("isMoving") || (!(this.animator.GetBool("isGrounded"))))
+            if (this.animator.GetBool("isMoving"))
             {
                 base.PlayCrossfade("Gesture, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
             }
-            else if ((!(this.animator.GetBool("isMoving"))) && this.animator.GetBool("isGrounded"))
+            else
             {
                 base.PlayCrossfade("FullBody, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
             }

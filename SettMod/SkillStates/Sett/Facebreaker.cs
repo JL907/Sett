@@ -79,7 +79,7 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            //base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             //if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
             base.OnExit();

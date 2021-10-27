@@ -8,9 +8,9 @@ namespace SettMod.SkillStates
 {
     public class HayMaker : BaseSkillState
     {
-        protected float startUp = 0.78f;
+        protected float startUp = 0.836f;
         protected float EarlyExitTime = 1.2f;
-        protected float baseDuration = 1.51f;
+        protected float baseDuration = 3.55f;
         public static float hayMakerRadius = 55f;
         public static float hayMakerDamageCoefficient = Modules.Config.hayMakerDamageCoefficient.Value;
         public static float hayMakerProcCoefficient = 1f;
@@ -18,7 +18,6 @@ namespace SettMod.SkillStates
         public static float hayMakerForce = 1000f;
         public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         private float gritSnapShot;
-        private float maxGritSnapShot;
         private Ray downRay;
         private Vector3 hitSphereScale = new Vector3(50f, 14f, 14f);
 
@@ -53,31 +52,22 @@ namespace SettMod.SkillStates
             base.StartAimMode(0.5f + this.duration, false);
             this.animator = base.GetModelAnimator();
             this.hasFired = false;
-            this.duration = this.baseDuration;
+            this.duration = this.baseDuration / base.attackSpeedStat;
             base.characterMotor.velocity = Vector3.zero;
+            base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.05f);
+            Util.PlaySound("SettWSFX", base.gameObject);
             GritComponent gritComponent = base.GetComponent<GritComponent>();
             float currentGrit = gritComponent.GetCurrentGrit();
-            float maxGrit = gritComponent.GetMaxGrit();
             this.gritSnapShot = currentGrit;
-            this.maxGritSnapShot = maxGrit;
             base.healthComponent.AddBarrierAuthority(currentGrit);
             base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
-            if (this.gritSnapShot >= this.maxGritSnapShot)
-            {
-                base.PlayCrossfade("Fullbody, Override", "HayMaker2", "HayMaker.playbackRate", this.duration, 0.2f);
-            }
-            else
-            {
-                base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.2f);
-            }
-            Util.PlaySound("SettWSFX", base.gameObject);
             if (!this.slamIndicatorInstance) this.CreateIndicator();
 
         }
 
         public override void OnExit()
         {
-            //base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             base.OnExit();
         }
@@ -202,7 +192,7 @@ namespace SettMod.SkillStates
             }
 
 
-            if (this.stopwatch >= this.EarlyExitTime && base.isAuthority && this.hasFired)
+            if (this.stopwatch >= this.EarlyExitTime && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
                 return;

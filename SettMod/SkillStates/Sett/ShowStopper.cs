@@ -173,7 +173,7 @@ namespace SettMod.SkillStates
                 EffectManager.SpawnEffect(EntityStates.LemurianBruiserMonster.SpawnState.spawnEffectPrefab, new EffectData
                 {
                     origin = effectPosition,
-                    scale = 0.25f
+                    scale = 0.5f
                 }, false);
             }
 
