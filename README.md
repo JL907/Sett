@@ -7,7 +7,7 @@
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
 ## General
-Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Face Breaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
+Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Facebreaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
 
 ## Latest Patch Notes `1.3.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
@@ -17,7 +17,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Added extra check to detonate The Showstopper early if Sett hits terrain
 * The Showstopper now bounces sett up 4 units (down from 5)
 * The Showstopper now has 2 new animations and will pick randomly between three on cast.
-* Face Breaker start up and duration now scale off attack speed
+* Facebreaker start up and duration now scale off attack speed
 * Haymaker startup duration is 0.836 (up from 0.8)
 
 
@@ -45,7 +45,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
 * Grab Handler & Heat Crash by Rob & Enforcer Team
-* Mico 27 for helping me out with the grit resource and grit bar and Face Breaker suction
+* Mico 27 for helping me out with the grit resource and grit bar and Facebreaker suction
 * Nines for giving me the inspiration to create a League of Legends champion in Risk of Rain 2
 * All the Testers: Tehbudderking, Samilton, Fancy Mango, Bonji, Zeuslaz3r
 * League of Legends
@@ -60,17 +60,17 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ## Change Log
 `1.3.1`
 * Fixed an issue where Sett's Grit had weird interaction with the item Transcendence.
-* Fixed an issue where Face Breaker was using the wrong on hit animation
+* Fixed an issue where Facebreaker was using the wrong on hit animation
 * Camera now zooms out during The Showstopper
 * Adjusted Sett's M1 sound.
 
 `1.3.0`
-* Fixed an issue where Face Breaker wasn't displaying the on hit animation
+* Fixed an issue where Facebreaker wasn't displaying the on hit animation
 * Added swing sound effect to Knuckle Down and reduced the frequency of grunt sound effect
 * Lowered volume on hit sound effects.
 * Sett's Movement Speed is now 8 M/S (up from 7 M/S)
-* Face Breaker now properly displays correct radius in description.
-* Face Breaker now applies a slow as well as a stun.
+* Facebreaker now properly displays correct radius in description.
+* Facebreaker now applies a slow as well as a stun.
 * Fixed issue where The Showstopper was canceling sprint.
 
 `1.2.8`
@@ -78,13 +78,13 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Bug Fix: Health regen was using the wrong value causing instant healing.
 * Setts Base Health is now 180 (up from 168)
 * Setts Gains 48 Health Per Level (up from 46)
-* Setts Health regen Per Level is 0.2 (up from 0)
+* Setts Health Regen Per Level is 0.2 (up from 0)
 * Setts Base Armor is now 20 (down from 33)
 * Setts Armor Growth Per Level is now 0 (down from 3.3)
 * Setts Base Damage is now 12 (down from 15)
 * Setts Damage Growth Per Level is now 2.8 (down from 3.0)
 * Knuckle Down Damage is now 280%/360% (Down from 350%/500%)
-* Face Breaker Damage is now 400% (Down from 800%)
+* Facebreaker Damage is now 400% (Down from 800%)
 * The Showstopper's Bonus Damage is now 5% of Primary Target's Maximum Health (Down from 10%)
 
 `1.2.7`
@@ -94,7 +94,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 `1.2.6`
 * Fixed an issue with The Showstopper impacting itself on enemy colliders such as Greater Wisps.
-* Face Breaker now has 200 units of suction up from 100 units.
+* Facebreaker now has 200 units of suction up from 100 units.
 
 `1.2.5`
 * Fixed an issue that allowed Sett to become Invincible
@@ -114,7 +114,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 `Patch 1.2.2`
 * Fixed an issue where Haymaker was doing no damage to some bosses
-* Fixed an issue where Face Breaker was not sucking in some enemies
+* Fixed an issue where Facebreaker was not sucking in some enemies
 * The Showstopper bounces Sett a bit higher on impact to prevent clipping.
 * The Showstopper has a fixed height and no longer scales height with movement speed.
 * The Showstopper's initial dash velocity is faster.
@@ -131,19 +131,19 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * The Showstopper now checks if sett is on stable ground before detonating. 
 * The Showstopper detonates early if hits collision.
 * The Showstopper detonates after a fixed amount of time if sett can't find any collision.
-* Face Breaker now pulls all enemies around sett. 
-* Face Breaker now has an indicator.
-* Face Breaker updated visual effect.
-* Face Breaker has an updated description.
+* Facebreaker now pulls all enemies around sett. 
+* Facebreaker now has an indicator.
+* Facebreaker updated visual effect.
+* Facebreaker has an updated description.
 * Haymaker updated visual effect.
 * Haymaker now does TRUE damage.
 * Haymaker should now hit enemies directly in front of Sett.
 * Fixed an issue that caused The Showstopper to retain its hidden invincibility after the skill ended
 
 `Patch 1.1.0`
-* Fixed aiming with Knuckle Down and Face Breaker.
+* Fixed aiming with Knuckle Down and Facebreaker.
 * Knuckle Down has Increased hit box on the sides.
-* Face Breaker now has a wider angle and now originates from character position rather than camera origin.
+* Facebreaker now has a wider angle and now originates from character position rather than camera origin.
 * Sett has rag doll on death.
 * Voice line when selected in character select.
 * Grit now decays 4 seconds after not taking any damage.
