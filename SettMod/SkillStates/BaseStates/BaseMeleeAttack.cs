@@ -211,7 +211,7 @@ namespace SettMod.SkillStates.BaseStates
                 if (index == 0) index = 1;
                 else index = 0;
                 EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
-                if (component && component.state.isAuthority 
+                if (component && component.state.isAuthority
                     && (!(component.state is Roll2))
                     && (!(component.state is HayMaker))
                     && (!(component.state is Facebreaker))

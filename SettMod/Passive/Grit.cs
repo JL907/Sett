@@ -92,7 +92,8 @@ namespace SettMod.Modules
 
         public float GetMaxHealth()
         {
-            if (this.body.inventory.GetItemCount(RoR2Content.Items.ShieldOnly) > 0) {
+            if (this.body.inventory.GetItemCount(RoR2Content.Items.ShieldOnly) > 0)
+            {
                 return this.body.maxShield;
             }
             return this.body.maxHealth;
