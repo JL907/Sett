@@ -15,6 +15,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Fixed an issue where Sett's M1 was usable during skills
 * Added extra check to detonate The Show Stopper early if Sett hits terrain
 * The Show Stopper now bounces sett up 4 units (down from 5)
+* The Show Stopper now has 2 new animations and will pick randomly between three on cast.
 * Facebreaker start up and duration now scale off attack speed
 * Haymaker startup duration is 0.836 (up from 0.8)
 
