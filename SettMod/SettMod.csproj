@@ -25,12 +25,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="icon.png" CopyToOutputDirectory="Always" />
-    <Content Include="README.md" CopyToOutputDirectory="Always" />
-    <Content Include="manifest.json" CopyToOutputDirectory="Always" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>libs\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -290,7 +284,7 @@
 
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="XCOPY &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', '$(ProjectDir)icon.png', '$(TargetDir)manifest.json', '$(ProjectDir)README.md' -DestinationPath '$(ProjectDir)\$(ProjectName) $(Version).zip' -Force" />
+    <Exec Command="XCOPY &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', 'C:\Users\Johnrey\Desktop\Sett\icon.png', 'C:\Users\Johnrey\Desktop\Sett\manifest.json', 'C:\Users\Johnrey\Desktop\Sett\README.md' -DestinationPath 'C:\Users\Johnrey\Desktop\Sett\$(ProjectName) $(Version).zip' -Force" />
   </Target>
 
 </Project>
