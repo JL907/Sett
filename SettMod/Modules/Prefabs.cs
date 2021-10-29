@@ -307,8 +307,8 @@ namespace SettMod.Modules
             characterMotor.walkSpeedPenaltyCoefficient = 1f;
             characterMotor.characterDirection = prefab.GetComponent<CharacterDirection>();
             characterMotor.muteWalkMotion = false;
-            characterMotor.mass = 2000f;
-            characterMotor.airControl = 0.25f;
+            characterMotor.mass = 200f;
+            characterMotor.airControl = 0.55f;
             characterMotor.disableAirControlUntilCollision = false;
             characterMotor.generateParametersOnAwake = true;
         }
