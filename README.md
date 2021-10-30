@@ -11,7 +11,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Latest Patch Notes `1.4.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
-`Full Change logs:` https://github.com/lemonlust/Sett/wiki/Change-Logs
+`Full Change logs:` https://github.com/lemonlust/Sett/blob/main/changelog.md
 
 * Added SFX when selected on character select screen
 * Removed Sett looping through two animations on character select screen
