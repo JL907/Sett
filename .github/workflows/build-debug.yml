@@ -1,0 +1,26 @@
+name: dotnet package
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    env:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      
+      
+    steps:
+      - uses: actions/checkout@v2
+      - name: Checkout and initialise
+        with:
+          submodules: recursive
+          
+      - name: Install dependencies
+        run: dotnet restore --verbosity normal
+        
+      - name: Build Debug
+        run: dotnet build --no-restore --verbosity normal --configuration Debug
+        
+      - name: Test Debug
+        run: dotnet test --no-build --verbosity normal --configuration Debug
