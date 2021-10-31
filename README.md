@@ -15,7 +15,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 * Added SFX when selected on character select screen
 * Removed Sett looping through two animations on character select screen
-* Adjusted Sett's collider and Kinematic Controller
+* Adjusted Sett's collision
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
