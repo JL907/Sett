@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 905142658
+CRC: 1086449823
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9c90ccc48ce91662cd8e3c4a86c230ac
+    Hash: 138fe78c174c4eb8e01a98a4e0d34bda
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -87,7 +87,6 @@ Assets:
 - Assets/Sett/RunHasteFootsteps.anim
 - Assets/Sett/VFX/Textures/sett_base_flare_star.dds
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
-- Assets/Sett/SettDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
 - Assets/Sett/skin0_0.png
@@ -220,6 +219,7 @@ Assets:
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
+- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Materials/matFistSwing.mat
 - Assets/Sett/VFX/Textures/sett_base_distort_ring.dds
 - Assets/Sett/VFX/Textures/sett_base_energy_trail.dds
