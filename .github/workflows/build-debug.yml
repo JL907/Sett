@@ -1,14 +1,14 @@
-name: dotnet package
+name: Debug Build and Test
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  build:
+  build-debug:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x' ]
+        dotnet-version: ['2.0']
 
     steps:
       - uses: actions/checkout@v2
@@ -17,8 +17,8 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore
-      - name: Build
-        run: dotnet build --configuration Release --no-restore
-      - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet restore --verbosity normal
+      - name: Build Debug
+        run: dotnet build --no-restore --verbosity normal --configuration Debug
+      - name: Test Debug
+        run: dotnet test --no-build --verbosity normal --configuration Debug
