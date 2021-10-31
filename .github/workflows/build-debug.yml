@@ -1,28 +1,24 @@
-name: Debug Build and Test
+name: dotnet package
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  build-debug:
+  build:
 
-    runs-on: windows-latest
-    
-    env:
-      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-      
-      
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['3.0', '3.1.x', '5.0.x' ]
+
     steps:
-    
       - uses: actions/checkout@v2
-      - name: Checkout and initialise
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v1.7.2
         with:
-          submodules: recursive
-          
+          dotnet-version: ${{ matrix.dotnet-version }}
       - name: Install dependencies
-        run: dotnet restore --verbosity normal
-        
-      - name: Build Debug
-        run: dotnet build --no-restore --verbosity normal --configuration Debug
-        
-      - name: Test Debug
-        run: dotnet test --no-build --verbosity normal --configuration Debug
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
