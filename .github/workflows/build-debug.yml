@@ -1,16 +1,18 @@
-name: dotnet package
+name: Debug Build and Test
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  build-debug:
 
     runs-on: windows-latest
+    
     env:
       DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
       
       
     steps:
+    
       - uses: actions/checkout@v2
       - name: Checkout and initialise
         with:
