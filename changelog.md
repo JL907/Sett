@@ -1,6 +1,7 @@
 ## Latest Patch Notes `1.4.2`
-* Added Sett SFX when selected on character select screen
+* Added SFX when selected on character select screen
 * Removed Sett looping through two animations on character select screen
+* Adjusted Sett's collision
 
 ## Old Changelogs
 `1.4.1`
