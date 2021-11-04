@@ -6,14 +6,7 @@ using SettMod.Modules.Survivors;
 using SettMod.UI;
 using System;
 using System.Collections.Generic;
-using System.Security;
-using System.Security.Permissions;
 using UnityEngine;
-
-[module: UnverifiableCode]
-#pragma warning disable CS0618 // 'SecurityAction.RequestMinimum' is obsolete: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
-[assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
-#pragma warning restore CS0618 // 'SecurityAction.RequestMinimum' is obsolete: 'Assembly level declarative security is obsolete and is no longer enforced by the CLR by default. See http://go.microsoft.com/fwlink/?LinkID=155570 for more information.'
 
 namespace SettMod
 {
@@ -35,7 +28,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
         public const string MODNAME = "Sett";
-        public const string MODVERSION = "1.4.2";
+        public const string MODVERSION = "1.4.3";
 
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "Jojo";

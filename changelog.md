@@ -1,9 +1,15 @@
-## Latest Patch Notes `1.4.2`
+## Latest Patch Notes `1.4.3`
+* Fixed The Showstopper using incorrect coefficient value for target maximum health.
+* Updated Plugin to use latest version of R2API
+
+---
+
+## Old Patch Notes
+`1.4.2`
 * Added SFX when selected on character select screen
 * Removed Sett looping through two animations on character select screen
 * Adjusted Sett's collision
 
-## Old Changelogs
 `1.4.1`
 * Fixed Standing Knuckle Down animation interrupt on movement
 * Facebreaker now has an idle animation after cast while not moving
