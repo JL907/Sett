@@ -1,7 +1,10 @@
 ## Latest Patch Notes `1.4.3`
 * Fixed The Showstopper using incorrect coefficient value for target maximum health.
+* Updated Plugin to use latest version of R2API
 
-## Old Changelogs
+---
+
+## Old Patch Notes
 `1.4.2`
 * Added SFX when selected on character select screen
 * Removed Sett looping through two animations on character select screen
