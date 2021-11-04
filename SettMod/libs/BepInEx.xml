@@ -87,7 +87,7 @@
         </member>
         <member name="T:BepInEx.Configuration.ConfigEntry`1">
             <summary>
-            Provides access to a single setting inside of a <see cref="T:BepInEx.Configuration.ConfigFile"/>.
+            Provides access to a single setting inside of a <see cref="T:BepInEx.Configuration.ConfigFile" />.
             </summary>
             <typeparam name="T">Type of the setting.</typeparam>
         </member>
@@ -106,7 +106,7 @@
         </member>
         <member name="T:BepInEx.Configuration.ConfigEntryBase">
             <summary>
-            Container for a single setting of a <see cref="T:BepInEx.Configuration.ConfigFile"/>. 
+            Container for a single setting of a <see cref="T:BepInEx.Configuration.ConfigFile" />.
             Each config entry is linked to one config file.
             </summary>
         </member>
@@ -122,7 +122,7 @@
         </member>
         <member name="P:BepInEx.Configuration.ConfigEntryBase.Definition">
             <summary>
-            Category and name of this setting. Used as a unique key for identification within a <see cref="T:BepInEx.Configuration.ConfigFile"/>.
+            Category and name of this setting. Used as a unique key for identification within a <see cref="T:BepInEx.Configuration.ConfigFile" />.
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigEntryBase.Description">
@@ -132,7 +132,7 @@
         </member>
         <member name="P:BepInEx.Configuration.ConfigEntryBase.SettingType">
             <summary>
-            Type of the <see cref="P:BepInEx.Configuration.ConfigEntryBase.BoxedValue"/> that this setting holds.
+            Type of the <see cref="P:BepInEx.Configuration.ConfigEntryBase.BoxedValue" /> that this setting holds.
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigEntryBase.DefaultValue">
@@ -226,7 +226,7 @@
         </member>
         <member name="T:BepInEx.Configuration.ConfigDescription">
             <summary>
-            Metadata of a <see cref="T:BepInEx.Configuration.ConfigEntryBase"/>.
+            Metadata of a <see cref="T:BepInEx.Configuration.ConfigEntryBase" />.
             </summary>
         </member>
         <member name="M:BepInEx.Configuration.ConfigDescription.#ctor(System.String,BepInEx.Configuration.AcceptableValueBase,System.Object[])">
@@ -264,7 +264,7 @@
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.Entries">
             <summary>
-            All config entries inside 
+            All config entries inside
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.ConfigDefinitions">
@@ -275,23 +275,23 @@
         <member name="M:BepInEx.Configuration.ConfigFile.GetConfigEntries">
             <summary>
             Create an array with all config entries inside of this config file. Should be only used for metadata purposes.
-            If you want to access and modify an existing setting then use <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/> 
+            If you want to access and modify an existing setting then use <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)" />
             instead with no description.
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.ConfigFilePath">
             <summary>
-            Full path to the config file. The file might not exist until a setting is added and changed, or <see cref="M:BepInEx.Configuration.ConfigFile.Save"/> is called.
+            Full path to the config file. The file might not exist until a setting is added and changed, or <see cref="M:BepInEx.Configuration.ConfigFile.Save" /> is called.
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.SaveOnConfigSet">
             <summary>
-            If enabled, writes the config to disk every time a value is set. 
-            If disabled, you have to manually use <see cref="M:BepInEx.Configuration.ConfigFile.Save"/> or the changes will be lost!
+            If enabled, writes the config to disk every time a value is set.
+            If disabled, you have to manually use <see cref="M:BepInEx.Configuration.ConfigFile.Save" /> or the changes will be lost!
             </summary>
         </member>
         <member name="M:BepInEx.Configuration.ConfigFile.#ctor(System.String,System.Boolean)">
-            <inheritdoc cref="M:BepInEx.Configuration.ConfigFile.#ctor(System.String,System.Boolean,BepInEx.BepInPlugin)"/>
+            <inheritdoc cref="M:BepInEx.Configuration.ConfigFile.#ctor(System.String,System.Boolean,BepInEx.BepInPlugin)" />
         </member>
         <member name="M:BepInEx.Configuration.ConfigFile.#ctor(System.String,System.Boolean,BepInEx.BepInPlugin)">
             <summary>
@@ -315,7 +315,7 @@
             <summary>
             Access one of the existing settings. If the setting has not been added yet, null is returned.
             If the setting exists but has a different type than T, an exception is thrown.
-            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/>.
+            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)" />.
             </summary>
             <typeparam name="T">Type of the value contained in this setting.</typeparam>
             <param name="configDefinition">Section and Key of the setting.</param>
@@ -324,7 +324,7 @@
             <summary>
             Access one of the existing settings. If the setting has not been added yet, null is returned.
             If the setting exists but has a different type than T, an exception is thrown.
-            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/>.
+            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.AddSetting``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)" />.
             </summary>
             <typeparam name="T">Type of the value contained in this setting.</typeparam>
             <param name="section">Section/category/group of the setting. Settings are grouped by this.</param>
@@ -334,7 +334,7 @@
             <summary>
             Access one of the existing settings. If the setting has not been added yet, false is returned. Otherwise, true.
             If the setting exists but has a different type than T, an exception is thrown.
-            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.Bind``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/>.
+            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.Bind``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)" />.
             </summary>
             <typeparam name="T">Type of the value contained in this setting.</typeparam>
             <param name="configDefinition">Section and Key of the setting.</param>
@@ -344,7 +344,7 @@
             <summary>
             Access one of the existing settings. If the setting has not been added yet, null is returned.
             If the setting exists but has a different type than T, an exception is thrown.
-            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.Bind``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/>.
+            New settings should be added with <see cref="M:BepInEx.Configuration.ConfigFile.Bind``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)" />.
             </summary>
             <typeparam name="T">Type of the value contained in this setting.</typeparam>
             <param name="section">Section/category/group of the setting. Settings are grouped by this.</param>
@@ -467,7 +467,6 @@
         </member>
         <member name="P:BepInEx.Configuration.ConfigFile.Item(System.String,System.String)">
             <summary>
-            
             </summary>
             <param name="section"></param>
             <param name="key"></param>
@@ -486,13 +485,13 @@
         </member>
         <member name="T:BepInEx.Configuration.ConfigWrapper`1">
             <summary>
-            Provides access to a single setting inside of a <see cref="T:BepInEx.Configuration.ConfigFile"/>.
+            Provides access to a single setting inside of a <see cref="T:BepInEx.Configuration.ConfigFile" />.
             </summary>
             <typeparam name="T">Type of the setting.</typeparam>
         </member>
         <member name="P:BepInEx.Configuration.ConfigWrapper`1.ConfigEntry">
             <summary>
-            Entry of this setting in the <see cref="T:BepInEx.Configuration.ConfigFile"/>.
+            Entry of this setting in the <see cref="T:BepInEx.Configuration.ConfigFile" />.
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.ConfigWrapper`1.Definition">
@@ -518,13 +517,13 @@
         <member name="T:BepInEx.Configuration.KeyboardShortcut">
             <summary>
             A keyboard shortcut that can be used in Update method to check if user presses a key combo. The shortcut is only
-            triggered when the user presses the exact combination. For example, <c>F + LeftCtrl</c> will trigger only if user 
+            triggered when the user presses the exact combination. For example, <c>F + LeftCtrl</c> will trigger only if user
             presses and holds only LeftCtrl, and then presses F. If any other keys are pressed, the shortcut will not trigger.
-            
-            Can be used as a value of a setting in <see cref="M:BepInEx.Configuration.ConfigFile.Bind``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)"/> 
+
+            Can be used as a value of a setting in <see cref="M:BepInEx.Configuration.ConfigFile.Bind``1(BepInEx.Configuration.ConfigDefinition,``0,BepInEx.Configuration.ConfigDescription)" />
             to allow user to change this shortcut and have the changes saved.
-            
-            How to use: Use <see cref="M:BepInEx.Configuration.KeyboardShortcut.IsDown"/> in this class instead of <see cref="M:UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode)"/> in the Update loop.
+
+            How to use: Use <see cref="M:BepInEx.Configuration.KeyboardShortcut.IsDown" /> in this class instead of <see cref="M:UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode)" /> in the Update loop.
             </summary>
         </member>
         <member name="F:BepInEx.Configuration.KeyboardShortcut.Empty">
@@ -547,7 +546,7 @@
         <member name="P:BepInEx.Configuration.KeyboardShortcut.MainKey">
             <summary>
             Main key of the key combination. It has to be pressed / let go last for the combination to be triggered.
-            If the combination is empty, <see cref="F:UnityEngine.KeyCode.None"/> is returned.
+            If the combination is empty, <see cref="F:UnityEngine.KeyCode.None" /> is returned.
             </summary>
         </member>
         <member name="P:BepInEx.Configuration.KeyboardShortcut.Modifiers">
@@ -630,7 +629,7 @@
         </member>
         <member name="M:BepInEx.Configuration.TomlTypeConverter.AddConverter(System.Type,BepInEx.Configuration.TypeConverter)">
             <summary>
-            Add a new type converter for a given type. 
+            Add a new type converter for a given type.
             If a different converter is already added, this call is ignored and false is returned.
             </summary>
         </member>
@@ -640,7 +639,7 @@
             </summary>
         </member>
         <member name="M:BepInEx.Configuration.TomlTypeConverter.GetSupportedTypes">
-            <summary>		
+            <summary>
             Give a list of types with registered converters.
             </summary>
         </member>
@@ -684,7 +683,7 @@
         <member name="T:BepInEx.PluginInfo">
             <summary>
             Data class that represents information about a loadable BepInEx plugin.
-            Contains all metadata and additional info required for plugin loading by <see cref="T:BepInEx.Bootstrap.Chainloader"/>.
+            Contains all metadata and additional info required for plugin loading by <see cref="T:BepInEx.Bootstrap.Chainloader" />.
             </summary>
         </member>
         <member name="P:BepInEx.PluginInfo.Metadata">
@@ -694,17 +693,17 @@
         </member>
         <member name="P:BepInEx.PluginInfo.Processes">
             <summary>
-            Collection of <see cref="T:BepInEx.BepInProcess"/> attributes that describe what processes the plugin can run on.
+            Collection of <see cref="T:BepInEx.BepInProcess" /> attributes that describe what processes the plugin can run on.
             </summary>
         </member>
         <member name="P:BepInEx.PluginInfo.Dependencies">
             <summary>
-            Collection of <see cref="T:BepInEx.BepInDependency"/> attributes that describe what plugins this plugin depends on.
+            Collection of <see cref="T:BepInEx.BepInDependency" /> attributes that describe what plugins this plugin depends on.
             </summary>
         </member>
         <member name="P:BepInEx.PluginInfo.Incompatibilities">
             <summary>
-            Collection of <see cref="T:BepInEx.BepInIncompatibility"/> attributes that describe what plugins this plugin
+            Collection of <see cref="T:BepInEx.BepInIncompatibility" /> attributes that describe what plugins this plugin
             is incompatible with.
             </summary>
         </member>
@@ -783,16 +782,16 @@
         </member>
         <member name="M:BepInEx.BepInDependency.#ctor(System.String,BepInEx.BepInDependency.DependencyFlags)">
             <summary>
-            Marks this <see cref="T:BepInEx.BaseUnityPlugin"/> as depenant on another plugin. The other plugin will be loaded before this one.
-            If the other plugin doesn't exist, what happens depends on the <see cref="P:BepInEx.BepInDependency.Flags"/> parameter.
+            Marks this <see cref="T:BepInEx.BaseUnityPlugin" /> as depenant on another plugin. The other plugin will be loaded before this one.
+            If the other plugin doesn't exist, what happens depends on the <see cref="P:BepInEx.BepInDependency.Flags" /> parameter.
             </summary>
             <param name="DependencyGUID">The GUID of the referenced plugin.</param>
             <param name="Flags">The flags associated with this dependency definition.</param>
         </member>
         <member name="M:BepInEx.BepInDependency.#ctor(System.String,System.String)">
             <summary>
-            Marks this <see cref="T:BepInEx.BaseUnityPlugin"/> as depenant on another plugin. The other plugin will be loaded before this one.
-            If the other plugin doesn't exist or is of a version below <see cref="P:BepInEx.BepInDependency.MinimumVersion"/>, this plugin will not load and an error will be logged instead.
+            Marks this <see cref="T:BepInEx.BaseUnityPlugin" /> as depenant on another plugin. The other plugin will be loaded before this one.
+            If the other plugin doesn't exist or is of a version below <see cref="P:BepInEx.BepInDependency.MinimumVersion" />, this plugin will not load and an error will be logged instead.
             </summary>
             <param name="DependencyGUID">The GUID of the referenced plugin.</param>
             <param name="MinimumDependencyVersion">The minimum version of the referenced plugin.</param>
@@ -810,7 +809,7 @@
         </member>
         <member name="M:BepInEx.BepInIncompatibility.#ctor(System.String)">
             <summary>
-            Marks this <see cref="T:BepInEx.BaseUnityPlugin"/> as incompatible with another plugin. 
+            Marks this <see cref="T:BepInEx.BaseUnityPlugin" /> as incompatible with another plugin.
             If the other plugin exists, this plugin will not be loaded and a warning will be shown.
             </summary>
             <param name="IncompatibilityGUID">The GUID of the referenced plugin.</param>
@@ -888,7 +887,7 @@
         </member>
         <member name="P:BepInEx.Bootstrap.Chainloader.Plugins">
             <summary>
-            List of all <see cref="T:BepInEx.BepInPlugin"/> loaded via the chainloader.
+            List of all <see cref="T:BepInEx.BepInPlugin" /> loaded via the chainloader.
             </summary>
         </member>
         <member name="P:BepInEx.Bootstrap.Chainloader.DependencyErrors">
@@ -909,10 +908,10 @@
         </member>
         <member name="M:BepInEx.Bootstrap.Chainloader.ToPluginInfo(Mono.Cecil.TypeDefinition)">
             <summary>
-            Analyzes the given type definition and attempts to convert it to a valid <see cref="T:BepInEx.PluginInfo"/>
+            Analyzes the given type definition and attempts to convert it to a valid <see cref="T:BepInEx.PluginInfo" />
             </summary>
             <param name="type">Type definition to analyze.</param>
-            <returns>If the type represent a valid plugin, returns a <see cref="T:BepInEx.PluginInfo"/> instance. Otherwise, return null.</returns>
+            <returns>If the type represent a valid plugin, returns a <see cref="T:BepInEx.PluginInfo" /> instance. Otherwise, return null.</returns>
         </member>
         <member name="M:BepInEx.Bootstrap.Chainloader.Start">
             <summary>
@@ -921,7 +920,7 @@
         </member>
         <member name="T:BepInEx.Bootstrap.ICacheable">
             <summary>
-            A cacheable metadata item. Can be used with <see cref="M:BepInEx.Bootstrap.TypeLoader.LoadAssemblyCache``1(System.String)"/> and <see cref="M:BepInEx.Bootstrap.TypeLoader.SaveAssemblyCache``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{``0}})"/> to cache plugin metadata.
+            A cacheable metadata item. Can be used with <see cref="M:BepInEx.Bootstrap.TypeLoader.LoadAssemblyCache``1(System.String)" /> and <see cref="M:BepInEx.Bootstrap.TypeLoader.SaveAssemblyCache``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{``0}})" /> to cache plugin metadata.
             </summary>
         </member>
         <member name="M:BepInEx.Bootstrap.ICacheable.Save(System.IO.BinaryWriter)">
@@ -959,17 +958,17 @@
         </member>
         <member name="F:BepInEx.Bootstrap.TypeLoader.Resolver">
             <summary>
-            Default assembly resolved used by the <see cref="T:BepInEx.Bootstrap.TypeLoader"/>
+            Default assembly resolved used by the <see cref="T:BepInEx.Bootstrap.TypeLoader" />
             </summary>
         </member>
         <member name="F:BepInEx.Bootstrap.TypeLoader.ReaderParameters">
             <summary>
-            Default reader parameters used by <see cref="T:BepInEx.Bootstrap.TypeLoader"/>
+            Default reader parameters used by <see cref="T:BepInEx.Bootstrap.TypeLoader" />
             </summary>
         </member>
         <member name="E:BepInEx.Bootstrap.TypeLoader.AssemblyResolve">
             <summary>
-            Event fired when <see cref="T:BepInEx.Bootstrap.TypeLoader"/> fails to resolve a type during type loading.
+            Event fired when <see cref="T:BepInEx.Bootstrap.TypeLoader" /> fails to resolve a type during type loading.
             </summary>
         </member>
         <member name="M:BepInEx.Bootstrap.TypeLoader.FindPluginTypes``1(System.String,System.Func{Mono.Cecil.TypeDefinition,``0},System.Func{Mono.Cecil.AssemblyDefinition,System.Boolean},System.String)">
@@ -1023,8 +1022,8 @@
         </member>
         <member name="P:BepInEx.BaseUnityPlugin.Config">
             <summary>
-            Default config file tied to this plugin. The config file will not be created until 
-            any settings are added and changed, or <see cref="M:BepInEx.Configuration.ConfigFile.Save"/> is called.
+            Default config file tied to this plugin. The config file will not be created until
+            any settings are added and changed, or <see cref="M:BepInEx.Configuration.ConfigFile.Save" /> is called.
             </summary>
         </member>
         <member name="M:BepInEx.BaseUnityPlugin.#ctor">
@@ -1111,9 +1110,9 @@
         </member>
         <member name="M:BepInEx.Logging.LogEventArgs.ToStringLine">
             <summary>
-            Like <see cref="M:BepInEx.Logging.LogEventArgs.ToString"/> but appends newline at the end.
+            Like <see cref="M:BepInEx.Logging.LogEventArgs.ToString" /> but appends newline at the end.
             </summary>
-            <returns>Same output as <see cref="M:BepInEx.Logging.LogEventArgs.ToString"/> but with new line.</returns>
+            <returns>Same output as <see cref="M:BepInEx.Logging.LogEventArgs.ToString" /> but with new line.</returns>
         </member>
         <member name="T:BepInEx.Logging.Logger">
             <summary>
@@ -1142,7 +1141,7 @@
             Creates a new log source with a name and attaches it to log sources.
             </summary>
             <param name="sourceName">Name of the log source to create.</param>
-            <returns>An instance of <see cref="T:BepInEx.Logging.ManualLogSource"/> that allows to write logs.</returns>
+            <returns>An instance of <see cref="T:BepInEx.Logging.ManualLogSource" /> that allows to write logs.</returns>
         </member>
         <member name="T:BepInEx.Logging.LogLevel">
             <summary>
@@ -1217,7 +1216,7 @@
             <summary>
             Handle an incoming log event.
             </summary>
-            <param name="sender">Log source that sent the event. Don't use; instead use <see cref="P:BepInEx.Logging.LogEventArgs.Source"/></param>
+            <param name="sender">Log source that sent the event. Don't use; instead use <see cref="P:BepInEx.Logging.LogEventArgs.Source" /></param>
             <param name="eventArgs">Information about the log message.</param>
         </member>
         <member name="T:BepInEx.Logging.ILogSource">
@@ -1232,7 +1231,7 @@
         </member>
         <member name="E:BepInEx.Logging.ILogSource.LogEvent">
             <summary>
-            Event that sends the log message. Call <see cref="M:System.EventHandler.Invoke(System.Object,System.EventArgs)"/> to send a log message.
+            Event that sends the log message. Call <see cref="M:System.EventHandler.Invoke(System.Object,System.EventArgs)" /> to send a log message.
             </summary>
         </member>
         <member name="T:BepInEx.Logging.ManualLogSource">
@@ -1261,37 +1260,37 @@
         </member>
         <member name="M:BepInEx.Logging.ManualLogSource.LogFatal(System.Object)">
             <summary>
-            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Fatal"/> level.
+            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Fatal" /> level.
             </summary>
             <param name="data">Data to log.</param>
         </member>
         <member name="M:BepInEx.Logging.ManualLogSource.LogError(System.Object)">
             <summary>
-            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Error"/> level.
+            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Error" /> level.
             </summary>
             <param name="data">Data to log.</param>
         </member>
         <member name="M:BepInEx.Logging.ManualLogSource.LogWarning(System.Object)">
             <summary>
-            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Warning"/> level.
+            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Warning" /> level.
             </summary>
             <param name="data">Data to log.</param>
         </member>
         <member name="M:BepInEx.Logging.ManualLogSource.LogMessage(System.Object)">
             <summary>
-            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Message"/> level.
+            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Message" /> level.
             </summary>
             <param name="data">Data to log.</param>
         </member>
         <member name="M:BepInEx.Logging.ManualLogSource.LogInfo(System.Object)">
             <summary>
-            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Info"/> level.
+            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Info" /> level.
             </summary>
             <param name="data">Data to log.</param>
         </member>
         <member name="M:BepInEx.Logging.ManualLogSource.LogDebug(System.Object)">
             <summary>
-            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Debug"/> level.
+            Logs a message with <see cref="F:BepInEx.Logging.LogLevel.Debug" /> level.
             </summary>
             <param name="data">Data to log.</param>
         </member>
@@ -1300,9 +1299,9 @@
         </member>
         <member name="T:BepInEx.Logging.TraceLogSource">
             <summary>
-            A source that routes all logs from <see cref="T:System.Diagnostics.Trace"/> API to BepInEx logger.
+            A source that routes all logs from <see cref="T:System.Diagnostics.Trace" /> API to BepInEx logger.
             </summary>
-            <inheritdoc cref="T:System.Diagnostics.TraceListener"/>
+            <inheritdoc cref="T:System.Diagnostics.TraceListener" />
         </member>
         <member name="P:BepInEx.Logging.TraceLogSource.IsListening">
             <summary>
@@ -1327,13 +1326,13 @@
         </member>
         <member name="M:BepInEx.Logging.TraceLogSource.Write(System.String)">
             <summary>
-            Writes a message to the underlying <see cref="T:BepInEx.Logging.ManualLogSource"/> instance.
+            Writes a message to the underlying <see cref="T:BepInEx.Logging.ManualLogSource" /> instance.
             </summary>
             <param name="message">The message to write.</param>
         </member>
         <member name="M:BepInEx.Logging.TraceLogSource.WriteLine(System.String)">
             <summary>
-            Writes a message and a newline to the underlying <see cref="T:BepInEx.Logging.ManualLogSource"/> instance.
+            Writes a message and a newline to the underlying <see cref="T:BepInEx.Logging.ManualLogSource" /> instance.
             </summary>
             <param name="message">The message to write.</param>
         </member>
@@ -1466,8 +1465,8 @@
         <member name="P:BepInEx.ThreadingHelper.SynchronizingObject">
             <summary>
             Gives methods for invoking delegates on the main unity thread, both synchronously and asynchronously.
-            Can be used in many built-in framework types, for example <see cref="P:System.IO.FileSystemWatcher.SynchronizingObject"/> 
-            and <see cref="P:System.Timers.Timer.SynchronizingObject"/> to make their events fire on the main unity thread.
+            Can be used in many built-in framework types, for example <see cref="P:System.IO.FileSystemWatcher.SynchronizingObject" />
+            and <see cref="P:System.Timers.Timer.SynchronizingObject" /> to make their events fire on the main unity thread.
             </summary>
         </member>
         <member name="M:BepInEx.ThreadingHelper.StartSyncInvoke(System.Action)">
@@ -1494,11 +1493,11 @@
         </member>
         <member name="T:BepInEx.ThreadingExtensions">
             <summary>
-            Convenience extensions for utilizing multiple threads and using the <see cref="T:BepInEx.ThreadingHelper"/>.
+            Convenience extensions for utilizing multiple threads and using the <see cref="T:BepInEx.ThreadingHelper" />.
             </summary>
         </member>
         <member name="M:BepInEx.ThreadingExtensions.RunParallel``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Int32)">
-            <inheritdoc cref="M:BepInEx.ThreadingExtensions.RunParallel``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Int32)"/>
+            <inheritdoc cref="M:BepInEx.ThreadingExtensions.RunParallel``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Int32)" />
         </member>
         <member name="M:BepInEx.ThreadingExtensions.RunParallel``2(System.Collections.Generic.IList{``0},System.Func{``0,``1},System.Int32)">
             <summary>
@@ -1520,7 +1519,7 @@
         </member>
         <member name="P:BepInEx.Utility.CLRSupportsDynamicAssemblies">
             <summary>
-            Whether current Common Language Runtime supports dynamic method generation using <see cref="N:System.Reflection.Emit"/> namespace.
+            Whether current Common Language Runtime supports dynamic method generation using <see cref="N:System.Reflection.Emit" /> namespace.
             </summary>
         </member>
         <member name="M:BepInEx.Utility.TryDo(System.Action,System.Exception@)">

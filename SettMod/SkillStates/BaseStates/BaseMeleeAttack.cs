@@ -9,44 +9,103 @@ namespace SettMod.SkillStates.BaseStates
 {
     public class BaseMeleeAttack : BaseSkillState
     {
+        public static float baseDurationBeforeInterruptable;
+        public float duration;
         public int swingIndex;
 
-        protected string hitboxName = "Sword";
-
-        protected DamageType damageType = DamageType.Generic;
-        protected float damageCoefficient = 3.5f;
-        protected float procCoefficient = 1f;
-        protected float pushForce = 300f;
-        protected Vector3 bonusForce = Vector3.zero;
-
-
+        protected Animator animator;
+        protected float attackRecoil = 1.15f;
         protected float baseDuration = 0.9f;
         protected float baseEarlyExitTime = 0.58f;
-        public static float baseDurationBeforeInterruptable;
-        private float durationBeforeInterruptable;
-
-        protected float attackRecoil = 1.15f;
-        protected float hitHopVelocity = 4f;
-
-        protected string swingSoundString = "";
-        protected string hitSoundString = "";
-        protected string muzzleString = "SwingCenter";
-        protected GameObject swingEffectPrefab;
+        protected Vector3 bonusForce = Vector3.zero;
+        protected float damageCoefficient = 3.5f;
+        protected DamageType damageType = DamageType.Generic;
+        protected string hitboxName = "Sword";
         protected GameObject hitEffectPrefab;
+        protected float hitHopVelocity = 4f;
+        protected string hitSoundString = "";
         protected NetworkSoundEventIndex impactSound;
-
-        private float earlyExitDuration;
-        public float duration;
-        private bool hasFired;
-        private float hitPauseTimer;
-        private OverlapAttack attack;
         protected bool inHitPause;
-        private bool hasHopped;
+        protected string muzzleString = "SwingCenter";
+        protected float procCoefficient = 1f;
+        protected float pushForce = 300f;
         protected float stopwatch;
-        protected Animator animator;
+        protected GameObject swingEffectPrefab;
+        protected string swingSoundString = "";
+        private OverlapAttack attack;
+        private float durationBeforeInterruptable;
+        private float earlyExitDuration;
+        private bool hasFired;
+        private bool hasHopped;
+        private float hitPauseTimer;
         private BaseState.HitStopCachedState hitStopCachedState;
         private Transform modelBaseTransform;
         private Vector3 storedVelocity;
+
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            this.hitPauseTimer -= Time.fixedDeltaTime;
+
+            if (this.hitPauseTimer <= 0f && this.inHitPause)
+            {
+                base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
+                this.inHitPause = false;
+                base.characterMotor.velocity = this.storedVelocity;
+            }
+
+            if (!this.inHitPause)
+            {
+                this.stopwatch += Time.fixedDeltaTime;
+            }
+            else
+            {
+                if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
+                if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
+            }
+
+            if (this.stopwatch >= this.duration * 0.2f && this.stopwatch <= this.duration * 0.4)
+            {
+                this.FireAttack();
+            }
+            if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
+            {
+                int index = this.swingIndex;
+                if (index == 0) index = 1;
+                else index = 0;
+                EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
+                if (component && component.state.isAuthority
+                    && (!(component.state is Roll2))
+                    && (!(component.state is HayMaker))
+                    && (!(component.state is Facebreaker))
+                    && (!(component.state is ShowStopper)))
+                {
+                    this.outer.SetNextState(new BaseMeleeAttack
+                    {
+                        swingIndex = index
+                    });
+                }
+                return;
+            }
+
+            if (base.fixedAge >= this.duration && base.isAuthority)
+            {
+                this.outer.SetNextStateToMain();
+                return;
+            }
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
+        }
+
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            base.OnDeserialize(reader);
+            this.swingIndex = reader.ReadInt32();
+        }
 
         public override void OnEnter()
         {
@@ -113,12 +172,28 @@ namespace SettMod.SkillStates.BaseStates
 
         public override void OnExit()
         {
-
             if (!this.hasFired) this.FireAttack();
             //this.animator.SetBool("attacking", false);
             //base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.OnExit();
+        }
 
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+            writer.Write(this.swingIndex);
+        }
+
+        protected virtual void SetNextState()
+        {
+            int index = this.swingIndex;
+            if (index == 0) index = 1;
+            else index = 0;
+
+            this.outer.SetNextState(new BaseMeleeAttack
+            {
+                swingIndex = index
+            });
         }
 
         private void FireAttack()
@@ -163,90 +238,6 @@ namespace SettMod.SkillStates.BaseStates
                     }
                 }
             }
-        }
-
-        protected virtual void SetNextState()
-        {
-
-            int index = this.swingIndex;
-            if (index == 0) index = 1;
-            else index = 0;
-
-            this.outer.SetNextState(new BaseMeleeAttack
-            {
-                swingIndex = index
-            });
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-
-            this.hitPauseTimer -= Time.fixedDeltaTime;
-
-            if (this.hitPauseTimer <= 0f && this.inHitPause)
-            {
-                base.ConsumeHitStopCachedState(this.hitStopCachedState, base.characterMotor, this.animator);
-                this.inHitPause = false;
-                base.characterMotor.velocity = this.storedVelocity;
-            }
-
-            if (!this.inHitPause)
-            {
-                this.stopwatch += Time.fixedDeltaTime;
-            }
-            else
-            {
-                if (base.characterMotor) base.characterMotor.velocity = Vector3.zero;
-                if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
-            }
-
-            if (this.stopwatch >= this.duration * 0.2f && this.stopwatch <= this.duration * 0.4)
-            {
-                this.FireAttack();
-            }
-            if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
-            {
-                int index = this.swingIndex;
-                if (index == 0) index = 1;
-                else index = 0;
-                EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
-                if (component && component.state.isAuthority
-                    && (!(component.state is Roll2))
-                    && (!(component.state is HayMaker))
-                    && (!(component.state is Facebreaker))
-                    && (!(component.state is ShowStopper)))
-                {
-                    this.outer.SetNextState(new BaseMeleeAttack
-                    {
-                        swingIndex = index
-                    });
-                }
-                return;
-            }
-
-            if (base.fixedAge >= this.duration && base.isAuthority)
-            {
-                this.outer.SetNextStateToMain();
-                return;
-            }
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.Skill;
-        }
-
-        public override void OnSerialize(NetworkWriter writer)
-        {
-            base.OnSerialize(writer);
-            writer.Write(this.swingIndex);
-        }
-
-        public override void OnDeserialize(NetworkReader reader)
-        {
-            base.OnDeserialize(reader);
-            this.swingIndex = reader.ReadInt32();
         }
     }
 }

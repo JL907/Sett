@@ -48,7 +48,6 @@ namespace SettMod.Modules.Survivors
             jumpCount = Modules.Config.jumpCount.Value
         };
 
-
         internal static Material settMat = Modules.Assets.CreateMaterial("SettMat");
         internal override int mainRendererIndex { get; set; } = 0;
 
@@ -63,6 +62,7 @@ namespace SettMod.Modules.Survivors
 
         // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
+
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
@@ -87,7 +87,6 @@ namespace SettMod.Modules.Survivors
 
         internal override void InitializeHitboxes()
         {
-
             ChildLocator childLocator = bodyPrefab.GetComponentInChildren<ChildLocator>();
             GameObject model = childLocator.gameObject;
 
@@ -96,18 +95,16 @@ namespace SettMod.Modules.Survivors
 
             Transform fbhitboxTransform = childLocator.FindChild("FaceBreakerHitbox");
             Modules.Prefabs.SetupHitbox(model, fbhitboxTransform, "FaceBreaker");
-
-
         }
 
         internal override void InitializeSkills()
         {
-
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
             string prefix = SettPlugin.developerPrefix;
 
             #region Primary
+
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
 
             string desc = "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(280% damage)</color> and a Right Punch <color=#f68835>(360% damage)</color>";
@@ -137,13 +134,13 @@ namespace SettMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-
             });
             Modules.Skills.AddPrimarySkill(bodyPrefab, mySkillDef);
 
-            #endregion
+            #endregion Primary
 
             #region Secondary
+
             desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 unit</color> radius of him, dealing <color=#f68835>400% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.";
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
@@ -171,13 +168,14 @@ namespace SettMod.Modules.Survivors
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1,
-
             });
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
-            #endregion
+
+            #endregion Secondary
 
             #region Utility
+
             desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1200%</color> <color=#d62d20>(+5% of primary target's total health)</color> damage to all enemies near where they land.";
 
             LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
@@ -208,14 +206,15 @@ namespace SettMod.Modules.Survivors
             });
 
             Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
-            #endregion
+
+            #endregion Utility
 
             #region Special
+
             desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1400%</color> <color=#d62d20>(+300% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
 
             LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
-
 
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -242,13 +241,12 @@ namespace SettMod.Modules.Survivors
             });
 
             Modules.Skills.AddSpecialSkills(bodyPrefab, bombSkillDef);
-            #endregion
 
+            #endregion Special
         }
 
         internal override void InitializeSkins()
         {
-
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
@@ -262,6 +260,7 @@ namespace SettMod.Modules.Survivors
             List<SkinDef> skins = new List<SkinDef>();
 
             #region DefaultSkin
+
             SkinDef defaultSkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "SETT_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square"),
                 defaultRenderers,
@@ -277,10 +276,12 @@ namespace SettMod.Modules.Survivors
                 },
             };
 
-
             skins.Add(defaultSkin);
-            #endregion
+
+            #endregion DefaultSkin
+
             /*
+
             #region Obsidian
 
             Material masteryMat = Modules.Assets.CreateMaterial("SettObsidianMat");
@@ -303,14 +304,13 @@ namespace SettMod.Modules.Survivors
                     renderer = defaultRenderers[0].renderer
                 },
             };
-            
 
             skins.Add(masterySkin);
-            #endregion
+
+            #endregion Obsidian
 
             */
             skinController.skins = skins.ToArray();
-
         }
 
         internal override void SetItemDisplays()
@@ -319,7 +319,9 @@ namespace SettMod.Modules.Survivors
 
             // add item displays here
             //  HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
+
             #region Item Displays
+
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
                 keyAsset = RoR2Content.Equipment.Jetpack,
@@ -2909,7 +2911,8 @@ localScale = new Vector3(0.1233F, 0.1233F, 0.1233F),
                     }
                 }
             });
-            #endregion
+
+            #endregion Item Displays
 
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
             itemDisplayRuleSet.GenerateRuntimeValues();

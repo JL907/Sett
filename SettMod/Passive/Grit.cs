@@ -20,6 +20,7 @@ namespace SettMod.Modules
 #pragma warning disable CS0414 // The field 'GritComponent.isDecaying' is assigned but its value is never used
         private bool isDecaying = false;
 #pragma warning restore CS0414 // The field 'GritComponent.isDecaying' is assigned but its value is never used
+
         public float NetworkGrit
         {
             get
@@ -32,7 +33,6 @@ namespace SettMod.Modules
                 base.SetSyncVar<float>(value, ref this.grit, 1U);
             }
         }
-
 
         public void Awake()
         {
@@ -149,7 +149,6 @@ namespace SettMod.Modules
             }
             if (throttleUpdateTime >= MaxTrottleUpdateTime && gritUptimeStopwatch > GritMaxUptime)
             {
-
                 throttleUpdateTime = 0f;
                 var gritDecayAmount = 0.2f;
                 var snapShotGrit = this.NetworkGrit;
@@ -169,7 +168,6 @@ namespace SettMod.Modules
                 return Util.HasEffectiveAuthority(this.outer.networkIdentity);
             }
         }
-
 
         public void OnDamageDealtServer(DamageReport damageReport)
         {
@@ -220,12 +218,9 @@ namespace SettMod.Modules
             }
         }
 
-
         [HideInInspector]
         [SyncVar]
         [Tooltip("How much Grit this object has.")]
         public float grit = 0f;
     }
-
-
 }

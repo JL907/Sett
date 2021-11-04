@@ -151,7 +151,7 @@
             </summary>
             <param name="path">The path to the asset</param>
             <param name="type">The type of the asset to find</param>
-            <returns>object of type <paramref name="type"/></returns>
+            <returns>object of type <paramref name="type" /></returns>
         </member>
         <member name="M:R2API.AssetBundleResourcesProvider.LoadAsync(System.String,System.Type)">
             <summary>
@@ -159,7 +159,7 @@
             </summary>
             <param name="path">the path to the asset</param>
             <param name="type">the type of the asset to find</param>
-            <returns>object of type <paramref name="type"/></returns>
+            <returns>object of type <paramref name="type" /></returns>
         </member>
         <member name="M:R2API.AssetBundleResourcesProvider.LoadAll(System.Type)">
             <summary>9
@@ -237,9 +237,9 @@
         <member name="M:R2API.DamageAPI.ReserveDamageType">
             <summary>
             Reserve ModdedDamageType to use it with
-            <see cref="M:R2API.DamageAPI.AddModdedDamageType(RoR2.DamageInfo,R2API.DamageAPI.ModdedDamageType)"/>,
-            <see cref="M:R2API.DamageAPI.RemoveModdedDamageType(RoR2.DamageInfo,R2API.DamageAPI.ModdedDamageType)"/> and
-            <see cref="M:R2API.DamageAPI.HasModdedDamageType(RoR2.DamageInfo,R2API.DamageAPI.ModdedDamageType)"/>
+            <see cref="M:R2API.DamageAPI.AddModdedDamageType(RoR2.DamageInfo,R2API.DamageAPI.ModdedDamageType)" />,
+            <see cref="M:R2API.DamageAPI.RemoveModdedDamageType(RoR2.DamageInfo,R2API.DamageAPI.ModdedDamageType)" /> and
+            <see cref="M:R2API.DamageAPI.HasModdedDamageType(RoR2.DamageInfo,R2API.DamageAPI.ModdedDamageType)" />
             </summary>
             <returns></returns>
         </member>
@@ -494,7 +494,7 @@
         </member>
         <member name="M:R2API.DamageAPI.ModdedDamageTypeHolder.MakeCopy">
             <summary>
-            Makes a copy of this instance 
+            Makes a copy of this instance
             </summary>
             <returns></returns>
         </member>
@@ -609,7 +609,6 @@
         </member>
         <member name="T:R2API.DeployableAPI.GetDeployableSameSlotLimit">
             <summary>
-            
             </summary>
             <param name="self">Instance of a `CharacterMaster` for which this method is executed</param>
             <param name="deployableCountMultiplier">Multiplier for minion count (if Swarms artifact is enabled value will be 2).
@@ -1077,14 +1076,14 @@
         </member>
         <member name="T:R2API.DotAPI.CustomDotBehaviour">
             <summary>
-            Allows for custom behaviours when applying the dot. EG, percentburn. <see cref="M:RoR2.DotController.AddDot(UnityEngine.GameObject,System.Single,RoR2.DotController.DotIndex,System.Single)"/>
+            Allows for custom behaviours when applying the dot. EG, percentburn. <see cref="M:RoR2.DotController.AddDot(UnityEngine.GameObject,System.Single,RoR2.DotController.DotIndex,System.Single)" />
             </summary>
             <param name="self"></param>
             <param name="dotStack"></param>
         </member>
         <member name="T:R2API.DotAPI.CustomDotVisual">
             <summary>
-            Allows custom visuals for your buff. think bleeding etc. <see cref="M:RoR2.DotController.FixedUpdate"/>
+            Allows custom visuals for your buff. think bleeding etc. <see cref="M:RoR2.DotController.FixedUpdate" />
             </summary>
             <param name="self"></param>
         </member>
@@ -1103,7 +1102,7 @@
         <member name="M:R2API.DotAPI.RegisterDotDef(System.Single,System.Single,RoR2.DamageColorIndex,RoR2.BuffDef,R2API.DotAPI.CustomDotBehaviour,R2API.DotAPI.CustomDotVisual)">
             <summary>
             Unrolled version of RegisterDotDef(DotController.DotDef, CustomDotBehaviour, CustomDotVisual)
-            <see cref="M:R2API.DotAPI.RegisterDotDef(RoR2.DotController.DotDef,R2API.DotAPI.CustomDotBehaviour,R2API.DotAPI.CustomDotVisual)"/>
+            <see cref="M:R2API.DotAPI.RegisterDotDef(RoR2.DotController.DotDef,R2API.DotAPI.CustomDotBehaviour,R2API.DotAPI.CustomDotVisual)" />
             </summary>
             <param name="interval"></param>
             <param name="damageCoefficient"></param>
@@ -1166,16 +1165,16 @@
             Allows for adding a new elite tier def to the combat director.
             When adding a new elite tier,
             do not fill the eliteTypes field with your custom elites defs if your goal is to add your custom elite in it right after.
-            Because when doing EliteAPI.Add, the API will add your elite to the specified tiers <see cref="F:R2API.CustomElite.EliteTierDefs"/>.
+            Because when doing EliteAPI.Add, the API will add your elite to the specified tiers <see cref="F:R2API.CustomElite.EliteTierDefs" />.
             </summary>
             <param name="eliteTierDef">The new elite tier to add.</param>
         </member>
         <member name="M:R2API.EliteAPI.AddCustomEliteTier(RoR2.CombatDirector.EliteTierDef)">
             <summary>
             Allows for adding a new elite tier def to the combat director.
-            Automatically insert the eliteTierDef at the correct position in the array based on its <see cref="F:RoR2.CombatDirector.EliteTierDef.costMultiplier"/>
+            Automatically insert the eliteTierDef at the correct position in the array based on its <see cref="F:RoR2.CombatDirector.EliteTierDef.costMultiplier" />
             When adding a new elite tier, do not fill the eliteTypes field with your custom elites defs if your goal is to add your custom elite in it right after.
-            Because when doing EliteAPI.Add, the API will add your elite to the specified tiers <see cref="F:R2API.CustomElite.EliteTierDefs"/>.
+            Because when doing EliteAPI.Add, the API will add your elite to the specified tiers <see cref="F:R2API.CustomElite.EliteTierDefs" />.
             </summary>
             <param name="eliteTierDef">The new elite tier to add.</param>
         </member>
@@ -1183,7 +1182,7 @@
             <summary>
             Allows for adding a new elite tier def to the combat director.
             When adding a new elite tier, do not fill the eliteTypes field with your custom elites defs if your goal is to add your custom elite in it right after.
-            Because when doing EliteAPI.Add, the API will add your elite to the specified tiers <see cref="F:R2API.CustomElite.EliteTierDefs"/>.
+            Because when doing EliteAPI.Add, the API will add your elite to the specified tiers <see cref="F:R2API.CustomElite.EliteTierDefs" />.
             </summary>
             <param name="eliteTierDef">The new elite tier to add.</param>
             <param name="indexToInsertAt">Optional index to specify if you want to insert a cheaper elite tier</param>
@@ -1191,8 +1190,8 @@
         <member name="T:R2API.CustomElite">
             <summary>
             Class that defines a custom Elite type for use in the game
-            All Elites consistent of an Elite definition, a <see cref="T:R2API.CustomEquipment"/>
-            and a <see cref="T:R2API.CustomBuff"/>. The equipment is automatically provided to
+            All Elites consistent of an Elite definition, a <see cref="T:R2API.CustomEquipment" />
+            and a <see cref="T:R2API.CustomBuff" />. The equipment is automatically provided to
             the Elite when it spawns and is configured to passively apply the buff.
             </summary>
         </member>
@@ -2001,7 +2000,7 @@
             </summary>
         </member>
         <member name="P:R2API.SoundAPI.Music.CustomMusicData.LoadedSoundBankId">
-            <inheritdoc cref="P:R2API.SoundAPI.Music.CustomMusicData.LoadedInitBankId"/>
+            <inheritdoc cref="P:R2API.SoundAPI.Music.CustomMusicData.LoadedInitBankId" />
         </member>
         <member name="T:R2API.SoundAPI.Music.MainAndBossTracks">
             <summary>
@@ -2017,17 +2016,17 @@
             </summary>
         </member>
         <member name="F:R2API.SoundAPI.Music.MainAndBossTracks.MainTrack">
-            <inheritdoc cref="T:R2API.SoundAPI.Music.MainAndBossTracks"/>
+            <inheritdoc cref="T:R2API.SoundAPI.Music.MainAndBossTracks" />
         </member>
         <member name="F:R2API.SoundAPI.Music.MainAndBossTracks.BossTrack">
-            <inheritdoc cref="T:R2API.SoundAPI.Music.MainAndBossTracks"/>
+            <inheritdoc cref="T:R2API.SoundAPI.Music.MainAndBossTracks" />
         </member>
         <member name="M:R2API.SoundAPI.Music.MainAndBossTracks.#ctor(RoR2.MusicTrackDef,RoR2.MusicTrackDef)">
-            <inheritdoc cref="T:R2API.SoundAPI.Music.MainAndBossTracks"/>
+            <inheritdoc cref="T:R2API.SoundAPI.Music.MainAndBossTracks" />
         </member>
         <member name="T:R2API.SoundAPI.Music.CustomMusicTrackDef">
             <summary>
-            Extended <see cref="T:RoR2.MusicTrackDef"/> for a more code based project.
+            Extended <see cref="T:RoR2.MusicTrackDef" /> for a more code based project.
             This can also be used to an extent by unity editor users as a baseline for whats needed.
             </summary>
         </member>
@@ -2035,33 +2034,33 @@
             <summary>
             Struct for storing the wwise state data
             that will be posted to the wwise engine
-            through <see cref="M:AkSoundEngine.SetState(System.UInt32,System.UInt32)"/>
+            through <see cref="M:AkSoundEngine.SetState(System.UInt32,System.UInt32)" />
             </summary>
         </member>
         <member name="F:R2API.SoundAPI.Music.CustomMusicTrackDef.CustomState.GroupId">
             <summary>
-            First arg of <see cref="M:AkSoundEngine.SetState(System.UInt32,System.UInt32)"/>
+            First arg of <see cref="M:AkSoundEngine.SetState(System.UInt32,System.UInt32)" />
             </summary>
         </member>
         <member name="F:R2API.SoundAPI.Music.CustomMusicTrackDef.CustomState.StateId">
             <summary>
-            Second arg of <see cref="M:AkSoundEngine.SetState(System.UInt32,System.UInt32)"/>
+            Second arg of <see cref="M:AkSoundEngine.SetState(System.UInt32,System.UInt32)" />
             </summary>
         </member>
         <member name="F:R2API.SoundAPI.Music.CustomMusicTrackDef.CustomStates">
             <summary>
-            Iterated in the <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Play"/> and <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Stop"/> methods.
+            Iterated in the <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Play" /> and <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Stop" /> methods.
             </summary>
         </member>
         <member name="F:R2API.SoundAPI.Music.CustomMusicTrackDef.SoundBankName">
             <summary>
-            Used in the <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Preload"/> (which should be called by <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Play"/>).
+            Used in the <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Preload" /> (which should be called by <see cref="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Play" />).
             Can NOT be null or whitespace.
             </summary>
         </member>
         <member name="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Preload">
             <summary>
-            Preload should try to load your music bank with <see cref="F:R2API.SoundAPI.Music.CustomMusicTrackDef.SoundBankName"/>
+            Preload should try to load your music bank with <see cref="F:R2API.SoundAPI.Music.CustomMusicTrackDef.SoundBankName" />
             </summary>
         </member>
         <member name="M:R2API.SoundAPI.Music.CustomMusicTrackDef.Play">
@@ -2076,7 +2075,7 @@
         </member>
         <member name="M:R2API.SoundAPI.Music.Add(R2API.SoundAPI.Music.CustomMusicData)">
             <summary>
-            Please refer to the <see cref="T:R2API.SoundAPI.Music.CustomMusicData"/> fields documentation
+            Please refer to the <see cref="T:R2API.SoundAPI.Music.CustomMusicData" /> fields documentation
             for indication on how to fill the fields properly.
             </summary>
             <returns>True if the preliminary checks succeed</returns>
@@ -2208,7 +2207,6 @@
         </member>
         <member name="T:R2API.Utils.APISubmoduleHandler">
              <summary>
-            
              </summary>
         </member>
         <member name="M:R2API.Utils.APISubmoduleHandler.IsLoaded(System.String)">
@@ -2345,7 +2343,7 @@
         </member>
         <member name="M:R2API.Utils.Reflection.GetFieldCached``1(System.String)">
             <summary>
-            Gets the <see cref="T:System.Reflection.FieldInfo"/> of the type by name and caches it
+            Gets the <see cref="T:System.Reflection.FieldInfo" /> of the type by name and caches it
             </summary>
             <typeparam name="T">The type to search</typeparam>
             <param name="name">The name of the field to find</param>
@@ -2380,7 +2378,7 @@
         <member name="M:R2API.Utils.Reflection.SetFieldValue``1(System.Object,System.String,``0)">
             <summary>
             Sets the value of the specified field on the specified object; if the object is a struct use
-            <see cref="M:R2API.Utils.Reflection.SetStructFieldValue``2(``0@,System.String,``1)"/> instead
+            <see cref="M:R2API.Utils.Reflection.SetStructFieldValue``2(``0@,System.String,``1)" /> instead
             </summary>
             <typeparam name="TValue">The type of the value to set</typeparam>
             <param name="instance">The name of the field to set the value of</param>
@@ -2411,15 +2409,15 @@
         </member>
         <member name="M:R2API.Utils.Reflection.GetFieldFull(System.Type,System.String)">
             <summary>
-            Gets the <see cref="T:System.Reflection.FieldInfo"/> on the specified <see cref="T:System.Type"/> and searches base types if not found.
+            Gets the <see cref="T:System.Reflection.FieldInfo" /> on the specified <see cref="T:System.Type" /> and searches base types if not found.
             </summary>
-            <param name="T">The <see cref="T:System.Type"/> to search and get base types from</param>
+            <param name="T">The <see cref="T:System.Type" /> to search and get base types from</param>
             <param name="name">The name of the property to search for.</param>
             <returns></returns>
         </member>
         <member name="M:R2API.Utils.Reflection.GetPropertyCached``1(System.String)">
             <summary>
-            Gets the <see cref="T:System.Reflection.PropertyInfo"/> of the type by name
+            Gets the <see cref="T:System.Reflection.PropertyInfo" /> of the type by name
             </summary>
             <typeparam name="T">The type on which to find the property</typeparam>
             <param name="name">The name of the property to get</param>
@@ -2427,9 +2425,9 @@
         </member>
         <member name="M:R2API.Utils.Reflection.GetPropertyCached(System.Type,System.String)">
             <summary>
-            Gets the <see cref="T:System.Reflection.PropertyInfo"/> of the type by name
+            Gets the <see cref="T:System.Reflection.PropertyInfo" /> of the type by name
             </summary>
-            <param name="T">The type to get the <see cref="T:System.Reflection.PropertyInfo"/> from</param>
+            <param name="T">The type to get the <see cref="T:System.Reflection.PropertyInfo" /> from</param>
             <param name="name">The name of the property to get</param>
             <returns></returns>
         </member>
@@ -2455,7 +2453,7 @@
         <member name="M:R2API.Utils.Reflection.SetPropertyValue``1(System.Object,System.String,``0)">
             <summary>
             Sets the value of the property on the specified class; if you're setting the property on a
-            struct use <see cref="M:R2API.Utils.Reflection.SetStructPropertyValue``2(``0@,System.String,``1)"/> instead
+            struct use <see cref="M:R2API.Utils.Reflection.SetStructPropertyValue``2(``0@,System.String,``1)" /> instead
             </summary>
             <typeparam name="TValue">The type of the value to set</typeparam>
             <param name="instance">The name of the field to set the value of</param>
@@ -2508,7 +2506,7 @@
             </summary>
             <param name="T">The type to search</param>
             <param name="name">The name of the method to find</param>
-            <returns>The found <see cref="T:System.Reflection.MethodInfo"/></returns>
+            <returns>The found <see cref="T:System.Reflection.MethodInfo" /></returns>
         </member>
         <member name="M:R2API.Utils.Reflection.GetMethodWithConstructedGenericParameter(System.Type,System.String,System.Type)">
             <summary>
@@ -2517,7 +2515,7 @@
             <param name="T">The type to search</param>
             <param name="name">The name of the method to find</param>
             <param name="genericTypeDefinition">The generic type definition parameter</param>
-            <returns>The found <see cref="T:System.Reflection.MethodInfo"/></returns>
+            <returns>The found <see cref="T:System.Reflection.MethodInfo" /></returns>
         </member>
         <member name="M:R2API.Utils.Reflection.GetMethodCached``1(System.String,System.Type[])">
             <summary>
@@ -2684,24 +2682,24 @@
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
             <summary>
-                Specifies that <see langword="null"/> is allowed as an input even if the
+                Specifies that <see langword="null" /> is allowed as an input even if the
                 corresponding type disallows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.AllowNullAttribute.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute"/> class.
+                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute" /> class.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute">
             <summary>
-                Specifies that <see langword="null"/> is disallowed as an input even if the
+                Specifies that <see langword="null" /> is disallowed as an input even if the
                 corresponding type allows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DisallowNullAttribute.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute"/> class.
+                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute" /> class.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute">
@@ -2711,13 +2709,12 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute.#ctor">
              <summary>
-                 Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute"/> class.
+                 Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute" /> class.
              </summary>
-            
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
             <summary>
-                Specifies that the method will not return if the associated <see cref="T:System.Boolean"/>
+                Specifies that the method will not return if the associated <see cref="T:System.Boolean" />
                 parameter is passed the specified value.
             </summary>
         </member>
@@ -2730,7 +2727,7 @@
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
             <summary>
-                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute"/>
+                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute" />
                 class with the specified parameter value.
             </summary>
             <param name="parameterValue">
@@ -2741,25 +2738,25 @@
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
             <summary>
-                Specifies that an output may be <see langword="null"/> even if the
+                Specifies that an output may be <see langword="null" /> even if the
                 corresponding type disallows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullAttribute.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute"/> class.
+                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute" /> class.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
             <summary>
-                Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>, 
-                the parameter may be <see langword="null"/> even if the corresponding type disallows it.
+                Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue" />,
+                the parameter may be <see langword="null" /> even if the corresponding type disallows it.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
             <summary>
                 Gets the return value condition.
-                If the method returns this value, the associated parameter may be <see langword="null"/>.
+                If the method returns this value, the associated parameter may be <see langword="null" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
@@ -2768,13 +2765,13 @@
             </summary>
             <param name="returnValue">
                 The return value condition.
-                If the method returns this value, the associated parameter may be <see langword="null"/>.
+                If the method returns this value, the associated parameter may be <see langword="null" />.
             </param>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
             <summary>
                 Specifies that the method or property will ensure that the listed field and property members have
-                not-<see langword="null"/> values.
+                not-<see langword="null" /> values.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.Members">
@@ -2801,7 +2798,7 @@
         <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
             <summary>
                 Specifies that the method or property will ensure that the listed field and property members have
-                non-<see langword="null"/> values when returning with the specified return value condition.
+                non-<see langword="null" /> values when returning with the specified return value condition.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
@@ -2820,10 +2817,10 @@
             </summary>
             <param name="returnValue">
                 The return value condition. If the method returns this value,
-                the associated parameter will not be <see langword="null"/>.
+                the associated parameter will not be <see langword="null" />.
             </param>
             <param name="member">
-                The field or property member that is promised to be not-<see langword="null"/>.
+                The field or property member that is promised to be not-<see langword="null" />.
             </param>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
@@ -2833,7 +2830,7 @@
             </summary>
             <param name="returnValue">
                 The return value condition. If the method returns this value,
-                the associated parameter will not be <see langword="null"/>.
+                the associated parameter will not be <see langword="null" />.
             </param>
             <param name="members">
                 The list of field and property members that are promised to be not-null.
@@ -2841,26 +2838,26 @@
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
             <summary>
-                Specifies that an output is not <see langword="null"/> even if the
+                Specifies that an output is not <see langword="null" /> even if the
                 corresponding type allows it.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullAttribute.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullAttribute"/> class.
+                Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.NotNullAttribute" /> class.
             </summary>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
             <summary>
-                Specifies that the output will be non-<see langword="null"/> if the
-                named parameter is non-<see langword="null"/>.
+                Specifies that the output will be non-<see langword="null" /> if the
+                named parameter is non-<see langword="null" />.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
             <summary>
                 Gets the associated parameter name.
-                The output will be non-<see langword="null"/> if the argument to the
-                parameter specified is non-<see langword="null"/>.
+                The output will be non-<see langword="null" /> if the argument to the
+                parameter specified is non-<see langword="null" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
@@ -2869,20 +2866,20 @@
             </summary>
             <param name="parameterName">
                 The associated parameter name.
-                The output will be non-<see langword="null"/> if the argument to the
-                parameter specified is non-<see langword="null"/>.
+                The output will be non-<see langword="null" /> if the argument to the
+                parameter specified is non-<see langword="null" />.
             </param>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
             <summary>
-                Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>,
-                the parameter will not be <see langword="null"/> even if the corresponding type allows it.
+                Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue" />,
+                the parameter will not be <see langword="null" /> even if the corresponding type allows it.
             </summary>
         </member>
         <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
             <summary>
                 Gets the return value condition.
-                If the method returns this value, the associated parameter will not be <see langword="null"/>.
+                If the method returns this value, the associated parameter will not be <see langword="null" />.
             </summary>
         </member>
         <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
@@ -2891,7 +2888,7 @@
             </summary>
             <param name="returnValue">
                 The return value condition.
-                If the method returns this value, the associated parameter will not be <see langword="null"/>.
+                If the method returns this value, the associated parameter will not be <see langword="null" />.
             </param>
         </member>
     </members>

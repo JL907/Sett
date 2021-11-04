@@ -7,24 +7,25 @@ namespace SettMod.UI
 {
     public class GritGauge : MonoBehaviour
     {
+        private Image gritBar;
+        private TextMeshProUGUI gritText;
         public GritComponent source { get; set; }
 
+        public void Update()
+        {
+            this.UpdateGritGauge(Time.deltaTime);
+        }
 
         private void Awake()
         {
             gritText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
             var _gritBar = this.gameObject.GetComponentInChildren<Transform>().Find("Grit");
             gritBar = _gritBar.GetComponent<Image>();
-
         }
+
         private void Start()
         {
             this.UpdateGritGauge(0f);
-        }
-
-        public void Update()
-        {
-            this.UpdateGritGauge(Time.deltaTime);
         }
 
         private void UpdateGritGauge(float deltaTime)
@@ -44,8 +45,5 @@ namespace SettMod.UI
                 }
             }
         }
-
-        private TextMeshProUGUI gritText;
-        private Image gritBar;
     }
 }

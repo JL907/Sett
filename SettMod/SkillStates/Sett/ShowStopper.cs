@@ -1,5 +1,4 @@
-﻿
-using EntityStates;
+﻿using EntityStates;
 using RoR2;
 using System.Linq;
 using UnityEngine;
@@ -9,76 +8,26 @@ namespace SettMod.SkillStates
 {
     public class ShowStopper : BaseSkillState
     {
-        public static float jumpDuration = 0.6f;
-        public static float dropForce = 80f;
-
-        public static float slamRadius = Modules.Config.slamRadius.Value;
-        public static float slamDamageCoefficient = Modules.Config.slamDamageCoefficient.Value;
-        public static float slamProcCoefficient = 1f;
-        public static float slamForce = Modules.Config.slamForce.Value;
         public static float bonusHealthCoefficient = Modules.Config.bonusHealthCoefficient.Value;
-
         public static Vector3 CameraPosition = new Vector3(0f, 2f, -25f);
-
         public static float dodgeFOV;
-
-        protected float bonusHealth;
-        private bool hasDropped;
-        private Vector3 flyVector = Vector3.zero;
-        private Transform modelTransform;
-        private Transform slamIndicatorInstance;
-        private Transform slamCenterIndicatorInstance;
-        private Ray downRay;
-        private SettGrabController grabController;
-
-        private bool detonateNextFrame;
-
-        private float initialTime;
+        public static float dropForce = 80f;
+        public static float jumpDuration = 0.6f;
+        public static float slamDamageCoefficient = Modules.Config.slamDamageCoefficient.Value;
+        public static float slamForce = Modules.Config.slamForce.Value;
+        public static float slamProcCoefficient = 1f;
+        public static float slamRadius = Modules.Config.slamRadius.Value;
         protected Animator animator;
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            this.bonusHealth = 0f;
-            this.modelTransform = base.GetModelTransform();
-            this.flyVector = Vector3.up;
-            this.hasDropped = false;
-            this.initialTime = Time.fixedTime;
-            if (base.isAuthority)
-            {
-                base.characterMotor.onMovementHit += this.OnMovementHit;
-                base.characterMotor.Motor.ForceUnground();
-                base.characterMotor.velocity = base.characterMotor.velocity * 0.65f;
-                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                base.gameObject.layer = LayerIndex.fakeActor.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-            }
-            string[] Showstopperanim = new string[] { "ShowStopper", "ShowStopper2", "ShowStopper3" };
-            System.Random random = new System.Random();
-            int index = random.Next(Showstopperanim.Length);
-            base.PlayCrossfade("FullBody, Override", Showstopperanim[index], "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
-
-            Util.PlaySound("SettRSFX", base.gameObject);
-            Util.PlaySound("SettRVO", base.gameObject);
-        }
-
-        private void OnMovementHit(ref CharacterMotor.MovementHitInfo movementHitInfo)
-        {
-            HealthComponent healthComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<HealthComponent>();
-            TeamComponent teamComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<TeamComponent>();
-            if (healthComponent && teamComponent.teamIndex != base.GetTeam())
-            {
-                this.detonateNextFrame = false;
-            }
-            else this.detonateNextFrame = true;
-        }
-
-        public override void Update()
-        {
-            base.Update();
-
-            if (this.slamIndicatorInstance) this.UpdateSlamIndicator();
-        }
+        protected float bonusHealth;
+        private bool detonateNextFrame;
+        private Ray downRay;
+        private Vector3 flyVector = Vector3.zero;
+        private SettGrabController grabController;
+        private bool hasDropped;
+        private float initialTime;
+        private Transform modelTransform;
+        private Transform slamCenterIndicatorInstance;
+        private Transform slamIndicatorInstance;
 
         public override void FixedUpdate()
         {
@@ -121,7 +70,111 @@ namespace SettMod.SkillStates
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
+        }
 
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            this.bonusHealth = 0f;
+            this.modelTransform = base.GetModelTransform();
+            this.flyVector = Vector3.up;
+            this.hasDropped = false;
+            this.initialTime = Time.fixedTime;
+            if (base.isAuthority)
+            {
+                base.characterMotor.onMovementHit += this.OnMovementHit;
+                base.characterMotor.Motor.ForceUnground();
+                base.characterMotor.velocity = base.characterMotor.velocity * 0.65f;
+                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+                base.gameObject.layer = LayerIndex.fakeActor.intVal;
+                base.characterMotor.Motor.RebuildCollidableLayers();
+            }
+            string[] Showstopperanim = new string[] { "ShowStopper", "ShowStopper2", "ShowStopper3" };
+            System.Random random = new System.Random();
+            int index = random.Next(Showstopperanim.Length);
+            base.PlayCrossfade("FullBody, Override", Showstopperanim[index], "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
+
+            Util.PlaySound("SettRSFX", base.gameObject);
+            Util.PlaySound("SettRVO", base.gameObject);
+        }
+
+        public override void OnExit()
+        {
+            if (base.isAuthority)
+            {
+                base.characterMotor.onMovementHit -= this.OnMovementHit;
+                base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+                base.characterMotor.Motor.RebuildCollidableLayers();
+                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+            }
+
+            if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
+            if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
+
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+
+            if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+            base.OnExit();
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            if (this.slamIndicatorInstance) this.UpdateSlamIndicator();
+        }
+
+        private void AttemptGrab(float grabRadius)
+        {
+            if (this.grabController) return;
+
+            Ray aimRay = base.GetAimRay();
+
+            BullseyeSearch search = new BullseyeSearch
+            {
+                teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
+                filterByLoS = false,
+                searchOrigin = base.transform.position,
+                searchDirection = Random.onUnitSphere,
+                sortMode = BullseyeSearch.SortMode.Distance,
+                maxDistanceFilter = grabRadius,
+                maxAngleFilter = 360f
+            };
+
+            search.RefreshCandidates();
+            search.FilterOutGameObject(base.gameObject);
+
+            HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
+            if (target)
+            {
+                if (target.healthComponent && target.healthComponent.body)
+                {
+                    if (BodyMeetsGrabConditions(target.healthComponent.body))
+                    {
+                        this.bonusHealth = target.healthComponent.fullHealth;
+                        this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
+                        this.grabController.pivotTransform = this.FindModelChild("R_Hand");
+                    }
+                    if (NetworkServer.active && !base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
+                    {
+                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                    }
+                }
+            }
+        }
+
+        private bool BodyMeetsGrabConditions(CharacterBody targetBody)
+        {
+            bool meetsConditions = true;
+
+            //if (targetBody.hullClassification == HullClassification.BeetleQueen) meetsConditions = false;
+
+            return meetsConditions;
         }
 
         private void CreateIndicator()
@@ -182,6 +235,17 @@ namespace SettMod.SkillStates
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
         }
 
+        private void OnMovementHit(ref CharacterMotor.MovementHitInfo movementHitInfo)
+        {
+            HealthComponent healthComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<HealthComponent>();
+            TeamComponent teamComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<TeamComponent>();
+            if (healthComponent && teamComponent.teamIndex != base.GetTeam())
+            {
+                this.detonateNextFrame = false;
+            }
+            else this.detonateNextFrame = true;
+        }
+
         private void UpdateSlamIndicator()
         {
             if (this.slamIndicatorInstance)
@@ -204,80 +268,6 @@ namespace SettMod.SkillStates
                     this.slamCenterIndicatorInstance.transform.up = raycastHit.normal;
                 }
             }
-        }
-
-
-
-        public override void OnExit()
-        {
-            if (base.isAuthority)
-            {
-                base.characterMotor.onMovementHit -= this.OnMovementHit;
-                base.gameObject.layer = LayerIndex.defaultLayer.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
-            }
-
-            if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
-            if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
-
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
-
-            if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
-            base.OnExit();
-        }
-
-        private void AttemptGrab(float grabRadius)
-        {
-            if (this.grabController) return;
-
-            Ray aimRay = base.GetAimRay();
-
-            BullseyeSearch search = new BullseyeSearch
-            {
-                teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
-                filterByLoS = false,
-                searchOrigin = base.transform.position,
-                searchDirection = Random.onUnitSphere,
-                sortMode = BullseyeSearch.SortMode.Distance,
-                maxDistanceFilter = grabRadius,
-                maxAngleFilter = 360f
-            };
-
-            search.RefreshCandidates();
-            search.FilterOutGameObject(base.gameObject);
-
-            HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
-            if (target)
-            {
-                if (target.healthComponent && target.healthComponent.body)
-                {
-                    if (BodyMeetsGrabConditions(target.healthComponent.body))
-                    {
-                        this.bonusHealth = target.healthComponent.fullHealth;
-                        this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.grabController.pivotTransform = this.FindModelChild("R_Hand");
-                    }
-                    if (NetworkServer.active && !base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
-                    {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
-                    }
-                }
-            }
-        }
-
-        private bool BodyMeetsGrabConditions(CharacterBody targetBody)
-        {
-            bool meetsConditions = true;
-
-            //if (targetBody.hullClassification == HullClassification.BeetleQueen) meetsConditions = false;
-
-            return meetsConditions;
-        }
-
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.Skill;
         }
     }
 }

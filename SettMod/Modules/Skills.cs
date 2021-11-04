@@ -26,7 +26,6 @@ namespace SettMod.Modules
             skillLocator.passiveSkill.skillDescriptionToken = "Sett <color=#c9aa71>regenerates</color> an additional <color=#008744>0.25 health per second</color> <color=#d62d20>(+ 0.25 every 4 levels)</color> for every <color=#f68835>5%</color> of his <color=#d62d20>missing health.</color>";
             skillLocator.passiveSkill.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p");
 
-
             skillLocator.primary = targetPrefab.AddComponent<GenericSkill>();
             SkillFamily primaryFamily = ScriptableObject.CreateInstance<SkillFamily>();
             (primaryFamily as ScriptableObject).name = targetPrefab.name + "PrimaryFamily";
