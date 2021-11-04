@@ -1,0 +1,23 @@
+name: Debug Build and Test
+
+on: [push, pull_request]
+
+jobs:
+  build-debug:
+
+    runs-on: windows-latest
+    
+    env:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+    steps:
+      - name: Checkout and initialise
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Restore project dependencies
+        run: dotnet restore --verbosity normal
+      - name: Build Debug
+        run: dotnet build --no-restore --verbosity normal --configuration Debug
+      - name: Test Debug
+        run: dotnet test --no-build --verbosity normal --configuration Debug
