@@ -8,11 +8,20 @@ namespace SettMod.SkillStates
         public Transform pivotTransform;
 
         private CharacterBody body;
-        private CharacterMotor motor;
         private CharacterDirection direction;
         private ModelLocator modelLocator;
         private Transform modelTransform;
+        private CharacterMotor motor;
         private Quaternion originalRotation;
+
+        public void Release()
+        {
+            if (this.modelLocator) this.modelLocator.enabled = true;
+            if (this.modelTransform) this.modelTransform.rotation = this.originalRotation;
+            if (this.direction) this.direction.enabled = true;
+
+            Destroy(this);
+        }
 
         private void Awake()
         {
@@ -60,15 +69,6 @@ namespace SettMod.SkillStates
                 this.modelTransform.position = this.pivotTransform.position;
                 this.modelTransform.rotation = this.pivotTransform.rotation;
             }
-        }
-
-        public void Release()
-        {
-            if (this.modelLocator) this.modelLocator.enabled = true;
-            if (this.modelTransform) this.modelTransform.rotation = this.originalRotation;
-            if (this.direction) this.direction.enabled = true;
-
-            Destroy(this);
         }
     }
 }

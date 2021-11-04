@@ -6,15 +6,10 @@ namespace SettMod.Modules
 {
     public static class Buffs
     {
-        // armor buff gained during roll
-        internal static BuffDef regenBuff;
-
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
-        internal static void RegisterBuffs()
-        {
-            regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("textures/bufficons/texBuffRegenBoostIcon"), Color.green, true, false);
-        }
+        // armor buff gained during roll
+        internal static BuffDef regenBuff;
 
         // simple helper method
         internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
@@ -28,6 +23,11 @@ namespace SettMod.Modules
             buffDef.iconSprite = buffIcon;
             buffDefs.Add(buffDef);
             return buffDef;
+        }
+
+        internal static void RegisterBuffs()
+        {
+            regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("textures/bufficons/texBuffRegenBoostIcon"), Color.green, true, false);
         }
     }
 }

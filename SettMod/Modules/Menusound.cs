@@ -1,5 +1,4 @@
-﻿
-using RoR2;
+﻿using RoR2;
 using UnityEngine;
 
 namespace SettMod
@@ -8,6 +7,12 @@ namespace SettMod
     {
         private uint playID;
         private uint playID2;
+
+        private void OnDestroy()
+        {
+            if (this.playID != 0) AkSoundEngine.StopPlayingID(this.playID);
+            if (this.playID2 != 0) AkSoundEngine.StopPlayingID(this.playID2);
+        }
 
         private void OnEnable()
         {
@@ -19,12 +24,5 @@ namespace SettMod
             this.playID = Util.PlaySound("MenuSound", base.gameObject);
             this.playID2 = Util.PlaySound("SettMenuSFX", base.gameObject);
         }
-
-        private void OnDestroy()
-        {
-            if (this.playID != 0) AkSoundEngine.StopPlayingID(this.playID);
-            if (this.playID2 != 0) AkSoundEngine.StopPlayingID(this.playID2);
-        }
     }
-
 }

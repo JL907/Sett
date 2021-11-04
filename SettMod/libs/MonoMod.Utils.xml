@@ -76,17 +76,17 @@
         </member>
         <member name="M:MonoMod.Cil.ILContext.Import(System.Reflection.FieldInfo)">
             <summary>
-            See <see cref="M:Mono.Cecil.ModuleDefinition.ImportReference(System.Reflection.FieldInfo)"/>
+            See <see cref="M:Mono.Cecil.ModuleDefinition.ImportReference(System.Reflection.FieldInfo)" />
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILContext.Import(System.Reflection.MethodBase)">
             <summary>
-            See <see cref="M:Mono.Cecil.ModuleDefinition.ImportReference(System.Reflection.MethodBase)"/>
+            See <see cref="M:Mono.Cecil.ModuleDefinition.ImportReference(System.Reflection.MethodBase)" />
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILContext.Import(System.Type)">
             <summary>
-            See <see cref="M:Mono.Cecil.ModuleDefinition.ImportReference(System.Type)"/>
+            See <see cref="M:Mono.Cecil.ModuleDefinition.ImportReference(System.Type)" />
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILContext.DefineLabel">
@@ -157,10 +157,10 @@
         </member>
         <member name="T:MonoMod.Cil.SearchTarget">
             <summary>
-            Indicates whether the position of a ILCursor is the result of a search function and 
+            Indicates whether the position of a ILCursor is the result of a search function and
             if the next search should ignore the instruction preceeding or following this cursor.
             <para />
-            SearchTarget.Next is the result of searching with MoveType.Before, and SearchTarget.Prev from MoveType.After 
+            SearchTarget.Next is the result of searching with MoveType.Before, and SearchTarget.Prev from MoveType.After
             </summary>
         </member>
         <member name="F:MonoMod.Cil.SearchTarget.Next">
@@ -206,10 +206,10 @@
         </member>
         <member name="P:MonoMod.Cil.ILCursor.SearchTarget">
             <summary>
-            Indicates whether the position of a MMILCursor is the result of a search function and 
+            Indicates whether the position of a MMILCursor is the result of a search function and
             if the next search should ignore the instruction preceeding or following this cursor.
-            
-            See <see cref="T:MonoMod.Cil.SearchTarget"/>
+
+            See <see cref="T:MonoMod.Cil.SearchTarget" />
             </summary>
         </member>
         <member name="P:MonoMod.Cil.ILCursor.IncomingLabels">
@@ -219,27 +219,27 @@
         </member>
         <member name="P:MonoMod.Cil.ILCursor.Method">
             <summary>
-            See <see cref="P:MonoMod.Cil.ILContext.Method"/>
+            See <see cref="P:MonoMod.Cil.ILContext.Method" />
             </summary>
         </member>
         <member name="P:MonoMod.Cil.ILCursor.IL">
             <summary>
-            See <see cref="P:MonoMod.Cil.ILContext.IL"/>
+            See <see cref="P:MonoMod.Cil.ILContext.IL" />
             </summary>
         </member>
         <member name="P:MonoMod.Cil.ILCursor.Body">
             <summary>
-            See <see cref="P:MonoMod.Cil.ILContext.Body"/>
+            See <see cref="P:MonoMod.Cil.ILContext.Body" />
             </summary>
         </member>
         <member name="P:MonoMod.Cil.ILCursor.Module">
             <summary>
-            See <see cref="P:MonoMod.Cil.ILContext.Module"/>
+            See <see cref="P:MonoMod.Cil.ILContext.Module" />
             </summary>
         </member>
         <member name="P:MonoMod.Cil.ILCursor.Instrs">
             <summary>
-            See <see cref="P:MonoMod.Cil.ILContext.Instrs"/>
+            See <see cref="P:MonoMod.Cil.ILContext.Instrs" />
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.Clone">
@@ -291,19 +291,19 @@
         </member>
         <member name="M:MonoMod.Cil.ILCursor.Goto(System.Int32,MonoMod.Cil.MoveType,System.Boolean)">
             <summary>
-            Move the cursor to a target index. Supports negative indexing. See <see cref="M:MonoMod.Cil.ILCursor.Goto(Mono.Cecil.Cil.Instruction,MonoMod.Cil.MoveType,System.Boolean)"/>
+            Move the cursor to a target index. Supports negative indexing. See <see cref="M:MonoMod.Cil.ILCursor.Goto(Mono.Cecil.Cil.Instruction,MonoMod.Cil.MoveType,System.Boolean)" />
             </summary>
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.GotoLabel(MonoMod.Cil.ILLabel,MonoMod.Cil.MoveType,System.Boolean)">
             <summary>
-            Overload for <c>Goto(label.Target)</c>. <paramref name="moveType"/> defaults to MoveType.AfterLabel
+            Overload for <c>Goto(label.Target)</c>. <paramref name="moveType" /> defaults to MoveType.AfterLabel
             </summary>
             <returns>this</returns>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.GotoNext(MonoMod.Cil.MoveType,System.Func{Mono.Cecil.Cil.Instruction,System.Boolean}[])">
             <summary>
-            Search forward and moves the cursor to the next sequence of instructions matching the corresponding predicates. See also <seealso cref="M:MonoMod.Cil.ILCursor.TryGotoNext(MonoMod.Cil.MoveType,System.Func{Mono.Cecil.Cil.Instruction,System.Boolean}[])"/>
+            Search forward and moves the cursor to the next sequence of instructions matching the corresponding predicates. See also <seealso cref="M:MonoMod.Cil.ILCursor.TryGotoNext(MonoMod.Cil.MoveType,System.Func{Mono.Cecil.Cil.Instruction,System.Boolean}[])" />
             </summary>
             <returns>this</returns>
             <exception cref="T:System.Collections.Generic.KeyNotFoundException">If no match is found</exception>
@@ -316,7 +316,7 @@
         </member>
         <member name="M:MonoMod.Cil.ILCursor.GotoPrev(MonoMod.Cil.MoveType,System.Func{Mono.Cecil.Cil.Instruction,System.Boolean}[])">
             <summary>
-            Search backward and moves the cursor to the next sequence of instructions matching the corresponding predicates. See also <seealso cref="M:MonoMod.Cil.ILCursor.TryGotoPrev(MonoMod.Cil.MoveType,System.Func{Mono.Cecil.Cil.Instruction,System.Boolean}[])"/>
+            Search backward and moves the cursor to the next sequence of instructions matching the corresponding predicates. See also <seealso cref="M:MonoMod.Cil.ILCursor.TryGotoPrev(MonoMod.Cil.MoveType,System.Func{Mono.Cecil.Cil.Instruction,System.Boolean}[])" />
             </summary>
             <returns>this</returns>
             <exception cref="T:System.Collections.Generic.KeyNotFoundException">If no match is found</exception>
@@ -369,7 +369,7 @@
         </member>
         <member name="M:MonoMod.Cil.ILCursor.DefineLabel">
             <summary>
-            Create a new label for use with <see cref="M:MonoMod.Cil.ILCursor.MarkLabel(MonoMod.Cil.ILLabel)"/>
+            Create a new label for use with <see cref="M:MonoMod.Cil.ILCursor.MarkLabel(MonoMod.Cil.ILLabel)" />
             </summary>
             <returns>A new label with no target</returns>
         </member>
@@ -558,12 +558,12 @@
         </member>
         <member name="M:MonoMod.Cil.ILCursor.AddReference``1(``0)">
             <summary>
-            Bind an arbitary object to an ILContext for static retrieval. See <see cref="M:MonoMod.Cil.ILContext.AddReference``1(``0)"/>
+            Bind an arbitary object to an ILContext for static retrieval. See <see cref="M:MonoMod.Cil.ILContext.AddReference``1(``0)" />
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitGetReference``1(System.Int32)">
             <summary>
-            Emit the IL to retrieve a stored reference of type <typeparamref name="T"/> with the given <paramref name="id"/> and place it on the stack.
+            Emit the IL to retrieve a stored reference of type <typeparamref name="T" /> with the given <paramref name="id" /> and place it on the stack.
             </summary>
         </member>
         <member name="M:MonoMod.Cil.ILCursor.EmitReference``1(``0)">
@@ -628,7 +628,7 @@
         </member>
         <member name="M:MonoMod.Cil.IILReferenceBag.GetDelegateInvoker``1">
             <summary>
-            Get a MethodInfo invoking a delegate of the given type, with the delegate at the top of the stack. Used by <see cref="M:MonoMod.Cil.ILCursor.EmitDelegate``1(``0)"/>.
+            Get a MethodInfo invoking a delegate of the given type, with the delegate at the top of the stack. Used by <see cref="M:MonoMod.Cil.ILCursor.EmitDelegate``1(``0)" />.
             </summary>
             <typeparam name="T">The delegate type.</typeparam>
             <returns>A MethodInfo invoking a delegate of the given type.</returns>
@@ -852,27 +852,27 @@
         </member>
         <member name="M:MonoMod.Utils.Extensions.AddRange``1(Mono.Collections.Generic.Collection{``0},System.Collections.Generic.IEnumerable{``0})">
             <summary>
-            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})"/>
+            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})" />
             </summary>
         </member>
         <member name="M:MonoMod.Utils.Extensions.AddRange(System.Collections.IDictionary,System.Collections.IDictionary)">
             <summary>
-            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})"/>
+            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})" />
             </summary>
         </member>
         <member name="M:MonoMod.Utils.Extensions.AddRange``2(System.Collections.Generic.IDictionary{``0,``1},System.Collections.Generic.IDictionary{``0,``1})">
             <summary>
-            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})"/>
+            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})" />
             </summary>
         </member>
         <member name="M:MonoMod.Utils.Extensions.AddRange``2(System.Collections.Generic.Dictionary{``0,``1},System.Collections.Generic.Dictionary{``0,``1})">
             <summary>
-            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})"/>
+            See <see cref="M:System.Collections.Generic.List`1.AddRange(System.Collections.Generic.IEnumerable{`0})" />
             </summary>
         </member>
         <member name="M:MonoMod.Utils.Extensions.InsertRange``1(Mono.Collections.Generic.Collection{``0},System.Int32,System.Collections.Generic.IEnumerable{``0})">
             <summary>
-            See <see cref="M:System.Collections.Generic.List`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})"/>
+            See <see cref="M:System.Collections.Generic.List`1.InsertRange(System.Int32,System.Collections.Generic.IEnumerable{`0})" />
             </summary>
         </member>
         <member name="M:MonoMod.Utils.Extensions.IsCompatible(System.Type,System.Type)">
@@ -1210,7 +1210,7 @@
         </member>
         <member name="T:MonoMod.Utils.Cil.ILGeneratorShim">
             <summary>
-            Abstract version of System.Reflection.Emit.ILGenerator. See <see cref="T:System.Reflection.Emit.ILGenerator"/> for proper documentation.
+            Abstract version of System.Reflection.Emit.ILGenerator. See <see cref="T:System.Reflection.Emit.ILGenerator" /> for proper documentation.
             </summary>
         </member>
         <member name="M:MonoMod.Utils.Cil.ILGeneratorShim.GetProxy">
@@ -1369,7 +1369,7 @@
         </member>
         <member name="T:MonoMod.Utils.DynDllMapping">
             <summary>
-            A mapping entry, to be used by <see cref="T:MonoMod.Utils.DynDllImportAttribute"/>.
+            A mapping entry, to be used by <see cref="T:MonoMod.Utils.DynDllImportAttribute" />.
             </summary>
         </member>
         <member name="P:MonoMod.Utils.DynDllMapping.LibraryName">
@@ -1401,7 +1401,7 @@
         </member>
         <member name="F:MonoMod.Utils.Platform.OS">
             <summary>
-            Bit applied to all OSes (Unknown, Windows, MacOS, ...). 
+            Bit applied to all OSes (Unknown, Windows, MacOS, ...).
             </summary>
         </member>
         <member name="F:MonoMod.Utils.Platform.Bits64">

@@ -10,28 +10,21 @@ namespace SettMod.Modules.Survivors
     {
         internal static SurvivorBase instance;
 
+        internal abstract BodyInfo bodyInfo { get; set; }
         internal abstract string bodyName { get; set; }
 
         internal abstract GameObject bodyPrefab { get; set; }
+        internal abstract ConfigEntry<bool> characterEnabled { get; set; }
+        internal abstract Type characterMainState { get; set; }
+        internal abstract UnlockableDef characterUnlockableDef { get; set; }
+        internal abstract CustomRendererInfo[] customRendererInfos { get; set; }
         internal abstract GameObject displayPrefab { get; set; }
 
-        internal abstract float sortPosition { get; set; }
-
         internal string fullBodyName => bodyName + "Body";
-
-        internal abstract ConfigEntry<bool> characterEnabled { get; set; }
-
-        internal abstract UnlockableDef characterUnlockableDef { get; set; }
-
-        internal abstract BodyInfo bodyInfo { get; set; }
-
-        internal abstract int mainRendererIndex { get; set; }
-        internal abstract CustomRendererInfo[] customRendererInfos { get; set; }
-
-        internal abstract Type characterMainState { get; set; }
-
-        internal abstract ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
         internal abstract List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
+        internal abstract ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
+        internal abstract int mainRendererIndex { get; set; }
+        internal abstract float sortPosition { get; set; }
 
         internal virtual void Initialize()
         {
@@ -66,26 +59,13 @@ namespace SettMod.Modules.Survivors
             }
         }
 
-
-        internal virtual void InitializeUnlockables()
+        internal virtual void InitializeDoppelganger()
         {
-        }
-
-        internal virtual void InitializeSkills()
-        {
+            Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");
         }
 
         internal virtual void InitializeHitboxes()
         {
-        }
-
-        internal virtual void InitializeSkins()
-        {
-        }
-
-        internal virtual void InitializeDoppelganger()
-        {
-            Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");
         }
 
         internal virtual void InitializeItemDisplays()
@@ -98,9 +78,20 @@ namespace SettMod.Modules.Survivors
             characterModel.itemDisplayRuleSet = itemDisplayRuleSet;
         }
 
+        internal virtual void InitializeSkills()
+        {
+        }
+
+        internal virtual void InitializeSkins()
+        {
+        }
+
+        internal virtual void InitializeUnlockables()
+        {
+        }
+
         internal virtual void SetItemDisplays()
         {
-
         }
     }
 }

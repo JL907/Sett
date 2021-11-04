@@ -30,10 +30,10 @@ namespace SettMod.SkillStates
             }
             base.PlayCrossfade("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f, 0.05f);
             Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
-
         }
 
 #pragma warning disable CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
+
         protected Ray GetAimRay()
 #pragma warning restore CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
         {
@@ -75,13 +75,10 @@ namespace SettMod.SkillStates
                 {
                     this.outer.SetNextState(new ShowStopper
                     {
-
                     });
                 }
             }
         }
-
-
 
         public override void FixedUpdate()
         {

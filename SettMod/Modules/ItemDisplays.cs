@@ -8,6 +8,16 @@ namespace SettMod.Modules
     {
         private static Dictionary<string, GameObject> itemDisplayPrefabs = new Dictionary<string, GameObject>();
 
+        internal static GameObject LoadDisplay(string name)
+        {
+            if (itemDisplayPrefabs.ContainsKey(name.ToLower()))
+            {
+                if (itemDisplayPrefabs[name.ToLower()]) return itemDisplayPrefabs[name.ToLower()];
+            }
+
+            return null;
+        }
+
         internal static void PopulateDisplays()
         {
             PopulateFromBody("Commando");
@@ -39,16 +49,6 @@ namespace SettMod.Modules
                     }
                 }
             }
-        }
-
-        internal static GameObject LoadDisplay(string name)
-        {
-            if (itemDisplayPrefabs.ContainsKey(name.ToLower()))
-            {
-                if (itemDisplayPrefabs[name.ToLower()]) return itemDisplayPrefabs[name.ToLower()];
-            }
-
-            return null;
         }
     }
 }

@@ -24,6 +24,7 @@ namespace SettMod.SkillStates
 
         public static Vector3 CameraPosition = new Vector3(1.8f, -2.4f, -8f);
         private Transform slamIndicatorInstance;
+
         private Vector3 punchVector
 
         {
@@ -33,10 +34,10 @@ namespace SettMod.SkillStates
                 return base.inputBank.aimDirection;
             }
         }
+
 #pragma warning disable CS0169 // The field 'HayMaker.attack' is never used
         private OverlapAttack attack;
 #pragma warning restore CS0169 // The field 'HayMaker.attack' is never used
-
 
         public float duration;
 
@@ -44,7 +45,6 @@ namespace SettMod.SkillStates
         protected Animator animator;
 
         protected float stopwatch;
-
 
         public override void OnEnter()
         {
@@ -71,7 +71,6 @@ namespace SettMod.SkillStates
             }
             Util.PlaySound("SettWSFX", base.gameObject);
             if (!this.slamIndicatorInstance) this.CreateIndicator();
-
         }
 
         public override void OnExit()
@@ -81,10 +80,8 @@ namespace SettMod.SkillStates
             base.OnExit();
         }
 
-
         protected virtual void OnHitEnemyAuthority()
         {
-
         }
 
         private void UpdateSlamIndicator()
@@ -122,7 +119,6 @@ namespace SettMod.SkillStates
                 this.slamIndicatorInstance.localScale = Vector3.one * 25f;
             }
         }
-
 
         private void Fire()
         {
@@ -199,7 +195,6 @@ namespace SettMod.SkillStates
                     }, false);
                 }
             }
-
 
             if (this.stopwatch >= this.EarlyExitTime && base.isAuthority && this.hasFired)
             {

@@ -5,42 +5,31 @@ namespace SettMod.Modules
 {
     public static class Config
     {
-        public static ConfigEntry<float> baseHealth;
-        public static ConfigEntry<float> healthGrowth;
-
-        public static ConfigEntry<float> baseRegen;
-        public static ConfigEntry<float> regenGrowth;
-
-        public static ConfigEntry<float> baseArmor;
         public static ConfigEntry<float> armorGrowth;
-
-        public static ConfigEntry<float> baseDamage;
-        public static ConfigEntry<float> damageGrowth;
-
-        public static ConfigEntry<float> baseMovementSpeed;
-
+        public static ConfigEntry<float> baseArmor;
         public static ConfigEntry<float> baseCrit;
-
-        public static ConfigEntry<int> jumpCount;
-
-
-        public static ConfigEntry<float> leftPunchDamageCoefficient;
-        public static ConfigEntry<float> rightPunchDamageCoefficient;
-
-        public static ConfigEntry<float> faceBreakerDamageCoefficient;
-        public static ConfigEntry<float> faceBreakerPullRadius;
-        public static ConfigEntry<float> faceBreakerPullForce;
+        public static ConfigEntry<float> baseDamage;
+        public static ConfigEntry<float> baseHealth;
+        public static ConfigEntry<float> baseMovementSpeed;
+        public static ConfigEntry<float> baseRegen;
+        public static ConfigEntry<float> bonusHealthCoefficient;
+        public static ConfigEntry<float> damageGrowth;
         public static ConfigEntry<float> faceBreakerCD;
-
-        public static ConfigEntry<float> slamRadius;
+        public static ConfigEntry<float> faceBreakerDamageCoefficient;
+        public static ConfigEntry<float> faceBreakerPullForce;
+        public static ConfigEntry<float> faceBreakerPullRadius;
+        public static ConfigEntry<float> hayMakerCD;
+        public static ConfigEntry<float> hayMakerDamageCoefficient;
+        public static ConfigEntry<float> hayMakerGritBonus;
+        public static ConfigEntry<float> healthGrowth;
+        public static ConfigEntry<int> jumpCount;
+        public static ConfigEntry<float> leftPunchDamageCoefficient;
+        public static ConfigEntry<float> regenGrowth;
+        public static ConfigEntry<float> rightPunchDamageCoefficient;
         public static ConfigEntry<float> slamCD;
         public static ConfigEntry<float> slamDamageCoefficient;
         public static ConfigEntry<float> slamForce;
-        public static ConfigEntry<float> bonusHealthCoefficient;
-
-        public static ConfigEntry<float> hayMakerDamageCoefficient;
-        public static ConfigEntry<float> hayMakerGritBonus;
-        public static ConfigEntry<float> hayMakerCD;
+        public static ConfigEntry<float> slamRadius;
 
         public static void ReadConfig()
         {

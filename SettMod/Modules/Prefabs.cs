@@ -19,8 +19,6 @@ namespace SettMod.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
-
-
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
             string fullNameString = "SETT_NAME";
@@ -42,11 +40,20 @@ namespace SettMod.Modules
             survivorDefinitions.Add(survivorDef);
         }
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, 100f); }
+        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix)
+        {
+            RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, 100f);
+        }
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, float sortPosition) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, sortPosition); }
+        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, float sortPosition)
+        {
+            RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, sortPosition);
+        }
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef) { RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, unlockableDef, 100f); }
+        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef)
+        {
+            RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, unlockableDef, 100f);
+        }
 
         internal static GameObject CreateDisplayPrefab(string modelName, GameObject prefab, BodyInfo bodyInfo)
         {
@@ -88,6 +95,7 @@ namespace SettMod.Modules
             }
 
             #region CharacterBody
+
             CharacterBody bodyComponent = newPrefab.GetComponent<CharacterBody>();
 
             bodyComponent.name = bodyInfo.bodyName;
@@ -143,7 +151,8 @@ namespace SettMod.Modules
             bodyComponent.gameObject.AddComponent<GritComponent>();
 
             bodyComponent.bodyColor = bodyInfo.bodyColor;
-            #endregion
+
+            #endregion CharacterBody
 
             if (modelBaseTransform != null) SetupCharacterDirection(newPrefab, modelBaseTransform, model.transform);
             SetupCameraTargetParams(newPrefab);
@@ -171,6 +180,7 @@ namespace SettMod.Modules
         }
 
         #region ModelSetup
+
         private static Transform SetupModel(GameObject prefab, Transform modelTransform, BodyInfo bodyInfo)
         {
             GameObject modelBase = new GameObject("ModelBase");
@@ -214,7 +224,6 @@ namespace SettMod.Modules
             return GameObject.Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(modelName));
         }
 
-
         internal static void SetupCharacterModel(GameObject prefab, CustomRendererInfo[] rendererInfo, int mainRendererIndex)
         {
             CharacterModel characterModel = prefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<CharacterModel>();
@@ -240,7 +249,6 @@ namespace SettMod.Modules
                     Renderer j = childLocator.FindChild(rendererInfo[i].childName).GetComponent<Renderer>();
                     if (!j)
                     {
-
                     }
                     else
                     {
@@ -269,9 +277,11 @@ namespace SettMod.Modules
 
             characterModel.mainSkinnedMeshRenderer = characterModel.baseRendererInfos[mainRendererIndex].renderer.GetComponent<SkinnedMeshRenderer>();
         }
-        #endregion
+
+        #endregion ModelSetup
 
         #region ComponentSetup
+
         private static void SetupCharacterDirection(GameObject prefab, Transform modelBaseTransform, Transform modelTransform)
         {
             CharacterDirection characterDirection = prefab.GetComponent<CharacterDirection>();
@@ -325,7 +335,6 @@ namespace SettMod.Modules
             rigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete;
             rigidbody.constraints = RigidbodyConstraints.None;
         }
-
 
         private static void SetupCapsuleCollider(GameObject prefab)
         {
@@ -468,7 +477,8 @@ namespace SettMod.Modules
 
             hitBoxGroup.groupName = hitboxName;
         }
-        #endregion
+
+        #endregion ComponentSetup
     }
 }
 

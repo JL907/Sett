@@ -9,28 +9,27 @@ using UnityEngine;
 
 namespace SettMod.Modules
 {
+    internal interface IModdedUnlockableDataProvider
+    {
+        string AchievementDescToken { get; }
+        string AchievementIdentifier { get; }
+        string AchievementNameToken { get; }
+        Func<string> GetHowToUnlock { get; }
+        Func<string> GetUnlocked { get; }
+        string PrerequisiteUnlockableIdentifier { get; }
+        Sprite Sprite { get; }
+        string UnlockableIdentifier { get; }
+        string UnlockableNameToken { get; }
+    }
+
     internal static class Unlockables
     {
-        private static readonly HashSet<string> usedRewardIds = new HashSet<string>();
         internal static List<AchievementDef> achievementDefs = new List<AchievementDef>();
         internal static List<UnlockableDef> unlockableDefs = new List<UnlockableDef>();
         private static readonly List<(AchievementDef achDef, UnlockableDef unlockableDef, String unlockableName)> moddedUnlocks = new List<(AchievementDef achDef, UnlockableDef unlockableDef, string unlockableName)>();
-
+        private static readonly HashSet<string> usedRewardIds = new HashSet<string>();
         private static bool addingUnlockables;
         public static bool ableToAdd { get; private set; } = false;
-
-        internal static UnlockableDef CreateNewUnlockable(UnlockableInfo unlockableInfo)
-        {
-            UnlockableDef newUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
-
-            newUnlockableDef.nameToken = unlockableInfo.Name;
-            newUnlockableDef.cachedName = unlockableInfo.Name;
-            newUnlockableDef.getHowToUnlockString = unlockableInfo.HowToUnlockString;
-            newUnlockableDef.getUnlockedString = unlockableInfo.UnlockedString;
-            newUnlockableDef.sortScore = unlockableInfo.SortScore;
-
-            return newUnlockableDef;
-        }
 
         public static UnlockableDef AddUnlockable<TUnlockable>(bool serverTracked) where TUnlockable : BaseAchievement, IModdedUnlockableDataProvider, new()
         {
@@ -81,12 +80,22 @@ where TDelegate : Delegate
             index = cursor.EmitDelegate<TDelegate>(target);
             return cursor;
         }
+
         public static ILCursor CallDel_<TDelegate>(this ILCursor cursor, TDelegate target)
             where TDelegate : Delegate => cursor.CallDel_(target, out _);
 
-        private static void Init_Il(ILContext il) => new ILCursor(il)
-    .GotoNext(MoveType.AfterLabel, x => x.MatchCallOrCallvirt(typeof(UnlockableCatalog), nameof(UnlockableCatalog.SetUnlockableDefs)))
-    .CallDel_(ArrayHelper.AppendDel(unlockableDefs));
+        internal static UnlockableDef CreateNewUnlockable(UnlockableInfo unlockableInfo)
+        {
+            UnlockableDef newUnlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+
+            newUnlockableDef.nameToken = unlockableInfo.Name;
+            newUnlockableDef.cachedName = unlockableInfo.Name;
+            newUnlockableDef.getHowToUnlockString = unlockableInfo.HowToUnlockString;
+            newUnlockableDef.getUnlockedString = unlockableInfo.UnlockedString;
+            newUnlockableDef.sortScore = unlockableInfo.SortScore;
+
+            return newUnlockableDef;
+        }
 
         private static void CollectAchievementDefs(ILContext il)
         {
@@ -117,31 +126,23 @@ where TDelegate : Delegate
             _ = cursor.Emit(OpCodes.Ldloc_1);
         }
 
+        private static void Init_Il(ILContext il) => new ILCursor(il)
+            .GotoNext(MoveType.AfterLabel, x => x.MatchCallOrCallvirt(typeof(UnlockableCatalog), nameof(UnlockableCatalog.SetUnlockableDefs)))
+    .CallDel_(ArrayHelper.AppendDel(unlockableDefs));
+
         internal struct UnlockableInfo
         {
-            internal string Name;
             internal Func<string> HowToUnlockString;
-            internal Func<string> UnlockedString;
+            internal string Name;
             internal int SortScore;
+            internal Func<string> UnlockedString;
         }
-    }
-
-    internal interface IModdedUnlockableDataProvider
-    {
-        string AchievementIdentifier { get; }
-        string UnlockableIdentifier { get; }
-        string AchievementNameToken { get; }
-        string PrerequisiteUnlockableIdentifier { get; }
-        string UnlockableNameToken { get; }
-        string AchievementDescToken { get; }
-        Sprite Sprite { get; }
-        Func<string> GetHowToUnlock { get; }
-        Func<string> GetUnlocked { get; }
     }
 
     internal abstract class ModdedUnlockable : BaseAchievement, IModdedUnlockableDataProvider
     {
         #region Implementation
+
         public void Revoke()
         {
             if (base.userProfile.HasAchievement(this.AchievementIdentifier))
@@ -151,38 +152,50 @@ where TDelegate : Delegate
 
             base.userProfile.RevokeUnlockable(UnlockableCatalog.GetUnlockableDef(this.UnlockableIdentifier));
         }
-        #endregion
+
+        #endregion Implementation
 
         #region Contract
-        public abstract string AchievementIdentifier { get; }
-        public abstract string UnlockableIdentifier { get; }
-        public abstract string AchievementNameToken { get; }
-        public abstract string PrerequisiteUnlockableIdentifier { get; }
-        public abstract string UnlockableNameToken { get; }
+
         public abstract string AchievementDescToken { get; }
-        public abstract Sprite Sprite { get; }
+        public abstract string AchievementIdentifier { get; }
+        public abstract string AchievementNameToken { get; }
         public abstract Func<string> GetHowToUnlock { get; }
         public abstract Func<string> GetUnlocked { get; }
-        #endregion
+        public abstract string PrerequisiteUnlockableIdentifier { get; }
+        public abstract Sprite Sprite { get; }
+        public abstract string UnlockableIdentifier { get; }
+        public abstract string UnlockableNameToken { get; }
+
+        #endregion Contract
 
         #region Virtuals
-        public override void OnGranted() => base.OnGranted();
-        public override void OnInstall()
-        {
-            base.OnInstall();
-        }
-        public override void OnUninstall()
-        {
-            base.OnUninstall();
-        }
-        public override Single ProgressForAchievement() => base.ProgressForAchievement();
+
+        public override bool wantsBodyCallbacks { get => base.wantsBodyCallbacks; }
+
         public override BodyIndex LookUpRequiredBodyIndex()
         {
             return base.LookUpRequiredBodyIndex();
         }
+
         public override void OnBodyRequirementBroken() => base.OnBodyRequirementBroken();
+
         public override void OnBodyRequirementMet() => base.OnBodyRequirementMet();
-        public override bool wantsBodyCallbacks { get => base.wantsBodyCallbacks; }
-        #endregion
+
+        public override void OnGranted() => base.OnGranted();
+
+        public override void OnInstall()
+        {
+            base.OnInstall();
+        }
+
+        public override void OnUninstall()
+        {
+            base.OnUninstall();
+        }
+
+        public override Single ProgressForAchievement() => base.ProgressForAchievement();
+
+        #endregion Virtuals
     }
 }

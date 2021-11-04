@@ -55,16 +55,16 @@ namespace SettMod.Modules
         internal struct SkinDefInfo
         {
             internal SkinDef[] BaseSkins;
-            internal Sprite Icon;
-            internal string NameToken;
-            internal UnlockableDef UnlockableDef;
-            internal GameObject RootObject;
-            internal CharacterModel.RendererInfo[] RendererInfos;
-            internal SkinDef.MeshReplacement[] MeshReplacements;
             internal SkinDef.GameObjectActivation[] GameObjectActivations;
-            internal SkinDef.ProjectileGhostReplacement[] ProjectileGhostReplacements;
+            internal Sprite Icon;
+            internal SkinDef.MeshReplacement[] MeshReplacements;
             internal SkinDef.MinionSkinReplacement[] MinionSkinReplacements;
             internal string Name;
+            internal string NameToken;
+            internal SkinDef.ProjectileGhostReplacement[] ProjectileGhostReplacements;
+            internal CharacterModel.RendererInfo[] RendererInfos;
+            internal GameObject RootObject;
+            internal UnlockableDef UnlockableDef;
         }
     }
 }
