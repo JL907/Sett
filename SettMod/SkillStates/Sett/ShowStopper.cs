@@ -156,7 +156,7 @@ namespace SettMod.SkillStates
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (0.1f * this.bonusHealth);
+            blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (ShowStopper.bonusHealthCoefficient * this.bonusHealth);
             blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
