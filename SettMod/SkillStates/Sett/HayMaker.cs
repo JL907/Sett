@@ -8,9 +8,9 @@ namespace SettMod.SkillStates
 {
     public class HayMaker : BaseSkillState
     {
-        protected float startUp = 0.8f;
+        protected float startUp = 0.78f;
         protected float EarlyExitTime = 1.2f;
-        protected float baseDuration = 3.55f;
+        protected float baseDuration = 1.51f;
         public static float hayMakerRadius = 55f;
         public static float hayMakerDamageCoefficient = Modules.Config.hayMakerDamageCoefficient.Value;
         public static float hayMakerProcCoefficient = 1f;
@@ -18,11 +18,11 @@ namespace SettMod.SkillStates
         public static float hayMakerForce = 1000f;
         public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         private float gritSnapShot;
+        private float maxGritSnapShot;
         private Ray downRay;
         private Vector3 hitSphereScale = new Vector3(50f, 14f, 14f);
 
         public static Vector3 CameraPosition = new Vector3(1.8f, -2.4f, -8f);
-        private float initialTime;
         private Transform slamIndicatorInstance;
         private Vector3 punchVector
 
@@ -52,22 +52,31 @@ namespace SettMod.SkillStates
             base.StartAimMode(0.5f + this.duration, false);
             this.animator = base.GetModelAnimator();
             this.hasFired = false;
-            this.duration = this.baseDuration / base.attackSpeedStat;
+            this.duration = this.baseDuration;
             base.characterMotor.velocity = Vector3.zero;
-            base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.05f);
-            Util.PlaySound("SettWSFX", base.gameObject);
             GritComponent gritComponent = base.GetComponent<GritComponent>();
             float currentGrit = gritComponent.GetCurrentGrit();
+            float maxGrit = gritComponent.GetMaxGrit();
             this.gritSnapShot = currentGrit;
+            this.maxGritSnapShot = maxGrit;
             base.healthComponent.AddBarrierAuthority(currentGrit);
             base.GetComponent<GritComponent>().AddGritAuthority(-currentGrit);
+            if (this.gritSnapShot >= this.maxGritSnapShot)
+            {
+                base.PlayCrossfade("Fullbody, Override", "HayMaker2", "HayMaker.playbackRate", this.duration, 0.2f);
+            }
+            else
+            {
+                base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.2f);
+            }
+            Util.PlaySound("SettWSFX", base.gameObject);
             if (!this.slamIndicatorInstance) this.CreateIndicator();
 
         }
 
         public override void OnExit()
         {
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            //base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             base.OnExit();
         }
@@ -140,7 +149,7 @@ namespace SettMod.SkillStates
                         damageInfo.inflictor = base.gameObject;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = HayMaker.hayMakerDamageCoefficient;
+                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
                         damageInfo.position = component.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         component.TakeDamage(damageInfo);
@@ -192,7 +201,7 @@ namespace SettMod.SkillStates
             }
 
 
-            if (this.stopwatch >= this.EarlyExitTime && base.isAuthority)
+            if (this.stopwatch >= this.EarlyExitTime && base.isAuthority && this.hasFired)
             {
                 this.outer.SetNextStateToMain();
                 return;
@@ -201,7 +210,7 @@ namespace SettMod.SkillStates
 
         public override InterruptPriority GetMinimumInterruptPriority()
         {
-            return InterruptPriority.PrioritySkill;
+            return InterruptPriority.Skill;
         }
     }
 }

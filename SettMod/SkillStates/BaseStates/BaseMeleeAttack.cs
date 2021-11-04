@@ -87,11 +87,11 @@ namespace SettMod.SkillStates.BaseStates
 
             hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 
-            if (this.animator.GetBool("isMoving"))
+            if (this.animator.GetBool("isMoving") || (!(this.animator.GetBool("isGrounded"))))
             {
                 base.PlayCrossfade("Gesture, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
             }
-            else
+            else if ((!(this.animator.GetBool("isMoving"))) && this.animator.GetBool("isGrounded"))
             {
                 base.PlayCrossfade("FullBody, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
             }
@@ -205,17 +205,23 @@ namespace SettMod.SkillStates.BaseStates
             {
                 this.FireAttack();
             }
-
             if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
             {
                 int index = this.swingIndex;
                 if (index == 0) index = 1;
                 else index = 0;
-
-                this.outer.SetNextState(new BaseMeleeAttack
+                EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
+                if (component && component.state.isAuthority
+                    && (!(component.state is Roll2))
+                    && (!(component.state is HayMaker))
+                    && (!(component.state is Facebreaker))
+                    && (!(component.state is ShowStopper)))
                 {
-                    swingIndex = index
-                });
+                    this.outer.SetNextState(new BaseMeleeAttack
+                    {
+                        swingIndex = index
+                    });
+                }
                 return;
             }
 
