@@ -1,13 +1,18 @@
-## Latest Patch Notes `1.5.0`
+## Latest Patch Notes `1.5.1`
+* Fixed an issue where Haymaker's indicator was being positioned improperly
+* Fixed an issue where Haymaker's indicator did not spawn at all
+
+---
+
+## Old Patch Notes
+`1.5.0`
 * Fixed an issue where Facebreaker was doing the backward onhit animation on enemies infront of sett
 * Added minimum duration before detonate on next frame check on The Showstopper    
     * This should prevent The Showstopper from detonating instantly in some situations
 * Sett's M1 has a new Left Punch animation while moving or in the air
 * Sett's M1 has a new swing visual effect
 * Sett's M1 has a new impact visual effect
----
 
-## Old Patch Notes
 `1.4.3`
 * Fixed The Showstopper using incorrect coefficient value for target maximum health.
 * Updated Plugin to use latest version of R2API
