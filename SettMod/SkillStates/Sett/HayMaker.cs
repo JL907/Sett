@@ -88,20 +88,8 @@ namespace SettMod.SkillStates
         {
             if (this.slamIndicatorInstance)
             {
-                float maxDistance = 25f;
-                Vector3 topPosition = new Vector3(base.characterBody.corePosition.x, base.characterBody.corePosition.y + 10, base.characterBody.corePosition.z);
-                this.downRay = new Ray
-                {
-                    direction = Vector3.down,
-                    origin = topPosition + base.characterDirection.forward * 23f
-                };
-
-                RaycastHit raycastHit;
-                if (Physics.Raycast(this.downRay, out raycastHit, maxDistance, LayerIndex.world.mask))
-                {
-                    this.slamIndicatorInstance.transform.position = raycastHit.point;
-                    this.slamIndicatorInstance.transform.up = raycastHit.normal;
-                }
+                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 23f;
+                this.slamIndicatorInstance.transform.position = transformLocation;
             }
         }
 
@@ -109,14 +97,11 @@ namespace SettMod.SkillStates
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
-                Vector3 topPosition = new Vector3(base.characterBody.corePosition.x, base.characterBody.corePosition.y + 10, base.characterBody.corePosition.z);
-                this.downRay = new Ray
-                {
-                    direction = Vector3.down,
-                    origin = topPosition + base.characterDirection.forward * 23f
-                };
+                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 23f;
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
+                this.slamIndicatorInstance.transform.position = transformLocation;
                 this.slamIndicatorInstance.localScale = Vector3.one * 25f;
+
             }
         }
 
