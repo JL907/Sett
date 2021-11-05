@@ -1,4 +1,4 @@
-## Latest Patch Notes `1.4.4`
+## Latest Patch Notes `1.5.0`
 * Fixed an issue where Facebreaker was doing the backward onhit animation on enemies infront of sett
 * Added minimum duration before detonate on next frame check on The Showstopper    
     * This should prevent The Showstopper from detonating instantly in some situations
