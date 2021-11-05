@@ -186,9 +186,9 @@ namespace SettMod.Modules
                 };
             }
 
-            swordSwingEffect = Assets.LoadEffect("SettSwordSwingEffect", true);
+            swordSwingEffect = Assets.LoadEffect("SettFistSwingEffect", true);
             faceBreakerEffect = Assets.LoadEffect("FistBarrageEffect", true);
-            swordHitImpactEffect = Assets.LoadEffect("ImpactSettSlash");
+            swordHitImpactEffect = Assets.LoadEffect("ImpactSettPunch");
         }
 
         internal static CharacterModel.RendererInfo[] SetupRendererInfos(GameObject obj)

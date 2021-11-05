@@ -3,6 +3,8 @@
 * Added minimum duration before detonate on next frame check on The Showstopper    
     * This should prevent The Showstopper from detonating instantly in some situations
 * Sett's M1 has a new Left Punch animation while moving or in the air
+* Sett's M1 has a new swing visual effect
+* Sett's M1 has a new impact visual effect
 ---
 
 ## Old Patch Notes
