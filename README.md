@@ -1,10 +1,4 @@
 # Sett
-## Featured in Woolie's Mod Showcase Video
-<a href="https://www.youtube.com/watch?v=AJiNv8JH_Kk" target="_blank">
-  <img src="https://user-images.githubusercontent.com/7343912/140545821-d680494f-c098-4bd6-8c5f-c3a5663e6571.jpg"/>
-</a>
-
----
 
 ![Risk_of_Rain_2_IBWNMzbDVt](https://user-images.githubusercontent.com/7343912/138583896-3c8a6f6e-ce8e-435a-944d-55cf74f1be0e.jpg)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
