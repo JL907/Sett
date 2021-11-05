@@ -66,7 +66,7 @@ namespace SettMod.SkillStates
                 this.outer.SetNextStateToMain();
             }
 
-            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && base.isAuthority && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
+            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && base.isAuthority && this.detonateNextFrame)
             {
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
