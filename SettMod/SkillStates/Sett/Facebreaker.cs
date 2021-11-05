@@ -246,8 +246,6 @@ namespace SettMod.SkillStates
             {
                 this.InitializePull();
             }
-            this.front = false;
-            this.back = false;
             for (int i = 0; i < this.pullList.Count; i++)
             {
                 CharacterBody characterBody = this.pullList[i];
@@ -257,8 +255,8 @@ namespace SettMod.SkillStates
                     float d = this.pullStrengthCurve.Evaluate(vector.magnitude / Facebreaker.pullRadius);
                     Vector3 b = vector.normalized * d * deltaTime * Facebreaker.pullForce;
                     CharacterMotor component = characterBody.GetComponent<CharacterMotor>();
-                    Vector3 forward = this.transform.TransformDirection(Vector3.forward);
-                    Vector3 toEnemy = characterBody.transform.position - base.transform.position;
+                    Vector3 forward = this.characterDirection.forward.normalized;
+                    Vector3 toEnemy = characterBody.transform.position - ((this.pullOrigin) ? this.pullOrigin.position : base.transform.position);
                     if (component)
                     {
                         component.rootMotion += b;

@@ -1,10 +1,17 @@
-## Latest Patch Notes `1.4.3`
-* Fixed The Showstopper using incorrect coefficient value for target maximum health.
-* Updated Plugin to use latest version of R2API
-
+## Latest Patch Notes `1.5.0`
+* Fixed an issue where Facebreaker was doing the backward onhit animation on enemies infront of sett
+* Added minimum duration before detonate on next frame check on The Showstopper    
+    * This should prevent The Showstopper from detonating instantly in some situations
+* Sett's M1 has a new Left Punch animation while moving or in the air
+* Sett's M1 has a new swing visual effect
+* Sett's M1 has a new impact visual effect
 ---
 
 ## Old Patch Notes
+`1.4.3`
+* Fixed The Showstopper using incorrect coefficient value for target maximum health.
+* Updated Plugin to use latest version of R2API
+
 `1.4.2`
 * Added SFX when selected on character select screen
 * Removed Sett looping through two animations on character select screen

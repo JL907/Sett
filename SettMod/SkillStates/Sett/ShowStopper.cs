@@ -60,12 +60,13 @@ namespace SettMod.SkillStates
                 this.AttemptGrab(15f);
             }
 
-            if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround || !base.characterMotor.disableAirControlUntilCollision))
+            if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
             {
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
-            if (base.isAuthority && (this.detonateNextFrame || base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround))
+
+            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && base.isAuthority && this.detonateNextFrame)
             {
                 this.LandingImpact();
                 this.outer.SetNextStateToMain();
