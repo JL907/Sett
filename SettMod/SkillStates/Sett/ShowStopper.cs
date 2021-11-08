@@ -157,7 +157,7 @@ namespace SettMod.SkillStates
                 {
                     if (BodyMeetsGrabConditions(target.healthComponent.body))
                     {
-                        this.bonusHealth = target.healthComponent.fullHealth;
+                        this.bonusHealth = target.healthComponent.fullCombinedHealth;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
