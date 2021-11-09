@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1713697377
+CRC: 1098766095
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6530f04ef94bd6aac4a36c9a0d6bb4ff
+    Hash: 9c7b98ad8d84b6150437a5d396e3bf26
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -195,6 +195,7 @@ Assets:
 - Assets/Sett/VFX/Textures/texEmbers.png
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
 - Assets/Sett/VFX/Materials/matTrail.mat
+- Assets/Sett/Obsidian.prefab
 - Assets/Sett/VFX/Textures/texPunchImpactShadow.png
 - Assets/Sett/settUpper.mask
 - Assets/Sett/animSett.controller
