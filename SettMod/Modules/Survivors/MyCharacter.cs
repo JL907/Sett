@@ -5,6 +5,7 @@ using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static SettMod.Modules.Skins;
 
 namespace SettMod.Modules.Survivors
 {
@@ -281,35 +282,17 @@ namespace SettMod.Modules.Survivors
             #endregion DefaultSkin
 
             /*
-
-            #region Obsidian
-
-            Material masteryMat = Modules.Assets.CreateMaterial("SettObsidianMat");
-            CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
-            {
-                masteryMat
-            });
-
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "SETT_OBSIDIAN_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("sett_circle_8"),
-                masteryRendererInfos,
-                mainRenderer,
-                model);
-
-            masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
-            {
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("Mesh_8"),
-                    renderer = defaultRenderers[0].renderer
-                },
-            };
-
+            #region Mastery
+            SkinDefInfo masterySkinDefInfo = new SkinDefInfo();
+            masterySkinDefInfo.Name = "ObsidianSkin";
+            masterySkinDefInfo.NameToken = "SETT_OBSIDIAN_SKIN_NAME";
+            masterySkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square");
+            masterySkinDefInfo.RootObject = Assets.mainAssetBundle.LoadAsset<GameObject>("mdlObsidian");
+            SkinDef masterySkin = CreateSkinDef(masterySkinDefInfo);
             skins.Add(masterySkin);
-
-            #endregion Obsidian
-
+            #endregion
             */
+
             skinController.skins = skins.ToArray();
         }
 
