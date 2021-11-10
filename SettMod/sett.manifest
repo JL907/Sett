@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3597098505
+CRC: 2573276082
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9686d5f96922ad4a161df48a5ad8b4d5
+    Hash: faa5fab87d35b72304bf6cd7e8489bb7
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -92,7 +92,6 @@ Assets:
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/textures/skin8_0.png
-- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
 - Assets/Sett/VFX/Textures/sett_base_r_impact.dds
 - Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
@@ -195,7 +194,6 @@ Assets:
 - Assets/Sett/VFX/Textures/texEmbers.png
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
 - Assets/Sett/VFX/Materials/matTrail.mat
-- Assets/Sett/mdlObsidian.prefab
 - Assets/Sett/VFX/Textures/texPunchImpactShadow.png
 - Assets/Sett/settUpper.mask
 - Assets/Sett/animSett.controller
@@ -213,6 +211,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
 - Assets/Sett/mdlSett.prefab
 - Assets/Sett/VFX/Textures/hiteffect.dds
+- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
 - Assets/Sett/icons/texUIMainRect.png
