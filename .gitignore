@@ -393,3 +393,6 @@ SettMod-1.1.0.zip
 SettMod.dll
 SettMod 1.2.0.zip
 *.zip
+SettMod/libs/.dll
+SettMod/libs/.xml
+SettMod/libs/.exe
