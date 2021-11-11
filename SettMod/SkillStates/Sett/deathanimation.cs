@@ -15,6 +15,7 @@ namespace SettMod.SkillStates
 			base.OnEnter();
 			this.animator = base.GetModelAnimator();
 			this.PlayDeathAnimation();
+			this.PlayDeathSound();
 		}
 
 		// Token: 0x0600449E RID: 17566 RVA: 0x00004381 File Offset: 0x00002581

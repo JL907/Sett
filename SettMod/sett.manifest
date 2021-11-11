@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2292676732
+CRC: 3378850410
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: bc47daa28a30724b160885151cf9790f
+    Hash: 8146b3ede301a24e5870b1b9ea72b287
   TypeTreeHash:
     serializedVersion: 2
-    Hash: bd604f5f668e30fe3aaefc8d2f68c167
+    Hash: f9ef2a914db80951663e4f4248258f45
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -24,8 +24,6 @@ ClassTypes:
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
-  Script: {instanceID: 0}
-- Class: 54
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -47,8 +45,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -56,8 +52,6 @@ ClassTypes:
 - Class: 136
   Script: {instanceID: 0}
 - Class: 137
-  Script: {instanceID: 0}
-- Class: 144
   Script: {instanceID: 0}
 - Class: 198
   Script: {instanceID: 0}
@@ -87,6 +81,7 @@ Assets:
 - Assets/Sett/customanimations/RunHasteFootsteps.anim
 - Assets/Sett/VFX/Textures/sett_base_flare_star.dds
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
+- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
 - Assets/Sett/textures/skin0_0.png
@@ -211,7 +206,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
 - Assets/Sett/mdlSett.prefab
 - Assets/Sett/VFX/Textures/hiteffect.dds
-- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
 - Assets/Sett/icons/texUIMainRect.png
