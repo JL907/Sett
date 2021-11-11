@@ -257,9 +257,6 @@ namespace SettMod.Modules.Survivors
 
             #endregion DefaultSkin
 
-
-
-            /*
             #region Obsidian
             GameObject obsidianObject = null;
             var obsidianSkin = ScriptableObject.CreateInstance<SkinDef>();
@@ -276,15 +273,13 @@ namespace SettMod.Modules.Survivors
 
             Modules.Assets.ConvertAllRenderersToHopooShader(obsidianObject);
             obsidianObject.AddComponent<CharacterModel>();
+            obsidianObject.AddComponent<CharacterModel>();
             obsidianSkin.rootObject = obsidianObject;
             obsidianSkin.rendererInfos = defaultRenderers;
 
             skins.Add(obsidianSkin);
 
             #endregion
-            */
-
-
             skinController.skins = skins.ToArray();
         }
 

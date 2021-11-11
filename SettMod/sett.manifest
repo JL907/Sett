@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2450884117
+CRC: 907888930
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: deff35b0335ed821c9ac500cef92e359
+    Hash: 82189769e2dc0c0f74474b21c0bdde54
   TypeTreeHash:
     serializedVersion: 2
     Hash: 763adec766eb3f69759446f91cb3b7f5
@@ -85,6 +85,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
+- Assets/Sett/obsidianDisplay.prefab
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/textures/skin8_0.png
