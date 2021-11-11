@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3378850410
+CRC: 2450884117
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8146b3ede301a24e5870b1b9ea72b287
+    Hash: deff35b0335ed821c9ac500cef92e359
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f9ef2a914db80951663e4f4248258f45
+    Hash: 763adec766eb3f69759446f91cb3b7f5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -45,6 +45,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 669782608, guid: 50f4712cbf951534086a30416f350f34, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -81,7 +83,6 @@ Assets:
 - Assets/Sett/customanimations/RunHasteFootsteps.anim
 - Assets/Sett/VFX/Textures/sett_base_flare_star.dds
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
-- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
 - Assets/Sett/textures/skin0_0.png
@@ -101,6 +102,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
 - Assets/Sett/VFX/Materials/matSwingShadow.mat
 - Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
+- Assets/Sett/mdlObsidian.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
 - Assets/Sett/VFX/Textures/texFire.tga
 - Assets/Sett/icons/Sett_Circle.png
@@ -199,6 +201,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
+- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Materials/matEmbers.mat
 - Assets/Sett/VFX/Textures/texFistSwing.png
 - Assets/Sett/VFX/Textures/sett_base_regen_particulates.dds

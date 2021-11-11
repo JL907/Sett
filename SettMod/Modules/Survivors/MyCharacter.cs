@@ -257,17 +257,33 @@ namespace SettMod.Modules.Survivors
 
             #endregion DefaultSkin
 
+
+
             /*
-            #region Mastery
-            SkinDefInfo masterySkinDefInfo = new SkinDefInfo();
-            masterySkinDefInfo.Name = "ObsidianSkin";
-            masterySkinDefInfo.NameToken = "SETT_OBSIDIAN_SKIN_NAME";
-            masterySkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square");
-            masterySkinDefInfo.RootObject = Assets.mainAssetBundle.LoadAsset<GameObject>("mdlObsidian");
-            SkinDef masterySkin = CreateSkinDef(masterySkinDefInfo);
-            skins.Add(masterySkin);
+            #region Obsidian
+            GameObject obsidianObject = null;
+            var obsidianSkin = ScriptableObject.CreateInstance<SkinDef>();
+            obsidianSkin.name = "ObsidianSkin";
+            obsidianSkin.nameToken = "SETT_OBSIDIAN_SKIN_NAME";
+            obsidianSkin.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square");
+
+            if (!(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlObsidian") == null))
+            {
+                obsidianObject = GameObject.Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlObsidian"));
+            }
+
+            obsidianObject.AddComponent<CharacterModel>().baseRendererInfos = model.GetComponentInChildren<CharacterModel>().baseRendererInfos;
+
+            Modules.Assets.ConvertAllRenderersToHopooShader(obsidianObject);
+            obsidianObject.AddComponent<CharacterModel>();
+            obsidianSkin.rootObject = obsidianObject;
+            obsidianSkin.rendererInfos = defaultRenderers;
+
+            skins.Add(obsidianSkin);
+
             #endregion
             */
+
 
             skinController.skins = skins.ToArray();
         }
