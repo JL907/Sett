@@ -46,7 +46,8 @@ namespace SettMod.Modules.Survivors
 
                 Modules.Prefabs.SetupCharacterModel(bodyPrefab, customRendererInfos, mainRendererIndex);
 
-                displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
+                //displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
+                displayPrefab = Assets.mainAssetBundle.LoadAsset<GameObject>("settDisplay");
                 displayPrefab.AddComponent<MenuSound>();
 
                 Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, new Color(.3781f, .1324f, .4894f), bodyName.ToUpper(), characterUnlockableDef, sortPosition);

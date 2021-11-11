@@ -258,24 +258,8 @@ namespace SettMod.Modules.Survivors
             #endregion DefaultSkin
 
             #region Obsidian
-            GameObject obsidianObject = null;
-            var obsidianSkin = ScriptableObject.CreateInstance<SkinDef>();
-            obsidianSkin.name = "ObsidianSkin";
-            obsidianSkin.nameToken = "SETT_OBSIDIAN_SKIN_NAME";
-            obsidianSkin.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square");
 
-            if (!(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlObsidian") == null))
-            {
-                obsidianObject = GameObject.Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("mdlObsidian"));
-            }
-
-            obsidianObject.AddComponent<CharacterModel>().baseRendererInfos = model.GetComponentInChildren<CharacterModel>().baseRendererInfos;
-
-            Modules.Assets.ConvertAllRenderersToHopooShader(obsidianObject);
-            obsidianObject.AddComponent<CharacterModel>();
-            obsidianObject.AddComponent<CharacterModel>();
-            obsidianSkin.rootObject = obsidianObject;
-            obsidianSkin.rendererInfos = defaultRenderers;
+            var obsidianSkin = Assets.mainAssetBundle.LoadAsset<SkinDef>("ObsidianSkinDef");
 
             skins.Add(obsidianSkin);
 

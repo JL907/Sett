@@ -5,6 +5,7 @@ using System.IO;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Networking;
+using Path = System.IO.Path;
 
 namespace SettMod.Modules
 {
@@ -128,10 +129,14 @@ namespace SettMod.Modules
         {
             if (mainAssetBundle == null)
             {
+                /*
                 using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SettMod." + assetbundleName))
                 {
                     mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
                 }
+                */
+                var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                mainAssetBundle = AssetBundle.LoadFromFile(Path.Combine(path, "sett"));
             }
 
             assetNames = mainAssetBundle.GetAllAssetNames();
