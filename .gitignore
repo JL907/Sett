@@ -176,8 +176,6 @@ DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
 
-SettMod/libs
-
 # Click-Once directory
 publish/
 
@@ -389,10 +387,7 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 .vs/SettMod/v16/.suo
-SettMod-1.1.0.zip
 SettMod.dll
-SettMod 1.2.0.zip
 *.zip
-SettMod/libs/.dll
-SettMod/libs/.xml
-SettMod/libs/.exe
+
+*.dll
