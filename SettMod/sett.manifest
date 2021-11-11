@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2573276082
+CRC: 2292676732
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: faa5fab87d35b72304bf6cd7e8489bb7
+    Hash: bc47daa28a30724b160885151cf9790f
   TypeTreeHash:
     serializedVersion: 2
     Hash: bd604f5f668e30fe3aaefc8d2f68c167
@@ -118,7 +118,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_mis_b.dds
 - Assets/Sett/VFX/Textures/sett_base_mask_horizontal_a.dds
 - Assets/Sett/VFX/Materials/matSlash.mat
-- Assets/Sett/model/Obsidian.fbx
 - Assets/Sett/fonts/BOMBARD_ SDF.asset
 - Assets/Sett/VFX/Textures/sett_base_w_glow05_firepulse.dds
 - Assets/Sett/VFX/Materials/matSettE.mat
@@ -148,6 +147,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
 - Assets/Sett/materials/settObsidianMat.mat
+- Assets/Sett/model/obsidian tpose.fbx
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
 - Assets/Sett/materials/SettMat.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge_flip.dds

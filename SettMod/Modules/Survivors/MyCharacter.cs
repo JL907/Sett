@@ -102,22 +102,13 @@ namespace SettMod.Modules.Survivors
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
-            string prefix = SettPlugin.developerPrefix;
-
             #region Primary
-
-            //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
-
-            string desc = "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(280% damage)</color> and a Right Punch <color=#f68835>(360% damage)</color>";
-
-            LanguageAPI.Add(prefix + "PRIMARY_NAME", "<color=#ffa700>KNUCKLE DOWN</color>");
-            LanguageAPI.Add(prefix + "PRIMARY_DESC", desc);
 
             SkillDef mySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "PRIMARY_NAME",
-                skillNameToken = prefix + "PRIMARY_NAME",
-                skillDescriptionToken = prefix + "PRIMARY_DESC",
+                skillName = "PRIMARY_NAME",
+                skillNameToken = "PRIMARY_NAME",
+                skillDescriptionToken = "PRIMARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_q"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)),
                 activationStateMachineName = "Weapon",
@@ -142,16 +133,11 @@ namespace SettMod.Modules.Survivors
 
             #region Secondary
 
-            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 unit</color> radius of him, dealing <color=#f68835>400% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.";
-
-            LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
-            LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
-
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SECONDARY_NAME",
-                skillNameToken = prefix + "SECONDARY_NAME",
-                skillDescriptionToken = prefix + "SECONDARY_DESC",
+                skillName = "SECONDARY_NAME",
+                skillNameToken = "SECONDARY_NAME",
+                skillDescriptionToken = "SECONDARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_e"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker)),
                 activationStateMachineName = "Body",
@@ -177,16 +163,11 @@ namespace SettMod.Modules.Survivors
 
             #region Utility
 
-            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1200%</color> <color=#d62d20>(+5% of primary target's total health)</color> damage to all enemies near where they land.";
-
-            LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
-            LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
-
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_UTILITY_NAME",
-                skillNameToken = prefix + "SETT_UTILITY_NAME",
-                skillDescriptionToken = prefix + "SETT_UTILITY_DESC",
+                skillName = "SETT_UTILITY_NAME",
+                skillNameToken = "SETT_UTILITY_NAME",
+                skillDescriptionToken = "SETT_UTILITY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_r"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll2)),
                 activationStateMachineName = "Body",
@@ -212,16 +193,11 @@ namespace SettMod.Modules.Survivors
 
             #region Special
 
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1400%</color> <color=#d62d20>(+300% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
-
-            LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
-            LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
-
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_SPECIAL_NAME",
-                skillNameToken = prefix + "SETT_SPECIAL_NAME",
-                skillDescriptionToken = prefix + "SETT_SPECIAL_DESC",
+                skillName = "SETT_SPECIAL_NAME",
+                skillNameToken = "SETT_SPECIAL_NAME",
+                skillDescriptionToken = "SETT_SPECIAL_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_w"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
@@ -262,7 +238,7 @@ namespace SettMod.Modules.Survivors
 
             #region DefaultSkin
 
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(SettPlugin.developerPrefix + "SETT_DEFAULT_SKIN_NAME",
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("SETT_DEFAULT_SKIN_NAME",
                 Assets.mainAssetBundle.LoadAsset<Sprite>("sett_square"),
                 defaultRenderers,
                 mainRenderer,

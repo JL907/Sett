@@ -1,4 +1,5 @@
-﻿using KinematicCharacterController;
+﻿using EntityStates;
+using KinematicCharacterController;
 using R2API;
 using RoR2;
 using System.Collections.Generic;
@@ -163,8 +164,14 @@ namespace SettMod.Modules
             SetupKinematicCharacterMotor(newPrefab);
             SetupMainHurtbox(newPrefab, model);
             SetupFootstepController(model);
-            SetupRagdoll(model);
+            //SetupRagdoll(model);
+
+            CharacterDeathBehavior characterDeathBehavior = newPrefab.GetComponent<CharacterDeathBehavior>();
+            characterDeathBehavior.deathState = new SerializableEntityStateType(typeof(SkillStates.DeathState));
+
             SetupAimAnimator(newPrefab, model);
+
+            
 
             bodyPrefabs.Add(newPrefab);
 
