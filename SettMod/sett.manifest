@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1713697377
+CRC: 432362156
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6530f04ef94bd6aac4a36c9a0d6bb4ff
+    Hash: 16df2733b847979e978a19cd9d3a901b
   TypeTreeHash:
     serializedVersion: 2
-    Hash: bd604f5f668e30fe3aaefc8d2f68c167
+    Hash: f9ef2a914db80951663e4f4248258f45
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -24,8 +24,6 @@ ClassTypes:
 - Class: 43
   Script: {instanceID: 0}
 - Class: 48
-  Script: {instanceID: 0}
-- Class: 54
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -47,8 +45,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 751bd37d2e55f5f448dbb0d97812d9ba, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -56,8 +52,6 @@ ClassTypes:
 - Class: 136
   Script: {instanceID: 0}
 - Class: 137
-  Script: {instanceID: 0}
-- Class: 144
   Script: {instanceID: 0}
 - Class: 198
   Script: {instanceID: 0}
@@ -92,7 +86,6 @@ Assets:
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/textures/skin8_0.png
-- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
 - Assets/Sett/VFX/Textures/sett_base_r_impact.dds
 - Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
@@ -107,6 +100,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
 - Assets/Sett/VFX/Materials/matSwingShadow.mat
 - Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
+- Assets/Sett/mdlObsidian.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
 - Assets/Sett/VFX/Textures/texFire.tga
 - Assets/Sett/icons/Sett_Circle.png
@@ -119,7 +113,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_mis_b.dds
 - Assets/Sett/VFX/Textures/sett_base_mask_horizontal_a.dds
 - Assets/Sett/VFX/Materials/matSlash.mat
-- Assets/Sett/model/Obsidian.fbx
 - Assets/Sett/fonts/BOMBARD_ SDF.asset
 - Assets/Sett/VFX/Textures/sett_base_w_glow05_firepulse.dds
 - Assets/Sett/VFX/Materials/matSettE.mat
@@ -149,6 +142,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
 - Assets/Sett/materials/settObsidianMat.mat
+- Assets/Sett/model/obsidian tpose.fbx
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
 - Assets/Sett/materials/SettMat.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge_flip.dds
@@ -205,12 +199,12 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
+- Assets/Sett/settDisplay.prefab
 - Assets/Sett/VFX/Materials/matEmbers.mat
 - Assets/Sett/VFX/Textures/texFistSwing.png
 - Assets/Sett/VFX/Textures/sett_base_regen_particulates.dds
 - Assets/Sett/VFX/Materials/matHitSparkPunch.mat
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
-- Assets/Sett/mdlSett.prefab
 - Assets/Sett/VFX/Textures/hiteffect.dds
 - Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
