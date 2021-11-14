@@ -1,8 +1,10 @@
 ## Latest Patch Notes `2.0.0`
+* Removed Ragdoll on Death
+* Sett now has a death animation
 * Added Pool Party Sett Skin
 * Added Obsidian Dragon Skin
     * Skins will temporarly be set as new survivors.
-
+    
 ---
 
 ## Old Patch Notes

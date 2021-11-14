@@ -13,6 +13,8 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 `Full Change logs:` https://github.com/lemonlust/Sett/blob/main/changelog.md   
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
+* Removed Ragdoll on Death
+* Sett now has a death animation
 * Added Pool Party Sett Skin
 * Added Obsidian Dragon Skin
     * Skins will temporarly be set as new survivors.

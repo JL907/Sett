@@ -18,6 +18,8 @@ namespace SettMod.Modules
             entityStates.Add(typeof(Roll2));
 
             entityStates.Add(typeof(HayMaker));
+
+            entityStates.Add(typeof(Death));
         }
     }
 }
