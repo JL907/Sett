@@ -14,11 +14,14 @@ namespace SettMod.Modules
         internal static void AddTokens()
         {
             LanguageAPI.Add("SETT_NAME", characterName);
+            LanguageAPI.Add("OBSIDIAN_SETT_NAME", "<color=#ffa700>Obsidian Dragon Sett</color>");
+            LanguageAPI.Add("POOL_SETT_NAME", "<color=#ffa700>Pool Party Sett</color>");
             LanguageAPI.Add("SETT_DESCRIPTION", Modules.StaticValues.descriptionText);
             LanguageAPI.Add("SETT_SUBTITLE", characterSubtitle);
             LanguageAPI.Add("SETT_LORE", characterLore);
             LanguageAPI.Add("SETT_OUTRO_FLAVOR", characterOutro);
             LanguageAPI.Add("SETT_OUTRO_FAILURE", characterOutroFailure);
+            LanguageAPI.Add("SETT_DEFAULT_SKIN_NAME", "Sett");
         }
     }
 }

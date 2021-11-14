@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3085415671
+CRC: 1907568821
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 03b41cdec81fb391bfdcbcee67cdbae1
+    Hash: a71e708b168708af61bbd2a1909713fc
   TypeTreeHash:
     serializedVersion: 2
     Hash: f9ef2a914db80951663e4f4248258f45
@@ -71,6 +71,7 @@ Assets:
 - Assets/Sett/VFX/Textures/New Material.mat
 - Assets/Sett/icons/texUICombatHealthbar.png
 - Assets/Sett/animDisplay.controller
+- Assets/Sett/icons/obsidian_square.png
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
@@ -83,6 +84,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
+- Assets/Sett/model/poolpartysett.fbx
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/textures/skin8_0.png
@@ -100,6 +102,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
 - Assets/Sett/VFX/Materials/matSwingShadow.mat
 - Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
+- Assets/Sett/mdlObsidian.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
 - Assets/Sett/VFX/Textures/texFire.tga
 - Assets/Sett/icons/Sett_Circle.png
@@ -126,7 +129,9 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_air_swoosh.dds
 - Assets/Sett/model/Sett.fbx
 - Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
+- Assets/Sett/mdlPool.prefab
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
+- Assets/Sett/textures/skin10_0.png
 - Assets/Sett/icons/sett_buff.png
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy_erode.dds
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_mask.dds
@@ -134,6 +139,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_horizontal_erode_a.dds
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
+- Assets/Sett/obsidianDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
@@ -143,11 +149,13 @@ Assets:
 - Assets/Sett/materials/settObsidianMat.mat
 - Assets/Sett/model/obsidian tpose.fbx
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
+- Assets/Sett/icons/pool_square.png
 - Assets/Sett/materials/SettMat.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge_flip.dds
 - Assets/Sett/VFX/Textures/sett_base_ground_trail_erode.dds
 - Assets/Sett/VFX/Materials/matSwingEffect.mat
 - Assets/Sett/VFX/Textures/sett_base_fire_trail_graphic.dds
+- Assets/Sett/poolDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_vertical_streaks.dds
 - Assets/Sett/VFX/Textures/aura_self.dds
 - Assets/Sett/VFX/Textures/texDust.png
@@ -177,6 +185,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_smokeerode.dds
 - Assets/Sett/VFX/Mesh/meshSwing.asset
 - Assets/Sett/VFX/Materials/matPunchImpact.mat
+- Assets/Sett/materials/poolSettMat.mat
 - Assets/Sett/VFX/Materials/matPunchImpactShadow.mat
 - Assets/Sett/icons/sett_r.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth_soft.dds

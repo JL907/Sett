@@ -1,10 +1,15 @@
-## Latest Patch Notes `1.5.1`
-* Fixed an issue where Haymaker's indicator was being positioned improperly
-* Fixed an issue where Haymaker's indicator did not spawn at all
+## Latest Patch Notes `2.0.0`
+* Added Pool Party Sett Skin
+* Added Obsidian Dragon Skin
+    * Skins will temporarly be set as new survivors.
 
 ---
 
 ## Old Patch Notes
+`1.5.1`
+* Fixed an issue where Haymaker's indicator was being positioned improperly
+* Fixed an issue where Haymaker's indicator did not spawn at all
+
 `1.5.0`
 * Fixed an issue where Facebreaker was doing the backward onhit animation on enemies infront of sett
 * Added minimum duration before detonate on next frame check on The Showstopper    

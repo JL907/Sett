@@ -1,5 +1,5 @@
 # Sett
-
+![Risk_of_Rain_2_IBWNMzbDVt](http://i3.ytimg.com/vi/AJiNv8JH_Kk/maxresdefault.jpg)
 ![Risk_of_Rain_2_IBWNMzbDVt](https://user-images.githubusercontent.com/7343912/138583896-3c8a6f6e-ce8e-435a-944d-55cf74f1be0e.jpg)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
@@ -9,12 +9,13 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Facebreaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
 
-## Latest Patch Notes `1.5.1`
+## Latest Patch Notes `2.0.0`
 `Full Change logs:` https://github.com/lemonlust/Sett/blob/main/changelog.md   
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-* Fixed an issue where Haymaker's indicator was being positioned improperly
-* Fixed an issue where Haymaker's indicator did not spawn at all
+* Added Pool Party Sett Skin
+* Added Obsidian Dragon Skin
+    * Skins will temporarly be set as new survivors.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
