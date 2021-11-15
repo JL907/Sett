@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2340686729
+CRC: 1810065912
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0ebf38e606ded5d9a1a557157a41ff12
+    Hash: 437636084c5ac8ae6d7286dd20345e7b
   TypeTreeHash:
     serializedVersion: 2
     Hash: f9ef2a914db80951663e4f4248258f45
@@ -68,6 +68,7 @@ ClassTypes:
 Assets:
 - Assets/Sett/VFX/Textures/sett_emote_heart.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
+- Assets/Sett/textures/skin12_0.png
 - Assets/Sett/VFX/Textures/New Material.mat
 - Assets/Sett/icons/texUICombatHealthbar.png
 - Assets/Sett/animDisplay.controller
@@ -76,6 +77,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
 - Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
+- Assets/Sett/textures/skin17_0.png
 - Assets/Sett/customanimations/punch.anim
 - Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
@@ -87,12 +89,14 @@ Assets:
 - Assets/Sett/model/poolpartysett.fbx
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
+- Assets/Sett/materials/skin9_0.mat
 - Assets/Sett/textures/skin8_0.png
 - Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
 - Assets/Sett/VFX/Textures/sett_base_r_impact.dds
 - Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
 - Assets/Sett/VFX/Textures/texSlash.png
 - Assets/Sett/VFX/Textures/sett_base_r_rocks.dds
+- Assets/Sett/textures/skin11_0.png
 - Assets/Sett/VFX/Textures/sett_base_r_rocks_2x2.dds
 - Assets/Sett/VFX/SettFistSwingEffect.prefab
 - Assets/Sett/VFX/Materials/matRipple.mat
@@ -102,11 +106,14 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
 - Assets/Sett/VFX/Materials/matSwingShadow.mat
 - Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
+- Assets/Sett/textures/skin14_0.png
 - Assets/Sett/mdlObsidian.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
+- Assets/Sett/textures/skin13_0.png
 - Assets/Sett/VFX/Textures/texFire.tga
 - Assets/Sett/icons/Sett_Circle.png
 - Assets/Sett/VFX/Textures/sett_base_erode_a.dds
+- Assets/Sett/materials/skin15_0.mat
 - Assets/Sett/VFX/ImpactSettSlash.prefab
 - Assets/Sett/VFX/SettSwordSwingEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_round_bloom.dds
@@ -130,6 +137,7 @@ Assets:
 - Assets/Sett/model/Sett.fbx
 - Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
 - Assets/Sett/mdlPool.prefab
+- Assets/Sett/materials/skin13_0.mat
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
 - Assets/Sett/textures/skin10_0.png
 - Assets/Sett/icons/sett_buff.png
@@ -139,8 +147,10 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_horizontal_erode_a.dds
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
+- Assets/Sett/model/prestige.fbx
 - Assets/Sett/obsidianDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
+- Assets/Sett/icons/prestige_square.png
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat
@@ -162,8 +172,10 @@ Assets:
 - Assets/Sett/icons/sett_p.png
 - Assets/Sett/VFX/Mesh/meshPunchShockwave.mesh
 - Assets/Sett/VFX/Textures/color-hold.dds
+- Assets/Sett/materials/skin12_0.mat
 - Assets/Sett/VFX/Materials/matDust.mat
 - Assets/Sett/icons/sett_w.png
+- Assets/Sett/textures/skin9_0.png
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_flicker.dds
 - Assets/Sett/VFX/Textures/sett_base_w_ui_indicator.dds
@@ -180,6 +192,9 @@ Assets:
 - Assets/Sett/icons/sett_q.png
 - Assets/Sett/VFX/Textures/sett_base_hit_spark.dds
 - Assets/Sett/VFX/Textures/texSwingEffect.png
+- Assets/Sett/textures/skin18_0.png
+- Assets/Sett/materials/skin16_0.mat
+- Assets/Sett/materials/skin14_0.mat
 - Assets/Sett/VFX/Materials/matSmoke.mat
 - Assets/Sett/VFX/SettDustEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_smokeerode.dds
@@ -198,9 +213,11 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
 - Assets/Sett/VFX/Materials/matTrail.mat
 - Assets/Sett/VFX/Textures/texPunchImpactShadow.png
+- Assets/Sett/textures/skin16_0.png
 - Assets/Sett/settUpper.mask
 - Assets/Sett/animSett.controller
 - Assets/Sett/VFX/Textures/texHitSpark.png
+- Assets/Sett/materials/skin11_0.mat
 - Assets/Sett/VFX/Textures/sett_base_energy_round.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_center.dds
 - Assets/Sett/icons/sett_square.png
@@ -208,8 +225,10 @@ Assets:
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/settDisplay.prefab
+- Assets/Sett/mdlPrestige.prefab
 - Assets/Sett/VFX/Materials/matEmbers.mat
 - Assets/Sett/VFX/Textures/texFistSwing.png
+- Assets/Sett/textures/skin15_0.png
 - Assets/Sett/VFX/Textures/sett_base_regen_particulates.dds
 - Assets/Sett/VFX/Materials/matHitSparkPunch.mat
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
@@ -220,6 +239,7 @@ Assets:
 - Assets/Sett/icons/texUIMainRect.png
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
+- Assets/Sett/prestigeDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
 - Assets/Sett/VFX/Materials/matFistSwing.mat
 - Assets/Sett/VFX/Textures/sett_base_distort_ring.dds

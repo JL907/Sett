@@ -16,6 +16,7 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_NAME", characterName);
             LanguageAPI.Add("OBSIDIAN_SETT_NAME", "<color=#ffa700>Obsidian Dragon Sett</color>");
             LanguageAPI.Add("POOL_SETT_NAME", "<color=#ffa700>Pool Party Sett</color>");
+            LanguageAPI.Add("PRESTIGE_SETT_NAME", "<color=#ffa700>Prestige Obsidian Dragon Sett</color>");
             LanguageAPI.Add("SETT_DESCRIPTION", Modules.StaticValues.descriptionText);
             LanguageAPI.Add("SETT_SUBTITLE", characterSubtitle);
             LanguageAPI.Add("SETT_LORE", characterLore);

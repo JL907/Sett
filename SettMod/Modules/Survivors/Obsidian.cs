@@ -75,6 +75,5 @@ namespace SettMod.Modules.Survivors
         {
             base.InitializeSkins();
         }
-
     }
 }
