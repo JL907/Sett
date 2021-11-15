@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using R2API.Utils;
+using R2API;
 using RoR2;
 using SettMod.Modules;
 using SettMod.Modules.Survivors;
@@ -19,6 +20,8 @@ namespace SettMod
         "LanguageAPI",
         "SoundAPI",
         "NetworkingAPi",
+        "SkinAPI",
+        "LoadoutAPI"
     })]
 
     public class SettPlugin : BaseUnityPlugin
@@ -33,7 +36,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "1.5.1";
+        public const string MODVERSION = "2.0.0";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
@@ -64,12 +67,16 @@ namespace SettMod
             Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // survivor initialization
-            new MyCharacter().Initialize();
+            new Sett().Initialize();
+            new Obsidian().Initialize();
+            new Prestige().Initialize();
+            new Pool().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+
 
             Hook();
         }

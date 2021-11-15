@@ -1,10 +1,22 @@
-## Latest Patch Notes `1.5.1`
-* Fixed an issue where Haymaker's indicator was being positioned improperly
-* Fixed an issue where Haymaker's indicator did not spawn at all
-
+## Latest Patch Notes `2.0.0`
+* Sett now has a death animation instead of a ragdoll
+* Added Pool Party Sett
+    * Added Ruby Chroma
+    * Added Catseye Chroma
+    * Added Aquamarine Chroma
+    * Added Ametheyst Chroma
+    * Added Rose Quartz Chroma
+    * Added Pearl Chroma
+* Added Obsidian Dragon
+* Added Prestige Obsidian Dragon
+    
 ---
 
 ## Old Patch Notes
+`1.5.1`
+* Fixed an issue where Haymaker's indicator was being positioned improperly
+* Fixed an issue where Haymaker's indicator did not spawn at all
+
 `1.5.0`
 * Fixed an issue where Facebreaker was doing the backward onhit animation on enemies infront of sett
 * Added minimum duration before detonate on next frame check on The Showstopper    

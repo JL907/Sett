@@ -49,7 +49,7 @@ namespace SettMod.Modules.Survivors
                 displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
                 displayPrefab.AddComponent<MenuSound>();
 
-                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, new Color(.3781f, .1324f, .4894f), bodyName.ToUpper(), characterUnlockableDef, sortPosition);
+                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, new Color(.3781f, .1324f, .4894f), bodyName.ToUpper(), characterUnlockableDef, sortPosition, bodyInfo.bodyNameToken);
 
                 InitializeHitboxes();
                 InitializeSkills();
@@ -58,7 +58,6 @@ namespace SettMod.Modules.Survivors
                 InitializeDoppelganger();
             }
         }
-
         internal virtual void InitializeDoppelganger()
         {
             Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");

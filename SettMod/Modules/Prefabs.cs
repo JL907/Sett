@@ -1,4 +1,5 @@
-﻿using KinematicCharacterController;
+﻿using EntityStates;
+using KinematicCharacterController;
 using R2API;
 using RoR2;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace SettMod.Modules
         internal static List<GameObject> masterPrefabs = new List<GameObject>();
         internal static List<GameObject> projectilePrefabs = new List<GameObject>();
 
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
+        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition, string nameString)
         {
-            string fullNameString = "SETT_NAME";
+            //string fullNameString = "SETT_NAME";
             string fullDescString = "SETT_DESCRIPTION";
             string fullOutroString = "SETT_OUTRO_FLAVOR";
             string fullFailureString = "SETT_OUTRO_FAILURE";
@@ -30,7 +31,7 @@ namespace SettMod.Modules
             survivorDef.bodyPrefab = bodyPrefab;
             survivorDef.displayPrefab = displayPrefab;
             survivorDef.primaryColor = charColor;
-            survivorDef.displayNameToken = fullNameString;
+            survivorDef.displayNameToken = nameString;
             survivorDef.descriptionToken = fullDescString;
             survivorDef.outroFlavorToken = fullOutroString;
             survivorDef.mainEndingEscapeFailureFlavorToken = fullFailureString;
@@ -38,21 +39,6 @@ namespace SettMod.Modules
             survivorDef.unlockableDef = unlockableDef;
 
             survivorDefinitions.Add(survivorDef);
-        }
-
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix)
-        {
-            RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, 100f);
-        }
-
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, float sortPosition)
-        {
-            RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, null, sortPosition);
-        }
-
-        internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef)
-        {
-            RegisterNewSurvivor(bodyPrefab, displayPrefab, charColor, namePrefix, unlockableDef, 100f);
         }
 
         internal static GameObject CreateDisplayPrefab(string modelName, GameObject prefab, BodyInfo bodyInfo)
@@ -164,6 +150,10 @@ namespace SettMod.Modules
             SetupMainHurtbox(newPrefab, model);
             SetupFootstepController(model);
             SetupRagdoll(model);
+
+            CharacterDeathBehavior characterDeathBehavior = newPrefab.GetComponent<CharacterDeathBehavior>();
+            characterDeathBehavior.deathState = new SerializableEntityStateType(typeof(SkillStates.BaseStates.Death));
+
             SetupAimAnimator(newPrefab, model);
 
             bodyPrefabs.Add(newPrefab);

@@ -50,7 +50,7 @@ namespace SettMod.Modules.Achievements
 
         public override BodyIndex LookUpRequiredBodyIndex()
         {
-            return BodyCatalog.FindBodyIndex(Modules.Survivors.MyCharacter.instance.fullBodyName);
+            return BodyCatalog.FindBodyIndex(Modules.Survivors.Sett.instance.fullBodyName);
         }
 
         public override void OnInstall()
