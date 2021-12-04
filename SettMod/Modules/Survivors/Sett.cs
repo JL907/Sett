@@ -107,7 +107,7 @@ namespace SettMod.Modules.Survivors
 
             //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
 
-            string desc = "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(280% damage)</color> and a Right Punch <color=#f68835>(360% damage)</color>";
+            string desc = "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(260% damage)</color> and a Right Punch <color=#f68835>(320% damage)</color>";
 
             LanguageAPI.Add(prefix + "PRIMARY_NAME", "<color=#ffa700>KNUCKLE DOWN</color>");
             LanguageAPI.Add(prefix + "PRIMARY_DESC", desc);
@@ -141,7 +141,7 @@ namespace SettMod.Modules.Survivors
 
             #region Secondary
 
-            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 unit</color> radius of him, dealing <color=#f68835>400% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.";
+            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>10 unit</color> radius of him, dealing <color=#f68835>380% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.";
 
             LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
             LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
@@ -176,7 +176,7 @@ namespace SettMod.Modules.Survivors
 
             #region Utility
 
-            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1200%</color> <color=#d62d20>(+5% of primary target's total health)</color> damage to all enemies near where they land.";
+            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1000%</color> <color=#d62d20>(+2.5% of primary target's total health)</color> damage to all enemies near where they land.";
 
             LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
             LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
@@ -211,7 +211,7 @@ namespace SettMod.Modules.Survivors
 
             #region Special
 
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1400%</color> <color=#d62d20>(+300% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
+            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>2100%</color> <color=#d62d20>(+50% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
 
             LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);

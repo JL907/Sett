@@ -13,6 +13,18 @@
 ---
 
 ## Old Patch Notes
+`2.0.0`
+* Sett now has a death animation instead of a ragdoll
+* Added Pool Party Sett
+    * Added Ruby Chroma
+    * Added Catseye Chroma
+    * Added Aquamarine Chroma
+    * Added Ametheyst Chroma
+    * Added Rose Quartz Chroma
+    * Added Pearl Chroma
+* Added Obsidian Dragon
+* Added Prestige Obsidian Dragon
+
 `1.5.1`
 * Fixed an issue where Haymaker's indicator was being positioned improperly
 * Fixed an issue where Haymaker's indicator did not spawn at all

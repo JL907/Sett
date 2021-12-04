@@ -111,17 +111,17 @@ namespace SettMod.SkillStates
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
-                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 23f;
+                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 13f;
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
                 this.slamIndicatorInstance.transform.position = transformLocation;
-                this.slamIndicatorInstance.localScale = Vector3.one * 25f;
+                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
             }
         }
 
         private void Fire()
         {
             Ray aimRay = base.GetAimRay();
-            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 23f, 25f);
+            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 13f, 15f);
             int num = 0;
             int num2 = 0;
             while (num < enemies.Length && num2 < 1000000f)
@@ -160,7 +160,7 @@ namespace SettMod.SkillStates
         {
             if (this.slamIndicatorInstance)
             {
-                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 23f;
+                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 13f;
                 this.slamIndicatorInstance.transform.position = transformLocation;
             }
         }

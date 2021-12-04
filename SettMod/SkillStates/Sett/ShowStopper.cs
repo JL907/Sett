@@ -66,9 +66,8 @@ namespace SettMod.SkillStates
                 this.outer.SetNextStateToMain();
             }
 
-            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && base.isAuthority && this.detonateNextFrame)
+            if (base.fixedAge >= 5f && base.isAuthority && this.hasDropped)
             {
-                this.LandingImpact();
                 this.outer.SetNextStateToMain();
             }
         }
