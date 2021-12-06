@@ -12,15 +12,25 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Primary damage reduced from 280%/360% down to 260%/320%
+
 * Facebreaker damage reduced from 400% down to 380%
 * FaceBreaker pull radius reduced from 20 units down to 10 units
-* Fixed a bug that applied The Show Stopper's damage twice on impact if Sett was airborne longer than 2.5 seconds
+* FaceBreaker cooldown increased from 6 seconds to 7 seconds
+
+* Fixed a bug that applied The Show Stopper's damage multiple times on impact if Sett was airborne longer than 2.5 seconds
+    * This bug was making The Show Stopper way doing more damage than intended
 * The Show Stopper's base damage reduced from 1200% down to 800%
-* The Show Stopper's bonus damage coefficient reduced from 5% down to 2.5%
 * The Show Stopper's radius reduced from 20 units down to 15 units
 * The Show Stopper now has a 5 second time out to fix issues with being stuck in impact animation
+* The Show Stopper's bonus damage increased from 5% up to 10% 
+* The Show Stopper's bonus damage is now based off targets maximum health and maximum shield
+* The Show Stopper's cooldown increased from 8 seconds to 10 seconds
+* The Show Stopper's blast force reduced from 2000 to 500
+
 * Haymaker Radius reduced from 25 units down to 15 units
-* Haymaker bonus damage coefficient reduced from 300% down to 50% of expended grit
+* Haymaker Damage reduced from 1400% down to 1000% percent
+* Haymaker cooldown increased frrom 10 seconds to 12 seconds
+* Haymaker bonus damage coefficient reduced from 300% down to 25% (+25% every 4 levels) of expended grit
 
 
 ## Discord

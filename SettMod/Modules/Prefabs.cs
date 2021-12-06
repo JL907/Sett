@@ -2,6 +2,7 @@
 using KinematicCharacterController;
 using R2API;
 using RoR2;
+using SettMod.SkillStates.Keystone;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -135,6 +136,7 @@ namespace SettMod.Modules
             bodyComponent.isChampion = false;
 
             bodyComponent.gameObject.AddComponent<GritComponent>();
+            bodyComponent.gameObject.AddComponent<KeyStoneHandler>();
 
             bodyComponent.bodyColor = bodyInfo.bodyColor;
 

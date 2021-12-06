@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1270390709
+CRC: 1566906419
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 14f6bf7973b294fc2ba31a16e4459cb5
+    Hash: 702691736be60238f801b90188c3c7e2
   TypeTreeHash:
     serializedVersion: 2
     Hash: f9ef2a914db80951663e4f4248258f45
@@ -151,6 +151,7 @@ Assets:
 - Assets/Sett/obsidianDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
 - Assets/Sett/icons/prestige_square.png
+- Assets/Sett/icons/Lethal_Tempo_rune.png
 - Assets/Sett/VFX/Textures/texRipple.png
 - Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat
@@ -207,6 +208,7 @@ Assets:
 - Assets/Sett/VFX/FistBarrageEffect.prefab
 - Assets/Sett/customanimations/Jumping UP.anim
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_alpha.dds
+- Assets/Sett/icons/Conqueror_rune.png
 - Assets/Sett/VFX/Textures/sett_base_p_radial_soft.dds
 - Assets/Sett/VFX/Mesh/meshBoxingGlove.mesh
 - Assets/Sett/VFX/Textures/texEmbers.png

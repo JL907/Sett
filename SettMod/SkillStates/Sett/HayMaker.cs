@@ -137,8 +137,10 @@ namespace SettMod.SkillStates
                     }
                     if (!flag)
                     {
+                        float bonus = HayMaker.hayMakerGritBonus * Mathf.Ceil(base.characterBody.level / 4);
+
                         DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * HayMaker.hayMakerGritBonus);
+                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
                         damageInfo.attacker = base.gameObject;
                         damageInfo.inflictor = base.gameObject;
                         damageInfo.force = Vector3.zero;

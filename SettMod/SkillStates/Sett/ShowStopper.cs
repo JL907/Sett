@@ -156,7 +156,7 @@ namespace SettMod.SkillStates
                 {
                     if (BodyMeetsGrabConditions(target.healthComponent.body))
                     {
-                        this.bonusHealth = target.healthComponent.fullHealth;
+                        this.bonusHealth = target.healthComponent.fullCombinedHealth;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
@@ -210,7 +210,7 @@ namespace SettMod.SkillStates
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
             blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (ShowStopper.bonusHealthCoefficient * this.bonusHealth);
-            blastAttack.falloffModel = BlastAttack.FalloffModel.SweetSpot;
+            blastAttack.falloffModel = BlastAttack.FalloffModel.Linear;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;

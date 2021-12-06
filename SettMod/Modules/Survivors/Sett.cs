@@ -176,7 +176,7 @@ namespace SettMod.Modules.Survivors
 
             #region Utility
 
-            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1000%</color> <color=#d62d20>(+2.5% of primary target's total health)</color> damage to all enemies near where they land.";
+            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>800%</color> <color=#d62d20>(+10% of primary target's combined maximum health and maximum shield)</color> damage to all enemies near where they land.";
 
             LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
             LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
@@ -211,7 +211,7 @@ namespace SettMod.Modules.Survivors
 
             #region Special
 
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>2100%</color> <color=#d62d20>(+50% of the expended Grit)</color> <color=#ffffff>TRUE</color> damage.";
+            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1000%</color> <color=#d62d20>(+25% of the expended Grit +25% every 4 levels)</color> <color=#ffffff>TRUE</color> damage.";
 
             LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
@@ -243,6 +243,43 @@ namespace SettMod.Modules.Survivors
             Modules.Skills.AddSpecialSkills(bodyPrefab, bombSkillDef);
 
             #endregion Special
+
+
+            #region KeyStone
+
+            desc = "Attacks on-damage against enemies grant 2 stacks of conquerer. Each stack of Conqueror grants 5 bonus damage. While fully stacked you heal for 9% of damage from any attack you deal to enemies";
+
+            LanguageAPI.Add(prefix + "SETT_CONQUERER_NAME", "<color=#ffa700>Conquerer</color>");
+            LanguageAPI.Add(prefix + "SETT_CONQUERER_DESC", desc);
+
+            SkillDef conquererSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "SETT_CONQUERER_NAME",
+                skillNameToken = prefix + "SETT_CONQUERER_NAME",
+                skillDescriptionToken = prefix + "SETT_CONQUERER_DESC",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"),
+            });
+
+            Modules.Skills.AddKeyStone(bodyPrefab, conquererSkillDef , "Conquerer");
+
+            desc = "Attacks on-damage against enemies grant 1 stacks of lethal tempo. Gain 15% bonus attack speed for each stack up to 90% bonus attack speed at maximum stacks";
+
+            LanguageAPI.Add(prefix + "SETT_LETHAL_NAME", "<color=#ffa700>Lethal Tempo</color>");
+            LanguageAPI.Add(prefix + "SETT_LETHAL_DESC", desc);
+
+            SkillDef keyStoneSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "SETT_LETHAL_NAME",
+                skillNameToken = prefix + "SETT_LETHAL_NAME",
+                skillDescriptionToken = prefix + "SETT_LETHAL_DESC",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"),
+            });
+
+            Modules.Skills.AddKeyStone(bodyPrefab, keyStoneSkillDef, "LethalTempo");
+
+
+
+            #endregion KeyStone
         }
 
         internal override void InitializeSkins()
