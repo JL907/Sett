@@ -8,6 +8,10 @@ namespace SettMod.Modules
     {
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
+        internal static BuffDef conquererBuff;
+
+        internal static BuffDef lethalBuff;
+
         // armor buff gained during roll
         internal static BuffDef regenBuff;
 
@@ -28,6 +32,10 @@ namespace SettMod.Modules
         internal static void RegisterBuffs()
         {
             regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("textures/bufficons/texBuffRegenBoostIcon"), Color.green, true, false);
+
+            conquererBuff = AddNewBuff("ConquererBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"), Color.white, true, false);
+
+            lethalBuff = AddNewBuff("ConquererBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"), Color.white, true, false);
         }
     }
 }

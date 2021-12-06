@@ -58,6 +58,7 @@ namespace SettMod.Modules.Survivors
                 InitializeDoppelganger();
             }
         }
+
         internal virtual void InitializeDoppelganger()
         {
             Modules.Prefabs.CreateGenericDoppelganger(instance.bodyPrefab, bodyName + "MonsterMaster", "Merc");

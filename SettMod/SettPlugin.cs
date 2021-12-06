@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using R2API.Utils;
-using R2API;
 using RoR2;
 using SettMod.Modules;
 using SettMod.Modules.Survivors;
@@ -23,7 +22,6 @@ namespace SettMod
         "SkinAPI",
         "LoadoutAPI"
     })]
-
     public class SettPlugin : BaseUnityPlugin
     {
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
@@ -36,7 +34,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "2.0.0";
+        public const string MODVERSION = "2.1.0";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
@@ -77,7 +75,6 @@ namespace SettMod
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
-
             Hook();
         }
 
@@ -92,6 +89,18 @@ namespace SettMod
                     float count = self.GetBuffCount(Modules.Buffs.regenBuff);
                     float _level = Mathf.Ceil(self.level / 4);
                     self.regen += count * (0.25f * _level);
+                }
+
+                if (self.HasBuff(Modules.Buffs.lethalBuff))
+                {
+                    float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
+                    self.attackSpeed += self.attackSpeed * (count * 0.05f);
+                }
+
+                if (self.HasBuff(Modules.Buffs.conquererBuff))
+                {
+                    float count = self.GetBuffCount(Modules.Buffs.conquererBuff);
+                    self.damage += (count * 1.5f);
                 }
             }
         }

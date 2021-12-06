@@ -1,7 +1,9 @@
 # Sett
-![Risk_of_Rain_2_IBWNMzbDVt](http://i3.ytimg.com/vi/AJiNv8JH_Kk/maxresdefault.jpg)
-![Risk_of_Rain_2_IBWNMzbDVt](https://user-images.githubusercontent.com/7343912/138583896-3c8a6f6e-ce8e-435a-944d-55cf74f1be0e.jpg)
+## If you're updating to 2.1.0 or later please delete your old sett configuration file
+![Risk_of_Rain_2_XjbjffmmUw](https://user-images.githubusercontent.com/7343912/144925428-71e54a8f-5b7f-40c1-b382-426f751f2e55.jpg)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
+
+
 
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
@@ -9,19 +11,31 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Facebreaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
 
-## Latest Patch Notes `2.0.0`
+## Latest Patch Notes `2.1.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Sett now has a death animation instead of a ragdoll
-* Added Pool Party Sett
-    * Added Ruby Chroma
-    * Added Catseye Chroma
-    * Added Aquamarine Chroma
-    * Added Ametheyst Chroma
-    * Added Rose Quartz Chroma
-    * Added Pearl Chroma
-* Added Obsidian Dragon
-* Added Prestige Obsidian Dragon
+* Added Conquerer Keystone
+    * Successful attacks against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants 1.5 bonus damage. While fully stacked you heal for 3% of damage from any attack you deal to enemies
+* Added Lethal Tempo Keystone
+    * Successful attacks against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain 5% bonus attack speed for each stack up to 30% bonus attack speed at maximum stacks
+* Primary damage reduced from 280%/360% down to 260%/320%
+* Facebreaker damage reduced from 400% down to 380%
+* FaceBreaker pull radius reduced from 20 units down to 10 units
+* FaceBreaker cooldown increased from 6 seconds to 7 seconds
+* Fixed a bug that applied The Show Stopper's damage multiple times on impact if Sett was airborne longer than 2.5 seconds
+    * This bug was making The Show Stopper way doing more damage than intended
+* The Show Stopper's base damage reduced from 1200% down to 800%
+* The Show Stopper's radius reduced from 20 units down to 15 units
+* The Show Stopper now has a 5 second time out to fix issues with being stuck in impact animation
+* The Show Stopper's bonus damage increased from 5% up to 10% 
+* The Show Stopper's bonus damage is now based off targets maximum health and maximum shield
+* The Show Stopper's cooldown increased from 8 seconds to 10 seconds
+* The Show Stopper's blast force reduced from 2000 to 500
+* The Show Stopper's damage falloff model is now linear instead of sweet spot
+* Haymaker Radius reduced from 25 units down to 15 units
+* Haymaker Damage reduced from 1400% down to 1000% percent
+* Haymaker cooldown increased frrom 10 seconds to 12 seconds
+* Haymaker bonus damage coefficient reduced from 300% down to 25% (+25% every 4 levels) of expended grit
 
 
 ## Discord
@@ -43,7 +57,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Skills
 
-![abilities](https://user-images.githubusercontent.com/7343912/138583971-c89ca378-eeaf-475f-b8d5-8aa77d85c969.png)
+![image](https://user-images.githubusercontent.com/7343912/144926756-db476faa-66d9-4d81-8c0e-8314ae591be1.png)
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord
@@ -63,6 +77,18 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ---
 
 ## Old Patch Notes
+`2.0.0`
+* Sett now has a death animation instead of a ragdoll
+* Added Pool Party Sett
+    * Added Ruby Chroma
+    * Added Catseye Chroma
+    * Added Aquamarine Chroma
+    * Added Ametheyst Chroma
+    * Added Rose Quartz Chroma
+    * Added Pearl Chroma
+* Added Obsidian Dragon
+* Added Prestige Obsidian Dragon
+
 `1.5.1`
 * Fixed an issue where Haymaker's indicator was being positioned improperly
 * Fixed an issue where Haymaker's indicator did not spawn at all

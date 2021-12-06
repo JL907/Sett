@@ -1,6 +1,8 @@
 ﻿using EntityStates;
+using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
+using SettMod.SkillStates.Keystone;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,10 +52,32 @@ namespace SettMod.Modules
             specialFamily.variants = new SkillFamily.Variant[0];
             skillLocator.special._skillFamily = specialFamily;
 
+            KeyStoneHandler keyStoneHandler = targetPrefab.GetComponent<KeyStoneHandler>();
+            keyStoneHandler.keyStone = targetPrefab.AddComponent<GenericSkill>();
+            SkillFamily keyStoneFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            (keyStoneFamily as ScriptableObject).name = targetPrefab.name + "KeyStoneFamily";
+            keyStoneFamily.variants = new SkillFamily.Variant[0];
+            Reflection.SetFieldValue<SkillFamily>(keyStoneHandler.keyStone, "_skillFamily", keyStoneFamily);
+            keyStoneHandler.keyStone.skillName = "KeyStoneName";
+
             skillFamilies.Add(primaryFamily);
             skillFamilies.Add(secondaryFamily);
             skillFamilies.Add(utilityFamily);
             skillFamilies.Add(specialFamily);
+            skillFamilies.Add(keyStoneFamily);
+        }
+
+        internal static void AddKeyStone(GameObject targetPrefab, SkillDef skillDef)
+        {
+            KeyStoneHandler keyStoneHandler = targetPrefab.GetComponent<KeyStoneHandler>();
+
+            SkillFamily skillFamily = keyStoneHandler.keyStone._skillFamily;
+            Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
+            skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
+            {
+                skillDef = skillDef,
+                viewableNode = new ViewablesCatalog.Node(skillDef.skillNameToken, false, null)
+            };
         }
 
         // this could all be a lot cleaner but at least it's simple and easy to work with
