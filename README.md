@@ -11,6 +11,11 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ## Latest Patch Notes `2.1.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
+* Added Conquerer Keystone
+    * Successful attacks against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants 1.5 bonus damage. While fully stacked you heal for 3% of damage from any attack you deal to enemies
+* Added Lethal Tempo Keystone
+    * Successful attacks against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain 5% bonus attack speed for each stack up to 30% bonus attack speed at maximum stacks
+
 * Primary damage reduced from 280%/360% down to 260%/320%
 
 * Facebreaker damage reduced from 400% down to 380%

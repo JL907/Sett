@@ -8,10 +8,12 @@ namespace SettMod.Modules
     {
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
+        internal static BuffDef conquererBuff;
+
+        internal static BuffDef lethalBuff;
+
         // armor buff gained during roll
         internal static BuffDef regenBuff;
-        internal static BuffDef conquererBuff;
-        internal static BuffDef lethalBuff;
 
         // simple helper method
         internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)

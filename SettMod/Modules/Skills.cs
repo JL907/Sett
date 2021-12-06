@@ -66,6 +66,7 @@ namespace SettMod.Modules
             skillFamilies.Add(specialFamily);
             skillFamilies.Add(keyStoneFamily);
         }
+
         internal static void AddKeyStone(GameObject targetPrefab, SkillDef skillDef)
         {
             KeyStoneHandler keyStoneHandler = targetPrefab.GetComponent<KeyStoneHandler>();

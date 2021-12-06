@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using R2API.Utils;
-using R2API;
 using RoR2;
 using SettMod.Modules;
 using SettMod.Modules.Survivors;
@@ -23,7 +22,6 @@ namespace SettMod
         "SkinAPI",
         "LoadoutAPI"
     })]
-
     public class SettPlugin : BaseUnityPlugin
     {
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
@@ -77,7 +75,6 @@ namespace SettMod
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
-
             Hook();
         }
 
@@ -97,7 +94,7 @@ namespace SettMod
                 if (self.HasBuff(Modules.Buffs.lethalBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
-                    self.attackSpeed += self.attackSpeed * ( count * 0.05f);
+                    self.attackSpeed += self.attackSpeed * (count * 0.05f);
                 }
 
                 if (self.HasBuff(Modules.Buffs.conquererBuff))

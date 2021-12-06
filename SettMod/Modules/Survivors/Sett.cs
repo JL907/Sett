@@ -244,7 +244,6 @@ namespace SettMod.Modules.Survivors
 
             #endregion Special
 
-
             #region KeyStone
 
             desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.5</color> bonus damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of damage from any attack you deal to enemies.</color>";
@@ -276,8 +275,6 @@ namespace SettMod.Modules.Survivors
             });
 
             Modules.Skills.AddKeyStone(bodyPrefab, lethalSkillDef);
-
-
 
             #endregion KeyStone
         }
@@ -316,10 +313,6 @@ namespace SettMod.Modules.Survivors
             skins.Add(defaultSkin);
 
             #endregion DefaultSkin
-
-            #region Obsidian
-
-            #endregion Obsidian
 
             skinController.skins = skins.ToArray();
         }

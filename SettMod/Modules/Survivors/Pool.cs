@@ -1,8 +1,6 @@
 ﻿using BepInEx.Configuration;
 using R2API;
 using RoR2;
-using RoR2.Skills;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +8,8 @@ namespace SettMod.Modules.Survivors
 {
     internal class Pool : Sett
     {
-        internal override string bodyName { get; set; } = "Pool";
-        internal override GameObject bodyPrefab { get; set; }
-        internal override GameObject displayPrefab { get; set; }
-        internal override float sortPosition { get; set; } = 1f;
-        internal override ConfigEntry<bool> characterEnabled { get; set; }
+        internal static Material poolMat = Modules.Assets.CreateMaterial("poolSettMat");
+
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
             bodyName = "PoolBody",
@@ -44,8 +39,9 @@ namespace SettMod.Modules.Survivors
             jumpCount = Modules.Config.jumpCount.Value
         };
 
-        internal static Material poolMat = Modules.Assets.CreateMaterial("poolSettMat");
-        internal override int mainRendererIndex { get; set; } = 0;
+        internal override string bodyName { get; set; } = "Pool";
+        internal override GameObject bodyPrefab { get; set; }
+        internal override ConfigEntry<bool> characterEnabled { get; set; }
 
         internal override CustomRendererInfo[] customRendererInfos { get; set; } = new CustomRendererInfo[] {
                 new CustomRendererInfo
@@ -53,13 +49,14 @@ namespace SettMod.Modules.Survivors
                     childName = "Model",
                     material = poolMat,
                 }};
+
+        internal override GameObject displayPrefab { get; set; }
+        internal override int mainRendererIndex { get; set; } = 0;
+        internal override float sortPosition { get; set; } = 1f;
+
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
-        }
-
-        internal override void InitializeUnlockables()
-        {
         }
 
         internal override void InitializeDoppelganger()
@@ -71,6 +68,7 @@ namespace SettMod.Modules.Survivors
         {
             base.InitializeSkills();
         }
+
         internal override void InitializeSkins()
         {
             GameObject model = bodyPrefab.GetComponentInChildren<ModelLocator>().modelTransform.gameObject;
@@ -84,6 +82,7 @@ namespace SettMod.Modules.Survivors
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
             List<SkinDef> skins = new List<SkinDef>();
+
             #region Chroma1
 
             SkinDef chroma1 = Modules.Skins.CreateSkinDef("default",
@@ -108,9 +107,10 @@ namespace SettMod.Modules.Survivors
 
             skins.Add(chroma1);
 
-            #endregion
+            #endregion Chroma1
 
             #region Chroma2
+
             Material chroma2Mat = Modules.Assets.CreateMaterial("skin11_0");
             CharacterModel.RendererInfo[] chroma2RendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(chroma2RendererInfos, 0);
@@ -136,9 +136,11 @@ namespace SettMod.Modules.Survivors
                 new Color(5f / 255f, 208f / 255f, 25f / 255f)); // green
 
             skins.Add(chroma2);
-            #endregion
+
+            #endregion Chroma2
 
             #region Chroma3
+
             Material chroma3Mat = Modules.Assets.CreateMaterial("skin12_0");
             CharacterModel.RendererInfo[] chroma3RendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(chroma3RendererInfos, 0);
@@ -164,9 +166,11 @@ namespace SettMod.Modules.Survivors
                 new Color(5f / 255f, 208f / 255f, 25f / 255f)); // green
 
             skins.Add(chroma3);
-            #endregion
+
+            #endregion Chroma3
 
             #region Chroma4
+
             Material chroma4Mat = Modules.Assets.CreateMaterial("skin13_0");
             CharacterModel.RendererInfo[] chroma4RendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(chroma4RendererInfos, 0);
@@ -192,9 +196,11 @@ namespace SettMod.Modules.Survivors
                 new Color(5f / 255f, 208f / 255f, 25f / 255f)); // green
 
             skins.Add(chroma4);
-            #endregion
+
+            #endregion Chroma4
 
             #region Chroma5
+
             Material chroma5Mat = Modules.Assets.CreateMaterial("skin14_0");
             CharacterModel.RendererInfo[] chroma5RendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(chroma5RendererInfos, 0);
@@ -220,9 +226,11 @@ namespace SettMod.Modules.Survivors
                 new Color(177f / 255f, 43f / 255f, 226f / 255f)); // purple
 
             skins.Add(chroma5);
-            #endregion
+
+            #endregion Chroma5
 
             #region Chroma6
+
             Material chroma6Mat = Modules.Assets.CreateMaterial("skin15_0");
             CharacterModel.RendererInfo[] chroma6RendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(chroma6RendererInfos, 0);
@@ -248,9 +256,11 @@ namespace SettMod.Modules.Survivors
                 new Color(2f / 255f, 97f / 255f, 12f / 255f)); // dark green
 
             skins.Add(chroma6);
-            #endregion
+
+            #endregion Chroma6
 
             #region Chroma7
+
             Material chroma7Mat = Modules.Assets.CreateMaterial("skin16_0");
             CharacterModel.RendererInfo[] chroma7RendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
             defaultRenderers.CopyTo(chroma7RendererInfos, 0);
@@ -276,9 +286,14 @@ namespace SettMod.Modules.Survivors
                 new Color(140f / 255f, 63f / 255f, 255f / 255f)); // dark green
 
             skins.Add(chroma7);
-            #endregion
+
+            #endregion Chroma7
 
             skinController.skins = skins.ToArray();
+        }
+
+        internal override void InitializeUnlockables()
+        {
         }
 
         private static CharacterModel.RendererInfo[] SkinRendererInfos(CharacterModel.RendererInfo[] defaultRenderers, Material[] materials)

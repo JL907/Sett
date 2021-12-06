@@ -1,5 +1,4 @@
-﻿using System;
-using RoR2;
+﻿using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
@@ -8,16 +7,26 @@ namespace SettMod.SkillStates.Keystone
 {
     public class KeyStoneHandler : NetworkBehaviour, IOnDamageDealtServerReceiver, IOnTakeDamageServerReceiver
     {
+        public const float conquererUpTime = 4.0f;
+
+        public const float lethalUpTime = 6.0f;
+
         [FormerlySerializedAs("Keystone")]
         public GenericSkill keyStone;
 
-        public const float conquererUpTime = 4.0f;
-        public const float lethalUpTime = 6.0f;
         public float UptimeStopwatch = 0.0f;
-        private float throttleUpdateTime = 0.0f;
         private CharacterBody body;
-        private EntityStateMachine outer = null;
         private HealthComponent healthComponent;
+        private EntityStateMachine outer = null;
+        private float throttleUpdateTime = 0.0f;
+
+        protected bool isAuthority
+        {
+            get
+            {
+                return Util.HasEffectiveAuthority(this.outer.networkIdentity);
+            }
+        }
 
         public void Awake()
         {
@@ -25,6 +34,7 @@ namespace SettMod.SkillStates.Keystone
             this.outer = base.GetComponent<EntityStateMachine>();
             this.healthComponent = base.GetComponent<HealthComponent>();
         }
+
         public void OnDamageDealtServer(DamageReport damageReport)
         {
             UptimeStopwatch = 0f;
@@ -41,17 +51,32 @@ namespace SettMod.SkillStates.Keystone
             {
                 this.body.AddBuff(Modules.Buffs.lethalBuff);
             }
-
-
         }
 
         public void OnTakeDamageServer(DamageReport damageReport)
         {
         }
 
+        private void AuthorityFixedUpdate()
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void FixedUpdate()
+        {
+            if (NetworkServer.active)
+            {
+                this.ServerFixedUpdate();
+            }
+            if (isAuthority)
+            {
+                this.AuthorityFixedUpdate();
+            }
+        }
+
         private void ServerFixedUpdate()
         {
-            if(this.keyStone.skillNameToken == "JojoSETT_CONQUERER_NAME")
+            if (this.keyStone.skillNameToken == "JojoSETT_CONQUERER_NAME")
             {
                 if (UptimeStopwatch < conquererUpTime)
                 {
@@ -95,36 +120,6 @@ namespace SettMod.SkillStates.Keystone
                     UptimeStopwatch = 0f;
                 }
             }
-
         }
-
-        protected bool isAuthority
-        {
-            get
-            {
-                return Util.HasEffectiveAuthority(this.outer.networkIdentity);
-            }
-        }
-
-        private void FixedUpdate()
-        {
-            if (NetworkServer.active)
-            {
-                this.ServerFixedUpdate();
-            }
-            if (isAuthority)
-            {
-                this.AuthorityFixedUpdate();
-            }
-        }
-
-        private void AuthorityFixedUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-
     }
-
-
 }

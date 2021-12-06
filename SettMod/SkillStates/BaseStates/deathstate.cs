@@ -1,14 +1,21 @@
 ﻿using EntityStates;
 using RoR2;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace SettMod.SkillStates.BaseStates
 {
-    class Death : GenericCharacterDeath
+    internal class Death : GenericCharacterDeath
     {
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Death;
+        }
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -23,15 +30,6 @@ namespace SettMod.SkillStates.BaseStates
         public override void OnExit()
         {
             base.OnExit();
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-        public override InterruptPriority GetMinimumInterruptPriority()
-        {
-            return InterruptPriority.Death;
         }
     }
 }
