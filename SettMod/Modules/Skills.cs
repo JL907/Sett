@@ -66,12 +66,11 @@ namespace SettMod.Modules
             skillFamilies.Add(specialFamily);
             skillFamilies.Add(keyStoneFamily);
         }
-        internal static void AddKeyStone(GameObject targetPrefab, SkillDef skillDef, string keystoneName)
+        internal static void AddKeyStone(GameObject targetPrefab, SkillDef skillDef)
         {
             KeyStoneHandler keyStoneHandler = targetPrefab.GetComponent<KeyStoneHandler>();
 
             SkillFamily skillFamily = keyStoneHandler.keyStone._skillFamily;
-            keyStoneHandler.keyStone.skillName = keystoneName;
             Array.Resize(ref skillFamily.variants, skillFamily.variants.Length + 1);
             skillFamily.variants[skillFamily.variants.Length - 1] = new SkillFamily.Variant
             {

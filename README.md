@@ -26,6 +26,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * The Show Stopper's bonus damage is now based off targets maximum health and maximum shield
 * The Show Stopper's cooldown increased from 8 seconds to 10 seconds
 * The Show Stopper's blast force reduced from 2000 to 500
+* The Show Stopper's damage falloff model is now linear instead of sweet spot
 
 * Haymaker Radius reduced from 25 units down to 15 units
 * Haymaker Damage reduced from 1400% down to 1000% percent

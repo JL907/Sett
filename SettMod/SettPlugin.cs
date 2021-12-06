@@ -93,6 +93,18 @@ namespace SettMod
                     float _level = Mathf.Ceil(self.level / 4);
                     self.regen += count * (0.25f * _level);
                 }
+
+                if (self.HasBuff(Modules.Buffs.lethalBuff))
+                {
+                    float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
+                    self.attackSpeed += self.attackSpeed * ( count * 0.05f);
+                }
+
+                if (self.HasBuff(Modules.Buffs.conquererBuff))
+                {
+                    float count = self.GetBuffCount(Modules.Buffs.conquererBuff);
+                    self.damage += (count * 1.5f);
+                }
             }
         }
 

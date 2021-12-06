@@ -247,7 +247,7 @@ namespace SettMod.Modules.Survivors
 
             #region KeyStone
 
-            desc = "Attacks on-damage against enemies grant 2 stacks of conquerer. Each stack of Conqueror grants 5 bonus damage. While fully stacked you heal for 9% of damage from any attack you deal to enemies";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.5</color> bonus damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of damage from any attack you deal to enemies.</color>";
 
             LanguageAPI.Add(prefix + "SETT_CONQUERER_NAME", "<color=#ffa700>Conquerer</color>");
             LanguageAPI.Add(prefix + "SETT_CONQUERER_DESC", desc);
@@ -260,14 +260,14 @@ namespace SettMod.Modules.Survivors
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, conquererSkillDef , "Conquerer");
+            Modules.Skills.AddKeyStone(bodyPrefab, conquererSkillDef);
 
-            desc = "Attacks on-damage against enemies grant 1 stacks of lethal tempo. Gain 15% bonus attack speed for each stack up to 90% bonus attack speed at maximum stacks";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain <color=#f68835>5%</color> bonus attack speed for each stack up to <color=#f68835>30%</color> bonus attack speed at maximum stacks";
 
             LanguageAPI.Add(prefix + "SETT_LETHAL_NAME", "<color=#ffa700>Lethal Tempo</color>");
             LanguageAPI.Add(prefix + "SETT_LETHAL_DESC", desc);
 
-            SkillDef keyStoneSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef lethalSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "SETT_LETHAL_NAME",
                 skillNameToken = prefix + "SETT_LETHAL_NAME",
@@ -275,7 +275,7 @@ namespace SettMod.Modules.Survivors
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, keyStoneSkillDef, "LethalTempo");
+            Modules.Skills.AddKeyStone(bodyPrefab, lethalSkillDef);
 
 
 
