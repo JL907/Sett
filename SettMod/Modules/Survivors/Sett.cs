@@ -246,22 +246,22 @@ namespace SettMod.Modules.Survivors
 
             #region KeyStone
 
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.5</color> bonus damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of damage from any attack you deal to enemies.</color>";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.5</color> bonus damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>6% of damage from any attack you deal to enemies.</color>";
 
-            LanguageAPI.Add(prefix + "SETT_CONQUERER_NAME", "<color=#ffa700>Conquerer</color>");
-            LanguageAPI.Add(prefix + "SETT_CONQUERER_DESC", desc);
+            LanguageAPI.Add(prefix + "SETT_CONQUEROR_NAME", "<color=#ffa700>Conqueror</color>");
+            LanguageAPI.Add(prefix + "SETT_CONQUEROR_DESC", desc);
 
-            SkillDef conquererSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            SkillDef conquerorSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_CONQUERER_NAME",
-                skillNameToken = prefix + "SETT_CONQUERER_NAME",
-                skillDescriptionToken = prefix + "SETT_CONQUERER_DESC",
+                skillName = prefix + "SETT_CONQUEROR_NAME",
+                skillNameToken = prefix + "SETT_CONQUEROR_NAME",
+                skillDescriptionToken = prefix + "SETT_CONQUEROR_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, conquererSkillDef);
+            Modules.Skills.AddKeyStone(bodyPrefab, conquerorSkillDef);
 
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain <color=#f68835>5%</color> bonus attack speed for each stack up to <color=#f68835>30%</color> bonus attack speed at maximum stacks";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain <color=#f68835>15%</color> bonus attack speed for each stack up to <color=#f68835>90%</color> bonus attack speed at maximum stacks";
 
             LanguageAPI.Add(prefix + "SETT_LETHAL_NAME", "<color=#ffa700>Lethal Tempo</color>");
             LanguageAPI.Add(prefix + "SETT_LETHAL_DESC", desc);

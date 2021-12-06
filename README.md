@@ -1,6 +1,6 @@
 # Sett
 ## If you're updating to 2.1.0 or later please delete your old sett configuration file
-![Risk_of_Rain_2_XjbjffmmUw](https://user-images.githubusercontent.com/7343912/144925428-71e54a8f-5b7f-40c1-b382-426f751f2e55.jpg)
+![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 
@@ -17,7 +17,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 * Added Conquerer Keystone
     * Successful attacks against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants 1.5 bonus damage. While fully stacked you heal for 3% of damage from any attack you deal to enemies
 * Added Lethal Tempo Keystone
-    * Successful attacks against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain 5% bonus attack speed for each stack up to 30% bonus attack speed at maximum stacks
+    * Successful attacks against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain 15% bonus attack speed for each stack up to 90% bonus attack speed at maximum stacks
 * Primary damage reduced from 280%/360% down to 260%/320%
 * Facebreaker damage reduced from 400% down to 380%
 * FaceBreaker pull radius reduced from 20 units down to 10 units
@@ -57,7 +57,7 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 
 ## Skills
 
-![image](https://user-images.githubusercontent.com/7343912/144926756-db476faa-66d9-4d81-8c0e-8314ae591be1.png)
+![image](https://user-images.githubusercontent.com/7343912/144930673-5a7c38c4-942d-4727-82b7-4135055735d0.png)
 
 ## Credits
 * All the homies at the Risk of Rain 2 Modding Discord

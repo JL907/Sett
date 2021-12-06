@@ -7,7 +7,7 @@ namespace SettMod.SkillStates.Keystone
 {
     public class KeyStoneHandler : NetworkBehaviour, IOnDamageDealtServerReceiver, IOnTakeDamageServerReceiver
     {
-        public const float conquererUpTime = 4.0f;
+        public const float conquerorUpTime = 4.0f;
 
         public const float lethalUpTime = 6.0f;
 
@@ -38,14 +38,14 @@ namespace SettMod.SkillStates.Keystone
         public void OnDamageDealtServer(DamageReport damageReport)
         {
             UptimeStopwatch = 0f;
-            if (this.keyStone.skillNameToken == "JojoSETT_CONQUERER_NAME" && this.body.GetBuffCount(Modules.Buffs.conquererBuff) < 12)
+            if (this.keyStone.skillNameToken == "JojoSETT_CONQUEROR_NAME" && this.body.GetBuffCount(Modules.Buffs.conquerorBuff) < 12)
             {
-                this.body.AddBuff(Modules.Buffs.conquererBuff);
+                this.body.AddBuff(Modules.Buffs.conquerorBuff);
             }
-            if (this.body.GetBuffCount(Modules.Buffs.conquererBuff) >= 12)
+            if (this.body.GetBuffCount(Modules.Buffs.conquerorBuff) >= 12)
             {
-                float damageHeal = damageReport.damageDealt * 0.03f;
-                this.healthComponent.Heal(damageHeal, default(ProcChainMask), true);
+                float damageHeal = damageReport.damageDealt * 0.06f;
+                this.healthComponent.Heal(damageHeal, default, true);
             }
             if (this.keyStone.skillNameToken == "JojoSETT_LETHAL_NAME" && this.body.GetBuffCount(Modules.Buffs.lethalBuff) < 6)
             {
@@ -76,9 +76,9 @@ namespace SettMod.SkillStates.Keystone
 
         private void ServerFixedUpdate()
         {
-            if (this.keyStone.skillNameToken == "JojoSETT_CONQUERER_NAME")
+            if (this.keyStone.skillNameToken == "JojoSETT_CONQUEROR_NAME")
             {
-                if (UptimeStopwatch < conquererUpTime)
+                if (UptimeStopwatch < conquerorUpTime)
                 {
                     UptimeStopwatch += Time.fixedDeltaTime;
                 }
@@ -88,12 +88,12 @@ namespace SettMod.SkillStates.Keystone
                     throttleUpdateTime += Time.fixedDeltaTime;
                 }
 
-                if (throttleUpdateTime >= 1f && UptimeStopwatch > conquererUpTime && this.body.GetBuffCount(Modules.Buffs.conquererBuff) > 0)
+                if (throttleUpdateTime >= 1f && UptimeStopwatch > conquerorUpTime && this.body.GetBuffCount(Modules.Buffs.conquerorBuff) > 0)
                 {
-                    this.body.RemoveBuff(Modules.Buffs.conquererBuff);
+                    this.body.RemoveBuff(Modules.Buffs.conquerorBuff);
                     throttleUpdateTime = 0f;
                 }
-                if (this.body.GetBuffCount(Modules.Buffs.conquererBuff) <= 0)
+                if (this.body.GetBuffCount(Modules.Buffs.conquerorBuff) <= 0)
                 {
                     UptimeStopwatch = 0f;
                 }
