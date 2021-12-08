@@ -7,26 +7,22 @@ namespace SettMod.SkillStates.Keystone
 {
     public class KeyStoneHandler : NetworkBehaviour, IOnDamageDealtServerReceiver, IOnTakeDamageServerReceiver
     {
+        public float conquerorMaxStacks = 12f;
+
         [FormerlySerializedAs("Keystone")]
         public GenericSkill keyStone;
 
+        public KeyStones keyStoneType = KeyStones.None;
+        public float lethalMaxStacks = 6f;
         public float UptimeStopwatch = 0.0f;
         private CharacterBody body;
-        private HealthComponent healthComponent;
-        private EntityStateMachine outer = null;
-        public float conquerorMaxStacks = 12f;
-        public float lethalMaxStacks = 6f;
-        private float throttleUpdateTime = 0.0f;
-        private float MaxthrottleTime = 0.5f;
         private float conquerorUpTime = 4.0f;
+        private HealthComponent healthComponent;
         private float lethalUpTime = 6.0f;
-        protected bool isAuthority
-        {
-            get
-            {
-                return Util.HasEffectiveAuthority(this.outer.networkIdentity);
-            }
-        }
+        private float MaxthrottleTime = 0.5f;
+        private EntityStateMachine outer = null;
+        private float throttleUpdateTime = 0.0f;
+
         public enum KeyStones
         {
             None = 0,
@@ -34,7 +30,13 @@ namespace SettMod.SkillStates.Keystone
             Lethal = 2
         }
 
-        public KeyStones keyStoneType = KeyStones.None;
+        protected bool isAuthority
+        {
+            get
+            {
+                return Util.HasEffectiveAuthority(this.outer.networkIdentity);
+            }
+        }
 
         public void Awake()
         {
@@ -43,15 +45,9 @@ namespace SettMod.SkillStates.Keystone
             this.healthComponent = base.GetComponent<HealthComponent>();
         }
 
-        private void CheckKeyStone()
-        {
-            if (this.keyStone.skillNameToken == "JojoSETT_CONQUEROR_NAME") this.keyStoneType = KeyStones.Conqueror;
-            if (this.keyStone.skillNameToken == "JojoSETT_LETHAL_NAME") this.keyStoneType = KeyStones.Lethal;
-        }
-
         public void OnDamageDealtServer(DamageReport damageReport)
         {
-            if(damageReport.attackerBody == this.body)
+            if (damageReport.attackerBody == this.body)
             {
                 UptimeStopwatch = 0f;
                 AddKeyStoneBuff();
@@ -70,9 +66,24 @@ namespace SettMod.SkillStates.Keystone
         {
         }
 
+        private void AddKeyStoneBuff()
+        {
+            if (GetKeyStoneBuffCount() < GetKeyStoneMaxStacks())
+            {
+                if (this.keyStoneType is KeyStones.Conqueror) this.body.AddBuff(Modules.Buffs.conquerorBuff);
+                if (this.keyStoneType is KeyStones.Lethal) this.body.AddBuff(Modules.Buffs.lethalBuff);
+            }
+        }
+
         private void AuthorityFixedUpdate()
         {
             //throw new NotImplementedException();
+        }
+
+        private void CheckKeyStone()
+        {
+            if (this.keyStone.skillNameToken == "JojoSETT_CONQUEROR_NAME") this.keyStoneType = KeyStones.Conqueror;
+            if (this.keyStone.skillNameToken == "JojoSETT_LETHAL_NAME") this.keyStoneType = KeyStones.Lethal;
         }
 
         private void FixedUpdate()
@@ -85,11 +96,6 @@ namespace SettMod.SkillStates.Keystone
             {
                 this.AuthorityFixedUpdate();
             }
-        }
-
-        private void Update()
-        {
-            CheckKeyStone();
         }
 
         private float GetKeyStoneBuffCount()
@@ -119,16 +125,6 @@ namespace SettMod.SkillStates.Keystone
             if (this.keyStoneType is KeyStones.Lethal) this.body.RemoveBuff(Modules.Buffs.lethalBuff);
         }
 
-        private void AddKeyStoneBuff()
-        {
-            if (GetKeyStoneBuffCount() < GetKeyStoneMaxStacks())
-            {
-                if (this.keyStoneType is KeyStones.Conqueror) this.body.AddBuff(Modules.Buffs.conquerorBuff);
-                if (this.keyStoneType is KeyStones.Lethal) this.body.AddBuff(Modules.Buffs.lethalBuff);
-            }
-
-        }
-
         private void ServerFixedUpdate()
         {
             if (UptimeStopwatch < GetKeyStoneUpTime())
@@ -150,6 +146,11 @@ namespace SettMod.SkillStates.Keystone
             {
                 UptimeStopwatch = 0f;
             }
+        }
+
+        private void Update()
+        {
+            CheckKeyStone();
         }
     }
 }
