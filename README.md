@@ -3,13 +3,8 @@
 ![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
-
-
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
-
-## General
-Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Facebreaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
 
 ## Latest Patch Notes `2.2.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
