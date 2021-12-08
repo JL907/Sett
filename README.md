@@ -10,7 +10,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Conqueror Keystone bonus damage reduced to 1.2 down from 1.5
-* Conqueror Keystone now grants + 0.09 bonus damage every 2 levels
+* Conqueror Keystone now grants + 0.09 bonus damage every 4 levels
 * Lethal Tempo Keystone bonus attack speed reduced from 15% down to 13% per stack maximum attack speed reduced from 90% down to 78% at full stacks
 * Conqueror and Lethal Tempo Keystone stacks now decay 1 stack every 0.5 seconds down from 1 second
 * Conqueror stacks have a 4 second uptime

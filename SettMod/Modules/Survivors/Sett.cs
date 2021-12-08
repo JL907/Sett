@@ -247,7 +247,7 @@ namespace SettMod.Modules.Survivors
 
             #region KeyStone
 
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.2</color> <color=#d62d20>(+0.09 every 2 levels)</color> bonus base damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of any damage dealt to enemies.</color>";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.2</color> <color=#d62d20>(+0.09 every 4 levels)</color> bonus base damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of any damage dealt to enemies.</color>";
 
             LanguageAPI.Add(prefix + "SETT_CONQUEROR_NAME", "<color=#ffa700>Conqueror</color>");
             LanguageAPI.Add(prefix + "SETT_CONQUEROR_DESC", desc);

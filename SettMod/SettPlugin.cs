@@ -99,7 +99,6 @@ namespace SettMod
 
                 if (self.HasBuff(Modules.Buffs.conquerorBuff))
                 {
-                    _level = Mathf.Floor((self.level - 1f) / 2f);
                     float count = self.GetBuffCount(Modules.Buffs.conquerorBuff);
                     self.damage += count * (1.2f + (_level * 0.09f));
                 }
