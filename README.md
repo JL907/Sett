@@ -11,33 +11,17 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## General
 Sett is a melee based bruiser champion that focuses on dealing tons of damage and sustaining throughout fights. Use Facebreaker to interrupt incoming damage and slam your opponents in the ground with The Showstopper. He has no good mobility early on except the initial dash of The Showstopper. Haymaker utilizes a unique resource called Grit. Grit is accumulated through taking damage. Haymaker gets a damage boost based on how much Grit you expend. The Showstopper is scaled based on the primary target's max health. Slam a big opponent to deal more damage around you.
 
-## Latest Patch Notes `2.1.0`
+## Latest Patch Notes `2.2.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Added Conquerer Keystone
-    * Successful attacks against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants 1.5 bonus damage. While fully stacked you heal for 3% of damage from any attack you deal to enemies
-* Added Lethal Tempo Keystone
-    * Successful attacks against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain 15% bonus attack speed for each stack up to 90% bonus attack speed at maximum stacks
-* Primary damage reduced from 280%/360% down to 260%/320%
-* Facebreaker damage reduced from 400% down to 380%
-* FaceBreaker pull radius reduced from 20 units down to 10 units
-* FaceBreaker cooldown increased from 6 seconds to 7 seconds
-* Fixed a bug that applied The Show Stopper's damage multiple times on impact if Sett was airborne longer than 2.5 seconds
-    * This bug was making The Show Stopper way doing more damage than intended
-* The Show Stopper's base damage reduced from 1200% down to 800%
-* The Show Stopper's radius reduced from 20 units down to 15 units
-* The Show Stopper now has a 5 second time out to fix issues with being stuck in impact animation
-* The Show Stopper's bonus damage increased from 5% up to 10% 
-* The Show Stopper's bonus damage is now based off targets maximum health and maximum shield
-* The Show Stopper's cooldown increased from 8 seconds to 10 seconds
-* The Show Stopper's blast force reduced from 2000 to 500
-* The Show Stopper's damage falloff model is now linear instead of sweet spot
-* Haymaker Radius reduced from 25 units down to 15 units
-* Haymaker Damage reduced from 1400% down to 1000% percent
-* Haymaker cooldown increased frrom 10 seconds to 12 seconds
-* Haymaker bonus damage coefficient reduced from 300% down to 25% (+25% every 4 levels) of expended grit
-
-
+* Conqueror Keystone bonus damage reduced to 1.2 down from 1.5
+* Conqueror Keystone now grants + 0.09 bonus damage every 4 levels
+* Lethal Tempo Keystone bonus attack speed reduced from 15% down to 13% per stack maximum attack speed reduced from 90% down to 78% at full stacks
+* Conqueror and Lethal Tempo Keystone stacks now decay 1 stack every 0.5 seconds down from 1 second
+* Conqueror stacks have a 4 second uptime
+* Lethal Tempo stacks have a 6 second uptime
+* The Show Stopper now checks grab release upon exiting skill state
+* Corrected math on the "every 4 Levels" check
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
   <img width="40%" border="0" align="center"  src="https://user-images.githubusercontent.com/7343912/134153480-837a1d90-18de-46cc-a58f-64920c58b7f9.png"/>
@@ -77,6 +61,30 @@ Sett is a melee based bruiser champion that focuses on dealing tons of damage an
 ---
 
 ## Old Patch Notes
+`2.1.0`
+* Added Conquerer Keystone
+    * Successful attacks against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants 1.5 bonus damage. While fully stacked you heal for 3% of damage from any attack you deal to enemies
+* Added Lethal Tempo Keystone
+    * Successful attacks against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain 15% bonus attack speed for each stack up to 90% bonus attack speed at maximum stacks
+* Primary damage reduced from 280%/360% down to 260%/320%
+* Facebreaker damage reduced from 400% down to 380%
+* FaceBreaker pull radius reduced from 20 units down to 10 units
+* FaceBreaker cooldown increased from 6 seconds to 7 seconds
+* Fixed a bug that applied The Show Stopper's damage multiple times on impact if Sett was airborne longer than 2.5 seconds
+    * This bug was making The Show Stopper way doing more damage than intended
+* The Show Stopper's base damage reduced from 1200% down to 800%
+* The Show Stopper's radius reduced from 20 units down to 15 units
+* The Show Stopper now has a 5 second time out to fix issues with being stuck in impact animation
+* The Show Stopper's bonus damage increased from 5% up to 10% 
+* The Show Stopper's bonus damage is now based off targets maximum health and maximum shield
+* The Show Stopper's cooldown increased from 8 seconds to 10 seconds
+* The Show Stopper's blast force reduced from 2000 to 500
+* The Show Stopper's damage falloff model is now linear instead of sweet spot
+* Haymaker Radius reduced from 25 units down to 15 units
+* Haymaker Damage reduced from 1400% down to 1000% percent
+* Haymaker cooldown increased frrom 10 seconds to 12 seconds
+* Haymaker bonus damage coefficient reduced from 300% down to 25% (+25% every 4 levels) of expended grit
+
 `2.0.0`
 * Sett now has a death animation instead of a ragdoll
 * Added Pool Party Sett

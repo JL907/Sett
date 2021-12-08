@@ -34,7 +34,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "2.1.0";
+        public const string MODVERSION = "2.2.0";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
@@ -84,23 +84,23 @@ namespace SettMod
 
             if (self)
             {
+                float _level = Mathf.Floor((self.level - 1f) / 4f);
                 if (self.HasBuff(Modules.Buffs.regenBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.regenBuff);
-                    float _level = Mathf.Ceil(self.level / 4);
-                    self.regen += count * (0.25f * _level);
+                    self.regen += count * (0.25f + (_level * 0.25f));
                 }
 
                 if (self.HasBuff(Modules.Buffs.lethalBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
-                    self.attackSpeed += self.attackSpeed * (count * 0.15f);
+                    self.attackSpeed += self.attackSpeed * (count * 0.13f);
                 }
 
                 if (self.HasBuff(Modules.Buffs.conquerorBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.conquerorBuff);
-                    self.damage += (count * 1.5f);
+                    self.damage += count * (1.2f + (_level * 0.09f));
                 }
             }
         }
