@@ -246,7 +246,7 @@ namespace SettMod.Modules.Survivors
 
             #region KeyStone
 
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.5</color> bonus damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>6% of damage from any attack you deal to enemies.</color>";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.2</color> <color=#d62d20>(+0.09 every 4 levels)</color> bonus base damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>6% of damage from any attack you deal to enemies.</color>";
 
             LanguageAPI.Add(prefix + "SETT_CONQUEROR_NAME", "<color=#ffa700>Conqueror</color>");
             LanguageAPI.Add(prefix + "SETT_CONQUEROR_DESC", desc);
@@ -261,7 +261,7 @@ namespace SettMod.Modules.Survivors
 
             Modules.Skills.AddKeyStone(bodyPrefab, conquerorSkillDef);
 
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant 1 stack of lethal tempo up to 6 stacks. Gain <color=#f68835>15%</color> bonus attack speed for each stack up to <color=#f68835>90%</color> bonus attack speed at maximum stacks";
+            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of lethal tempo up to 6 stacks. Gain <color=#f68835>13%</color> bonus attack speed for each stack up to <color=#f68835>78%</color> bonus attack speed at maximum stacks";
 
             LanguageAPI.Add(prefix + "SETT_LETHAL_NAME", "<color=#ffa700>Lethal Tempo</color>");
             LanguageAPI.Add(prefix + "SETT_LETHAL_DESC", desc);

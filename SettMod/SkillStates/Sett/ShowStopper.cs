@@ -105,21 +105,22 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            if (base.isAuthority)
-            {
-                base.characterMotor.onMovementHit -= this.OnMovementHit;
-                base.gameObject.layer = LayerIndex.defaultLayer.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-                base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
-            }
+            base.OnExit();
+            if (this.grabController) this.grabController.Release();
 
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
+            base.characterBody.bodyFlags &= ~CharacterBody.BodyFlags.IgnoreFallDamage;
+
             if (NetworkServer.active && base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility)) base.characterBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
-            base.OnExit();
+
+            base.gameObject.layer = LayerIndex.defaultLayer.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
+
+            base.characterMotor.onMovementHit -= this.OnMovementHit;
         }
 
         public override void Update()

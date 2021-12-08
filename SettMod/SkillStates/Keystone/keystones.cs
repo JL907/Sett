@@ -83,12 +83,12 @@ namespace SettMod.SkillStates.Keystone
                     UptimeStopwatch += Time.fixedDeltaTime;
                 }
 
-                if (throttleUpdateTime < 1f)
+                if (throttleUpdateTime < 0.5f)
                 {
                     throttleUpdateTime += Time.fixedDeltaTime;
                 }
 
-                if (throttleUpdateTime >= 1f && UptimeStopwatch > conquerorUpTime && this.body.GetBuffCount(Modules.Buffs.conquerorBuff) > 0)
+                if (throttleUpdateTime >= 0.5f && UptimeStopwatch > conquerorUpTime && this.body.GetBuffCount(Modules.Buffs.conquerorBuff) > 0)
                 {
                     this.body.RemoveBuff(Modules.Buffs.conquerorBuff);
                     throttleUpdateTime = 0f;
@@ -105,12 +105,12 @@ namespace SettMod.SkillStates.Keystone
                     UptimeStopwatch += Time.fixedDeltaTime;
                 }
 
-                if (throttleUpdateTime < 1f)
+                if (throttleUpdateTime < 0.5f)
                 {
                     throttleUpdateTime += Time.fixedDeltaTime;
                 }
 
-                if (throttleUpdateTime >= 1f && UptimeStopwatch > lethalUpTime && this.body.GetBuffCount(Modules.Buffs.lethalBuff) > 0)
+                if (throttleUpdateTime >= 0.5f && UptimeStopwatch > lethalUpTime && this.body.GetBuffCount(Modules.Buffs.lethalBuff) > 0)
                 {
                     this.body.RemoveBuff(Modules.Buffs.lethalBuff);
                     throttleUpdateTime = 0f;

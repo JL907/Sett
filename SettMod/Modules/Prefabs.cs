@@ -333,7 +333,7 @@ namespace SettMod.Modules
             CapsuleCollider capsuleCollider = prefab.GetComponent<CapsuleCollider>();
             capsuleCollider.isTrigger = false;
             capsuleCollider.material = null;
-            capsuleCollider.center = new Vector3(-0.1762387f, -0.3846612f, 0f);
+            capsuleCollider.center = new Vector3(0f, 0f, 0f);
             capsuleCollider.radius = 0.6f;
             capsuleCollider.height = 2f;
             capsuleCollider.direction = 1;
