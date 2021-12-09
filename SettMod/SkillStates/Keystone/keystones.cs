@@ -47,7 +47,13 @@ namespace SettMod.SkillStates.Keystone
 
         public void OnDamageDealtServer(DamageReport damageReport)
         {
-            if (damageReport.attackerBody == this.body)
+            if (damageReport is null) return;
+
+            if (damageReport.victimBody && damageReport.attacker && (
+                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
             {
                 UptimeStopwatch = 0f;
                 AddKeyStoneBuff();
@@ -82,8 +88,8 @@ namespace SettMod.SkillStates.Keystone
 
         private void CheckKeyStone()
         {
-            if (this.keyStone.skillNameToken == "JojoSETT_CONQUEROR_NAME") this.keyStoneType = KeyStones.Conqueror;
-            if (this.keyStone.skillNameToken == "JojoSETT_LETHAL_NAME") this.keyStoneType = KeyStones.Lethal;
+            if (this.keyStone.skillNameToken == "SETT_CONQUEROR_NAME") this.keyStoneType = KeyStones.Conqueror;
+            if (this.keyStone.skillNameToken == "SETT_LETHAL_NAME") this.keyStoneType = KeyStones.Lethal;
         }
 
         private void FixedUpdate()

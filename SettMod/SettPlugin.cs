@@ -25,7 +25,7 @@ namespace SettMod
     public class SettPlugin : BaseUnityPlugin
     {
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
-        public const string developerPrefix = "Jojo";
+        public const string developerPrefix = "SETT";
 
         public const string MODNAME = "Sett";
 
@@ -34,7 +34,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "2.2.0";
+        public const string MODVERSION = "2.2.1";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
