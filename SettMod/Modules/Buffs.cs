@@ -11,9 +11,15 @@ namespace SettMod.Modules
         internal static BuffDef conquerorBuff;
 
         internal static BuffDef lethalBuff;
-
         // armor buff gained during roll
         internal static BuffDef regenBuff;
+
+        internal static BuffDef movementSpeedBuff;
+
+        internal static BuffDef phaseRushDebuff;
+
+        internal static BuffDef electrocuteDebuff;
+
 
         // simple helper method
         internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
@@ -36,6 +42,12 @@ namespace SettMod.Modules
             conquerorBuff = AddNewBuff("ConquerorBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"), Color.white, true, false);
 
             lethalBuff = AddNewBuff("LethalBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"), Color.white, true, false);
+
+            phaseRushDebuff = AddNewBuff("PhaseRushDebuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"), Color.white, true, true);
+
+            electrocuteDebuff = AddNewBuff("ElectrocuteDebuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Electrocute_rune"), Color.white, true, true);
+
+            movementSpeedBuff = AddNewBuff("MovementSpeedBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"), Color.white, true, false);
         }
     }
 }

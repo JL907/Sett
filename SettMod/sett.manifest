@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1566906419
+CRC: 1688119012
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 702691736be60238f801b90188c3c7e2
+    Hash: 1ca8a435b851d56fee5aa2e7d4b27be8
   TypeTreeHash:
     serializedVersion: 2
     Hash: f9ef2a914db80951663e4f4248258f45
@@ -73,6 +73,7 @@ Assets:
 - Assets/Sett/icons/texUICombatHealthbar.png
 - Assets/Sett/animDisplay.controller
 - Assets/Sett/icons/obsidian_square.png
+- Assets/Sett/icons/Phase_Rush_rune.png
 - Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
@@ -243,6 +244,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
 - Assets/Sett/prestigeDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
+- Assets/Sett/icons/Electrocute_rune.png
 - Assets/Sett/VFX/Materials/matFistSwing.mat
 - Assets/Sett/VFX/Textures/sett_base_distort_ring.dds
 - Assets/Sett/VFX/Textures/sett_base_energy_trail.dds

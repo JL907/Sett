@@ -1,4 +1,6 @@
 ﻿using RoR2;
+using RoR2.Orbs;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
@@ -17,6 +19,8 @@ namespace SettMod.SkillStates.Keystone
         public float UptimeStopwatch = 0.0f;
         private CharacterBody body;
         private float conquerorUpTime = 4.0f;
+        private float phaseRushUpTime = 4.0f;
+        public float phaseRushStacks = 6f;
         private HealthComponent healthComponent;
         private float lethalUpTime = 6.0f;
         private float MaxthrottleTime = 0.5f;
@@ -27,7 +31,9 @@ namespace SettMod.SkillStates.Keystone
         {
             None = 0,
             Conqueror = 1,
-            Lethal = 2
+            Lethal = 2,
+            PhaseRush = 4,
+            Electrocute = 8
         }
 
         protected bool isAuthority
@@ -49,13 +55,56 @@ namespace SettMod.SkillStates.Keystone
         {
             if (damageReport is null) return;
 
-            if (damageReport.victimBody && damageReport.attacker && (
+            if (damageReport.victimBody && damageReport.damageInfo.inflictor && damageReport.attacker && (
                 damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
                 damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
                 damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
                 damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
             {
                 UptimeStopwatch = 0f;
+
+                if (this.keyStoneType is KeyStones.PhaseRush)
+                {
+                    if (damageReport.victimBody.GetBuffCount(Modules.Buffs.phaseRushDebuff) < 3)
+                    {
+                        damageReport.victimBody.AddTimedBuff(Modules.Buffs.phaseRushDebuff, 4);
+                    }
+
+                    if (damageReport.victimBody.GetBuffCount(Modules.Buffs.phaseRushDebuff) >= 3 && this.body.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1)
+                    {
+                        this.body.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
+                    }
+                }
+
+                if (this.keyStoneType is KeyStones.Electrocute)
+                {
+                    if (damageReport.victimBody.GetBuffCount(Modules.Buffs.electrocuteDebuff) < 3)
+                    {
+                        damageReport.victimBody.AddTimedBuff(Modules.Buffs.electrocuteDebuff, 3);
+                    }
+
+                    if (damageReport.victimBody.GetBuffCount(Modules.Buffs.electrocuteDebuff) >= 3 && !damageReport.victimBody.gameObject.GetComponent<ElectrocuteHandler>())
+                    {
+                        HurtBox target = damageReport.victimBody.mainHurtBox;
+
+                        damageReport.victimBody.gameObject.AddComponent<ElectrocuteHandler>();
+                        float _level = Mathf.Floor((this.body.level - 1f) / 4f);
+                        if (target)
+                        {
+                            OrbManager.instance.AddOrb(new LightningStrikeOrb
+                            {
+                                attacker = damageReport.attacker,
+                                damageColorIndex = DamageColorIndex.Item,
+                                damageValue = 30 + (_level * 17.65f),
+                                isCrit = Util.CheckRoll(damageReport.attackerBody.crit, damageReport.attackerBody.master),
+                                procChainMask = default(ProcChainMask),
+                                procCoefficient = 1f,
+                                target = target
+                            });
+                        }
+                    }
+                }
+
                 AddKeyStoneBuff();
                 if (this.keyStoneType is KeyStones.Conqueror)
                 {
@@ -90,6 +139,8 @@ namespace SettMod.SkillStates.Keystone
         {
             if (this.keyStone.skillNameToken == "SETT_CONQUEROR_NAME") this.keyStoneType = KeyStones.Conqueror;
             if (this.keyStone.skillNameToken == "SETT_LETHAL_NAME") this.keyStoneType = KeyStones.Lethal;
+            if (this.keyStone.skillNameToken == "SETT_PHASE_RUSH_NAME") this.keyStoneType = KeyStones.PhaseRush;
+            if (this.keyStone.skillNameToken == "SETT_ELECTROCUTE_NAME") this.keyStoneType = KeyStones.Electrocute;
         }
 
         private void FixedUpdate()

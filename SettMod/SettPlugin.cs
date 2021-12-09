@@ -3,6 +3,7 @@ using R2API.Utils;
 using RoR2;
 using SettMod.Modules;
 using SettMod.Modules.Survivors;
+using SettMod.SkillStates.Keystone;
 using SettMod.UI;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,28 @@ namespace SettMod
             Hook();
         }
 
+        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
+        {
+            if (damageReport is null) return;
+            if (damageReport.victimBody is null) return;
+            if (damageReport.attackerBody is null) return;
+
+            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && (
+                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
+            {
+                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
+                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
+                {
+                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
+                }
+            }
+
+            orig(self, damageReport);
+        }
+
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
             orig(self);
@@ -101,6 +124,11 @@ namespace SettMod
                 {
                     float count = self.GetBuffCount(Modules.Buffs.conquerorBuff);
                     self.damage += count * (1.2f + (_level * 0.09f));
+                }
+
+                if (self.HasBuff(Modules.Buffs.movementSpeedBuff))
+                {
+                    self.moveSpeed += self.moveSpeed * (.30f + (_level * 1.76f));
                 }
             }
         }
@@ -136,6 +164,7 @@ namespace SettMod
             On.RoR2.UI.HUD.Awake += HUD_Awake;
             RoR2.UI.HUD.onHudTargetChangedGlobal += HUD_onHudTargetChangedGlobal;
             On.RoR2.PickupPickerController.FixedUpdateServer += PickupPickerController_FixedUpdateServer;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
         }
 
         private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
@@ -188,6 +217,7 @@ namespace SettMod
             On.RoR2.UI.HUD.Awake -= HUD_Awake;
             RoR2.UI.HUD.onHudTargetChangedGlobal -= HUD_onHudTargetChangedGlobal;
             On.RoR2.PickupPickerController.FixedUpdateServer -= PickupPickerController_FixedUpdateServer;
+            On.RoR2.GlobalEventManager.OnCharacterDeath -= GlobalEventManager_OnCharacterDeath;
         }
     }
 }
