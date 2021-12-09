@@ -239,6 +239,7 @@ namespace SettMod.SkillStates
 
         private void OnMovementHit(ref CharacterMotor.MovementHitInfo movementHitInfo)
         {
+            /*
             HealthComponent healthComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<HealthComponent>();
             TeamComponent teamComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<TeamComponent>();
             if (healthComponent && teamComponent.teamIndex != base.GetTeam())
@@ -246,6 +247,8 @@ namespace SettMod.SkillStates
                 this.detonateNextFrame = false;
             }
             else this.detonateNextFrame = true;
+            */
+            this.detonateNextFrame = true;
         }
 
         private void UpdateSlamIndicator()

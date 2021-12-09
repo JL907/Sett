@@ -12,6 +12,8 @@ namespace SettMod.SkillStates
         private ModelLocator modelLocator;
         private Transform modelTransform;
         private CharacterMotor motor;
+        private CapsuleCollider capsuleCollider;
+        private SphereCollider sphereCollider;
         private Quaternion originalRotation;
 
         public void Release()
@@ -19,7 +21,8 @@ namespace SettMod.SkillStates
             if (this.modelLocator) this.modelLocator.enabled = true;
             if (this.modelTransform) this.modelTransform.rotation = this.originalRotation;
             if (this.direction) this.direction.enabled = true;
-
+            if (this.capsuleCollider) this.capsuleCollider.enabled = true;
+            if (this.sphereCollider) this.sphereCollider.enabled = true;
             Destroy(this);
         }
 
@@ -29,8 +32,14 @@ namespace SettMod.SkillStates
             this.motor = this.GetComponent<CharacterMotor>();
             this.direction = this.GetComponent<CharacterDirection>();
             this.modelLocator = this.GetComponent<ModelLocator>();
+            this.capsuleCollider = this.GetComponent<CapsuleCollider>();
+            this.sphereCollider = this.GetComponent<SphereCollider>();
 
             if (this.direction) this.direction.enabled = false;
+
+            if (this.capsuleCollider) this.capsuleCollider.enabled = false;
+
+            if (this.sphereCollider) this.sphereCollider.enabled = false;
 
             if (this.modelLocator)
             {
