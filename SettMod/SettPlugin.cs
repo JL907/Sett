@@ -25,7 +25,7 @@ namespace SettMod
     public class SettPlugin : BaseUnityPlugin
     {
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
-        public const string developerPrefix = "Jojo";
+        public const string developerPrefix = "SETT";
 
         public const string MODNAME = "Sett";
 

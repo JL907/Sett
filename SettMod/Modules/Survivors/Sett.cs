@@ -105,19 +105,11 @@ namespace SettMod.Modules.Survivors
             string prefix = SettPlugin.developerPrefix;
 
             #region Primary
-
-            //Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)), "Weapon", prefix + "_SETT_BODY_PRIMARY_SLASH_NAME", prefix + "_SETT_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_p"), true));
-
-            string desc = "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(260% damage)</color> and a Right Punch <color=#f68835>(320% damage)</color>";
-
-            LanguageAPI.Add(prefix + "PRIMARY_NAME", "<color=#ffa700>KNUCKLE DOWN</color>");
-            LanguageAPI.Add(prefix + "PRIMARY_DESC", desc);
-
             SkillDef mySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "PRIMARY_NAME",
-                skillNameToken = prefix + "PRIMARY_NAME",
-                skillDescriptionToken = prefix + "PRIMARY_DESC",
+                skillName = prefix + "_PRIMARY_NAME",
+                skillNameToken = prefix + "_PRIMARY_NAME",
+                skillDescriptionToken = prefix + "_PRIMARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_q"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.BaseStates.BaseMeleeAttack)),
                 activationStateMachineName = "Weapon",
@@ -141,17 +133,11 @@ namespace SettMod.Modules.Survivors
             #endregion Primary
 
             #region Secondary
-
-            desc = "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>10 unit</color> radius of him, dealing <color=#f68835>380% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.";
-
-            LanguageAPI.Add(prefix + "SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
-            LanguageAPI.Add(prefix + "SECONDARY_DESC", desc);
-
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SECONDARY_NAME",
-                skillNameToken = prefix + "SECONDARY_NAME",
-                skillDescriptionToken = prefix + "SECONDARY_DESC",
+                skillName = prefix + "_SECONDARY_NAME",
+                skillNameToken = prefix + "_SECONDARY_NAME",
+                skillDescriptionToken = prefix + "_SECONDARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_e"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Facebreaker)),
                 activationStateMachineName = "Body",
@@ -176,17 +162,11 @@ namespace SettMod.Modules.Survivors
             #endregion Secondary
 
             #region Utility
-
-            desc = "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>800%</color> <color=#d62d20>(+10% of primary target's combined maximum health and maximum shield)</color> damage to all enemies near where they land.";
-
-            LanguageAPI.Add(prefix + "SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
-            LanguageAPI.Add(prefix + "SETT_UTILITY_DESC", desc);
-
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_UTILITY_NAME",
-                skillNameToken = prefix + "SETT_UTILITY_NAME",
-                skillDescriptionToken = prefix + "SETT_UTILITY_DESC",
+                skillName = prefix + "_UTILITY_NAME",
+                skillNameToken = prefix + "_UTILITY_NAME",
+                skillDescriptionToken = prefix + "_UTILITY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_r"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Roll2)),
                 activationStateMachineName = "Body",
@@ -211,17 +191,11 @@ namespace SettMod.Modules.Survivors
             #endregion Utility
 
             #region Special
-
-            desc = "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1000%</color> <color=#d62d20>(+25% of the expended Grit +25% every 4 levels)</color> <color=#ffffff>TRUE</color> damage.";
-
-            LanguageAPI.Add(prefix + "SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
-            LanguageAPI.Add(prefix + "SETT_SPECIAL_DESC", desc);
-
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_SPECIAL_NAME",
-                skillNameToken = prefix + "SETT_SPECIAL_NAME",
-                skillDescriptionToken = prefix + "SETT_SPECIAL_DESC",
+                skillName = prefix + "_SPECIAL_NAME",
+                skillNameToken = prefix + "_SPECIAL_NAME",
+                skillDescriptionToken = prefix + "_SPECIAL_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("sett_w"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.HayMaker)),
                 activationStateMachineName = "Body",
@@ -246,32 +220,21 @@ namespace SettMod.Modules.Survivors
             #endregion Special
 
             #region KeyStone
-
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.2</color> <color=#d62d20>(+0.09 every 4 levels)</color> bonus base damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of any damage dealt to enemies.</color>";
-
-            LanguageAPI.Add(prefix + "SETT_CONQUEROR_NAME", "<color=#ffa700>Conqueror</color>");
-            LanguageAPI.Add(prefix + "SETT_CONQUEROR_DESC", desc);
-
             SkillDef conquerorSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_CONQUEROR_NAME",
-                skillNameToken = prefix + "SETT_CONQUEROR_NAME",
-                skillDescriptionToken = prefix + "SETT_CONQUEROR_DESC",
+                skillName = prefix + "_CONQUEROR_NAME",
+                skillNameToken = prefix + "_CONQUEROR_NAME",
+                skillDescriptionToken = prefix + "_CONQUEROR_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"),
             });
 
             Modules.Skills.AddKeyStone(bodyPrefab, conquerorSkillDef);
 
-            desc = "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of lethal tempo up to 6 stacks. Gain <color=#f68835>13%</color> bonus attack speed for each stack up to <color=#f68835>78%</color> bonus attack speed at maximum stacks";
-
-            LanguageAPI.Add(prefix + "SETT_LETHAL_NAME", "<color=#ffa700>Lethal Tempo</color>");
-            LanguageAPI.Add(prefix + "SETT_LETHAL_DESC", desc);
-
             SkillDef lethalSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "SETT_LETHAL_NAME",
-                skillNameToken = prefix + "SETT_LETHAL_NAME",
-                skillDescriptionToken = prefix + "SETT_LETHAL_DESC",
+                skillName = prefix + "_LETHAL_NAME",
+                skillNameToken = prefix + "_LETHAL_NAME",
+                skillDescriptionToken = prefix + "_LETHAL_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"),
             });
 

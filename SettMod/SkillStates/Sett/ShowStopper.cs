@@ -80,20 +80,13 @@ namespace SettMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
+            base.characterMotor.onMovementHit += this.OnMovementHit;
             this.bonusHealth = 0f;
             this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
             this.initialTime = Time.fixedTime;
-            if (base.isAuthority)
-            {
-                base.characterMotor.onMovementHit += this.OnMovementHit;
-                base.characterMotor.Motor.ForceUnground();
-                base.characterMotor.velocity = base.characterMotor.velocity * 0.65f;
-                base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
-                base.gameObject.layer = LayerIndex.fakeActor.intVal;
-                base.characterMotor.Motor.RebuildCollidableLayers();
-            }
+
             string[] Showstopperanim = new string[] { "ShowStopper", "ShowStopper2", "ShowStopper3" };
             System.Random random = new System.Random();
             int index = random.Next(Showstopperanim.Length);
@@ -101,6 +94,14 @@ namespace SettMod.SkillStates
 
             Util.PlaySound("SettRSFX", base.gameObject);
             Util.PlaySound("SettRVO", base.gameObject);
+
+            base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.velocity = base.characterMotor.velocity * 0.65f;
+
+            base.characterBody.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+
+            base.gameObject.layer = LayerIndex.fakeActor.intVal;
+            base.characterMotor.Motor.RebuildCollidableLayers();
         }
 
         public override void OnExit()
