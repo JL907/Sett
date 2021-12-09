@@ -12,6 +12,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 * The Show Stopper now temporarly disables enemy target's collider during the duration
 * Fixed bug where Conqueror heal was healing Sett when enemies dealt damage to him
 * The Show Stopper grab radius increased to 10 up from 8
+* Undocumented Change from 2.2.0: Conqueror healing reduced to 3% of damage dealt
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
