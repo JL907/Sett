@@ -6,17 +6,13 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `2.2.0`
+## Latest Patch Notes `2.2.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Conqueror Keystone bonus damage reduced to 1.2 down from 1.5
-* Conqueror Keystone now grants + 0.09 bonus damage every 4 levels
-* Lethal Tempo Keystone bonus attack speed reduced from 15% down to 13% per stack maximum attack speed reduced from 90% down to 78% at full stacks
-* Conqueror and Lethal Tempo Keystone stacks now decay 1 stack every 0.5 seconds down from 1 second
-* Conqueror stacks have a 4 second uptime
-* Lethal Tempo stacks have a 6 second uptime
-* The Show Stopper now checks grab release upon exiting skill state
-* Corrected math on the "every 4 Levels" check
+* The Show Stopper now temporarly disables enemy target's collider during the duration
+* Fixed bug where Conqueror heal was healing Sett when enemies dealt damage to him
+* The Show Stopper grab radius increased to 10 up from 8
+
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
   <img width="40%" border="0" align="center"  src="https://user-images.githubusercontent.com/7343912/134153480-837a1d90-18de-46cc-a58f-64920c58b7f9.png"/>
@@ -56,6 +52,16 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`2.2.0`
+* Conqueror Keystone bonus damage reduced to 1.2 down from 1.5
+* Conqueror Keystone now grants + 0.09 bonus damage every 4 levels
+* Lethal Tempo Keystone bonus attack speed reduced from 15% down to 13% per stack maximum attack speed reduced from 90% down to 78% at full stacks
+* Conqueror and Lethal Tempo Keystone stacks now decay 1 stack every 0.5 seconds down from 1 second
+* Conqueror stacks have a 4 second uptime
+* Lethal Tempo stacks have a 6 second uptime
+* The Show Stopper now checks grab release upon exiting skill state
+* Corrected math on the "every 4 Levels" check
+
 `2.1.0`
 * Added Conquerer Keystone
     * Successful attacks against enemies grant 1 stack of conquerer up to 12 stacks. Each stack of Conqueror grants 1.5 bonus damage. While fully stacked you heal for 3% of damage from any attack you deal to enemies
