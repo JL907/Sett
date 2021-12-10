@@ -128,7 +128,7 @@ namespace SettMod
 
                 if (self.HasBuff(Modules.Buffs.movementSpeedBuff))
                 {
-                    self.moveSpeed += self.moveSpeed * (.30f + (_level * 1.76f));
+                    self.moveSpeed += self.moveSpeed * (0.30f + (_level * 0.05f));
                 }
             }
         }

@@ -54,10 +54,10 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_LETHAL_DESC", "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of lethal tempo up to 6 stacks. Gain <color=#f68835>13%</color> bonus attack speed for each stack up to <color=#f68835>78%</color> bonus attack speed at maximum stacks.");
 
             LanguageAPI.Add("SETT_PHASE_RUSH_NAME", "<color=#ffa700>Phase Rush</color>");
-            LanguageAPI.Add("SETT_PHASE_RUSH_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 4 second period grants you <color=#f68835>30%</color> <color=#d62d20>(+1.76% every 4 levels)</color> bonus <color=#c9aa71>movement speed</color> for 3 seconds. Grants the bonus <color=#c9aa71>movement speed</color> on kill.");
+            LanguageAPI.Add("SETT_PHASE_RUSH_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 4 second period grants you <color=#f68835>30%</color> <color=#d62d20>(+5% every 4 levels)</color> bonus <color=#c9aa71>movement speed</color> for 3 seconds. Grants the bonus <color=#c9aa71>movement speed</color> on kill.");
 
             LanguageAPI.Add("SETT_ELECTROCUTE_NAME", "<color=#ffa700>Electrocute</color>");
-            LanguageAPI.Add("SETT_ELECTROCUTE_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 3 second period causes them to be struck by lightning after a 1-second delay, dealing them <color=#f68835>300%</color> <color=#d62d20>(+50% every 4 levels)</color> damage. Electrocute has a 10 second cooldown per target.");
+            LanguageAPI.Add("SETT_ELECTROCUTE_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 3 second period causes them to be struck by lightning after a 1-second delay, dealing them <color=#f68835>300%</color> <color=#d62d20>(+75% every 4 levels)</color> damage. Electrocute has a 10 second cooldown per target.");
 
         }
     }

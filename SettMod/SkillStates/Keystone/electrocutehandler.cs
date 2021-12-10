@@ -39,7 +39,7 @@ namespace SettMod.SkillStates.Keystone
 
                 if (hurtBox)
                 {
-                    float damagecoefficient = (3f + (_level * 0.50f));
+                    float damagecoefficient = (3f + (_level * 0.75f));
                     OrbManager.instance.AddOrb(new LightningStrikeOrb
                     {
                         attacker = attackerBody.gameObject,
