@@ -1,5 +1,5 @@
 # Sett
-## If you're updating to 2.1.0 or later please delete your old sett configuration file
+## If you're updating to 2.3.1 or later please delete your old sett configuration file
 ![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
