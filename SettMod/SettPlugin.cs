@@ -107,7 +107,7 @@ namespace SettMod
 
             if (self)
             {
-                float _level = Mathf.Floor((self.level - 1f) / 4f);
+                float _level = Mathf.Floor(self.level / 4f);
                 if (self.HasBuff(Modules.Buffs.regenBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.regenBuff);

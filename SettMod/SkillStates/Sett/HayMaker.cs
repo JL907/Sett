@@ -137,7 +137,7 @@ namespace SettMod.SkillStates
                     }
                     if (!flag)
                     {
-                        float _level = Mathf.Floor((base.characterBody.level - 1f) / 4f);
+                        float _level = Mathf.Floor(base.characterBody.level / 4f);
                         float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonus);
 
                         DamageInfo damageInfo = new DamageInfo();
