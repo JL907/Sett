@@ -240,6 +240,26 @@ namespace SettMod.Modules.Survivors
 
             Modules.Skills.AddKeyStone(bodyPrefab, lethalSkillDef);
 
+            SkillDef phaseSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_PHASE_RUSH_NAME",
+                skillNameToken = prefix + "_PHASE_RUSH_NAME",
+                skillDescriptionToken = prefix + "_PHASE_RUSH_DESC",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"),
+            });
+
+            Modules.Skills.AddKeyStone(bodyPrefab, phaseSkillDef);
+
+            SkillDef electrocuteSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = prefix + "_ELECTROCUTE_NAME",
+                skillNameToken = prefix + "_ELECTROCUTE_NAME",
+                skillDescriptionToken = prefix + "_ELECTROCUTE_DESC",
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Electrocute_rune"),
+            });
+
+            Modules.Skills.AddKeyStone(bodyPrefab, electrocuteSkillDef);
+
             #endregion KeyStone
         }
 

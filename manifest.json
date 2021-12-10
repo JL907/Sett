@@ -1,6 +1,6 @@
 {
     "name": "SettMod",
-    "version_number": "2.2.1",
+    "version_number": "2.3.0",
     "website_url": "https://github.com/lemonlust/Sett",
     "description": "The Boss. If you're updating to 2.1.0 or later please delete your old sett configuration file",
     "dependencies": [
