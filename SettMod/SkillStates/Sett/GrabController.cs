@@ -48,6 +48,12 @@ namespace SettMod.SkillStates
                     this.modelTransform = modelLocator.modelTransform;
                     this.originalRotation = this.modelTransform.rotation;
 
+                    if (this.modelLocator.gameObject.name == "GreaterWispBody(Clone)")
+                    {
+                        this.modelLocator.dontReleaseModelOnDeath = true;
+                        this.modelLocator.dontDetatchFromParent = true;
+                    }
+
                     this.modelLocator.enabled = false;
                 }
             }

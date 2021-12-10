@@ -6,14 +6,17 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `2.3.0`
+## Latest Patch Notes `2.3.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Added Phase Rush Keystone
-    * Successful attacks generate 1 stack against enemies. Applying 3 stacks to a target within a 4 second period grants you 30% (+1.76% every 4 levels) bonus movement speed for 3 seconds. Grants the bonus movement speed on kill.
-* Added Electrocute Keystone
-    * Successful attacks generate 1 stack against enemies. Applying 3 stacks to a target within a 3 second period causes them to be struck by lightning after a 1-second delay, dealing them 60 (+35.30 every 4 levels) damage. Electrocute has a 10 second cooldown per target.
-* Reverted change to The Show Stopper grab radius
+* Fixed bug where Phase Rush Keystone was granting too much movement speed
+* Phase Rush Keystone is now 30% (+5% every 4 levels) bonus movement speed
+* Electrocute Keystone damage is now 300% (+75% every 4 levels) of base damage.
+* Fixed a bug where Greater Wisp bodies would remain in the world if killed with The Show Stopper
+* Fixed "every 4 levels" math again. 
+* The Show Stopper radius is now 25 up from 15
+    * Some large enemy bodies will be flung outside of the blast range on impact
+    * Increased radius to compensate and allow Sett to damage those enemies
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -54,6 +57,13 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`2.3.0`
+* Added Phase Rush Keystone
+    * Successful attacks generate 1 stack against enemies. Applying 3 stacks to a target within a 4 second period grants you 30% (+1.76% every 4 levels) bonus movement speed for 3 seconds. Grants the bonus movement speed on kill.
+* Added Electrocute Keystone
+    * Successful attacks generate 1 stack against enemies. Applying 3 stacks to a target within a 3 second period causes them to be struck by lightning after a 1-second delay, dealing them 60 (+35.30 every 4 levels) damage. Electrocute has a 10 second cooldown per target.
+* Reverted change to The Show Stopper grab radius
+
 `2.2.1`
 * The Show Stopper now temporarly disables enemy target's collider during the duration
 * Fixed bug where Conqueror heal was healing Sett when enemies dealt damage to him

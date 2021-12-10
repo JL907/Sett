@@ -76,33 +76,12 @@ namespace SettMod.SkillStates.Keystone
 
                 if (this.keyStoneType is KeyStones.Electrocute)
                 {
-                    if (damageReport.victimBody.GetBuffCount(Modules.Buffs.electrocuteDebuff) < 3 && !damageReport.victimBody.gameObject.GetComponent<ElectrocuteHandler>())
+                    ElectrocuteHandler electrocuteHandler = damageReport.victimBody.gameObject.GetComponent<ElectrocuteHandler>();
+                    if (!electrocuteHandler)
+                        damageReport.victimBody.gameObject.AddComponent<ElectrocuteHandler>().attackerBody = damageReport.attackerBody;
+                    else
                     {
-                        damageReport.victimBody.AddTimedBuff(Modules.Buffs.electrocuteDebuff, 3);
-                    }
-
-                    if (damageReport.victimBody.GetBuffCount(Modules.Buffs.electrocuteDebuff) >= 3 && !damageReport.victimBody.gameObject.GetComponent<ElectrocuteHandler>())
-                    {
-                        HurtBox target = damageReport.victimBody.mainHurtBox;
-
-                        damageReport.victimBody.gameObject.AddComponent<ElectrocuteHandler>();
-
-                        damageReport.victimBody.SetBuffCount(Modules.Buffs.electrocuteDebuff.buffIndex, 0);
-
-                        float _level = Mathf.Floor((this.body.level - 1f) / 4f);
-                        if (target)
-                        {
-                            OrbManager.instance.AddOrb(new LightningStrikeOrb
-                            {
-                                attacker = damageReport.attacker,
-                                damageColorIndex = DamageColorIndex.Item,
-                                damageValue = 60 + (_level * 35.30f),
-                                isCrit = Util.CheckRoll(damageReport.attackerBody.crit, damageReport.attackerBody.master),
-                                procChainMask = default(ProcChainMask),
-                                procCoefficient = 1f,
-                                target = target
-                            });
-                        }
+                        electrocuteHandler.AddStack();
                     }
                 }
 

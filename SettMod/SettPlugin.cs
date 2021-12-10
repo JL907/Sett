@@ -35,7 +35,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "2.3.0";
+        public const string MODVERSION = "2.3.1";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
@@ -107,7 +107,7 @@ namespace SettMod
 
             if (self)
             {
-                float _level = Mathf.Floor((self.level - 1f) / 4f);
+                float _level = Mathf.Floor(self.level / 4f);
                 if (self.HasBuff(Modules.Buffs.regenBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.regenBuff);
@@ -128,7 +128,7 @@ namespace SettMod
 
                 if (self.HasBuff(Modules.Buffs.movementSpeedBuff))
                 {
-                    self.moveSpeed += self.moveSpeed * (.30f + (_level * 1.76f));
+                    self.moveSpeed += self.moveSpeed * (0.30f + (_level * 0.05f));
                 }
             }
         }
