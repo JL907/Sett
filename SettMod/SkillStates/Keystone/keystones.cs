@@ -19,8 +19,6 @@ namespace SettMod.SkillStates.Keystone
         public float UptimeStopwatch = 0.0f;
         private CharacterBody body;
         private float conquerorUpTime = 4.0f;
-        private float phaseRushUpTime = 4.0f;
-        public float phaseRushStacks = 6f;
         private HealthComponent healthComponent;
         private float lethalUpTime = 6.0f;
         private float MaxthrottleTime = 0.5f;
@@ -55,7 +53,7 @@ namespace SettMod.SkillStates.Keystone
         {
             if (damageReport is null) return;
 
-            if (damageReport.victimBody && damageReport.damageInfo.inflictor && damageReport.attacker && (
+            if (damageReport.victimBody && damageReport.attacker && (
                 damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
                 damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
                 damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||

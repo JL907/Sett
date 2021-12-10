@@ -61,7 +61,7 @@ namespace SettMod.SkillStates
                 searchOrigin = base.transform.position,
                 searchDirection = Random.onUnitSphere,
                 sortMode = BullseyeSearch.SortMode.Distance,
-                maxDistanceFilter = 10f,
+                maxDistanceFilter = 8f,
                 maxAngleFilter = 360f
             };
 
