@@ -39,16 +39,17 @@ namespace SettMod.SkillStates.Keystone
 
                 if (hurtBox)
                 {
+                    float damagecoefficient = (3f + (_level * 0.50f));
                     OrbManager.instance.AddOrb(new LightningStrikeOrb
                     {
                         attacker = attackerBody.gameObject,
                         damageColorIndex = DamageColorIndex.Item,
-                        damageValue = 60 + (_level * 35.30f),
+                        damageValue = this.attackerBody.damage * damagecoefficient,
                         isCrit = Util.CheckRoll(attackerBody.crit, attackerBody.master),
                         procChainMask = default(ProcChainMask),
                         procCoefficient = 1f,
                         target = hurtBox
-                    });
+                    }); ; ;
                 }
             }
         }
@@ -75,7 +76,7 @@ namespace SettMod.SkillStates.Keystone
 
         private void FixedUpdate()
         {
-            if (!fired)
+            if (!fired && NetworkServer.active)
             {
                 FireLightning();
             }    
