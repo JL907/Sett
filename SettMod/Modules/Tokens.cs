@@ -57,7 +57,7 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_PHASE_RUSH_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 4 second period grants you <color=#f68835>30%</color> <color=#d62d20>(+1.76% every 4 levels)</color> bonus <color=#c9aa71>movement speed</color> for 3 seconds. Grants the bonus <color=#c9aa71>movement speed</color> on kill.");
 
             LanguageAPI.Add("SETT_ELECTROCUTE_NAME", "<color=#ffa700>Electrocute</color>");
-            LanguageAPI.Add("SETT_ELECTROCUTE_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 3 second period causes them to be struck by lightning after a 0.25-second delay, dealing them <color=#f68835>30</color> <color=#d62d20>(+17.65 every 4 levels)</color> damage. Electrocute has a 10 second cooldown per target");
+            LanguageAPI.Add("SETT_ELECTROCUTE_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 3 second period causes them to be struck by lightning after a 1-second delay, dealing them <color=#f68835>60</color> <color=#d62d20>(+35.30 every 4 levels)</color> damage. Electrocute has a 10 second cooldown per target.");
 
         }
     }
