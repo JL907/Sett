@@ -9,7 +9,7 @@ namespace SettMod.SkillStates
 
         private CharacterBody body;
         private CharacterDirection direction;
-        public ModelLocator modelLocator;
+        private ModelLocator modelLocator;
         private Transform modelTransform;
         private CharacterMotor motor;
         private CapsuleCollider capsuleCollider;
