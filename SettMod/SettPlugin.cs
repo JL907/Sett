@@ -79,28 +79,6 @@ namespace SettMod
             Hook();
         }
 
-        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
-        {
-            if (damageReport is null) return;
-            if (damageReport.victimBody is null) return;
-            if (damageReport.attackerBody is null) return;
-
-            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && (
-                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
-            {
-                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
-                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
-                {
-                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
-                }
-            }
-
-            orig(self, damageReport);
-        }
-
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
             orig(self);
@@ -156,6 +134,28 @@ namespace SettMod
                     }
                 }
             }
+        }
+
+        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
+        {
+            if (damageReport is null) return;
+            if (damageReport.victimBody is null) return;
+            if (damageReport.attackerBody is null) return;
+
+            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && (
+                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
+            {
+                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
+                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
+                {
+                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
+                }
+            }
+
+            orig(self, damageReport);
         }
 
         private void Hook()

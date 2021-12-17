@@ -12,7 +12,7 @@ namespace SettMod.Modules
         public const string characterOutroFailure = "..and so he returned, infallible bastion truly immortalized.";
         public const string characterSubtitle = "The Boss";
 
-        public static string descriptionText = 
+        public static string descriptionText =
              "Sett is this Boss: a self-made, half-Vastayan, half-Noxian entrepreneur and fighter running Ionia's underground fighting pits.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Sett's basic attacks alternate between left and right punch. Right punch is slightly stronger and faster. Sett also hates losing, gaining additional health regeneration based off of his missing health." + Environment.NewLine + Environment.NewLine
              + "< ! > Sett pulls in all enemies on opposite sides of him, dealing damage and stunning them. If enemies were only on one side, they are slowed instead of stunned." + Environment.NewLine + Environment.NewLine
@@ -49,7 +49,7 @@ namespace SettMod.Modules
 
             LanguageAPI.Add("SETT_CONQUEROR_NAME", "<color=#ffa700>Conqueror</color>");
             LanguageAPI.Add("SETT_CONQUEROR_DESC", "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.2</color> <color=#d62d20>(+0.09 every 4 levels)</color> bonus base damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of any damage dealt to enemies.</color>");
-            
+
             LanguageAPI.Add("SETT_LETHAL_NAME", "<color=#ffa700>Lethal Tempo</color>");
             LanguageAPI.Add("SETT_LETHAL_DESC", "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of lethal tempo up to 6 stacks. Gain <color=#f68835>13%</color> bonus attack speed for each stack up to <color=#f68835>78%</color> bonus attack speed at maximum stacks.");
 
@@ -58,7 +58,6 @@ namespace SettMod.Modules
 
             LanguageAPI.Add("SETT_ELECTROCUTE_NAME", "<color=#ffa700>Electrocute</color>");
             LanguageAPI.Add("SETT_ELECTROCUTE_DESC", "<color=#c9aa71>Successful attacks</color> generate <color=#c9aa71>1</color> stack against enemies. Applying <color=#ffffff>3</color> stacks to a target within a 3 second period causes them to be struck by lightning after a 1-second delay, dealing them <color=#f68835>300%</color> <color=#d62d20>(+75% every 4 levels)</color> damage. Electrocute has a 10 second cooldown per target.");
-
         }
     }
 }

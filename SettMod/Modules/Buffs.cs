@@ -10,16 +10,14 @@ namespace SettMod.Modules
 
         internal static BuffDef conquerorBuff;
 
+        internal static BuffDef electrocuteDebuff;
         internal static BuffDef lethalBuff;
-        // armor buff gained during roll
-        internal static BuffDef regenBuff;
-
         internal static BuffDef movementSpeedBuff;
 
         internal static BuffDef phaseRushDebuff;
 
-        internal static BuffDef electrocuteDebuff;
-
+        // armor buff gained during roll
+        internal static BuffDef regenBuff;
 
         // simple helper method
         internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
