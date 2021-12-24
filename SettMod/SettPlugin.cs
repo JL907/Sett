@@ -170,7 +170,6 @@ namespace SettMod
         private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             CreateGritGauge(self);
-            ChatMessage.SendColored("If you have recently updated to a new version of SettMod please delete your old Sett configuration file.", Color.yellow);
             orig(self);
         }
 
