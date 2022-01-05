@@ -35,7 +35,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "2.3.1";
+        public const string MODVERSION = "2.3.2";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
@@ -77,28 +77,6 @@ namespace SettMod
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
             Hook();
-        }
-
-        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
-        {
-            if (damageReport is null) return;
-            if (damageReport.victimBody is null) return;
-            if (damageReport.attackerBody is null) return;
-
-            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && (
-                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
-            {
-                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
-                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
-                {
-                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
-                }
-            }
-
-            orig(self, damageReport);
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
@@ -158,6 +136,28 @@ namespace SettMod
             }
         }
 
+        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
+        {
+            if (damageReport is null) return;
+            if (damageReport.victimBody is null) return;
+            if (damageReport.attackerBody is null) return;
+
+            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && (
+                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
+                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
+            {
+                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
+                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
+                {
+                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
+                }
+            }
+
+            orig(self, damageReport);
+        }
+
         private void Hook()
         {
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
@@ -170,7 +170,6 @@ namespace SettMod
         private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
         {
             CreateGritGauge(self);
-            ChatMessage.SendColored("If you have recently updated to a new version of SettMod please delete your old Sett configuration file.", Color.yellow);
             orig(self);
         }
 

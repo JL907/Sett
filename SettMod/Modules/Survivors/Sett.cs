@@ -1,8 +1,6 @@
 ﻿using BepInEx.Configuration;
-using R2API;
 using RoR2;
 using RoR2.Skills;
-using SettMod.SkillStates.Keystone;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -105,6 +103,7 @@ namespace SettMod.Modules.Survivors
             string prefix = SettPlugin.developerPrefix;
 
             #region Primary
+
             SkillDef mySkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_PRIMARY_NAME",
@@ -133,6 +132,7 @@ namespace SettMod.Modules.Survivors
             #endregion Primary
 
             #region Secondary
+
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_SECONDARY_NAME",
@@ -162,6 +162,7 @@ namespace SettMod.Modules.Survivors
             #endregion Secondary
 
             #region Utility
+
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_UTILITY_NAME",
@@ -191,6 +192,7 @@ namespace SettMod.Modules.Survivors
             #endregion Utility
 
             #region Special
+
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_SPECIAL_NAME",
@@ -220,6 +222,7 @@ namespace SettMod.Modules.Survivors
             #endregion Special
 
             #region KeyStone
+
             SkillDef conquerorSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = prefix + "_CONQUEROR_NAME",

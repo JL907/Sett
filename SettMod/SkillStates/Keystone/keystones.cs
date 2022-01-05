@@ -1,6 +1,4 @@
 ﻿using RoR2;
-using RoR2.Orbs;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;

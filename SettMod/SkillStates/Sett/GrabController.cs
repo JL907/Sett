@@ -8,13 +8,13 @@ namespace SettMod.SkillStates
         public Transform pivotTransform;
 
         private CharacterBody body;
+        private CapsuleCollider capsuleCollider;
         private CharacterDirection direction;
         private ModelLocator modelLocator;
         private Transform modelTransform;
         private CharacterMotor motor;
-        private CapsuleCollider capsuleCollider;
-        private SphereCollider sphereCollider;
         private Quaternion originalRotation;
+        private SphereCollider sphereCollider;
 
         public void Release()
         {
