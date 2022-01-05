@@ -6,17 +6,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `2.3.1`
+## Latest Patch Notes `2.3.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed bug where Phase Rush Keystone was granting too much movement speed
-* Phase Rush Keystone is now 30% (+5% every 4 levels) bonus movement speed
-* Electrocute Keystone damage is now 300% (+75% every 4 levels) of base damage.
-* Fixed a bug where Greater Wisp bodies would remain in the world if killed with The Show Stopper
-* Fixed "every 4 levels" math again. 
-* The Show Stopper radius is now 25 up from 15
-    * Some large enemy bodies will be flung outside of the blast range on impact
-    * Increased radius to compensate and allow Sett to damage those enemies
+* Removed warning at the start of every round.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -57,6 +50,16 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`2.3.1`
+* Fixed bug where Phase Rush Keystone was granting too much movement speed
+* Phase Rush Keystone is now 30% (+5% every 4 levels) bonus movement speed
+* Electrocute Keystone damage is now 300% (+75% every 4 levels) of base damage.
+* Fixed a bug where Greater Wisp bodies would remain in the world if killed with The Show Stopper
+* Fixed "every 4 levels" math again. 
+* The Show Stopper radius is now 25 up from 15
+    * Some large enemy bodies will be flung outside of the blast range on impact
+    * Increased radius to compensate and allow Sett to damage those enemies
+
 `2.3.0`
 * Added Phase Rush Keystone
     * Successful attacks generate 1 stack against enemies. Applying 3 stacks to a target within a 4 second period grants you 30% (+1.76% every 4 levels) bonus movement speed for 3 seconds. Grants the bonus movement speed on kill.
