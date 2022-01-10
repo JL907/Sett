@@ -1,5 +1,5 @@
 # Sett
-## If you're updating to 2.3.1 or later please delete your old sett configuration file
+## If you're updating to 2.4.0 or later please delete your old sett configuration file
 ![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
@@ -10,7 +10,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Sett's grit now decays 10% faster.
-* Fixed The Show Stopper animation not playing for host players when executed by non-host Sett players.
+* Fixed The Show Stopper animation not playing for host players when executed by non-host Sett players
+* Obsidian, Pool Party, and Prestige skins are disabled by default. Enable in configuration file. 
+    * Still can't figure out how to combine them into one survivor stop asking.
+* Facebreaker pull radius increased to 20 units up from 10
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
