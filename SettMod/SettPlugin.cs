@@ -35,7 +35,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "2.4.0";
+        public const string MODVERSION = "3.0.0";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
@@ -67,9 +67,6 @@ namespace SettMod
 
             // survivor initialization
             new Sett().Initialize();
-            new Obsidian().Initialize();
-            new Prestige().Initialize();
-            new Pool().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();

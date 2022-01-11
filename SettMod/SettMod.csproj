@@ -3,8 +3,14 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>2.4.0</Version>
+		<Version>3.0.0</Version>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Modules\Survivors\Obsidian.cs" />
+	  <Compile Remove="Modules\Survivors\Pool.cs" />
+	  <Compile Remove="Modules\Survivors\Prestige.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 	  <None Remove="sett" />
