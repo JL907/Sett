@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1938992020
+CRC: 934148111
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1aad3a18e337ddbeb57e63f7ea7cb804
+    Hash: 2bde8df2a4642ef28eef161af53c1016
   TypeTreeHash:
     serializedVersion: 2
     Hash: 568ed0b80b08d8e82966820bbb42dbde
@@ -89,6 +89,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
+- Assets/Sett/model/poolMesh.mesh
 - Assets/Sett/model/poolpartysett.fbx
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
@@ -141,7 +142,6 @@ Assets:
 - Assets/Sett/model/Sett.fbx
 - Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
 - Assets/Sett/mdlPool.prefab
-- Assets/Sett/model/obsidianMesh.mesh
 - Assets/Sett/materials/skin13_0.mat
 - Assets/Sett/textures/skin1_0.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
@@ -156,6 +156,7 @@ Assets:
 - Assets/Sett/model/prestige.fbx
 - Assets/Sett/obsidianDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
+- Assets/Sett/model/mechaMesh.mesh
 - Assets/Sett/icons/prestige_square.png
 - Assets/Sett/icons/Lethal_Tempo_rune.png
 - Assets/Sett/VFX/Textures/texRipple.png
@@ -179,11 +180,11 @@ Assets:
 - Assets/Sett/icons/sett_p.png
 - Assets/Sett/VFX/Mesh/meshPunchShockwave.mesh
 - Assets/Sett/VFX/Textures/color-hold.dds
+- Assets/Sett/model/obsidianMesh.mesh
 - Assets/Sett/materials/skin12_0.mat
 - Assets/Sett/VFX/Materials/matDust.mat
 - Assets/Sett/icons/sett_w.png
 - Assets/Sett/textures/skin9_0.png
-- Assets/Sett/model/poolMesh.mesh
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_flicker.dds
 - Assets/Sett/VFX/Textures/sett_base_w_ui_indicator.dds
@@ -217,7 +218,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_alpha.dds
 - Assets/Sett/icons/Conqueror_rune.png
 - Assets/Sett/VFX/Textures/sett_base_p_radial_soft.dds
-- Assets/Sett/model/mechaMesh.mesh
 - Assets/Sett/VFX/Mesh/meshBoxingGlove.mesh
 - Assets/Sett/VFX/Textures/texEmbers.png
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
@@ -242,9 +242,9 @@ Assets:
 - Assets/Sett/textures/skin15_0.png
 - Assets/Sett/VFX/Textures/sett_base_regen_particulates.dds
 - Assets/Sett/VFX/Materials/matHitSparkPunch.mat
+- Assets/Sett/model/prestigeMesh.mesh
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
 - Assets/Sett/mdlSett.prefab
-- Assets/Sett/model/prestigeMesh.mesh
 - Assets/Sett/VFX/Textures/hiteffect.dds
 - Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
