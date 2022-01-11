@@ -139,11 +139,7 @@ namespace SettMod
             if (damageReport.victimBody is null) return;
             if (damageReport.attackerBody is null) return;
 
-            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && (
-                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
+            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && damageReport.attackerBody.baseNameToken == "SETT_NAME")
             {
                 KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
                 if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
