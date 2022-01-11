@@ -19,15 +19,14 @@ namespace SettMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            if (isAuthority)
-            {
-                base.characterMotor.Motor.ForceUnground();
-                base.characterMotor.disableAirControlUntilCollision = false;
-                this.dashVelocity = Roll2.CalculateLungeVelocity(base.characterMotor.velocity, base.GetAimRay().direction, Roll2.duration, Roll2.minSpeed, Roll2.maxSpeed);
-                base.characterMotor.velocity = this.dashVelocity;
-                base.characterDirection.forward = base.characterMotor.velocity.normalized;
-                this.dashSpeed = base.characterMotor.velocity.magnitude;
-            }
+
+            base.characterMotor.Motor.ForceUnground();
+            base.characterMotor.disableAirControlUntilCollision = false;
+            this.dashVelocity = Roll2.CalculateLungeVelocity(base.characterMotor.velocity, base.GetAimRay().direction, Roll2.duration, Roll2.minSpeed, Roll2.maxSpeed);
+            base.characterMotor.velocity = this.dashVelocity;
+            base.characterDirection.forward = base.characterMotor.velocity.normalized;
+            this.dashSpeed = base.characterMotor.velocity.magnitude;
+
             base.PlayCrossfade("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f, 0.05f);
             Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
         }
@@ -71,7 +70,7 @@ namespace SettMod.SkillStates
             HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
             if (target)
             {
-                if (target.healthComponent && target.healthComponent.body && base.isAuthority)
+                if (target.healthComponent && target.healthComponent.body)
                 {
                     this.outer.SetNextState(new ShowStopper
                     {
@@ -86,12 +85,9 @@ namespace SettMod.SkillStates
 
             if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = Mathf.Lerp(Roll2.dodgeFOV, 60f, base.fixedAge / Roll2.duration);
 
-            if (base.isAuthority)
-            {
-                base.characterMotor.velocity = this.dashVelocity;
-                base.characterDirection.forward = this.dashVelocity;
-                base.characterBody.isSprinting = true;
-            }
+            base.characterMotor.velocity = this.dashVelocity;
+            base.characterDirection.forward = this.dashVelocity;
+            base.characterBody.isSprinting = true;
 
             this.AttemptSlam();
 

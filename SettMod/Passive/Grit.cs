@@ -150,7 +150,7 @@ namespace SettMod.Modules
             if (throttleUpdateTime >= MaxTrottleUpdateTime && gritUptimeStopwatch > GritMaxUptime)
             {
                 throttleUpdateTime = 0f;
-                var gritDecayAmount = 0.2f;
+                var gritDecayAmount = 0.3f;
                 var snapShotGrit = this.NetworkGrit;
                 this.NetworkGrit -= Mathf.Max(snapShotGrit * gritDecayAmount, 0);
             }

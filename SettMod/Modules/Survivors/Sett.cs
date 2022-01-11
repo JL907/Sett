@@ -71,6 +71,7 @@ namespace SettMod.Modules.Survivors
 
         internal override void InitializeCharacter()
         {
+            characterEnabled = SettPlugin.instance.Config.Bind<bool>(new ConfigDefinition(bodyName, "Enabled"), true, new ConfigDescription("Set to false to disable this character"));
             base.InitializeCharacter();
         }
 
