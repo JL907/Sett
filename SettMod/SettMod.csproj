@@ -7,6 +7,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Modules\Survivors\Obsidian.cs" />
+	  <Compile Remove="Modules\Survivors\Pool.cs" />
+	  <Compile Remove="Modules\Survivors\Prestige.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="sett" />
 	</ItemGroup>
 

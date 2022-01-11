@@ -67,9 +67,6 @@ namespace SettMod
 
             // survivor initialization
             new Sett().Initialize();
-            new Obsidian().Initialize();
-            new Prestige().Initialize();
-            new Pool().Initialize();
 
             // now make a content pack and add it- this part will change with the next update
             new Modules.ContentPacks().Initialize();
