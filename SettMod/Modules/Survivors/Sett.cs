@@ -299,8 +299,139 @@ namespace SettMod.Modules.Survivors
             };
 
             skins.Add(defaultSkin);
-
             #endregion DefaultSkin
+
+            #region PoolSkin
+            Skins.SkinDefInfo poolSkinDefInfo = default(Skins.SkinDefInfo);
+            poolSkinDefInfo.Name = "POOL_SETT_NAME";
+            poolSkinDefInfo.NameToken = "POOL_SETT_NAME";
+            poolSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("pool_square");
+            poolSkinDefInfo.UnlockableDef = null;
+            poolSkinDefInfo.RootObject = model;
+
+            poolSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            poolSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            poolSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            poolSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            poolSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("poolMesh")
+                },
+            };
+
+            poolSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(poolSkinDefInfo.RendererInfos, 0);
+
+            poolSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("poolSettMat");
+            poolSkinDefInfo.RendererInfos[poolSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("poolSettMat");
+
+            SkinDef poolSkin = Skins.CreateSkinDef(poolSkinDefInfo);
+            skins.Add(poolSkin);
+            #endregion
+
+            #region ObsidianSkin
+            Skins.SkinDefInfo obsidianSkinDefInfo = default(Skins.SkinDefInfo);
+            obsidianSkinDefInfo.Name = "OBSIDIAN_SETT_NAME";
+            obsidianSkinDefInfo.NameToken = "OBSIDIAN_SETT_NAME";
+            obsidianSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("obsidian_square");
+            obsidianSkinDefInfo.UnlockableDef = null;
+            obsidianSkinDefInfo.RootObject = model;
+
+            obsidianSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            obsidianSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            obsidianSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            obsidianSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            obsidianSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("obsidianMesh")
+                },
+            };
+
+            obsidianSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(obsidianSkinDefInfo.RendererInfos, 0);
+
+            obsidianSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("obsidianMat");
+            obsidianSkinDefInfo.RendererInfos[obsidianSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("obsidianMat");
+
+            SkinDef obsidianSkin = Skins.CreateSkinDef(obsidianSkinDefInfo);
+            skins.Add(obsidianSkin);
+            #endregion
+
+            #region PrestiegeSkin
+            Skins.SkinDefInfo prestiegeSkinDefInfo = default(Skins.SkinDefInfo);
+            prestiegeSkinDefInfo.Name = "PRESTIGE_SETT_NAME";
+            prestiegeSkinDefInfo.NameToken = "PRESTIGE_SETT_NAME";
+            prestiegeSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("prestige_square");
+            prestiegeSkinDefInfo.UnlockableDef = null;
+            prestiegeSkinDefInfo.RootObject = model;
+
+            prestiegeSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            prestiegeSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            prestiegeSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            prestiegeSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            prestiegeSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("prestigeMesh")
+                },
+            };
+
+            prestiegeSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(prestiegeSkinDefInfo.RendererInfos, 0);
+
+            prestiegeSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("prestigeMat");
+            prestiegeSkinDefInfo.RendererInfos[prestiegeSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("prestigeMat");
+
+            SkinDef prestigeSkin = Skins.CreateSkinDef(prestiegeSkinDefInfo);
+            skins.Add(prestigeSkin);
+            #endregion
+
+            #region MechaSkin
+            Skins.SkinDefInfo mechaSkinDefInfo = default(Skins.SkinDefInfo);
+            mechaSkinDefInfo.Name = "MECHA_SETT_NAME";
+            mechaSkinDefInfo.NameToken = "MECHA_SETT_NAME";
+            mechaSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("mecha_square");
+            mechaSkinDefInfo.UnlockableDef = null;
+            mechaSkinDefInfo.RootObject = model;
+
+            mechaSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            mechaSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            mechaSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            mechaSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            mechaSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("mechaMesh")
+                },
+            };
+
+            mechaSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(mechaSkinDefInfo.RendererInfos, 0);
+
+            mechaSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("mechaMat");
+            mechaSkinDefInfo.RendererInfos[mechaSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("mechaMat");
+
+            SkinDef mechaSkin = Skins.CreateSkinDef(mechaSkinDefInfo);
+            skins.Add(mechaSkin);
+            #endregion
 
             skinController.skins = skins.ToArray();
         }
