@@ -19,7 +19,7 @@ namespace SettMod.SkillStates.BaseStates
         public override void OnEnter()
         {
             base.OnEnter();
-            Util.PlaySound("Death", base.gameObject);
+            Util.PlaySound("SettDeath", base.gameObject);
             Animator modelAnimator = base.GetModelAnimator();
             if (modelAnimator)
             {

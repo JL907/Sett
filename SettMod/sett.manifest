@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 934148111
+CRC: 3109037322
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2bde8df2a4642ef28eef161af53c1016
+    Hash: 706f273e32953d17a3aa92f8547725e7
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 568ed0b80b08d8e82966820bbb42dbde
+    Hash: f9ef2a914db80951663e4f4248258f45
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -35,8 +35,6 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
-- Class: 114
-  Script: {fileID: 11500000, guid: 66bad571b81d2984e8e60b04f344585e, type: 3}
 - Class: 114
   Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 - Class: 114
@@ -111,7 +109,6 @@ Assets:
 - Assets/Sett/VFX/Materials/matSwingShadow.mat
 - Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
 - Assets/Sett/textures/skin14_0.png
-- Assets/Sett/mdlObsidian.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
 - Assets/Sett/textures/skin13_0.png
 - Assets/Sett/VFX/Textures/texFire.tga
@@ -141,7 +138,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_air_swoosh.dds
 - Assets/Sett/model/Sett.fbx
 - Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
-- Assets/Sett/mdlPool.prefab
 - Assets/Sett/materials/skin13_0.mat
 - Assets/Sett/textures/skin1_0.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
@@ -154,7 +150,6 @@ Assets:
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
 - Assets/Sett/model/prestige.fbx
-- Assets/Sett/obsidianDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
 - Assets/Sett/model/mechaMesh.mesh
 - Assets/Sett/icons/prestige_square.png
@@ -173,7 +168,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_ground_trail_erode.dds
 - Assets/Sett/VFX/Materials/matSwingEffect.mat
 - Assets/Sett/VFX/Textures/sett_base_fire_trail_graphic.dds
-- Assets/Sett/poolDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_vertical_streaks.dds
 - Assets/Sett/VFX/Textures/aura_self.dds
 - Assets/Sett/VFX/Textures/texDust.png
@@ -236,7 +230,6 @@ Assets:
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/settDisplay.prefab
-- Assets/Sett/mdlPrestige.prefab
 - Assets/Sett/VFX/Materials/matEmbers.mat
 - Assets/Sett/VFX/Textures/texFistSwing.png
 - Assets/Sett/textures/skin15_0.png
@@ -251,7 +244,6 @@ Assets:
 - Assets/Sett/icons/texUIMainRect.png
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
-- Assets/Sett/prestigeDisplay.prefab
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
 - Assets/Sett/icons/Electrocute_rune.png
 - Assets/Sett/VFX/Materials/matFistSwing.mat

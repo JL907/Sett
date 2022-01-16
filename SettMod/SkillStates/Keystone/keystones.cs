@@ -51,11 +51,7 @@ namespace SettMod.SkillStates.Keystone
         {
             if (damageReport is null) return;
 
-            if (damageReport.victimBody && damageReport.attacker && (
-                damageReport.attackerBody.baseNameToken == "SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "PRESTIGE_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "POOL_SETT_NAME" ||
-                damageReport.attackerBody.baseNameToken == "OBSIDIAN_SETT_NAME"))
+            if (damageReport.victimBody && damageReport.attacker && damageReport.attackerBody.baseNameToken == "SETT_NAME")
             {
                 UptimeStopwatch = 0f;
 
