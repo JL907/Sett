@@ -1,15 +1,24 @@
 # Sett
-## If you're updating to 3.0.0 or later please delete your old sett configuration file
+## If you're updating to 3.1.0 or later please delete your old sett configuration file
 ![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `3.0.1`
+## Latest Patch Notes `3.1.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed bug where Phoenix Wright mod sounds were playing on Sett.
+* SettMod now uses R2API version 3.0.71
+* The ShowStopper's damage increased to 1600% (up from 800%)
+* The ShowStopper's bonus damage decreased to 2.5% of target's maximum health + maximum health (down from 10%)
+* Haymaker's damage increased to 2100% (up from 1000%)
+* Haymaker's bonus damage is now +50% of expended grit + 10% every 4 levels. (changed from +25% + 25% every 4 levels)
+* Haymaker's AOE Cap is now 2,147,483,647 enemies (up from 1,000,000 enemies)
+* Added config entry to control Haymaker's bonus damage per 4 levels coefficient
+* Facebreaker description changed from "units" to "meters"
+* Facebreaker description had incorrect value
+* Sett's default skin font color now matches his skins
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -50,6 +59,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`3.0.1`
+* Fixed bug where Phoenix Wright mod sounds were playing on Sett.
+
 `3.0.0`
 * Added Mecha Kingdoms Sett Skin
 * ALL SKINS ARE NOW CONSOLIDATED INTO ONE SURVIVOR

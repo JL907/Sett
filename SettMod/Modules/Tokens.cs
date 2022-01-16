@@ -31,7 +31,7 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_LORE", characterLore);
             LanguageAPI.Add("SETT_OUTRO_FLAVOR", characterOutro);
             LanguageAPI.Add("SETT_OUTRO_FAILURE", characterOutroFailure);
-            LanguageAPI.Add("SETT_DEFAULT_SKIN_NAME", "Sett");
+            LanguageAPI.Add("SETT_DEFAULT_SKIN_NAME", "<color=#ffa700>Sett</color>");
 
             LanguageAPI.Add("SETT_PASSIVE_NAME", "<color=#ffa700>HEART OF THE HALF-BEAST</color>");
             LanguageAPI.Add("SETT_PASSIVE_DESC", "Sett <color=#c9aa71>regenerates</color> an additional <color=#008744>0.25 health per second</color> <color=#d62d20>(+ 0.25 every 4 levels)</color> for every <color=#f68835>5%</color> of his <color=#d62d20>missing health.</color>");
@@ -40,13 +40,13 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_PRIMARY_DESC", "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(260% damage)</color> and a Right Punch <color=#f68835>(320% damage)</color>");
 
             LanguageAPI.Add("SETT_SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
-            LanguageAPI.Add("SETT_SECONDARY_DESC", "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>10 unit</color> radius of him, dealing <color=#f68835>380% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.");
+            LanguageAPI.Add("SETT_SECONDARY_DESC", "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 meter</color> radius of him, dealing <color=#f68835>380% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.");
 
             LanguageAPI.Add("SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
-            LanguageAPI.Add("SETT_UTILITY_DESC", "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>800%</color> <color=#d62d20>(+10% of primary target's combined maximum health and maximum shield)</color> damage to all enemies near where they land.");
+            LanguageAPI.Add("SETT_UTILITY_DESC", "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1600%</color> <color=#d62d20>(+2.5% of primary target's combined maximum health and maximum shield)</color> damage to all enemies near where they land.");
 
             LanguageAPI.Add("SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
-            LanguageAPI.Add("SETT_SPECIAL_DESC", "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>1000%</color> <color=#d62d20>(+25% of the expended Grit +25% every 4 levels)</color> <color=#ffffff>TRUE</color> damage.");
+            LanguageAPI.Add("SETT_SPECIAL_DESC", "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>2100%</color> <color=#d62d20>(+50% of the expended Grit +10% every 4 levels)</color> <color=#ffffff>TRUE</color> damage.");
 
             LanguageAPI.Add("SETT_CONQUEROR_NAME", "<color=#ffa700>Conqueror</color>");
             LanguageAPI.Add("SETT_CONQUEROR_DESC", "<color=#c9aa71>Successful attacks</color> against enemies grant <color=#ffffff>1</color> stack of conqueror up to 12 stacks. Each stack of Conqueror grants <color=#f68835>1.2</color> <color=#d62d20>(+0.09 every 4 levels)</color> bonus base damage. While fully stacked you <color=#c9aa71>heal</color> for <color=#008744>3% of any damage dealt to enemies.</color>");
