@@ -12,6 +12,7 @@ namespace SettMod.SkillStates
         public static float hayMakerDamageCoefficient = Modules.Config.hayMakerDamageCoefficient.Value;
         public static float hayMakerForce = 1000f;
         public static float hayMakerGritBonus = Modules.Config.hayMakerGritBonus.Value;
+        public static float hayMakerGritBonusPer4 = Modules.Config.hayMakerGritBonusPer4.Value;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerRadius = 55f;
         public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
@@ -124,7 +125,7 @@ namespace SettMod.SkillStates
             Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 13f, 15f);
             int num = 0;
             int num2 = 0;
-            while (num < enemies.Length && num2 < 1000000f)
+            while (num < enemies.Length && num2 < int.MaxValue)
             {
                 HealthComponent component = enemies[num].GetComponent<HealthComponent>();
                 if (component)
@@ -138,7 +139,7 @@ namespace SettMod.SkillStates
                     if (!flag)
                     {
                         float _level = Mathf.Floor(base.characterBody.level / 4f);
-                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonus);
+                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
 
                         DamageInfo damageInfo = new DamageInfo();
                         damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
