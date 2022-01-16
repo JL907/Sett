@@ -6,11 +6,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `3.0.0`
+## Latest Patch Notes `3.0.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Added Mecha Kingdoms Sett Skin
-* ALL SKINS ARE NOW CONSOLIDATED INTO ONE SURVIVOR
+* Fixed bug where Phoenix Wright mod sounds were playing on Sett.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -51,8 +50,11 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
-`2.4.0`
+`3.0.0`
+* Added Mecha Kingdoms Sett Skin
+* ALL SKINS ARE NOW CONSOLIDATED INTO ONE SURVIVOR
 
+`2.4.0`
 * Sett's grit now decays 10% faster.
 * Fixed The Show Stopper animation not playing for host players when executed by non-host Sett players
 * Obsidian, Pool Party, and Prestige skins are disabled by default. Enable in configuration file. 

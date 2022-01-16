@@ -134,8 +134,8 @@ namespace SettMod.SkillStates.BaseStates
 
             this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
             this.muzzleString = this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
-            this.swingSoundString = "VOHIT";
-            this.hitSoundString = "Hit";
+            this.swingSoundString = "SettHitVO";
+            this.hitSoundString = "SettHitSFX";
             this.impactSound = Modules.Assets.swordHitSoundEvent.index;
 
             HitBoxGroup hitBoxGroup = null;
@@ -202,7 +202,7 @@ namespace SettMod.SkillStates.BaseStates
             {
                 this.hasFired = true;
 
-                Util.PlayAttackSpeedSound("Swing", base.gameObject, this.attackSpeedStat);
+                Util.PlayAttackSpeedSound("SettSwing", base.gameObject, this.attackSpeedStat);
 
                 if (UnityEngine.Random.value >= 0.5) Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
 

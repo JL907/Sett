@@ -166,7 +166,7 @@ namespace SettMod.SkillStates
 
         protected virtual void OnHitEnemyAuthority()
         {
-            Util.PlaySound("Hit", base.gameObject);
+            Util.PlaySound("SettHitSFX", base.gameObject);
         }
 
         private void AddToPullList(GameObject affectedObject)
