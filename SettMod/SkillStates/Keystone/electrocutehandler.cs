@@ -8,7 +8,7 @@ namespace SettMod.SkillStates.Keystone
     public class ElectrocuteHandler : MonoBehaviour
     {
         public CharacterBody attackerBody;
-        public float electrocuteCD = 10f;
+        public float electrocuteCD = 5f;
         public float stopwatch = 0.0f;
         private static readonly int maxElectrocuteStacks = 3;
         private CharacterBody body;
@@ -55,8 +55,8 @@ namespace SettMod.SkillStates.Keystone
 
                 if (hurtBox)
                 {
-                    float damagecoefficient = (3f + (_level * 0.75f));
-                    OrbManager.instance.AddOrb(new LightningStrikeOrb
+                    float damagecoefficient = (6f + (_level * 0.75f));
+                    OrbManager.instance.AddOrb(new SimpleLightningStrikeOrb
                     {
                         attacker = attackerBody.gameObject,
                         damageColorIndex = DamageColorIndex.Item,

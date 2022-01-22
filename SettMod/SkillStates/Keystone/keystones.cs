@@ -85,7 +85,7 @@ namespace SettMod.SkillStates.Keystone
                 {
                     if (GetKeyStoneBuffCount() >= GetKeyStoneMaxStacks())
                     {
-                        float damageHeal = damageReport.damageDealt * 0.03f;
+                        float damageHeal = damageReport.damageDealt * 0.06f;
                         this.healthComponent.Heal(damageHeal, default, true);
                     }
                 }

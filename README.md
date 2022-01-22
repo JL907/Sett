@@ -6,19 +6,16 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `3.1.0`
+## Latest Patch Notes `3.2.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* SettMod now uses R2API version 3.0.71
-* The ShowStopper's damage increased to 1600% (up from 800%)
-* The ShowStopper's bonus damage decreased to 2.5% of target's maximum health + maximum health (down from 10%)
-* Haymaker's damage increased to 2100% (up from 1000%)
-* Haymaker's bonus damage is now +50% of expended grit + 10% every 4 levels. (changed from +25% + 25% every 4 levels)
-* Haymaker's AOE Cap is now 2,147,483,647 enemies (up from 1,000,000 enemies)
-* Added config entry to control Haymaker's bonus damage per 4 levels coefficient
-* Facebreaker description changed from "units" to "meters"
-* Facebreaker description had incorrect value
-* Sett's default skin font color now matches his skins
+* All KeyStone Buffs now only stack when the damage source is dealt directly from one of Sett's abilities
+* Conquerer Passive Heal now only heals from damage dealt directly from Sett's abilities
+* Conquerer bonus damage per stack is now 0.6 (+0.045 every 4 levels) down from 1.2 (+0.09 every 4 levels)
+* Electrocute base damage is now 600% up from 300%
+* Electrocute now uses a simplier and less blinding effect
+* Electrocute cooldown is now 5 seconds per target
+* The Show Stopper'sbonus damage increased to 7.5% of target's maximum health + maximum shield (up from 2.5%)
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -59,6 +56,18 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`3.1.0`
+* SettMod now uses R2API version 3.0.71
+* The ShowStopper's damage increased to 1600% (up from 800%)
+* The ShowStopper's bonus damage decreased to 2.5% of target's maximum health + maximum shield (down from 10%)
+* Haymaker's damage increased to 2100% (up from 1000%)
+* Haymaker's bonus damage is now +50% of expended grit + 10% every 4 levels. (changed from +25% + 25% every 4 levels)
+* Haymaker's AOE Cap is now 2,147,483,647 enemies (up from 1,000,000 enemies)
+* Added config entry to control Haymaker's bonus damage per 4 levels coefficient
+* Facebreaker description changed from "units" to "meters"
+* Facebreaker description had incorrect value
+* Sett's default skin font color now matches his skins
+
 `3.0.1`
 * Fixed bug where Phoenix Wright mod sounds were playing on Sett.
 
