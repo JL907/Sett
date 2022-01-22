@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using R2API;
 using R2API.Utils;
 using RoR2;
 using SettMod.Modules;
@@ -21,7 +22,8 @@ namespace SettMod
         "SoundAPI",
         "NetworkingAPi",
         "SkinAPI",
-        "LoadoutAPI"
+        "LoadoutAPI",
+        "DamageAPI"
     })]
     public class SettPlugin : BaseUnityPlugin
     {
@@ -35,10 +37,12 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "3.1.0";
+        public const string MODVERSION = "3.2.0";
         public static SettPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
         private GritGauge gritGauge;
+
+        public static DamageAPI.ModdedDamageType settDamage;
 
         public void OnDestroy()
         {
@@ -55,6 +59,7 @@ namespace SettMod
         private void Awake()
         {
             instance = this;
+            settDamage = DamageAPI.ReserveDamageType();
 
             // load assets and read config
             Modules.Assets.Initialize();

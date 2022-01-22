@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using R2API;
 using RoR2;
 using System.Linq;
 using UnityEngine;
@@ -217,6 +218,7 @@ namespace SettMod.SkillStates
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
+            DamageAPI.AddModdedDamageType(blastAttack, SettPlugin.settDamage);
             blastAttack.Fire();
 
             Util.PlaySound("SettRImpact", base.gameObject);
