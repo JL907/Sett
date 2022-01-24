@@ -19,7 +19,7 @@ namespace SettMod.SkillStates
         public static float slamProcCoefficient = 1f;
         public static float slamRadius = Modules.Config.slamRadius.Value;
         protected Animator animator;
-        protected float bonusHealth;
+        protected float bonusDamage = 0f;
         private bool detonateNextFrame;
         private Ray downRay;
         private Vector3 flyVector = Vector3.zero;
@@ -52,13 +52,9 @@ namespace SettMod.SkillStates
             {
                 this.CreateIndicator();
             }
-
             if (base.fixedAge >= ShowStopper.jumpDuration && !this.hasDropped)
             {
-                this.hasDropped = true;
-                base.characterMotor.disableAirControlUntilCollision = true;
-                base.characterMotor.velocity.y = -ShowStopper.dropForce;
-                this.AttemptGrab(15f);
+                this.StartDrop();
             }
 
             if (this.hasDropped && base.isAuthority && (this.detonateNextFrame || (base.characterMotor.Motor.GroundingStatus.IsStableOnGround && !base.characterMotor.Motor.LastGroundingStatus.IsStableOnGround)))
@@ -73,6 +69,14 @@ namespace SettMod.SkillStates
             }
         }
 
+        public void StartDrop()
+        {
+            this.hasDropped = true;
+            base.characterMotor.disableAirControlUntilCollision = true;
+            base.characterMotor.velocity.y = -ShowStopper.dropForce;
+            this.AttemptGrab(15f);
+        }
+
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Skill;
@@ -82,7 +86,6 @@ namespace SettMod.SkillStates
         {
             base.OnEnter();
             base.characterMotor.onMovementHit += this.OnMovementHit;
-            this.bonusHealth = 0f;
             this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
@@ -159,7 +162,7 @@ namespace SettMod.SkillStates
                 {
                     if (BodyMeetsGrabConditions(target.healthComponent.body))
                     {
-                        this.bonusHealth = target.healthComponent.fullCombinedHealth;
+                        this.bonusDamage = target.healthComponent.body.maxHealth * ShowStopper.bonusHealthCoefficient;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
@@ -210,9 +213,10 @@ namespace SettMod.SkillStates
             blastAttack.radius = ShowStopper.slamRadius;
             blastAttack.procCoefficient = ShowStopper.slamProcCoefficient;
             blastAttack.position = base.characterBody.footPosition;
+            blastAttack.procChainMask = default;
             blastAttack.attacker = base.gameObject;
-            blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = (this.damageStat * ShowStopper.slamDamageCoefficient) + (ShowStopper.bonusHealthCoefficient * this.bonusHealth);
+            blastAttack.crit = false;
+            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (this.bonusDamage);
             blastAttack.falloffModel = BlastAttack.FalloffModel.Linear;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
