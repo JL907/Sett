@@ -91,24 +91,24 @@ namespace SettMod
                 if (self.HasBuff(Modules.Buffs.regenBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.regenBuff);
-                    self.regen += count * (0.25f + (_level * 0.25f));
+                    self.regen += count * (Modules.Config.heartBeast.Value + (_level * Modules.Config.heartBeastPer4.Value));
                 }
 
                 if (self.HasBuff(Modules.Buffs.lethalBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
-                    self.attackSpeed += self.attackSpeed * (count * 0.13f);
+                    self.attackSpeed += self.attackSpeed * (count * Modules.Config.lethalAttackSpeedStack.Value);
                 }
 
                 if (self.HasBuff(Modules.Buffs.conquerorBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.conquerorBuff);
-                    self.damage += count * (0.6f + (_level * 0.045f));
+                    self.damage += count * (Modules.Config.conquerorDamageStack.Value + (_level * Modules.Config.conquerorDamageStackPer4.Value));
                 }
 
                 if (self.HasBuff(Modules.Buffs.movementSpeedBuff))
                 {
-                    self.moveSpeed += self.moveSpeed * (0.30f + (_level * 0.05f));
+                    self.moveSpeed += self.moveSpeed * (Modules.Config.phaseMovementSpeed.Value + (_level * Modules.Config.phaseMovementSpeedPer4.Value));
                 }
             }
         }
