@@ -97,7 +97,7 @@ namespace SettMod
                 if (self.HasBuff(Modules.Buffs.lethalBuff))
                 {
                     float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
-                    self.attackSpeed += self.attackSpeed * (count * 0.13f);
+                    self.attackSpeed += self.attackSpeed * (count * 0.10f);
                 }
 
                 if (self.HasBuff(Modules.Buffs.conquerorBuff))
