@@ -245,8 +245,8 @@ namespace SettMod.SkillStates
                         damageInfo.position = healthComponent.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         healthComponent.TakeDamage(damageInfo);
-                        GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
-                        GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
+                        //GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
+                        //GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
                     }
                 }
             }
