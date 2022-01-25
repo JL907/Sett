@@ -162,7 +162,7 @@ namespace SettMod.SkillStates
                 {
                     if (BodyMeetsGrabConditions(target.healthComponent.body))
                     {
-                        this.bonusDamage = target.healthComponent.body.maxHealth * ShowStopper.bonusHealthCoefficient;
+                        this.bonusDamage = target.healthComponent.fullCombinedHealth * ShowStopper.bonusHealthCoefficient;
                         this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
                         this.grabController.pivotTransform = this.FindModelChild("R_Hand");
                     }
@@ -241,6 +241,7 @@ namespace SettMod.SkillStates
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = false;
                         damageInfo.procCoefficient = 0;
+                        damageInfo.procChainMask = default(ProcChainMask);
                         damageInfo.position = healthComponent.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         healthComponent.TakeDamage(damageInfo);
