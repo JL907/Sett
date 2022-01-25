@@ -11,6 +11,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 
 * Fixed an issue where Lethal Tempo changes didn't go through from last patch
 * Fixed an issue where The Show Stopper bonus damage was still proccing on hit effects
+* The Show Stopper's bonus damage is now unaffected by items
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">

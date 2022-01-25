@@ -235,8 +235,6 @@ namespace SettMod.SkillStates
                     {
                         DamageInfo damageInfo = new DamageInfo();
                         damageInfo.damage = this.bonusDamage;
-                        damageInfo.attacker = base.gameObject;
-                        damageInfo.inflictor = base.gameObject;
                         damageInfo.damageColorIndex = DamageColorIndex.Item;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = false;
