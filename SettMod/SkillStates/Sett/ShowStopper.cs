@@ -235,18 +235,14 @@ namespace SettMod.SkillStates
                     {
                         DamageInfo damageInfo = new DamageInfo();
                         damageInfo.damage = this.bonusDamage;
-                        damageInfo.attacker = base.gameObject;
-                        damageInfo.inflictor = base.gameObject;
                         damageInfo.damageColorIndex = DamageColorIndex.Item;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = false;
-                        damageInfo.procCoefficient = 0;
-                        damageInfo.procChainMask = default(ProcChainMask);
                         damageInfo.position = healthComponent.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         healthComponent.TakeDamage(damageInfo);
-                        GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
-                        GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
+                        //GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
+                        //GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
                     }
                 }
             }
