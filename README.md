@@ -15,8 +15,12 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 * Electrocute base damage is now 600% up from 300%
 * Electrocute now uses a simplier and less blinding effect
 * Electrocute cooldown is now 5 seconds per target
-* The Show Stopper's bonus damage increased to 7.5% of target's maximum health + maximum shield (up from 2.5%)
-* The Show Stopper's bonus damage now only uses target max health value instead of combined max health + shield
+* The Show Stopper's bonus damage is now it's own instance of damage
+    * Bonus damage will not crit
+    * Bonus damage has no proc coefficient
+    * Bonus damage will appear as a yellow color
+    * Bonus damage bypasses armor
+* The Show Stopper's bonus damage is now 10% up from 2.5%
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">

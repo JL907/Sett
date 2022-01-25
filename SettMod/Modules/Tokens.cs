@@ -43,7 +43,7 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_SECONDARY_DESC", "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 meter</color> radius of him, dealing <color=#f68835>380% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.");
 
             LanguageAPI.Add("SETT_UTILITY_NAME", "<color=#ffa700>THE SHOW STOPPER</color>");
-            LanguageAPI.Add("SETT_UTILITY_DESC", "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1600%</color> <color=#d62d20>(+7.5% of primary target's maximum health)</color> damage to all enemies near where they land.");
+            LanguageAPI.Add("SETT_UTILITY_DESC", "Sett <color=#c9aa71>carries</color> an enemy through the air and slams them into the ground, dealing <color=#f68835>1600%</color> <color=#d62d20>(+10% of primary target's maximum health & maximum shield)</color> damage to all enemies near where they land.");
 
             LanguageAPI.Add("SETT_SPECIAL_NAME", "<color=#ffa700>HAYMAKER</color>");
             LanguageAPI.Add("SETT_SPECIAL_DESC", "Sett passively stores damage he takes as <color=#ffffff>Grit</color>. On cast, Sett expends all stored <color=#ffffff>Grit</color> to gain a <color=#ffffff>Shield</color> and punch an area, dealing <color=#f68835>2100%</color> <color=#d62d20>(+50% of the expended Grit +10% every 4 levels)</color> <color=#ffffff>TRUE</color> damage.");

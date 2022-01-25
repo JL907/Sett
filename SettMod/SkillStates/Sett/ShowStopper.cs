@@ -215,8 +215,8 @@ namespace SettMod.SkillStates
             blastAttack.position = base.characterBody.footPosition;
             blastAttack.procChainMask = default;
             blastAttack.attacker = base.gameObject;
-            blastAttack.crit = false;
-            blastAttack.baseDamage = (base.characterBody.damage * ShowStopper.slamDamageCoefficient) + (this.bonusDamage);
+            blastAttack.crit = base.RollCrit();
+            blastAttack.baseDamage = base.characterBody.damage * ShowStopper.slamDamageCoefficient;
             blastAttack.falloffModel = BlastAttack.FalloffModel.Linear;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
@@ -224,6 +224,31 @@ namespace SettMod.SkillStates
             blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
             DamageAPI.AddModdedDamageType(blastAttack, SettPlugin.settDamage);
             blastAttack.Fire();
+
+            if (NetworkServer.active)
+            {
+                BlastAttack.HitPoint[] array = blastAttack.CollectHits();
+                foreach (BlastAttack.HitPoint hitPoint in array)
+                {
+                    HealthComponent healthComponent = hitPoint.hurtBox ? hitPoint.hurtBox.healthComponent : null;
+                    if (healthComponent)
+                    {
+                        DamageInfo damageInfo = new DamageInfo();
+                        damageInfo.damage = this.bonusDamage;
+                        damageInfo.attacker = base.gameObject;
+                        damageInfo.inflictor = base.gameObject;
+                        damageInfo.damageColorIndex = DamageColorIndex.Item;
+                        damageInfo.force = Vector3.zero;
+                        damageInfo.crit = false;
+                        damageInfo.procCoefficient = 0;
+                        damageInfo.position = healthComponent.transform.position;
+                        damageInfo.damageType = DamageType.BypassArmor;
+                        healthComponent.TakeDamage(damageInfo);
+                        GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
+                        GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
+                    }
+                }
+            }
 
             Util.PlaySound("SettRImpact", base.gameObject);
 
