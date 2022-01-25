@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using R2API;
+using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
@@ -51,7 +52,7 @@ namespace SettMod.SkillStates.Keystone
         {
             if (damageReport is null) return;
 
-            if (damageReport.victimBody && damageReport.attacker && damageReport.attackerBody.baseNameToken == "SETT_NAME")
+            if (damageReport.victimBody && damageReport.attacker && damageReport.attackerBody.baseNameToken == "SETT_NAME" && DamageAPI.HasModdedDamageType(damageReport.damageInfo, SettPlugin.settDamage))
             {
                 UptimeStopwatch = 0f;
 
@@ -84,7 +85,7 @@ namespace SettMod.SkillStates.Keystone
                 {
                     if (GetKeyStoneBuffCount() >= GetKeyStoneMaxStacks())
                     {
-                        float damageHeal = damageReport.damageDealt * 0.03f;
+                        float damageHeal = damageReport.damageDealt * 0.06f;
                         this.healthComponent.Heal(damageHeal, default, true);
                     }
                 }

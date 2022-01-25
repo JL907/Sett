@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using R2API;
 using RoR2;
 using SettMod.Modules;
 using UnityEngine;
@@ -150,6 +151,7 @@ namespace SettMod.SkillStates
                         damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
                         damageInfo.position = component.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
+                        DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
                         component.TakeDamage(damageInfo);
                         GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
                         GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);

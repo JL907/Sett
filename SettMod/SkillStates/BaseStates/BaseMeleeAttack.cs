@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using R2API;
 using RoR2;
 using RoR2.Audio;
 using System;
@@ -168,6 +169,7 @@ namespace SettMod.SkillStates.BaseStates
             this.attack.hitBoxGroup = hitBoxGroup;
             this.attack.isCrit = base.RollCrit();
             this.attack.impactSound = this.impactSound;
+            DamageAPI.AddModdedDamageType(attack, SettPlugin.settDamage);
         }
 
         public override void OnExit()
