@@ -238,8 +238,6 @@ namespace SettMod.SkillStates
                         damageInfo.damageColorIndex = DamageColorIndex.Item;
                         damageInfo.force = Vector3.zero;
                         damageInfo.crit = false;
-                        damageInfo.procCoefficient = 0;
-                        damageInfo.procChainMask = default(ProcChainMask);
                         damageInfo.position = healthComponent.transform.position;
                         damageInfo.damageType = DamageType.BypassArmor;
                         healthComponent.TakeDamage(damageInfo);
