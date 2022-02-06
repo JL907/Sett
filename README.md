@@ -6,12 +6,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `3.2.1`
+## Latest Patch Notes `3.3.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue where Lethal Tempo changes didn't go through from last patch
-* Fixed an issue where The Show Stopper bonus damage was still proccing on hit effects
-* The Show Stopper's bonus damage is now unaffected by items
+* Added Firecracker Skin
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -52,6 +50,11 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`3.2.1`
+* Fixed an issue where Lethal Tempo changes didn't go through from last patch
+* Fixed an issue where The Show Stopper bonus damage was still proccing on hit effects
+* The Show Stopper's bonus damage is now unaffected by items
+
 `3.2.0`
 * All KeyStone Buffs now only stack when the damage source is dealt directly from one of Sett's abilities
 * Conquerer Passive Heal now only heals from damage dealt directly from Sett's abilities
