@@ -433,6 +433,39 @@ namespace SettMod.Modules.Survivors
             skins.Add(mechaSkin);
             #endregion
 
+            #region FireCrackerSkin
+            Skins.SkinDefInfo firecrackerSkinDefInfo = default(Skins.SkinDefInfo);
+            firecrackerSkinDefInfo.Name = "FIRECRACKER_SETT_NAME";
+            firecrackerSkinDefInfo.NameToken = "FIRECRACKER_SETT_NAME";
+            firecrackerSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("firecracker_square");
+            firecrackerSkinDefInfo.UnlockableDef = null;
+            firecrackerSkinDefInfo.RootObject = model;
+
+            firecrackerSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            firecrackerSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            firecrackerSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            firecrackerSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            firecrackerSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("firecrackerMesh")
+                },
+            };
+
+            firecrackerSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(firecrackerSkinDefInfo.RendererInfos, 0);
+
+            firecrackerSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("firecrackerMat");
+            firecrackerSkinDefInfo.RendererInfos[firecrackerSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("firecrackerMat");
+
+            SkinDef firecrackerSkin = Skins.CreateSkinDef(firecrackerSkinDefInfo);
+            skins.Add(firecrackerSkin);
+            #endregion
+
             skinController.skins = skins.ToArray();
         }
 
