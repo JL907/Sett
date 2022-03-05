@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3115262051
+CRC: 3650158768
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8adbfd259f800d1526e7d409f5bd0eda
+    Hash: cc6a3b2e6eb7eda868a84e4b43ea5fee
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f9ef2a914db80951663e4f4248258f45
+    Hash: 0a0935cc8f4d1e7ff205a2159fcdc2c3
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -36,9 +36,9 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
-  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
@@ -65,6 +65,7 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Sett/VFX/Textures/sett_emote_heart.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
@@ -118,6 +119,7 @@ Assets:
 - Assets/Sett/VFX/ImpactSettSlash.prefab
 - Assets/Sett/VFX/SettSwordSwingEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_round_bloom.dds
+- Assets/Sett/icons/firecracker_square.png
 - Assets/Sett/VFX/Textures/sett_base_soft_noise.dds
 - Assets/Sett/VFX/Materials/matFire.mat
 - Assets/Sett/VFX/Textures/sett_base_w_mis_b.dds
@@ -139,6 +141,7 @@ Assets:
 - Assets/Sett/model/Sett.fbx
 - Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
 - Assets/Sett/materials/skin13_0.mat
+- Assets/Sett/textures/skin19_1.png
 - Assets/Sett/textures/skin1_0.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
 - Assets/Sett/textures/skin10_0.png
@@ -181,6 +184,7 @@ Assets:
 - Assets/Sett/textures/skin9_0.png
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_flicker.dds
+- Assets/Sett/model/firecrackerMesh.mesh
 - Assets/Sett/VFX/Textures/sett_base_w_ui_indicator.dds
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_burst_avatar.dds
 - Assets/Sett/VFX/Textures/sett_base_mask_vert_a.dds
@@ -225,11 +229,13 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_energy_round.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_center.dds
 - Assets/Sett/icons/sett_square.png
+- Assets/Sett/VFX/Textures/New Material 1.mat
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
 - Assets/Sett/icons/mecha_square.png
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/settDisplay.prefab
+- Assets/Sett/materials/firecrackerMat.mat
 - Assets/Sett/VFX/Materials/matEmbers.mat
 - Assets/Sett/VFX/Textures/texFistSwing.png
 - Assets/Sett/textures/skin15_0.png

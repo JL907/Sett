@@ -44,13 +44,13 @@ namespace SettMod.Modules
 
         internal static GameObject CreateDisplayPrefab(string modelName, GameObject prefab, BodyInfo bodyInfo)
         {
-            if (!Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"))
+            if (!RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"))
             {
                 Debug.LogError(bodyInfo.bodyNameToClone + "Body is not a valid body, character creation failed");
                 return null;
             }
 
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"), modelName + "Prefab");
+            GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"), modelName + "Prefab");
 
             GameObject model = CreateModel(newPrefab, modelName);
             Transform modelBaseTransform = SetupModel(newPrefab, model.transform, bodyInfo);
@@ -64,13 +64,13 @@ namespace SettMod.Modules
 
         internal static GameObject CreatePrefab(string bodyName, string modelName, BodyInfo bodyInfo)
         {
-            if (!Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"))
+            if (!RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"))
             {
                 Debug.LogError(bodyInfo.bodyNameToClone + "Body is not a valid body, character creation failed");
                 return null;
             }
 
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"), bodyName);
+            GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"), bodyName);
 
             Transform modelBaseTransform = null;
             GameObject model = null;
@@ -89,7 +89,7 @@ namespace SettMod.Modules
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
-            bodyComponent.crosshairPrefab = bodyInfo.crosshair;
+            //bodyComponent.crosshairPrefab = bodyInfo.crosshair;
 
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
             bodyComponent.rootMotionInMainState = false;
@@ -165,7 +165,7 @@ namespace SettMod.Modules
 
         internal static void CreateGenericDoppelganger(GameObject bodyPrefab, string masterName, string masterToCopy)
         {
-            GameObject newMaster = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/CharacterMasters/" + masterToCopy + "MonsterMaster"), masterName, true);
+            GameObject newMaster = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/" + masterToCopy + "MonsterMaster"), masterName, true);
             newMaster.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
 
             masterPrefabs.Add(newMaster);
@@ -288,11 +288,12 @@ namespace SettMod.Modules
         private static void SetupCameraTargetParams(GameObject prefab)
         {
             CameraTargetParams cameraTargetParams = prefab.GetComponent<CameraTargetParams>();
-            cameraTargetParams.cameraParams = Resources.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponent<CameraTargetParams>().cameraParams;
+            CharacterCameraParamsData characterCameraParamsData = cameraTargetParams.currentCameraParamsData;
+            cameraTargetParams.cameraParams = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponent<CameraTargetParams>().cameraParams;
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("ModelBase").Find("CameraPivot");
-            cameraTargetParams.aimMode = CameraTargetParams.AimType.Standard;
+            cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
             cameraTargetParams.recoil = Vector2.zero;
-            cameraTargetParams.idealLocalCameraPos = Vector3.zero;
+            characterCameraParamsData.idealLocalCameraPos = Vector3.zero;
             cameraTargetParams.dontRaycastToPivot = false;
         }
 
@@ -398,7 +399,7 @@ namespace SettMod.Modules
             footstepHandler.baseFootstepString = "Play_player_footstep";
             footstepHandler.sprintFootstepOverrideString = "";
             footstepHandler.enableFootstepDust = true;
-            footstepHandler.footstepDustPrefab = Resources.Load<GameObject>("Prefabs/GenericFootstepDust");
+            footstepHandler.footstepDustPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/GenericFootstepDust");
         }
 
         private static void SetupRagdoll(GameObject model)
@@ -407,7 +408,7 @@ namespace SettMod.Modules
 
             if (!ragdollController) return;
 
-            if (ragdollMaterial == null) ragdollMaterial = Resources.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
+            if (ragdollMaterial == null) ragdollMaterial = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
 
             foreach (Transform i in ragdollController.bones)
             {

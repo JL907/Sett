@@ -35,10 +35,11 @@ namespace SettMod.SkillStates
             base.FixedUpdate();
 
             CameraTargetParams ctp = base.cameraTargetParams;
+            CharacterCameraParamsData characterCameraParamsData = ctp.currentCameraParamsData;
             float denom = (1 + Time.fixedTime - this.initialTime);
             float smoothFactor = 8 / Mathf.Pow(denom, 2);
             Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
-            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+            characterCameraParamsData.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
 
             if (!this.hasDropped)
             {
@@ -67,14 +68,6 @@ namespace SettMod.SkillStates
             {
                 this.outer.SetNextStateToMain();
             }
-        }
-
-        public void StartDrop()
-        {
-            this.hasDropped = true;
-            base.characterMotor.disableAirControlUntilCollision = true;
-            base.characterMotor.velocity.y = -ShowStopper.dropForce;
-            this.AttemptGrab(15f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
@@ -126,6 +119,14 @@ namespace SettMod.SkillStates
             base.characterMotor.Motor.RebuildCollidableLayers();
 
             base.characterMotor.onMovementHit -= this.OnMovementHit;
+        }
+
+        public void StartDrop()
+        {
+            this.hasDropped = true;
+            base.characterMotor.disableAirControlUntilCollision = true;
+            base.characterMotor.velocity.y = -ShowStopper.dropForce;
+            this.AttemptGrab(15f);
         }
 
         public override void Update()
@@ -221,7 +222,7 @@ namespace SettMod.SkillStates
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;
-            blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
+            blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
             DamageAPI.AddModdedDamageType(blastAttack, SettPlugin.settDamage);
             blastAttack.Fire();
 
