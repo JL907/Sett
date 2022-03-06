@@ -16,7 +16,7 @@ namespace SettMod.SkillStates
         public static float hayMakerGritBonusPer4 = Modules.Config.hayMakerGritBonusPer4.Value;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerRadius = 55f;
-        public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
+        public GameObject blastEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         public float duration;
         protected Animator animator;
         protected float baseDuration = 1.51f;

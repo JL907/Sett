@@ -13,7 +13,7 @@ namespace SettMod.SkillStates
         public static Vector3 CameraPosition = new Vector3(0f, -1.3f, -10f);
         public static float pullForce = Modules.Config.faceBreakerPullForce.Value;
         public static float pullRadius = Modules.Config.faceBreakerPullRadius.Value;
-        public GameObject blastEffectPrefab = Resources.Load<GameObject>("prefabs/effects/SonicBoomEffect");
+        public GameObject blastEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/SonicBoomEffect");
         public float duration;
         public int maximumPullCount = int.MaxValue;
         public Transform pullOrigin;

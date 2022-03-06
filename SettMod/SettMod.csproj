@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>3.3.0</Version>
+		<Version>4.0.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,27 +26,31 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MonoMod.RuntimeDetour" Version="21.10.10.1" />
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="Assembly-CSharp">
-	    <HintPath>..\..\libs\Assembly-CSharp.dll</HintPath>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.1-r.0" />
+		<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="KinematicCharacterController">
+	    <HintPath>..\..\libs\KinematicCharacterController.dll</HintPath>
 	  </Reference>
-	  <Reference Include="BepInEx">
-	    <HintPath>..\..\libs\BepInEx.dll</HintPath>
+	  <Reference Include="LegacyResourcesAPI">
+	    <HintPath>..\..\libs\LegacyResourcesAPI.dll</HintPath>
 	  </Reference>
-	  <Reference Include="HGCSharpUtils">
-	    <HintPath>..\..\libs\HGCSharpUtils.dll</HintPath>
-	  </Reference>
-	  <Reference Include="MMHOOK_Assembly-CSharp">
-	    <HintPath>..\..\libs\MMHOOK_Assembly-CSharp.dll</HintPath>
+	  <Reference Include="MMHOOK_RoR2">
+	    <HintPath>..\..\libs\MMHOOK_RoR2.dll</HintPath>
 	  </Reference>
 	  <Reference Include="R2API">
 	    <HintPath>..\..\libs\R2API.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Unity.TextMeshPro">
-	    <HintPath>..\..\libs\Unity.TextMeshPro.dll</HintPath>
 	  </Reference>
 	  <Reference Include="UnityEngine">
 	    <HintPath>..\..\libs\UnityEngine.dll</HintPath>
@@ -60,17 +64,11 @@
 	  <Reference Include="UnityEngine.CoreModule">
 	    <HintPath>..\..\libs\UnityEngine.CoreModule.dll</HintPath>
 	  </Reference>
-	  <Reference Include="UnityEngine.Networking">
-	    <HintPath>..\..\libs\UnityEngine.Networking.dll</HintPath>
-	  </Reference>
 	  <Reference Include="UnityEngine.PhysicsModule">
 	    <HintPath>..\..\libs\UnityEngine.PhysicsModule.dll</HintPath>
 	  </Reference>
 	  <Reference Include="UnityEngine.UI">
 	    <HintPath>..\..\libs\UnityEngine.UI.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Wwise">
-	    <HintPath>..\..\libs\Wwise.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
