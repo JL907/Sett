@@ -1,17 +1,17 @@
 Event	ID	Name			Wwise Object Path	Notes
 	12410265	SettWSFX			\Default Work Unit\SettWSFX	
-	779278001	Death			\Default Work Unit\Death	
-	1116398592	Hit			\Default Work Unit\Hit	
-	1197727813	MenuSound			\Default Work Unit\MenuSound	
+	268375865	SettSwing			\Default Work Unit\SettSwing	
 	1803938789	SettDash			\Default Work Unit\SettDash	
 	1955653731	SettEVO			\Default Work Unit\SettEVO	
 	1991033280	SettRVO			\Default Work Unit\SettRVO	
+	2077079117	SettDeath			\Default Work Unit\SettDeath	
 	2226361105	SettWVO			\Default Work Unit\SettWVO	
-	2386519981	Swing			\Default Work Unit\Swing	
-	2465316875	VOHIT			\Default Work Unit\VOHIT	
+	2680314753	SettHitSFX			\Default Work Unit\SettHitSFX	
 	2833799674	SettRSFX			\Default Work Unit\SettRSFX	
 	2843348803	SettRImpact			\Default Work Unit\SettRImpact	
+	3433755561	SettMenuVO			\Default Work Unit\SettMenuVO	
 	3542766465	SettMenuSFX			\Default Work Unit\SettMenuSFX	
+	4007119785	SettHitVO			\Default Work Unit\SettHitVO	
 	4229278743	SettESFX			\Default Work Unit\SettESFX	
 
 Game Parameter	ID	Name			Wwise Object Path	Notes

@@ -29,6 +29,7 @@ namespace SettMod.SkillStates
         private Transform modelTransform;
         private Transform slamCenterIndicatorInstance;
         private Transform slamIndicatorInstance;
+        private CameraTargetParams.CameraParamsOverrideHandle handle;
 
         public override void FixedUpdate()
         {
@@ -40,6 +41,17 @@ namespace SettMod.SkillStates
             float smoothFactor = 8 / Mathf.Pow(denom, 2);
             Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
             characterCameraParamsData.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+
+            CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+            {
+                cameraParamsData = characterCameraParamsData,
+                priority = 0,
+            };
+            
+
+            handle = ctp.AddParamsOverride(request);
+            base.cameraTargetParams.RemoveParamsOverride(handle);
+
 
             if (!this.hasDropped)
             {
@@ -119,6 +131,7 @@ namespace SettMod.SkillStates
             base.characterMotor.Motor.RebuildCollidableLayers();
 
             base.characterMotor.onMovementHit -= this.OnMovementHit;
+            base.cameraTargetParams.RemoveParamsOverride(handle);
         }
 
         public void StartDrop()
