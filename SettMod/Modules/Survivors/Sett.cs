@@ -329,8 +329,8 @@ namespace SettMod.Modules.Survivors
             poolSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
             characterModel.baseRendererInfos.CopyTo(poolSkinDefInfo.RendererInfos, 0);
 
-            poolSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("poolSettMat");
-            poolSkinDefInfo.RendererInfos[poolSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("poolSettMat");
+            poolSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("poolSettMat", 0f, Color.white, 1.0f);
+            poolSkinDefInfo.RendererInfos[poolSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("poolSettMat", 0f, Color.white, 1.0f);
 
             SkinDef poolSkin = Skins.CreateSkinDef(poolSkinDefInfo);
             skins.Add(poolSkin);
