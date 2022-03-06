@@ -288,12 +288,11 @@ namespace SettMod.Modules
         private static void SetupCameraTargetParams(GameObject prefab)
         {
             CameraTargetParams cameraTargetParams = prefab.GetComponent<CameraTargetParams>();
-            CharacterCameraParamsData characterCameraParamsData = cameraTargetParams.currentCameraParamsData;
             cameraTargetParams.cameraParams = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/MercBody").GetComponent<CameraTargetParams>().cameraParams;
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("ModelBase").Find("CameraPivot");
             cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
             cameraTargetParams.recoil = Vector2.zero;
-            characterCameraParamsData.idealLocalCameraPos = Vector3.zero;
+            //cameraTargetParams.cameraParams.data.idealLocalCameraPos = Vector3.zero;
             cameraTargetParams.dontRaycastToPivot = false;
         }
 
