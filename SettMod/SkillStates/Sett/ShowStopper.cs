@@ -29,16 +29,29 @@ namespace SettMod.SkillStates
         private Transform modelTransform;
         private Transform slamCenterIndicatorInstance;
         private Transform slamIndicatorInstance;
+        private CameraTargetParams.CameraParamsOverrideHandle handle;
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
             CameraTargetParams ctp = base.cameraTargetParams;
+            CharacterCameraParamsData characterCameraParamsData = ctp.currentCameraParamsData;
             float denom = (1 + Time.fixedTime - this.initialTime);
             float smoothFactor = 8 / Mathf.Pow(denom, 2);
             Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
-            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+            characterCameraParamsData.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
+
+            CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
+            {
+                cameraParamsData = characterCameraParamsData,
+                priority = 0,
+            };
+            
+
+            handle = ctp.AddParamsOverride(request);
+            base.cameraTargetParams.RemoveParamsOverride(handle);
+
 
             if (!this.hasDropped)
             {
@@ -67,14 +80,6 @@ namespace SettMod.SkillStates
             {
                 this.outer.SetNextStateToMain();
             }
-        }
-
-        public void StartDrop()
-        {
-            this.hasDropped = true;
-            base.characterMotor.disableAirControlUntilCollision = true;
-            base.characterMotor.velocity.y = -ShowStopper.dropForce;
-            this.AttemptGrab(15f);
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()
@@ -126,6 +131,15 @@ namespace SettMod.SkillStates
             base.characterMotor.Motor.RebuildCollidableLayers();
 
             base.characterMotor.onMovementHit -= this.OnMovementHit;
+            base.cameraTargetParams.RemoveParamsOverride(handle);
+        }
+
+        public void StartDrop()
+        {
+            this.hasDropped = true;
+            base.characterMotor.disableAirControlUntilCollision = true;
+            base.characterMotor.velocity.y = -ShowStopper.dropForce;
+            this.AttemptGrab(15f);
         }
 
         public override void Update()
@@ -221,7 +235,7 @@ namespace SettMod.SkillStates
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
             blastAttack.damageType = DamageType.Stun1s;
-            blastAttack.attackerFiltering = AttackerFiltering.NeverHit;
+            blastAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
             DamageAPI.AddModdedDamageType(blastAttack, SettPlugin.settDamage);
             blastAttack.Fire();
 

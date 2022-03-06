@@ -26,7 +26,7 @@ namespace SettMod.Modules.Survivors
             characterPortrait = Modules.Assets.LoadCharacterIcon("sett_square"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             subtitleNameToken = "SETT_NAME_SUBTITLE",
-            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+            podPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
             maxHealth = Modules.Config.baseHealth.Value,
             healthGrowth = Modules.Config.healthGrowth.Value,
@@ -299,9 +299,11 @@ namespace SettMod.Modules.Survivors
             };
 
             skins.Add(defaultSkin);
+
             #endregion DefaultSkin
 
             #region PoolSkin
+
             Skins.SkinDefInfo poolSkinDefInfo = default(Skins.SkinDefInfo);
             poolSkinDefInfo.Name = "POOL_SETT_NAME";
             poolSkinDefInfo.NameToken = "POOL_SETT_NAME";
@@ -332,9 +334,11 @@ namespace SettMod.Modules.Survivors
 
             SkinDef poolSkin = Skins.CreateSkinDef(poolSkinDefInfo);
             skins.Add(poolSkin);
-            #endregion
+
+            #endregion PoolSkin
 
             #region ObsidianSkin
+
             Skins.SkinDefInfo obsidianSkinDefInfo = default(Skins.SkinDefInfo);
             obsidianSkinDefInfo.Name = "OBSIDIAN_SETT_NAME";
             obsidianSkinDefInfo.NameToken = "OBSIDIAN_SETT_NAME";
@@ -365,9 +369,11 @@ namespace SettMod.Modules.Survivors
 
             SkinDef obsidianSkin = Skins.CreateSkinDef(obsidianSkinDefInfo);
             skins.Add(obsidianSkin);
-            #endregion
+
+            #endregion ObsidianSkin
 
             #region PrestiegeSkin
+
             Skins.SkinDefInfo prestiegeSkinDefInfo = default(Skins.SkinDefInfo);
             prestiegeSkinDefInfo.Name = "PRESTIGE_SETT_NAME";
             prestiegeSkinDefInfo.NameToken = "PRESTIGE_SETT_NAME";
@@ -398,9 +404,11 @@ namespace SettMod.Modules.Survivors
 
             SkinDef prestigeSkin = Skins.CreateSkinDef(prestiegeSkinDefInfo);
             skins.Add(prestigeSkin);
-            #endregion
+
+            #endregion PrestiegeSkin
 
             #region MechaSkin
+
             Skins.SkinDefInfo mechaSkinDefInfo = default(Skins.SkinDefInfo);
             mechaSkinDefInfo.Name = "MECHA_SETT_NAME";
             mechaSkinDefInfo.NameToken = "MECHA_SETT_NAME";
@@ -431,6 +439,40 @@ namespace SettMod.Modules.Survivors
 
             SkinDef mechaSkin = Skins.CreateSkinDef(mechaSkinDefInfo);
             skins.Add(mechaSkin);
+
+            #endregion MechaSkin
+
+            #region FireCrackerSkin
+            Skins.SkinDefInfo firecrackerSkinDefInfo = default(Skins.SkinDefInfo);
+            firecrackerSkinDefInfo.Name = "FIRECRACKER_SETT_NAME";
+            firecrackerSkinDefInfo.NameToken = "FIRECRACKER_SETT_NAME";
+            firecrackerSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("firecracker_square");
+            firecrackerSkinDefInfo.UnlockableDef = null;
+            firecrackerSkinDefInfo.RootObject = model;
+
+            firecrackerSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            firecrackerSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            firecrackerSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            firecrackerSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            firecrackerSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("firecrackerMesh")
+                },
+            };
+
+            firecrackerSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(firecrackerSkinDefInfo.RendererInfos, 0);
+
+            firecrackerSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("firecrackerMat");
+            firecrackerSkinDefInfo.RendererInfos[firecrackerSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("firecrackerMat");
+
+            SkinDef firecrackerSkin = Skins.CreateSkinDef(firecrackerSkinDefInfo);
+            skins.Add(firecrackerSkin);
             #endregion
 
             #region FireCrackerSkin
@@ -2032,7 +2074,7 @@ localScale = new Vector3(0.2845F, 0.2845F, 0.2845F),
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
-                keyAsset = RoR2Content.Items.CooldownOnCrit,
+                keyAsset = RoR2.JunkContent.Items.CooldownOnCrit,
                 displayRuleGroup = new DisplayRuleGroup
                 {
                     rules = new ItemDisplayRule[]
@@ -2399,7 +2441,7 @@ localScale = new Vector3(0.1F, 0.1F, 0.1F),
 
             itemDisplayRules.Add(new ItemDisplayRuleSet.KeyAssetRuleGroup
             {
-                keyAsset = RoR2Content.Items.Incubator,
+                keyAsset = RoR2.JunkContent.Items.Incubator,
                 displayRuleGroup = new DisplayRuleGroup
                 {
                     rules = new ItemDisplayRule[]

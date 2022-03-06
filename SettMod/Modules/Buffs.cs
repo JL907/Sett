@@ -35,7 +35,7 @@ namespace SettMod.Modules
 
         internal static void RegisterBuffs()
         {
-            regenBuff = AddNewBuff("SettRegenBuff", Resources.Load<Sprite>("textures/bufficons/texBuffRegenBoostIcon"), Color.green, true, false);
+            regenBuff = AddNewBuff("SettRegenBuff", RoR2.LegacyResourcesAPI.Load<Sprite>("textures/bufficons/texBuffRegenBoostIcon"), Color.green, true, false);
 
             conquerorBuff = AddNewBuff("ConquerorBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"), Color.white, true, false);
 
