@@ -3,6 +3,7 @@ using R2API;
 using RoR2;
 using SettMod.Modules;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
@@ -16,7 +17,7 @@ namespace SettMod.SkillStates
         public static float hayMakerGritBonusPer4 = Modules.Config.hayMakerGritBonusPer4.Value;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerRadius = 55f;
-        public GameObject blastEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/SonicBoomEffect");
+        public GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Junk/Treebot/SonicBoomEffect.prefab").WaitForCompletion();
         public float duration;
         protected Animator animator;
         protected float baseDuration = 1.51f;
@@ -94,6 +95,8 @@ namespace SettMod.SkillStates
             }
             Util.PlaySound("SettWSFX", base.gameObject);
             if (!this.slamIndicatorInstance) this.CreateIndicator();
+
+            //EffectManager.SimpleEffect(this.handEffectPrefab, this.FindModelChild("R_Hand").position, this.FindModelChild("R_Hand").rotation, true);
         }
 
         public override void OnExit()
@@ -142,8 +145,21 @@ namespace SettMod.SkillStates
                             damageInfo.damageType = DamageType.BypassArmor;
                             DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
                             component.TakeDamage(damageInfo);
+                            GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
+                            if (hitEffectPrefab)
+                            {
+                                Vector3 forward = normalized;
+                                EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
+                                {
+                                    origin = component.gameObject.transform.position,
+                                    rotation = Util.QuaternionSafeLookRotation(forward),
+                                    networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
+                                }, true);
+                            }
+
                             GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
                             GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
+
                         }
                     }
                 }
