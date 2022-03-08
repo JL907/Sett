@@ -48,7 +48,7 @@ namespace SettMod.SkillStates
                 {
                     float coneSize = 45f;
                     Ray aimRay = base.GetAimRay();
-                    Vector3 vector = Util.ApplySpread(aimRay.direction, 0f, coneSize, 1f, 1f, 0f, 0f);
+                    Vector3 vector = Util.ApplySpread(aimRay.direction, 10f, coneSize, 1f, 1f, 0f, 0f);
                     EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
                     {
                         origin = this.characterBody.corePosition,
@@ -113,7 +113,7 @@ namespace SettMod.SkillStates
         private void Fire()
         {
             Ray aimRay = base.GetAimRay();
-            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 12f))
+            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f))
             {
                 Vector3 position = collider.transform.position;
                 Vector3 normalized = (aimRay.origin - position).normalized;
@@ -143,7 +143,8 @@ namespace SettMod.SkillStates
                         damageInfo.damageType = DamageType.BypassArmor;
                         DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
                         component.TakeDamage(damageInfo);
-                        GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
+
+                        GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Base/Loader/ImpactLoaderFistSmall.prefab").WaitForCompletion();
                         if (hitEffectPrefab)
                         {
                             EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
@@ -205,12 +206,12 @@ namespace SettMod.SkillStates
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
-                float num = 10f;
+                float num = 13f;
                 Ray aimRay = base.GetAimRay();
                 aimRay.origin = this.FindModelChild("R_Hand").position;
                 Vector3 point = aimRay.GetPoint(num);
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.localScale = Vector3.one * 12f;
+                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
                 this.slamIndicatorInstance.transform.position = point;
             }
         }
@@ -219,7 +220,7 @@ namespace SettMod.SkillStates
         {
             if (this.slamIndicatorInstance)
             {
-                float num = 10f;
+                float num = 13f;
                 Ray aimRay = base.GetAimRay();
                 aimRay.origin = this.FindModelChild("R_Hand").position;
                 Vector3 point = aimRay.GetPoint(num);
