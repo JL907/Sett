@@ -113,54 +113,50 @@ namespace SettMod.SkillStates
         private void Fire()
         {
             Ray aimRay = base.GetAimRay();
-            float num = Mathf.Cos(45f * 0.017453292f);
-            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f))
+            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 12f))
             {
                 Vector3 position = collider.transform.position;
                 Vector3 normalized = (aimRay.origin - position).normalized;
-                if(Vector3.Dot(-normalized, aimRay.direction ) >= num)
+                //if (Vector3.Angle(-normalized, aimRay.direction) <= 45)
+                HealthComponent component = collider.GetComponent<HealthComponent>();
+                if (component)
                 {
-                    HealthComponent component = collider.GetComponent<HealthComponent>();
-                    if (component)
+                    TeamComponent component2 = collider.GetComponent<TeamComponent>();
+                    bool flag = false;
+                    if (component2)
                     {
-                        TeamComponent component2 = collider.GetComponent<TeamComponent>();
-                        bool flag = false;
-                        if (component2)
-                        {
-                            flag = (component2.teamIndex == base.GetTeam());
-                        }
-                        if (!flag)
-                        {
-                            float _level = Mathf.Floor(base.characterBody.level / 4f);
-                            float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
+                        flag = (component2.teamIndex == base.GetTeam());
+                    }
+                    if (!flag)
+                    {
+                        float _level = Mathf.Floor(base.characterBody.level / 4f);
+                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
 
-                            DamageInfo damageInfo = new DamageInfo();
-                            damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
-                            damageInfo.attacker = base.gameObject;
-                            damageInfo.inflictor = base.gameObject;
-                            damageInfo.force = Vector3.zero;
-                            damageInfo.crit = base.RollCrit();
-                            damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
-                            damageInfo.position = component.transform.position;
-                            damageInfo.damageType = DamageType.BypassArmor;
-                            DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
-                            component.TakeDamage(damageInfo);
-                            GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
-                            if (hitEffectPrefab)
+                        DamageInfo damageInfo = new DamageInfo();
+                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
+                        damageInfo.attacker = base.gameObject;
+                        damageInfo.inflictor = base.gameObject;
+                        damageInfo.force = Vector3.zero;
+                        damageInfo.crit = base.RollCrit();
+                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
+                        damageInfo.position = component.transform.position;
+                        damageInfo.damageType = DamageType.BypassArmor;
+                        DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
+                        component.TakeDamage(damageInfo);
+                        GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
+                        if (hitEffectPrefab)
+                        {
+                            EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
                             {
-                                Vector3 forward = normalized;
-                                EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
-                                {
-                                    origin = component.gameObject.transform.position,
-                                    rotation = Util.QuaternionSafeLookRotation(forward),
-                                    networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
-                                }, true);
-                            }
-
-                            GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
-                            GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
-
+                                origin = component.gameObject.transform.position,
+                                rotation = Util.QuaternionSafeLookRotation(normalized),
+                                networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
+                            }, true);
                         }
+
+                        GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
+                        GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
+
                     }
                 }
             }
@@ -209,12 +205,12 @@ namespace SettMod.SkillStates
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
-                float num = 13f;
+                float num = 10f;
                 Ray aimRay = base.GetAimRay();
                 aimRay.origin = this.FindModelChild("R_Hand").position;
                 Vector3 point = aimRay.GetPoint(num);
                 this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
+                this.slamIndicatorInstance.localScale = Vector3.one * 12f;
                 this.slamIndicatorInstance.transform.position = point;
             }
         }
@@ -223,7 +219,7 @@ namespace SettMod.SkillStates
         {
             if (this.slamIndicatorInstance)
             {
-                float num = 13f;
+                float num = 10f;
                 Ray aimRay = base.GetAimRay();
                 aimRay.origin = this.FindModelChild("R_Hand").position;
                 Vector3 point = aimRay.GetPoint(num);
