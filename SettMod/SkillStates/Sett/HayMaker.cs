@@ -43,19 +43,17 @@ namespace SettMod.SkillStates
                 {
                     this.Fire();
                 }
-                for (int i = 0; i <= 20; i++)
+                for (int i = 0; i <= 25; i++)
                 {
-                    float coneSize = 60f;
-                    Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
-                    float spreadFactor = 0.01f;
-                    punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
-                    punchRot.y += Random.Range(-spreadFactor, spreadFactor) * coneSize;
+                    float coneSize = 45f;
+                    Ray aimRay = base.GetAimRay();
+                    Vector3 vector = Util.ApplySpread(aimRay.direction, 0f, coneSize, 1f, 1f, 0f, 0f);
                     EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
                     {
                         origin = this.characterBody.corePosition,
                         scale = 100f,
-                        rotation = punchRot
-                    }, false);
+                        rotation = Util.QuaternionSafeLookRotation(vector)
+                    }, false); ;
                 }
             }
 
@@ -109,21 +107,50 @@ namespace SettMod.SkillStates
         {
         }
 
-        private void CreateIndicator()
-        {
-            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
-            {
-                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 13f;
-                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.transform.position = transformLocation;
-                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
-            }
-        }
-
         private void Fire()
         {
             Ray aimRay = base.GetAimRay();
-            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 13f, 15f);
+            float num = Mathf.Cos(45f * 0.017453292f);
+            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f))
+            {
+                Vector3 position = collider.transform.position;
+                Vector3 normalized = (aimRay.origin - position).normalized;
+                if(Vector3.Dot(-normalized, aimRay.direction ) >= num)
+                {
+                    HealthComponent component = collider.GetComponent<HealthComponent>();
+                    if (component)
+                    {
+                        TeamComponent component2 = collider.GetComponent<TeamComponent>();
+                        bool flag = false;
+                        if (component2)
+                        {
+                            flag = (component2.teamIndex == base.GetTeam());
+                        }
+                        if (!flag)
+                        {
+                            float _level = Mathf.Floor(base.characterBody.level / 4f);
+                            float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
+
+                            DamageInfo damageInfo = new DamageInfo();
+                            damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
+                            damageInfo.attacker = base.gameObject;
+                            damageInfo.inflictor = base.gameObject;
+                            damageInfo.force = Vector3.zero;
+                            damageInfo.crit = base.RollCrit();
+                            damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
+                            damageInfo.position = component.transform.position;
+                            damageInfo.damageType = DamageType.BypassArmor;
+                            DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
+                            component.TakeDamage(damageInfo);
+                            GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
+                            GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
+                        }
+                    }
+                }
+            }
+            /*
+            Ray aimRay = base.GetAimRay();
+            Collider[] enemies = Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f);
             int num = 0;
             int num2 = 0;
             while (num < enemies.Length && num2 < int.MaxValue)
@@ -160,14 +187,31 @@ namespace SettMod.SkillStates
                 }
                 num++;
             }
+            */
+        }
+        private void CreateIndicator()
+        {
+            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
+            {
+                float num = 13f;
+                Ray aimRay = base.GetAimRay();
+                aimRay.origin = this.FindModelChild("R_Hand").position;
+                Vector3 point = aimRay.GetPoint(num);
+                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
+                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
+                this.slamIndicatorInstance.transform.position = point;
+            }
         }
 
         private void UpdateSlamIndicator()
         {
             if (this.slamIndicatorInstance)
             {
-                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 13f;
-                this.slamIndicatorInstance.transform.position = transformLocation;
+                float num = 13f;
+                Ray aimRay = base.GetAimRay();
+                aimRay.origin = this.FindModelChild("R_Hand").position;
+                Vector3 point = aimRay.GetPoint(num);
+                this.slamIndicatorInstance.transform.position = point;
             }
         }
     }
