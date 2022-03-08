@@ -7,12 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Modules\Survivors\Obsidian.cs" />
-	  <Compile Remove="Modules\Survivors\Pool.cs" />
-	  <Compile Remove="Modules\Survivors\Prestige.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <None Remove="sett" />
 	</ItemGroup>
 
@@ -24,10 +18,6 @@
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<Deterministic>true</Deterministic>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <None Include="..\.editorconfig" Link=".editorconfig" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
