@@ -11,10 +11,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 
 * Updated to use latest Bepinexpack
 * Updated to use latest R2API
-* Haymaker radius is now 12 meters down from 15 meters
 * Haymaker can now be aimed in any direction
 * Haymaker's hitbox now follows Sett's right hand 
-* Haymaker now has an impact visual effect on hit.
+* Haymaker now has an impact visual effect on hit
+* Sett will now face & rotate in the direction of the aim vector while casting Haymaker
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">

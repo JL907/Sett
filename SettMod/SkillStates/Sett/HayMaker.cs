@@ -34,6 +34,12 @@ namespace SettMod.SkillStates
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
 
+            Ray aimRay = base.GetAimRay();
+            if (base.characterDirection && aimRay.direction != Vector3.zero)
+            {
+                base.characterDirection.moveVector = aimRay.direction;
+            }
+
             if (!this.slamIndicatorInstance) this.CreateIndicator(); this.UpdateSlamIndicator();
 
             if (this.stopwatch >= this.startUp && !this.hasFired)
@@ -47,7 +53,6 @@ namespace SettMod.SkillStates
                 for (int i = 0; i <= 25; i++)
                 {
                     float coneSize = 45f;
-                    Ray aimRay = base.GetAimRay();
                     Vector3 vector = Util.ApplySpread(aimRay.direction, 10f, coneSize, 1f, 1f, 0f, 0f);
                     EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
                     {
@@ -70,10 +75,11 @@ namespace SettMod.SkillStates
             return InterruptPriority.Skill;
         }
 
+
         public override void OnEnter()
         {
             base.OnEnter();
-            base.StartAimMode(0.5f + this.duration, false);
+            base.StartAimMode(baseDuration, false);
             this.animator = base.GetModelAnimator();
             this.hasFired = false;
             this.duration = this.baseDuration;
