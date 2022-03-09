@@ -3,6 +3,7 @@ using R2API;
 using RoR2;
 using SettMod.Modules;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
@@ -16,7 +17,7 @@ namespace SettMod.SkillStates
         public static float hayMakerGritBonusPer4 = Modules.Config.hayMakerGritBonusPer4.Value;
         public static float hayMakerProcCoefficient = 1f;
         public static float hayMakerRadius = 55f;
-        public GameObject blastEffectPrefab = RoR2.LegacyResourcesAPI.Load<GameObject>("prefabs/effects/SonicBoomEffect");
+        public GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Junk/Treebot/SonicBoomEffect.prefab").WaitForCompletion();
         public float duration;
         protected Animator animator;
         protected float baseDuration = 1.51f;
@@ -33,6 +34,12 @@ namespace SettMod.SkillStates
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
 
+            Ray aimRay = base.GetAimRay();
+            if (base.characterDirection && aimRay.direction != Vector3.zero)
+            {
+                base.characterDirection.moveVector = aimRay.direction;
+            }
+
             if (!this.slamIndicatorInstance) this.CreateIndicator(); this.UpdateSlamIndicator();
 
             if (this.stopwatch >= this.startUp && !this.hasFired)
@@ -43,19 +50,16 @@ namespace SettMod.SkillStates
                 {
                     this.Fire();
                 }
-                for (int i = 0; i <= 20; i++)
+                for (int i = 0; i <= 25; i++)
                 {
-                    float coneSize = 60f;
-                    Quaternion punchRot = Util.QuaternionSafeLookRotation(this.characterDirection.forward.normalized);
-                    float spreadFactor = 0.01f;
-                    punchRot.x += Random.Range(-spreadFactor, spreadFactor) * coneSize;
-                    punchRot.y += Random.Range(-spreadFactor, spreadFactor) * coneSize;
+                    float coneSize = 45f;
+                    Vector3 vector = Util.ApplySpread(aimRay.direction, 10f, coneSize, 1f, 1f, 0f, 0f);
                     EffectManager.SpawnEffect(this.blastEffectPrefab, new EffectData
                     {
                         origin = this.characterBody.corePosition,
                         scale = 100f,
-                        rotation = punchRot
-                    }, false);
+                        rotation = Util.QuaternionSafeLookRotation(vector)
+                    }, false); ;
                 }
             }
 
@@ -71,10 +75,11 @@ namespace SettMod.SkillStates
             return InterruptPriority.Skill;
         }
 
+
         public override void OnEnter()
         {
             base.OnEnter();
-            base.StartAimMode(0.5f + this.duration, false);
+            base.StartAimMode(baseDuration, false);
             this.animator = base.GetModelAnimator();
             this.hasFired = false;
             this.duration = this.baseDuration;
@@ -96,6 +101,8 @@ namespace SettMod.SkillStates
             }
             Util.PlaySound("SettWSFX", base.gameObject);
             if (!this.slamIndicatorInstance) this.CreateIndicator();
+
+            //EffectManager.SimpleEffect(this.handEffectPrefab, this.FindModelChild("R_Hand").position, this.FindModelChild("R_Hand").rotation, true);
         }
 
         public override void OnExit()
@@ -109,21 +116,60 @@ namespace SettMod.SkillStates
         {
         }
 
-        private void CreateIndicator()
-        {
-            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
-            {
-                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 13f;
-                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.transform.position = transformLocation;
-                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
-            }
-        }
-
         private void Fire()
         {
             Ray aimRay = base.GetAimRay();
-            Collider[] enemies = Physics.OverlapSphere(base.transform.position + base.characterDirection.forward * 13f, 15f);
+            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f))
+            {
+                Vector3 position = collider.transform.position;
+                Vector3 normalized = (aimRay.origin - position).normalized;
+                //if (Vector3.Angle(-normalized, aimRay.direction) <= 45)
+                HealthComponent component = collider.GetComponent<HealthComponent>();
+                if (component)
+                {
+                    TeamComponent component2 = collider.GetComponent<TeamComponent>();
+                    bool flag = false;
+                    if (component2)
+                    {
+                        flag = (component2.teamIndex == base.GetTeam());
+                    }
+                    if (!flag)
+                    {
+                        float _level = Mathf.Floor(base.characterBody.level / 4f);
+                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
+
+                        DamageInfo damageInfo = new DamageInfo();
+                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
+                        damageInfo.attacker = base.gameObject;
+                        damageInfo.inflictor = base.gameObject;
+                        damageInfo.force = Vector3.zero;
+                        damageInfo.crit = base.RollCrit();
+                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
+                        damageInfo.position = component.transform.position;
+                        damageInfo.damageType = DamageType.BypassArmor;
+                        DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
+                        component.TakeDamage(damageInfo);
+
+                        GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Base/Loader/ImpactLoaderFistSmall.prefab").WaitForCompletion();
+                        if (hitEffectPrefab)
+                        {
+                            EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
+                            {
+                                origin = component.gameObject.transform.position,
+                                rotation = Util.QuaternionSafeLookRotation(normalized),
+                                networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
+                            }, true);
+                        }
+
+                        GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
+                        GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
+
+                    }
+                }
+            }
+            /*
+            Ray aimRay = base.GetAimRay();
+            Collider[] enemies = Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f);
             int num = 0;
             int num2 = 0;
             while (num < enemies.Length && num2 < int.MaxValue)
@@ -160,14 +206,31 @@ namespace SettMod.SkillStates
                 }
                 num++;
             }
+            */
+        }
+        private void CreateIndicator()
+        {
+            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
+            {
+                float num = 13f;
+                Ray aimRay = base.GetAimRay();
+                aimRay.origin = this.FindModelChild("R_Hand").position;
+                Vector3 point = aimRay.GetPoint(num);
+                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
+                this.slamIndicatorInstance.localScale = Vector3.one * 15f;
+                this.slamIndicatorInstance.transform.position = point;
+            }
         }
 
         private void UpdateSlamIndicator()
         {
             if (this.slamIndicatorInstance)
             {
-                Vector3 transformLocation = base.transform.position + base.characterDirection.forward * 13f;
-                this.slamIndicatorInstance.transform.position = transformLocation;
+                float num = 13f;
+                Ray aimRay = base.GetAimRay();
+                aimRay.origin = this.FindModelChild("R_Hand").position;
+                Vector3 point = aimRay.GetPoint(num);
+                this.slamIndicatorInstance.transform.position = point;
             }
         }
     }
