@@ -28,6 +28,7 @@ namespace SettMod.SkillStates
         private bool hasFired;
         private float maxGritSnapShot;
         private Transform slamIndicatorInstance;
+        private TemporaryOverlay temporaryOverlay;
 
         public override void FixedUpdate()
         {
@@ -94,21 +95,38 @@ namespace SettMod.SkillStates
             if (this.gritSnapShot >= this.maxGritSnapShot)
             {
                 base.PlayCrossfade("Fullbody, Override", "HayMaker2", "HayMaker.playbackRate", this.duration, 0.2f);
+
+                Transform modelTransform = base.GetModelTransform();
+                if (modelTransform)
+                {
+                    CharacterModel component = modelTransform.GetComponent<CharacterModel>();
+                    if (component)
+                    {
+                        this.temporaryOverlay = base.gameObject.AddComponent<TemporaryOverlay>();
+                        Material material = UnityEngine.Object.Instantiate<Material>(LegacyResourcesAPI.Load<Material>("Materials/matVagrantEnergized"));
+                        this.temporaryOverlay.originalMaterial = material;
+                        this.temporaryOverlay.AddToCharacerModel(component);
+                    }
+                }
             }
             else
             {
                 base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.2f);
             }
             Util.PlaySound("SettWSFX", base.gameObject);
-            if (!this.slamIndicatorInstance) this.CreateIndicator();
 
-            //EffectManager.SimpleEffect(this.handEffectPrefab, this.FindModelChild("R_Hand").position, this.FindModelChild("R_Hand").rotation, true);
+            if (!this.slamIndicatorInstance) this.CreateIndicator();
         }
+
 
         public override void OnExit()
         {
             //base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
+            if (this.temporaryOverlay)
+            {
+                EntityState.Destroy(this.temporaryOverlay);
+            }
             base.OnExit();
         }
 
@@ -150,7 +168,7 @@ namespace SettMod.SkillStates
                         DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
                         component.TakeDamage(damageInfo);
 
-                        GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Base/Loader/ImpactLoaderFistSmall.prefab").WaitForCompletion();
+                        GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
                         if (hitEffectPrefab)
                         {
                             EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
