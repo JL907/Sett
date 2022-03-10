@@ -674,5 +674,6 @@ Public License instead of this License.  But first, please read
 <https://www.gnu.org/licenses/why-not-lgpl.html>.
 
 * resources/riotgames: models from © 2021 Riot Games, Inc. All Rights Reserved.
-        reused non-commercially via https://www.riotgames.com/en/legal
-        LEAGUE OF LEGENDS is a Trademark of Riot Games, Inc.
+	reused non-commercially via https://www.riotgames.com/en/legal
+	LEAGUE OF LEGENDS is a Trademark of Riot Games, Inc.
+	SettMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.

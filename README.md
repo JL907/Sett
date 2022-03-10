@@ -1,4 +1,4 @@
-# Sett
+# SettMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
 ## If you're updating to 4.2.0 or later from an older version please delete your old sett configuration file
 ![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
