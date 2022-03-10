@@ -62,7 +62,7 @@ namespace SettMod.Modules
             rightPunchDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("02 - Kunckle Down", "Kunckle Down Right Punch Damage Coefficient"), 3.2f, new ConfigDescription("", null, Array.Empty<object>()));
 
             faceBreakerDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Damage Coefficient"), 3.8f, new ConfigDescription("", null, Array.Empty<object>()));
-            faceBreakerPullRadius = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Pull Radius"), 15f, new ConfigDescription("", null, Array.Empty<object>()));
+            faceBreakerPullRadius = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Pull Radius"), 20f, new ConfigDescription("", null, Array.Empty<object>()));
             faceBreakerPullForce = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Pull Force"), 200f, new ConfigDescription("", null, Array.Empty<object>()));
             faceBreakerCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Cooldown"), 5f, new ConfigDescription("", null, Array.Empty<object>()));
 
