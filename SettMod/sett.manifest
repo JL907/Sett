@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 223029292
+CRC: 1519071791
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 75e6d597ebdbe27d9a26cc671d55df78
+    Hash: ba366b258f404b7867069c80e715e6c3
   TypeTreeHash:
     serializedVersion: 2
     Hash: bfdae5124fcadf143abc9be204a4d828
@@ -79,6 +79,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
 - Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
 - Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
+- Assets/Sett/model/model_Dance_Base_model.anim
 - Assets/Sett/textures/skin17_0.png
 - Assets/Sett/customanimations/punch.anim
 - Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat

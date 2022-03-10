@@ -185,46 +185,6 @@ namespace SettMod.SkillStates
                     }
                 }
             }
-            /*
-            Ray aimRay = base.GetAimRay();
-            Collider[] enemies = Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f);
-            int num = 0;
-            int num2 = 0;
-            while (num < enemies.Length && num2 < int.MaxValue)
-            {
-                HealthComponent component = enemies[num].GetComponent<HealthComponent>();
-                if (component)
-                {
-                    TeamComponent component2 = component.GetComponent<TeamComponent>();
-                    bool flag = false;
-                    if (component2)
-                    {
-                        flag = (component2.teamIndex == base.GetTeam());
-                    }
-                    if (!flag)
-                    {
-                        float _level = Mathf.Floor(base.characterBody.level / 4f);
-                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
-
-                        DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
-                        damageInfo.attacker = base.gameObject;
-                        damageInfo.inflictor = base.gameObject;
-                        damageInfo.force = Vector3.zero;
-                        damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
-                        damageInfo.position = component.transform.position;
-                        damageInfo.damageType = DamageType.BypassArmor;
-                        DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
-                        component.TakeDamage(damageInfo);
-                        GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
-                        GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
-                        num2++;
-                    }
-                }
-                num++;
-            }
-            */
         }
         private void CreateIndicator()
         {
@@ -239,7 +199,6 @@ namespace SettMod.SkillStates
                 this.slamIndicatorInstance.transform.position = point;
             }
         }
-
         private void UpdateSlamIndicator()
         {
             if (this.slamIndicatorInstance)
