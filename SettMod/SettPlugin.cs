@@ -63,6 +63,7 @@ namespace SettMod
             // load assets and read config
             Modules.Assets.Initialize();
             Modules.Config.ReadConfig();
+            Modules.CameraParams.InitializeParams();
             Modules.States.RegisterStates(); // register states for networking
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
