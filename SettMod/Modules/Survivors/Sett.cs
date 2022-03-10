@@ -1,6 +1,8 @@
 ﻿using BepInEx.Configuration;
+using EntityStates;
 using RoR2;
 using RoR2.Skills;
+using SettMod.States;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,7 +59,7 @@ namespace SettMod.Modules.Survivors
                     material = settMat,
                 }};
 
-        internal override Type characterMainState { get; set; } = typeof(EntityStates.GenericCharacterMain);
+        internal override Type characterMainState { get; set; } = typeof(SettMain);
 
         // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }

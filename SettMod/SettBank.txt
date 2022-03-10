@@ -1,11 +1,14 @@
 Event	ID	Name			Wwise Object Path	Notes
 	12410265	SettWSFX			\Default Work Unit\SettWSFX	
+	228130932	SettLaugh			\Default Work Unit\SettLaugh	
 	268375865	SettSwing			\Default Work Unit\SettSwing	
+	749031040	SettJoke			\Default Work Unit\SettJoke	
 	1803938789	SettDash			\Default Work Unit\SettDash	
 	1955653731	SettEVO			\Default Work Unit\SettEVO	
 	1991033280	SettRVO			\Default Work Unit\SettRVO	
 	2077079117	SettDeath			\Default Work Unit\SettDeath	
 	2226361105	SettWVO			\Default Work Unit\SettWVO	
+	2387457643	SettTaunt			\Default Work Unit\SettTaunt	
 	2680314753	SettHitSFX			\Default Work Unit\SettHitSFX	
 	2833799674	SettRSFX			\Default Work Unit\SettRSFX	
 	2843348803	SettRImpact			\Default Work Unit\SettRImpact	
@@ -25,6 +28,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	81546599	269847681	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\269847681_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\269847681		7423
 	89560628	131842364	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\131842364_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\131842364		10712
 	111331701	23542778	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\23542778_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Swing\23542778		7148
+	150509470	653945249	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\653945249_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\SettLaugh\653945249		12630
 	198736675	199046395	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\199046395_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\MenuSound\199046395		52773
 	210673516	537944164	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\537944164_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\VOHit\537944164		8413
 	211638643	619210767	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\619210767_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\619210767		23665
@@ -64,12 +68,15 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	895332209	226767399	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\226767399_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\MenuSound\226767399		17036
 	905201967	57852014	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\57852014_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\MenuSound\57852014		54528
 	908362427	193228366	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\193228366_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\193228366		11984
+	915666589	435575398	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\435575398_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\SettJoke\435575398		26844
 	932612963	859091009	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\859091009_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\SettWVO\859091009		10879
 	950868700	236914936	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\236914936_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\236914936		6469
 	966522622	706012001	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\706012001_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\PowerSlam\706012001		25044
+	976966261	203409424	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\203409424_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\SettLaugh\203409424		17925
 	988465059	90450655	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\90450655_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\90450655		10806
 	1039411873	209435198	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\209435198_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\MenuSound\209435198		37874
 	1040449469	740000307	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\740000307_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\SettEVO\740000307		12012
 	1044199059	61784837	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\61784837_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\61784837		9225
+	1055637023	866209816	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\866209816_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\SettTaunt\866209816		35448
 	1066292399	369836552	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\369836552_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\369836552		8061
 

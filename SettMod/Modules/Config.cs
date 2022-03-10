@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using System;
+using UnityEngine;
 
 namespace SettMod.Modules
 {
@@ -32,6 +33,11 @@ namespace SettMod.Modules
         public static ConfigEntry<float> slamForce;
         public static ConfigEntry<float> slamRadius;
 
+        public static ConfigEntry<KeyCode> tauntKeybind;
+        public static ConfigEntry<KeyCode> jokeKeybind;
+        public static ConfigEntry<KeyCode> laughKeybind;
+        public static ConfigEntry<KeyCode> danceKeybind;
+
         public static void ReadConfig()
         {
             baseHealth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Health"), 180f, new ConfigDescription("", null, Array.Empty<object>()));
@@ -58,18 +64,23 @@ namespace SettMod.Modules
             faceBreakerDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Damage Coefficient"), 3.8f, new ConfigDescription("", null, Array.Empty<object>()));
             faceBreakerPullRadius = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Pull Radius"), 20f, new ConfigDescription("", null, Array.Empty<object>()));
             faceBreakerPullForce = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Pull Force"), 200f, new ConfigDescription("", null, Array.Empty<object>()));
-            faceBreakerCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Cooldown"), 7f, new ConfigDescription("", null, Array.Empty<object>()));
+            faceBreakerCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("03 - Face Breaker", "Face Breaker Cooldown"), 5f, new ConfigDescription("", null, Array.Empty<object>()));
 
-            slamDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Damage Coefficient"), 12f, new ConfigDescription("", null, Array.Empty<object>()));
-            bonusHealthCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Bonus Damage Coefficient"), 0.05f, new ConfigDescription("Bonus Damage Based On Primary Target Maximum Health & Maximum Shield Coefficient", null, Array.Empty<object>()));
+            slamDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Damage Coefficient"), 16f, new ConfigDescription("", null, Array.Empty<object>()));
+            bonusHealthCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Bonus Damage Coefficient"), 0.1f, new ConfigDescription("Bonus Damage Based On Primary Target Maximum Health & Maximum Shield Coefficient", null, Array.Empty<object>()));
             slamRadius = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Slam Radius"), 20f, new ConfigDescription("", null, Array.Empty<object>()));
             slamForce = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Slam Force"), 500f, new ConfigDescription("", null, Array.Empty<object>()));
-            slamCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Cooldown"), 10f, new ConfigDescription("", null, Array.Empty<object>()));
+            slamCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - The Show Stopper", "The Show Stopper Cooldown"), 7f, new ConfigDescription("", null, Array.Empty<object>()));
 
-            hayMakerDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Damage Coefficient"), 16f, new ConfigDescription("", null, Array.Empty<object>()));
-            hayMakerGritBonus = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Expended Grit Bonus Damage Base Coefficient"), 0.5f, new ConfigDescription("Base Expended Grit Coefficient", null, Array.Empty<object>()));
-            hayMakerGritBonusPer4 = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Additional Bonus Damage Coefficient Per 4 Levels"), 0.025f, new ConfigDescription("Additional Expended Grit Coefficient Per 4 Levels", null, Array.Empty<object>()));
-            hayMakerCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Cooldown"), 12f, new ConfigDescription("", null, Array.Empty<object>()));
+            hayMakerDamageCoefficient = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Damage Coefficient"), 27f, new ConfigDescription("", null, Array.Empty<object>()));
+            hayMakerGritBonus = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Expended Grit Bonus Damage Base Coefficient"), 0.75f, new ConfigDescription("Base Expended Grit Coefficient", null, Array.Empty<object>()));
+            hayMakerGritBonusPer4 = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Additional Bonus Damage Coefficient Per 4 Levels"), 0.05f, new ConfigDescription("Additional Expended Grit Coefficient Per 4 Levels", null, Array.Empty<object>()));
+            hayMakerCD = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Haymaker", "Haymaker Cooldown"), 10f, new ConfigDescription("", null, Array.Empty<object>()));
+
+            tauntKeybind = SettPlugin.instance.Config.Bind<KeyCode>(new ConfigDefinition("06 - Emotes", "Taunt"), KeyCode.Alpha1, new ConfigDescription("Keybind used to perform the Taunt emote", null, Array.Empty<object>()));
+            jokeKeybind = SettPlugin.instance.Config.Bind<KeyCode>(new ConfigDefinition("06 - Emotes", "Joke"), KeyCode.Alpha2, new ConfigDescription("Keybind used to perform the Joke emote", null, Array.Empty<object>()));
+            laughKeybind = SettPlugin.instance.Config.Bind<KeyCode>(new ConfigDefinition("06 - Emotes", "Laugh"), KeyCode.Alpha3, new ConfigDescription("Keybind used to perform the Laugh emote", null, Array.Empty<object>()));
+            danceKeybind = SettPlugin.instance.Config.Bind<KeyCode>(new ConfigDefinition("06 - Emotes", "Dance"), KeyCode.Alpha4, new ConfigDescription("Keybind used to perform the Dance emote", null, Array.Empty<object>()));
         }
 
         // this helper automatically makes config entries for disabling survivors

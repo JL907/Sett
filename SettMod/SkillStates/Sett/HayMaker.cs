@@ -28,6 +28,7 @@ namespace SettMod.SkillStates
         private bool hasFired;
         private float maxGritSnapShot;
         private Transform slamIndicatorInstance;
+        private TemporaryOverlay temporaryOverlay;
 
         public override void FixedUpdate()
         {
@@ -94,21 +95,38 @@ namespace SettMod.SkillStates
             if (this.gritSnapShot >= this.maxGritSnapShot)
             {
                 base.PlayCrossfade("Fullbody, Override", "HayMaker2", "HayMaker.playbackRate", this.duration, 0.2f);
+
+                Transform modelTransform = base.GetModelTransform();
+                if (modelTransform)
+                {
+                    CharacterModel component = modelTransform.GetComponent<CharacterModel>();
+                    if (component)
+                    {
+                        this.temporaryOverlay = base.gameObject.AddComponent<TemporaryOverlay>();
+                        Material material = UnityEngine.Object.Instantiate<Material>(LegacyResourcesAPI.Load<Material>("Materials/matVagrantEnergized"));
+                        this.temporaryOverlay.originalMaterial = material;
+                        this.temporaryOverlay.AddToCharacerModel(component);
+                    }
+                }
             }
             else
             {
                 base.PlayCrossfade("Fullbody, Override", "HayMaker", "HayMaker.playbackRate", this.duration, 0.2f);
             }
             Util.PlaySound("SettWSFX", base.gameObject);
-            if (!this.slamIndicatorInstance) this.CreateIndicator();
 
-            //EffectManager.SimpleEffect(this.handEffectPrefab, this.FindModelChild("R_Hand").position, this.FindModelChild("R_Hand").rotation, true);
+            if (!this.slamIndicatorInstance) this.CreateIndicator();
         }
+
 
         public override void OnExit()
         {
             //base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
+            if (this.temporaryOverlay)
+            {
+                EntityState.Destroy(this.temporaryOverlay);
+            }
             base.OnExit();
         }
 
@@ -150,7 +168,7 @@ namespace SettMod.SkillStates
                         DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
                         component.TakeDamage(damageInfo);
 
-                        GameObject hitEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Base/Loader/ImpactLoaderFistSmall.prefab").WaitForCompletion();
+                        GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
                         if (hitEffectPrefab)
                         {
                             EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
@@ -167,46 +185,6 @@ namespace SettMod.SkillStates
                     }
                 }
             }
-            /*
-            Ray aimRay = base.GetAimRay();
-            Collider[] enemies = Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f);
-            int num = 0;
-            int num2 = 0;
-            while (num < enemies.Length && num2 < int.MaxValue)
-            {
-                HealthComponent component = enemies[num].GetComponent<HealthComponent>();
-                if (component)
-                {
-                    TeamComponent component2 = component.GetComponent<TeamComponent>();
-                    bool flag = false;
-                    if (component2)
-                    {
-                        flag = (component2.teamIndex == base.GetTeam());
-                    }
-                    if (!flag)
-                    {
-                        float _level = Mathf.Floor(base.characterBody.level / 4f);
-                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
-
-                        DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
-                        damageInfo.attacker = base.gameObject;
-                        damageInfo.inflictor = base.gameObject;
-                        damageInfo.force = Vector3.zero;
-                        damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
-                        damageInfo.position = component.transform.position;
-                        damageInfo.damageType = DamageType.BypassArmor;
-                        DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
-                        component.TakeDamage(damageInfo);
-                        GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
-                        GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
-                        num2++;
-                    }
-                }
-                num++;
-            }
-            */
         }
         private void CreateIndicator()
         {
@@ -221,7 +199,6 @@ namespace SettMod.SkillStates
                 this.slamIndicatorInstance.transform.position = point;
             }
         }
-
         private void UpdateSlamIndicator()
         {
             if (this.slamIndicatorInstance)
