@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1519071791
+CRC: 1162780160
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: ba366b258f404b7867069c80e715e6c3
+    Hash: 6fdeaa1beeae524792dae888adbf40c9
   TypeTreeHash:
     serializedVersion: 2
     Hash: bfdae5124fcadf143abc9be204a4d828
@@ -87,6 +87,7 @@ Assets:
 - Assets/Sett/customanimations/RunHasteFootsteps.anim
 - Assets/Sett/VFX/Textures/sett_base_flare_star.dds
 - Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
+- Assets/Sett/momPortrait.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
 - Assets/Sett/model/poolpartysett.fbx
@@ -137,6 +138,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_fire_erode.dds
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar.dds
 - Assets/Sett/customanimations/Falling Idle.anim
+- Assets/Sett/materials/Joke.mat
 - Assets/Sett/VFX/Textures/sett_base_w_smoke_2_erosion.dds
 - Assets/Sett/VFX/Textures/texPunchImpact.png
 - Assets/Sett/materials/mechaMat.mat
@@ -172,6 +174,7 @@ Assets:
 - Assets/Sett/materials/SettMat.mat
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge_flip.dds
 - Assets/Sett/VFX/Textures/sett_base_ground_trail_erode.dds
+- Assets/Sett/model/mom.fbx
 - Assets/Sett/VFX/Materials/matSwingEffect.mat
 - Assets/Sett/VFX/Textures/sett_base_fire_trail_graphic.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_streaks.dds
@@ -213,6 +216,7 @@ Assets:
 - Assets/Sett/materials/poolSettMat.mat
 - Assets/Sett/VFX/Materials/matPunchImpactShadow.mat
 - Assets/Sett/icons/sett_r.png
+- Assets/Sett/textures/skin0_1.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth_soft.dds
 - Assets/Sett/VFX/FistBarrageEffect.prefab
 - Assets/Sett/customanimations/Jumping UP.anim

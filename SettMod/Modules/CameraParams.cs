@@ -20,6 +20,7 @@ namespace SettMod.Modules
 
         internal static void InitializeParams()
         {
+            defaultCameraParamsSett = NewCameraParams("ccpSett", 70f, defaultVerticalOffset, new Vector3(0f, 1.25f, -12f));
             emoteCameraParamsSett = NewCameraParams("ccpSettEmote", 70f, defaultVerticalOffset, new Vector3(0f, -0.6f, -8.5f));
         }
 

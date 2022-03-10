@@ -121,14 +121,14 @@ namespace SettMod.SkillStates.Emotes
                 }
                 else if (Input.GetKeyDown(Modules.Config.danceKeybind.Value))
                 {
-                    this.outer.SetInterruptState(new Dance(), InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Dance { spam = this.outer.state is Dance ? true : false }, InterruptPriority.Any);
                     return;
                 }
             }
 
             if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;
 
-            if (this.animator) this.animator.SetBool("inCombat", true);
+            //if (this.animator) this.animator.SetBool("inCombat", true);
 
             if (flag)
             {
