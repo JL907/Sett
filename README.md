@@ -1,20 +1,25 @@
 # Sett
-## If you're updating to 4.0.0 or later from an older version please delete your old sett configuration file
+## If you're updating to 4.2.0 or later from an older version please delete your old sett configuration file
 ![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
 ![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
 
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.1.0`
+## Latest Patch Notes `4.2.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Updated to use latest Bepinexpack
-* Updated to use latest R2API
-* Haymaker can now be aimed in any direction
-* Haymaker's hitbox now follows Sett's right hand 
-* Haymaker now has an impact visual effect on hit
-* Sett will now face & rotate in the direction of the aim vector while casting Haymaker
+* EMOTES HAVE BEEN ADDED PLEASE DELETE OLD CONFIG
+    * Press 1 to use Taunt Emote
+    * Press 2 to use Joke Emote
+    * Press 3 to use Laugh Emote
+    * Press 4 to use Dance Emote
+* ShowStopper damage is now 1600% damage and 10% bonus (up from 1200% damage and 5% bonus)
+* HayMaker damage is now 2700% damage and 75%/+5% per4 of expended grit (up from 1600% damage and 50%/+2.5% per4)
+* FaceBreaker cooldown is now 5 seconds (down from 7 seconds)
+* ShowStopper cooldown is now 7 seconds (down from 10 seconds)
+* HayMaker cooldown is now 10 seconds (down from 12 seconds)
+* Sett has an energized VFX when using max grit HayMaker
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -55,6 +60,14 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.2.0`
+* Updated to use latest Bepinexpack
+* Updated to use latest R2API
+* Haymaker can now be aimed in any direction
+* Haymaker's hitbox now follows Sett's right hand 
+* Haymaker now has an impact visual effect on hit
+* Sett will now face & rotate in the direction of the aim vector while casting Haymaker
+
 `4.0.1`
 * Fixed mesh normals on skins so now they match with default skin.
 
