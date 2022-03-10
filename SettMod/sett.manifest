@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4091430455
+CRC: 223029292
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4216c7c5df4176c90a4e38b3b1591e0c
+    Hash: 75e6d597ebdbe27d9a26cc671d55df78
   TypeTreeHash:
     serializedVersion: 2
     Hash: bfdae5124fcadf143abc9be204a4d828
@@ -194,6 +194,7 @@ Assets:
 - Assets/Sett/model/firecrackerMesh.mesh
 - Assets/Sett/fonts/BOMBARD_.ttf
 - Assets/Sett/VFX/Textures/sett_base_distort_rgba.dds
+- Assets/Sett/materials/New Material.mat
 - Assets/Sett/VFX/Textures/sett_emote_blush.dds
 - Assets/Sett/icons/sett_circle_8.dds
 - Assets/Sett/VFX/Textures/texLightning.tif

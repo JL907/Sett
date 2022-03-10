@@ -230,7 +230,7 @@ namespace SettMod.SkillStates
             blastAttack.procChainMask = default;
             blastAttack.attacker = base.gameObject;
             blastAttack.crit = base.RollCrit();
-            blastAttack.baseDamage = base.characterBody.damage * ShowStopper.slamDamageCoefficient;
+            blastAttack.baseDamage = this.damageStat * ShowStopper.slamDamageCoefficient;
             blastAttack.falloffModel = BlastAttack.FalloffModel.Linear;
             blastAttack.baseForce = ShowStopper.slamForce;
             blastAttack.teamIndex = TeamComponent.GetObjectTeam(blastAttack.attacker);
