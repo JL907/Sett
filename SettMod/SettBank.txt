@@ -21,6 +21,9 @@ Event	ID	Name			Wwise Object Path	Notes
 	4031773514	SettBossQuote			\Default Work Unit\SettBossQuote	
 	4229278743	SettESFX			\Default Work Unit\SettESFX	
 
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	24104798	197676997	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\197676997_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Swing\197676997		7887
 	24815094	201113605	C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\SFX\201113605_0D5756A9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO mixer\Sett VO\SettWalkQuote\201113605		32287
