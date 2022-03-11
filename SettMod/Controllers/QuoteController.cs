@@ -14,6 +14,7 @@ namespace SettMod.Controllers
         private uint activeKillQuotePlayID;
         private uint activePlayID;
         private uint activeTeleportQuotePlayID;
+        private uint activeWalkQuotePlayID;
         private bool killQuotePlayed;
         private bool teleportQuotePlayed;
         private GameObject gameObject;
@@ -21,48 +22,42 @@ namespace SettMod.Controllers
         private void Awake()
         {
             this.gameObject = base.gameObject;
-            On.RoR2.Stage.Start += (orig, self) =>
-            {
-                this.ResetPlayed();
-                orig(self);
-            };
+            TeleporterInteraction.onTeleporterFinishGlobal += TeleporterInteraction_onTeleporterFinishGlobal;
+            BossGroup.onBossGroupStartServer += BossGroup_onBossGroupStartServer;
+            BossGroup.onBossGroupDefeatedServer += BossGroup_onBossGroupDefeatedServer;
+            Run.onRunAmbientLevelUp += Run_onRunAmbientLevelUp;
+        }
 
-            On.RoR2.TeleporterInteraction.OnInteractionBegin += (orig,self,activator) =>
-            {
-                TeleporterInteraction.ActivationState activationState = self.activationState;
-                switch (activationState)
-                {
+        private void Run_onRunAmbientLevelUp(Run obj)
+        {
+            this.activeWalkQuotePlayID = Util.PlaySound("SettWalkQuote", this.gameObject);
+        }
 
-                    default:
-                    case TeleporterInteraction.ActivationState.Idle:
-                        this.ResetPlayed();
-                        break;
-                    case TeleporterInteraction.ActivationState.Charged:
-                        if (!teleportQuotePlayed)
-                        {
-                            this.teleportQuotePlayed = true;
-                            this.activeTeleportQuotePlayID = Util.PlaySound("SettTeleport", this.gameObject);
-                        }
-                        break;
-                }
-                orig(self,activator);
-            };
-
-            On.RoR2.GlobalEventManager.OnCharacterDeath += (orig, self, damageReport) =>
+        private void BossGroup_onBossGroupDefeatedServer(BossGroup obj)
+        {
+            if (!killQuotePlayed)
             {
-                if (damageReport is null) return;
-                if (damageReport.victimBody is null) return;
-                if (damageReport.attackerBody is null) return;
-                if (damageReport.victimBody.isBoss || damageReport.victimBody.isChampion)
-                {
-                    if (!killQuotePlayed)
-                    {
-                        killQuotePlayed = true;
-                        this.activeKillQuotePlayID = Util.PlaySound("SettBossKill", this.gameObject);
-                    }
-                }
-                orig(self, damageReport);
-            };
+                killQuotePlayed = true;
+                this.activeKillQuotePlayID = Util.PlaySound("SettBossKill", this.gameObject);
+            }
+        }
+
+        private void BossGroup_onBossGroupStartServer(BossGroup obj)
+        {
+            if(!quotePlayed)
+            {
+                this.quotePlayed = true;
+                this.activePlayID = Util.PlaySound("SettBossQuote", base.gameObject);
+            }
+        }
+
+        private void TeleporterInteraction_onTeleporterFinishGlobal(TeleporterInteraction obj)
+        {
+            if (!teleportQuotePlayed)
+            {
+                this.teleportQuotePlayed = true;
+                this.activeTeleportQuotePlayID = Util.PlaySound("SettTeleport", this.gameObject);
+            }
         }
 
         private void ResetPlayed()
@@ -74,44 +69,16 @@ namespace SettMod.Controllers
 
         private void FixedUpdate()
         {
-            if (!quotePlayed) SearchForTargets();
+
         }
 
-        private void PlayQuote()
-        {
-            this.activePlayID = Util.PlaySound("SettBossQuote", base.gameObject);
-        }
-
-        private void OnExit()
+        private void OnDestroy()
         {
             if (this.activePlayID != 0) AkSoundEngine.StopPlayingID(this.activePlayID);
             if (this.activeKillQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeKillQuotePlayID);
             if (this.activeTeleportQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeTeleportQuotePlayID);
-        }
+            if (this.activeWalkQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeWalkQuotePlayID);
 
-        protected void SearchForTargets()
-        {
-            foreach (Collider collider in Physics.OverlapSphere(base.transform.position, 100f))
-            {
-                HealthComponent component = collider.GetComponent<HealthComponent>();
-                if (component)
-                {
-                    TeamComponent component2 = collider.GetComponent<TeamComponent>();
-                    bool flag = false;
-                    if (component2)
-                    {
-                        flag = (component2.teamIndex == TeamComponent.GetObjectTeam(base.gameObject));
-                    }
-                    if (!flag)
-                    {
-                        if (component.body.isChampion || component.body.isBoss)
-                        {
-                            this.quotePlayed = true;
-                            PlayQuote();
-                        }
-                    }
-                }
-            }
         }
     }
 }
