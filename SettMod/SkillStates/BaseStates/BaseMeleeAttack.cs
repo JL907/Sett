@@ -206,7 +206,7 @@ namespace SettMod.SkillStates.BaseStates
 
                 Util.PlayAttackSpeedSound("SettSwing", base.gameObject, this.attackSpeedStat);
 
-                if (UnityEngine.Random.value >= 0.5) Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
+                if (UnityEngine.Random.value >= 0.75) Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
 
                 if (base.isAuthority)
                 {
