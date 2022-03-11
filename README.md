@@ -16,6 +16,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 * Sett now has voicelines when he defeats teleporter bosses
 * Sett now has voicelines when he interacts with a charged teleporter
 * Sett interactive quotes have a higher priority than ability quotes
+* Heart of the half beast regeneration icon has been changed
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
