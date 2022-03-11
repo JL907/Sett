@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3828236462
+CRC: 2824746848
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e694f85106f45f4a84378bff0d8c3057
+    Hash: 66a5e5d06a330a4a29557bdc2c4be625
   TypeTreeHash:
     serializedVersion: 2
     Hash: bfdae5124fcadf143abc9be204a4d828
@@ -116,6 +116,7 @@ Assets:
 - Assets/Sett/textures/skin14_0.png
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
 - Assets/Sett/textures/skin13_0.png
+- Assets/Sett/icons/regenicon.png
 - Assets/Sett/VFX/Textures/texFire.tga
 - Assets/Sett/icons/Sett_Circle.png
 - Assets/Sett/VFX/Textures/sett_base_erode_a.dds
