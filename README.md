@@ -39,6 +39,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ![image](https://user-images.githubusercontent.com/7343912/144930673-5a7c38c4-942d-4727-82b7-4135055735d0.png)
 
 ## Credits
+* TheTimesweeper for letting me use his cameraparms and emote code
 * All the homies at the Risk of Rain 2 Modding Discord
 * Grab Handler & Heat Crash by Rob & Enforcer Team
 * Mico 27 for helping me out with the grit resource and grit bar and Facebreaker suction
