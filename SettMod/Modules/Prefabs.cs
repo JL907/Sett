@@ -2,6 +2,7 @@
 using KinematicCharacterController;
 using R2API;
 using RoR2;
+using SettMod.Controllers;
 using SettMod.SkillStates.Keystone;
 using SettMod.States;
 using System.Collections.Generic;
@@ -138,6 +139,7 @@ namespace SettMod.Modules
 
             bodyComponent.gameObject.AddComponent<GritComponent>();
             bodyComponent.gameObject.AddComponent<KeyStoneHandler>();
+            bodyComponent.gameObject.AddComponent<QuoteController>();
 
             bodyComponent.bodyColor = bodyInfo.bodyColor;
 
