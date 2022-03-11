@@ -12,8 +12,10 @@ namespace SettMod.Controllers
     {
         private bool quotePlayed;
         private uint activeKillQuotePlayID;
-        private bool killQuotePlayed;
         private uint activePlayID;
+        private uint activeTeleportQuotePlayID;
+        private bool killQuotePlayed;
+        private bool teleportQuotePlayed;
         private GameObject gameObject;
 
         private void Awake()
@@ -21,15 +23,28 @@ namespace SettMod.Controllers
             this.gameObject = base.gameObject;
             On.RoR2.Stage.Start += (orig, self) =>
             {
-                this.quotePlayed = false;
-                this.killQuotePlayed = false;
+                this.ResetPlayed();
                 orig(self);
             };
 
             On.RoR2.TeleporterInteraction.OnInteractionBegin += (orig,self,activator) =>
             {
-                this.quotePlayed = false;
-                this.killQuotePlayed = false;
+                TeleporterInteraction.ActivationState activationState = self.activationState;
+                switch (activationState)
+                {
+
+                    default:
+                    case TeleporterInteraction.ActivationState.Idle:
+                        this.ResetPlayed();
+                        break;
+                    case TeleporterInteraction.ActivationState.Charged:
+                        if (!teleportQuotePlayed)
+                        {
+                            this.teleportQuotePlayed = true;
+                            this.activeTeleportQuotePlayID = Util.PlaySound("SettTeleport", this.gameObject);
+                        }
+                        break;
+                }
                 orig(self,activator);
             };
 
@@ -42,12 +57,19 @@ namespace SettMod.Controllers
                 {
                     if (!killQuotePlayed)
                     {
-                        this.activeKillQuotePlayID = Util.PlaySound("SettBossKill", this.gameObject);
                         killQuotePlayed = true;
+                        this.activeKillQuotePlayID = Util.PlaySound("SettBossKill", this.gameObject);
                     }
                 }
                 orig(self, damageReport);
             };
+        }
+
+        private void ResetPlayed()
+        {
+            this.quotePlayed = false;
+            this.killQuotePlayed = false;
+            this.teleportQuotePlayed = false;
         }
 
         private void FixedUpdate()
@@ -64,6 +86,7 @@ namespace SettMod.Controllers
         {
             if (this.activePlayID != 0) AkSoundEngine.StopPlayingID(this.activePlayID);
             if (this.activeKillQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeKillQuotePlayID);
+            if (this.activeTeleportQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeTeleportQuotePlayID);
         }
 
         protected void SearchForTargets()
