@@ -60,18 +60,6 @@ namespace SettMod.Controllers
             }
         }
 
-        private void ResetPlayed()
-        {
-            this.quotePlayed = false;
-            this.killQuotePlayed = false;
-            this.teleportQuotePlayed = false;
-        }
-
-        private void FixedUpdate()
-        {
-
-        }
-
         private void OnDestroy()
         {
             if (this.activePlayID != 0) AkSoundEngine.StopPlayingID(this.activePlayID);
