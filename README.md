@@ -1,7 +1,7 @@
 # Sett
 ### SettMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
-![image](https://user-images.githubusercontent.com/7343912/144930145-7b2e7e44-24d6-4b55-a894-1bf46213ef64.png)
-![2021-09-05 18_14_54-Risk of Rain 2](https://user-images.githubusercontent.com/7343912/132151122-7971e6ea-fe4d-4516-9c7b-6061307d1481.png)
+![image](https://user-images.githubusercontent.com/7343912/158014157-fb82f5e3-f2b7-432f-b38d-766fd773d076.png)
+![image](https://user-images.githubusercontent.com/7343912/158014660-6eebd415-35c3-465e-8acc-f13710159e8e.png)
 
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
@@ -37,7 +37,11 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 
 ## Skills
 
-![image](https://user-images.githubusercontent.com/7343912/144930673-5a7c38c4-942d-4727-82b7-4135055735d0.png)
+![image](https://user-images.githubusercontent.com/7343912/158013850-8d228db2-6585-4420-858e-c2923c6db2ef.png)
+
+## Keystone Passives
+![image](https://user-images.githubusercontent.com/7343912/158014593-1725fdf8-f542-4a68-a839-44316aab4044.png)
+
 
 ## Credits
 * TheTimesweeper for letting me use his cameraparms and emote code
