@@ -78,7 +78,10 @@ namespace SettMod.Controllers
             if (this.activeKillQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeKillQuotePlayID);
             if (this.activeTeleportQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeTeleportQuotePlayID);
             if (this.activeWalkQuotePlayID != 0) AkSoundEngine.StopPlayingID(this.activeWalkQuotePlayID);
-
+            TeleporterInteraction.onTeleporterFinishGlobal -= TeleporterInteraction_onTeleporterFinishGlobal;
+            BossGroup.onBossGroupStartServer -= BossGroup_onBossGroupStartServer;
+            BossGroup.onBossGroupDefeatedServer -= BossGroup_onBossGroupDefeatedServer;
+            Run.onRunAmbientLevelUp -= Run_onRunAmbientLevelUp;
         }
     }
 }
