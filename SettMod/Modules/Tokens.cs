@@ -38,7 +38,7 @@ namespace SettMod.Modules
             LanguageAPI.Add("SETT_PASSIVE_DESC", "Sett <color=#c9aa71>regenerates</color> an additional <color=#008744>0.25 health per second</color> <color=#d62d20>(+ 0.25 every 4 levels)</color> for every <color=#f68835>5%</color> of his <color=#d62d20>missing health.</color>");
 
             LanguageAPI.Add("SETT_PRIMARY_NAME", "<color=#ffa700>KNUCKLE DOWN</color>");
-            LanguageAPI.Add("SETT_PRIMARY_DESC", "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(260% damage)</color> and a Right Punch <color=#f68835>(320% damage)</color>. <color=#c9aa71>Critical hits</color> reset Sett's basic attack timer.");
+            LanguageAPI.Add("SETT_PRIMARY_DESC", "Sett's <color=#c9aa71>basic attacks</color> alternate between a Left Punch <color=#f68835>(260% damage)</color> and a Right Punch <color=#f68835>(320% damage)</color>. <color=#c9aa71>Critical hits</color> reset Sett's basic attack timer and causes the next basic attack to do <color=#d62d20>double damage.</color>");
 
             LanguageAPI.Add("SETT_SECONDARY_NAME", "<color=#ffa700>FACEBREAKER</color>");
             LanguageAPI.Add("SETT_SECONDARY_DESC", "Sett <color=#c9aa71>pulls in</color> all enemies within a <color=#0057e7>20 meter</color> radius of him, dealing <color=#f68835>380% </color>damage. <color=#c9aa71>Stun & Slows</color> on hit.");
