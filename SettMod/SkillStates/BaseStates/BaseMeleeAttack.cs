@@ -228,7 +228,7 @@ namespace SettMod.SkillStates.BaseStates
 
                     
 
-                    if(this.attack.isCrit)
+                    if(this.attack.isCrit && base.inputBank.skill1.down)
                     {
                         int index = this.swingIndex;
                         if (index == 0) index = 1;
