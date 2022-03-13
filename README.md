@@ -6,11 +6,13 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.3.2`
+## Latest Patch Notes `4.3.3`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Sett's basic attacks auto attack reset on critical hits.
-* Adjusted volume on Sett's SFX and voicelines
+* Updated to use latest Bepinexpack
+* Bugfix: Sett's auto attack reset on crit now interrupts the current auto attack instead of the next auto
+* Bugfix: Fixed Sett's auto attack resetting when not attacking enemies
+* Sett's auto attack reset causes the next auto attack to do double damage
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -56,6 +58,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.3.2`
+* Sett's basic attacks auto attack reset on critical hits.
+* Adjusted volume on Sett's SFX and voicelines
+
 `4.3.0`
 * Sett quotes have been adjusted to prevent overlap. Voicelines with lower priority will be killed if a new one occurs.
 * Sett M1 Swing grunt voiceline has a lower priority than his quotes
