@@ -6,17 +6,11 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.3.0`
+## Latest Patch Notes `4.3.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Sett quotes have been adjusted to prevent overlap. Voicelines with lower priority will be killed if a new one occurs.
-* Sett M1 Swing grunt voiceline has a lower priority than his quotes
-* Sett now has voicelines when the run ambient level goes up
-* Sett now has voicelines when he sees teleporter bosses
-* Sett now has voicelines when he defeats teleporter bosses
-* Sett now has voicelines when he interacts with a charged teleporter
-* Sett interactive quotes have a higher priority than ability quotes
-* Heart of the half beast regeneration icon has been changed
+* Sett's basic attacks auto attack reset on critical hits.
+* Adjusted volume on Sett's SFX and voicelines
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -62,6 +56,16 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.3.0`
+* Sett quotes have been adjusted to prevent overlap. Voicelines with lower priority will be killed if a new one occurs.
+* Sett M1 Swing grunt voiceline has a lower priority than his quotes
+* Sett now has voicelines when the run ambient level goes up
+* Sett now has voicelines when he sees teleporter bosses
+* Sett now has voicelines when he defeats teleporter bosses
+* Sett now has voicelines when he interacts with a charged teleporter
+* Sett interactive quotes have a higher priority than ability quotes
+* Heart of the half beast regeneration icon has been changed
+
 `4.2.0`
 * EMOTES HAVE BEEN ADDED PLEASE DELETE OLD CONFIG
     * Press 1 to use Taunt Emote
