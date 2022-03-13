@@ -41,11 +41,30 @@ namespace SettMod.SkillStates.Keystone
             }
         }
 
+
+
         public void Awake()
         {
             this.body = base.GetComponent<CharacterBody>();
             this.outer = base.GetComponent<EntityStateMachine>();
             this.healthComponent = base.GetComponent<HealthComponent>();
+            RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+        }
+
+        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
+        {
+            if (damageReport is null) return;
+            if (damageReport.victimBody is null) return;
+            if (damageReport.attackerBody is null) return;
+
+            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && damageReport.attackerBody.baseNameToken == "SETT_NAME")
+            {
+                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
+                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
+                {
+                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
+                }
+            }
         }
 
         public void OnDamageDealtServer(DamageReport damageReport)

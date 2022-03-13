@@ -37,7 +37,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.3.1";
+        public const string MODVERSION = "4.3.2";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
@@ -138,31 +138,12 @@ namespace SettMod
             }
         }
 
-        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
-        {
-            if (damageReport is null) return;
-            if (damageReport.victimBody is null) return;
-            if (damageReport.attackerBody is null) return;
-
-            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.GetBuffCount(Modules.Buffs.movementSpeedBuff) < 1 && damageReport.attackerBody.baseNameToken == "SETT_NAME")
-            {
-                KeyStoneHandler keyStoneHandler = damageReport.attackerBody.GetComponent<KeyStoneHandler>();
-                if (keyStoneHandler.keyStoneType is KeyStoneHandler.KeyStones.PhaseRush)
-                {
-                    damageReport.attackerBody.AddTimedBuff(Modules.Buffs.movementSpeedBuff, 3);
-                }
-            }
-
-            orig(self, damageReport);
-        }
-
         private void Hook()
         {
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.UI.HUD.Awake += HUD_Awake;
             RoR2.UI.HUD.onHudTargetChangedGlobal += HUD_onHudTargetChangedGlobal;
             On.RoR2.PickupPickerController.FixedUpdateServer += PickupPickerController_FixedUpdateServer;
-            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
         }
 
         private void HUD_Awake(On.RoR2.UI.HUD.orig_Awake orig, RoR2.UI.HUD self)
@@ -215,7 +196,6 @@ namespace SettMod
             On.RoR2.UI.HUD.Awake -= HUD_Awake;
             RoR2.UI.HUD.onHudTargetChangedGlobal -= HUD_onHudTargetChangedGlobal;
             On.RoR2.PickupPickerController.FixedUpdateServer -= PickupPickerController_FixedUpdateServer;
-            On.RoR2.GlobalEventManager.OnCharacterDeath -= GlobalEventManager_OnCharacterDeath;
         }
     }
 }
