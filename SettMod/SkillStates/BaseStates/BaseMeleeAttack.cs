@@ -42,6 +42,7 @@ namespace SettMod.SkillStates.BaseStates
         private BaseState.HitStopCachedState hitStopCachedState;
         private Transform modelBaseTransform;
         private Vector3 storedVelocity;
+        private bool extraDamage;
 
         public override void FixedUpdate()
         {
@@ -147,7 +148,7 @@ namespace SettMod.SkillStates.BaseStates
             this.attack.attacker = base.gameObject;
             this.attack.inflictor = base.gameObject;
             this.attack.teamIndex = base.GetTeam();
-            this.attack.damage = this.damageCoefficient * this.damageStat;
+            this.attack.damage = this.damageCoefficient * this.damageStat * (this.extraDamage ? 2 : 1);
             this.attack.procCoefficient = this.procCoefficient;
             this.attack.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
             this.attack.forceVector = this.bonusForce;
@@ -225,6 +226,8 @@ namespace SettMod.SkillStates.BaseStates
                         this.inHitPause = true;
                     }
 
+                    
+
                     if(this.attack.isCrit)
                     {
                         int index = this.swingIndex;
@@ -240,6 +243,7 @@ namespace SettMod.SkillStates.BaseStates
                             this.outer.SetNextState(new BaseMeleeAttack
                             {
                                 swingIndex = index,
+                                extraDamage = true
                             });
                         }
                     }
