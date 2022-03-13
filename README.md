@@ -10,6 +10,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Bugfix: Sett's auto attack reset on crit now interrupts the current auto attack instead of the next auto
+* Bugfix: Fixed Sett's auto attack resetting when not attacking enemies
 * Sett's auto attack reset causes the next auto attack to do double damage
 
 ## Discord
