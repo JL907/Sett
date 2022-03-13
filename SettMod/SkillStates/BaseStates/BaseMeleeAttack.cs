@@ -42,6 +42,7 @@ namespace SettMod.SkillStates.BaseStates
         private BaseState.HitStopCachedState hitStopCachedState;
         private Transform modelBaseTransform;
         private Vector3 storedVelocity;
+        private bool isCrit;
 
         public override void FixedUpdate()
         {
@@ -73,8 +74,10 @@ namespace SettMod.SkillStates.BaseStates
             if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
             {
                 int index = this.swingIndex;
+                float resetTime = 1;
                 if (index == 0) index = 1;
                 else index = 0;
+                if (this.isCrit) resetTime = 0.5f;
                 EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
                 if (component && component.state.isAuthority
                     && (!(component.state is Roll2))
@@ -84,7 +87,10 @@ namespace SettMod.SkillStates.BaseStates
                 {
                     this.outer.SetNextState(new BaseMeleeAttack
                     {
-                        swingIndex = index
+                        swingIndex = index,
+                        baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
+                        baseEarlyExitTime = index % 2 == 0 ? 0.48f * resetTime : 0.68f * resetTime,
+                        damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value
                     });
                 }
                 return;
@@ -112,21 +118,8 @@ namespace SettMod.SkillStates.BaseStates
         {
             base.OnEnter();
             this.hasFired = false;
-
+            this.isCrit = base.RollCrit();
             base.characterBody.outOfCombatStopwatch = 0f;
-
-            if (this.swingIndex == 0)
-            {
-                this.baseDuration = 0.7f;
-                this.baseEarlyExitTime = 0.48f;
-                this.damageCoefficient = Modules.Config.leftPunchDamageCoefficient.Value;
-            }
-            else if (this.swingIndex == 1)
-            {
-                this.baseDuration = 1.2f;
-                this.baseEarlyExitTime = 0.68f;
-                this.damageCoefficient = Modules.Config.rightPunchDamageCoefficient.Value;
-            }
 
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.earlyExitDuration = this.duration * this.baseEarlyExitTime;
@@ -167,7 +160,7 @@ namespace SettMod.SkillStates.BaseStates
             this.attack.forceVector = this.bonusForce;
             this.attack.pushAwayForce = this.pushForce;
             this.attack.hitBoxGroup = hitBoxGroup;
-            this.attack.isCrit = base.RollCrit();
+            this.attack.isCrit = this.isCrit;
             this.attack.impactSound = this.impactSound;
             DamageAPI.AddModdedDamageType(attack, SettPlugin.settDamage);
         }
