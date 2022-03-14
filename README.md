@@ -6,10 +6,11 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.3.4`
+## Latest Patch Notes `4.3.5`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Forgot to add check to see if M1 is held down when Sett's auto attack resets
+* Fixed an issue where Sett's basic attacks were not doing the correct damage 
+* Fixed an issue where Sett's basic attacks duration and earlyexittime was incorrect
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -55,6 +56,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.3.4`
+* Forgot to add check to see if M1 is held down when Sett's auto attack resets
+
 `4.3.3`
 * Updated to use latest Bepinexpack
 * Bugfix: Sett's auto attack reset on crit now interrupts the current auto attack instead of the next auto
