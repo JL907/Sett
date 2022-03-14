@@ -86,6 +86,9 @@ namespace SettMod.SkillStates.BaseStates
                     this.outer.SetNextState(new BaseMeleeAttack
                     {
                         swingIndex = index,
+                        baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
+                        baseEarlyExitTime = index % 2 == 0 ? 0.48f : 0.68f,
+                        damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value
                     });
                 }
                 return;
@@ -243,6 +246,9 @@ namespace SettMod.SkillStates.BaseStates
                             this.outer.SetNextState(new BaseMeleeAttack
                             {
                                 swingIndex = index,
+                                baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
+                                baseEarlyExitTime = index % 2 == 0 ? 0.48f : 0.68f,
+                                damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value,
                                 extraDamage = true
                             });
                         }
