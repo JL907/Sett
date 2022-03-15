@@ -13,11 +13,11 @@ namespace SettMod.Modules
 
         internal static void RegisterStates()
         {
-            entityStates.Add(typeof(BaseMeleeAttack));
+            entityStates.Add(typeof(KnuckleDown));
 
             entityStates.Add(typeof(Facebreaker));
 
-            entityStates.Add(typeof(Roll2));
+            entityStates.Add(typeof(Dash));
 
             entityStates.Add(typeof(SettMain));
 

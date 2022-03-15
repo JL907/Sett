@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SettMod.SkillStates
 {
-    public class Roll2 : BaseSkillState
+    public class Dash : BaseSkillState
     {
         public static float duration = 0.4f;
         public static float maxSpeed = 35f;
@@ -22,19 +22,16 @@ namespace SettMod.SkillStates
 
             base.characterMotor.Motor.ForceUnground();
             base.characterMotor.disableAirControlUntilCollision = false;
-            this.dashVelocity = Roll2.CalculateLungeVelocity(base.characterMotor.velocity, base.GetAimRay().direction, Roll2.duration, Roll2.minSpeed, Roll2.maxSpeed);
+            this.dashVelocity = Dash.CalculateLungeVelocity(base.characterMotor.velocity, this.GetAimRay().direction, Dash.duration, Dash.minSpeed, Dash.maxSpeed);
             base.characterMotor.velocity = this.dashVelocity;
             base.characterDirection.forward = base.characterMotor.velocity.normalized;
             this.dashSpeed = base.characterMotor.velocity.magnitude;
 
             base.PlayCrossfade("FullBody, Override", "Roll", "Roll.playbackRate", 0.7f, 0.05f);
-            Util.PlaySound(Roll2.dodgeSoundString, base.gameObject);
+            Util.PlaySound(Dash.dodgeSoundString, base.gameObject);
         }
 
-#pragma warning disable CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
-
         protected Ray GetAimRay()
-#pragma warning restore CS0108 // 'Roll2.GetAimRay()' hides inherited member 'BaseState.GetAimRay()'. Use the new keyword if hiding was intended.
         {
             if (base.inputBank)
             {
@@ -51,7 +48,7 @@ namespace SettMod.SkillStates
 
         private void AttemptSlam()
         {
-            Ray aimRay = base.GetAimRay();
+            Ray aimRay = this.GetAimRay();
 
             BullseyeSearch search = new BullseyeSearch
             {
@@ -83,7 +80,7 @@ namespace SettMod.SkillStates
         {
             base.FixedUpdate();
 
-            if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = Mathf.Lerp(Roll2.dodgeFOV, 60f, base.fixedAge / Roll2.duration);
+            if (base.cameraTargetParams) base.cameraTargetParams.fovOverride = Mathf.Lerp(Dash.dodgeFOV, 60f, base.fixedAge / Dash.duration);
 
             base.characterMotor.velocity = this.dashVelocity;
             base.characterDirection.forward = this.dashVelocity;
@@ -91,7 +88,7 @@ namespace SettMod.SkillStates
 
             this.AttemptSlam();
 
-            if (base.fixedAge >= Roll2.duration && isAuthority)
+            if (base.fixedAge >= Dash.duration && isAuthority)
             {
                 this.outer.SetNextStateToMain();
                 return;

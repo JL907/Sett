@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 
 namespace SettMod.SkillStates.BaseStates
 {
-    public class BaseMeleeAttack : BaseSkillState
+    public class KnuckleDown : BaseSkillState
     {
         public static float baseDurationBeforeInterruptable;
         public float duration;
@@ -136,7 +136,7 @@ namespace SettMod.SkillStates.BaseStates
             if (index == 0) index = 1;
             else index = 0;
 
-            this.outer.SetNextState(new BaseMeleeAttack
+            this.outer.SetNextState(new KnuckleDown
             {
                 swingIndex = index
             });
@@ -219,12 +219,12 @@ namespace SettMod.SkillStates.BaseStates
             else index = 0;
             EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
             if (component && component.state.isAuthority
-                && (!(component.state is Roll2))
+                && (!(component.state is Dash))
                 && (!(component.state is HayMaker))
                 && (!(component.state is Facebreaker))
                 && (!(component.state is ShowStopper)))
             {
-                this.outer.SetNextState(new BaseMeleeAttack
+                this.outer.SetNextState(new KnuckleDown
                 {
                     swingIndex = index,
                     baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
