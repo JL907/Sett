@@ -13,7 +13,6 @@ namespace SettMod.SkillStates.BaseStates
         public static float baseDurationBeforeInterruptable;
         public float duration;
         public int swingIndex;
-
         protected Animator animator;
         protected float attackRecoil = 1.15f;
         protected float baseDuration = 0.9f;
@@ -24,25 +23,24 @@ namespace SettMod.SkillStates.BaseStates
         protected string hitboxName = "Sword";
         protected GameObject hitEffectPrefab;
         protected float hitHopVelocity = 4f;
-        protected string hitSoundString = "";
-        protected NetworkSoundEventIndex impactSound;
+        protected string hitSoundString = "SettHitSFX";
+        protected NetworkSoundEventIndex impactSound = Modules.Assets.swordHitSoundEvent.index;
         protected bool inHitPause;
         protected string muzzleString = "SwingCenter";
         protected float procCoefficient = 1f;
         protected float pushForce = 300f;
         protected float stopwatch;
-        protected GameObject swingEffectPrefab;
-        protected string swingSoundString = "";
+        protected GameObject swingEffectPrefab = Modules.Assets.swordSwingEffect;
+        protected string swingSoundString = "SettHitVO";
         private OverlapAttack attack;
-        private float durationBeforeInterruptable;
         private float earlyExitDuration;
+        private bool extraDamage;
         private bool hasFired;
         private bool hasHopped;
         private float hitPauseTimer;
         private BaseState.HitStopCachedState hitStopCachedState;
         private Transform modelBaseTransform;
         private Vector3 storedVelocity;
-        private bool extraDamage;
 
         public override void FixedUpdate()
         {
@@ -73,24 +71,7 @@ namespace SettMod.SkillStates.BaseStates
             }
             if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
             {
-                int index = this.swingIndex;
-                if (index == 0) index = 1;
-                else index = 0;
-                EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
-                if (component && component.state.isAuthority
-                    && (!(component.state is Roll2))
-                    && (!(component.state is HayMaker))
-                    && (!(component.state is Facebreaker))
-                    && (!(component.state is ShowStopper)))
-                {
-                    this.outer.SetNextState(new BaseMeleeAttack
-                    {
-                        swingIndex = index,
-                        baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
-                        baseEarlyExitTime = index % 2 == 0 ? 0.48f : 0.68f,
-                        damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value
-                    });
-                }
+                this.NextSwing(false);
                 return;
             }
 
@@ -116,26 +97,14 @@ namespace SettMod.SkillStates.BaseStates
         {
             base.OnEnter();
             this.hasFired = false;
-            base.characterBody.outOfCombatStopwatch = 0f;
+            this.modelBaseTransform = base.GetModelTransform();
+            this.animator = base.GetModelAnimator();
 
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.earlyExitDuration = this.duration * this.baseEarlyExitTime;
 
-            this.durationBeforeInterruptable = this.duration;
-
-            this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
             this.muzzleString = this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
-            this.swingSoundString = "SettHitVO";
-            this.hitSoundString = "SettHitSFX";
-            this.impactSound = Modules.Assets.swordHitSoundEvent.index;
-
-            HitBoxGroup hitBoxGroup = null;
-
-            this.modelBaseTransform = base.GetModelTransform();
-            this.animator = base.GetModelAnimator();
             base.StartAimMode(0.5f, false);
-
-            hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 
             if (this.animator.GetBool("isMoving") || (!(this.animator.GetBool("isGrounded"))))
             {
@@ -146,28 +115,13 @@ namespace SettMod.SkillStates.BaseStates
                 base.PlayCrossfade("FullBody, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
             }
 
-            this.attack = new OverlapAttack();
-            this.attack.damageType = this.damageType;
-            this.attack.attacker = base.gameObject;
-            this.attack.inflictor = base.gameObject;
-            this.attack.teamIndex = base.GetTeam();
-            this.attack.damage = this.damageCoefficient * this.damageStat * (this.extraDamage ? 2 : 1);
-            this.attack.procCoefficient = this.procCoefficient;
-            this.attack.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
-            this.attack.forceVector = this.bonusForce;
-            this.attack.pushAwayForce = this.pushForce;
-            this.attack.hitBoxGroup = hitBoxGroup;
-            this.attack.isCrit = base.RollCrit(); ;
-            this.attack.impactSound = this.impactSound;
-            DamageAPI.AddModdedDamageType(attack, SettPlugin.settDamage);
+            this.CreateAttack();
         }
 
         public override void OnExit()
         {
-            if (!this.hasFired) this.FireAttack();
-            //this.animator.SetBool("attacking", false);
-            //base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.OnExit();
+            if (!this.hasFired) this.FireAttack();
         }
 
         public override void OnSerialize(NetworkWriter writer)
@@ -186,6 +140,27 @@ namespace SettMod.SkillStates.BaseStates
             {
                 swingIndex = index
             });
+        }
+
+        private void CreateAttack()
+        {
+            HitBoxGroup hitBoxGroup = null;
+            hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+
+            this.attack = new OverlapAttack();
+            this.attack.damageType = this.damageType;
+            this.attack.attacker = base.gameObject;
+            this.attack.inflictor = base.gameObject;
+            this.attack.teamIndex = base.GetTeam();
+            this.attack.damage = this.damageCoefficient * this.damageStat * (this.extraDamage ? 2 : 1);
+            this.attack.procCoefficient = this.procCoefficient;
+            this.attack.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
+            this.attack.forceVector = this.bonusForce;
+            this.attack.pushAwayForce = this.pushForce;
+            this.attack.hitBoxGroup = hitBoxGroup;
+            this.attack.isCrit = base.RollCrit(); ;
+            this.attack.impactSound = this.impactSound;
+            DamageAPI.AddModdedDamageType(attack, SettPlugin.settDamage);
         }
 
         private void FireAttack()
@@ -229,32 +204,34 @@ namespace SettMod.SkillStates.BaseStates
                         this.inHitPause = true;
                     }
 
-                    
-
-                    if(this.attack.isCrit && base.inputBank.skill1.down)
+                    if (this.attack.isCrit && base.inputBank.skill1.down)
                     {
-                        int index = this.swingIndex;
-                        if (index == 0) index = 1;
-                        else index = 0;
-                        EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
-                        if (component && component.state.isAuthority
-                            && (!(component.state is Roll2))
-                            && (!(component.state is HayMaker))
-                            && (!(component.state is Facebreaker))
-                            && (!(component.state is ShowStopper)))
-                        {
-                            this.outer.SetNextState(new BaseMeleeAttack
-                            {
-                                swingIndex = index,
-                                baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
-                                baseEarlyExitTime = index % 2 == 0 ? 0.48f : 0.68f,
-                                damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value,
-                                extraDamage = true
-                            });
-                        }
+                        this.NextSwing(true);
                     }
-                    
                 }
+            }
+        }
+
+        private void NextSwing(bool isCrit)
+        {
+            int index = this.swingIndex;
+            if (index == 0) index = 1;
+            else index = 0;
+            EntityStateMachine component = this.transform.GetComponent<EntityStateMachine>();
+            if (component && component.state.isAuthority
+                && (!(component.state is Roll2))
+                && (!(component.state is HayMaker))
+                && (!(component.state is Facebreaker))
+                && (!(component.state is ShowStopper)))
+            {
+                this.outer.SetNextState(new BaseMeleeAttack
+                {
+                    swingIndex = index,
+                    baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
+                    baseEarlyExitTime = index % 2 == 0 ? 0.48f : 0.68f,
+                    damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value,
+                    extraDamage = isCrit ? true : false
+                });
             }
         }
     }
