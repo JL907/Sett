@@ -56,7 +56,7 @@ namespace SettMod.Modules.Survivors
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = settMat,
+                    material = settMat
                 }};
 
         internal override Type characterMainState { get; set; } = typeof(SettMain);
