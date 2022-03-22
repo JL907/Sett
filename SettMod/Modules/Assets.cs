@@ -61,7 +61,7 @@ namespace SettMod.Modules
             mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
             mat.SetFloat("_NormalStrength", normalStrength);
 
-            return mat;
+            return tempMat;
         }
 
         public static Material CreateMaterial(string materialName)

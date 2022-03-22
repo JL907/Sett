@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2824746848
+CRC: 984421943
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 66a5e5d06a330a4a29557bdc2c4be625
+    Hash: 97a934e7a42aa9dbe094b225c0040a40
   TypeTreeHash:
     serializedVersion: 2
-    Hash: bfdae5124fcadf143abc9be204a4d828
+    Hash: a9aa8215a20856cf0ab8127f267c4dbe
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -26,6 +26,8 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 74
+  Script: {instanceID: 0}
+- Class: 89
   Script: {instanceID: 0}
 - Class: 90
   Script: {instanceID: 0}
@@ -199,7 +201,6 @@ Assets:
 - Assets/Sett/model/firecrackerMesh.mesh
 - Assets/Sett/fonts/BOMBARD_.ttf
 - Assets/Sett/VFX/Textures/sett_base_distort_rgba.dds
-- Assets/Sett/materials/New Material.mat
 - Assets/Sett/VFX/Textures/sett_emote_blush.dds
 - Assets/Sett/icons/sett_circle_8.dds
 - Assets/Sett/VFX/Textures/texLightning.tif
