@@ -6,11 +6,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.3.6`
+## Latest Patch Notes `4.3.7`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Updated to use latest R2API
-* Updated Sett's Shader
+* Sett sound attenuation lowered to 100 meters down from 200 meters
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -56,6 +55,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.3.6`
+* Updated to use latest R2API
+* Updated Sett's Shader
+
 `4.3.5`
 * Fixed an issue where Sett's basic attacks were not doing the correct damage 
 * Fixed an issue where Sett's basic attacks duration and earlyexittime was incorrect
