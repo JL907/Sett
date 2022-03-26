@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C7295FBA-D85F-4D28-8135-E8E7329D9FD8}" SchemaVersion="89">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{C7295FBA-D85F-4D28-8135-E8E7329D9FD8}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="SettBank" ID="{57EE812B-1390-476F-B50C-1151A70565B6}">
+					<ObjectInclusionList>
+						<ObjectRef Name="SettMenuSFX" ID="{CAA4955D-6CF0-43B7-92BC-BB99EA748AB8}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Hit" ID="{491678CF-1866-4461-AECB-2DCC2849BBA8}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettRVO" ID="{3F5AF9EB-28C3-44BE-8329-E8C56A523E9C}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettRSFX" ID="{EFBE653E-6BA2-46DB-8D6F-AD8DC842E294}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettWSFX" ID="{E3CD04A7-B22D-46E6-B9B2-5F2C461BFED6}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="VOHIT" ID="{DDCD78E5-89E6-472F-A4A5-41C58C1FED07}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettRImpact" ID="{C5627ACB-2442-479A-8417-AF2830FDEF9B}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettDash" ID="{40F1251A-C6AE-484A-8542-C97AF4099CA4}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettEVO" ID="{6F25E852-CB03-485A-BFB1-54B7CF461AFA}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Death" ID="{6D59BDE6-03C5-4A87-B114-F1244B4E091A}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="MenuSound" ID="{C0193FE9-8278-4CA2-BEAE-AB6E5931C02F}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Swing" ID="{430568A0-E777-4E3A-9E01-D9A30F47EB54}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettWVO" ID="{8E605E47-8016-4F21-8434-4B7813D758F1}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="SettESFX" ID="{F3D4A43E-2E83-4FFA-9C2A-3E544913F231}" WorkUnitID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

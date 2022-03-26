@@ -1,0 +1,41 @@
+Event	ID	Name			Wwise Object Path	Notes
+	975591590	PowerSlamVO			\Default Work Unit\PowerSlamVO	
+	1116398592	Hit			\Default Work Unit\Hit	
+	1532899911	PowerSlam			\Default Work Unit\PowerSlam	
+	2138858954	FaceBreaker			\Default Work Unit\FaceBreaker	
+	2465316875	VOHIT			\Default Work Unit\VOHIT	
+	2817733068	PlayNice			\Default Work Unit\PlayNice	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	48835020	68839073	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\68839073_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\68839073		9076
+	59126964	746109078	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\746109078_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\746109078		12280
+	81546599	269847681	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\269847681_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\269847681		7398
+	89560628	131842364	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\131842364_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\131842364		10711
+	210673516	537944164	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\537944164_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\VOHit\537944164		8412
+	286991458	197911993	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\197911993_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\197911993		10822
+	307705509	18718757	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\18718757_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\18718757		7327
+	337452336	303706326	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\303706326_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\303706326		8940
+	340442933	153332019	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\153332019_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\153332019		9372
+	409264362	102627183	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\102627183_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\VOHit\102627183		6674
+	416498992	167562216	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\167562216_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\167562216		13224
+	423566998	134762493	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\134762493_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\134762493		8096
+	530109862	739854810	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\739854810_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\739854810		18412
+	543168062	738309911	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\738309911_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\VOHit\738309911		7669
+	554839381	310749678	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\310749678_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\310749678		8384
+	575443414	189958465	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\189958465_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\189958465		12082
+	627254952	145875936	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\145875936_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\145875936		7820
+	632465909	4361110	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\4361110_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\4361110		11451
+	674053136	55935146	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\55935146_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\VOHit\55935146		7351
+	735896382	296294238	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\296294238_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\PowerSlam\296294238		25683
+	779844880	1066818049	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\1066818049_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\VOHit\1066818049		11729
+	908362427	193228366	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\193228366_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\193228366		11994
+	950868700	236914936	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\236914936_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\236914936		6449
+	966522622	706012001	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\706012001_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\PowerSlam\706012001		24944
+	988465059	90450655	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\90450655_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\90450655		10815
+	1040449469	740000307	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\740000307_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett VO\740000307		12023
+	1044199059	61784837	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\61784837_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\61784837		9210
+	1066292399	369836552	C:\Users\Johnrey\Documents\WwiseProjects\Sett\.cache\Windows\SFX\369836552_A1793BE9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX mixer\Sett SFX\Hit\369836552		8030
+

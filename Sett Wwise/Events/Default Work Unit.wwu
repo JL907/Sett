@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{00B7440D-5043-4DB1-9697-FD98F81B4DE7}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="SettHitSFX" ID="{491678CF-1866-4461-AECB-2DCC2849BBA8}">
+					<ChildrenList>
+						<Action Name="" ID="{F021C0E9-B7CF-4EE3-ADEE-6D9F916A7785}" ShortID="54399942">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hit" ID="{C0C60349-0931-4C77-957E-83719134CB31}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettWSFX" ID="{E3CD04A7-B22D-46E6-B9B2-5F2C461BFED6}">
+					<ChildrenList>
+						<Action Name="" ID="{D6C3ADAA-F863-45FB-9D52-1E68E116CAC7}" ShortID="412977792">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="PowerSlam" ID="{07AB093D-B6D6-416C-B234-E5093A743F2A}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettRVO" ID="{3F5AF9EB-28C3-44BE-8329-E8C56A523E9C}">
+					<ChildrenList>
+						<Action Name="" ID="{F285E364-198D-45EB-A552-2BB8B34EA1B2}" ShortID="507088185">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettRVO" ID="{A0D728A7-6445-4B7B-8F02-87256343AB2D}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettHitVO" ID="{DDCD78E5-89E6-472F-A4A5-41C58C1FED07}">
+					<ChildrenList>
+						<Action Name="" ID="{2F433670-27C0-45A5-BA56-71A1DA85E827}" ShortID="484261407">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VOHit" ID="{028143CB-84FA-4807-A182-B66A79FDC71B}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettEVO" ID="{6F25E852-CB03-485A-BFB1-54B7CF461AFA}">
+					<ChildrenList>
+						<Action Name="" ID="{59C4AE22-BE6B-4F9F-AD40-3F423F43DA5E}" ShortID="773541270">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettEVO" ID="{8072DB4E-FD84-4068-A60B-79E3637365F9}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettESFX" ID="{F3D4A43E-2E83-4FFA-9C2A-3E544913F231}">
+					<ChildrenList>
+						<Action Name="" ID="{94E4494F-818B-49C9-8291-7FCC0A6298FA}" ShortID="119265766">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="145729953" ID="{42BA7701-28B1-4D37-B753-9E7D0CAF192F}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettRSFX" ID="{EFBE653E-6BA2-46DB-8D6F-AD8DC842E294}">
+					<ChildrenList>
+						<Action Name="" ID="{A33088AD-5D76-43C9-B976-7BB309D59F84}" ShortID="1002256985">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="18836543" ID="{1DDB40D9-24CE-48B7-BADD-2C3D3300BFE3}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettRImpact" ID="{C5627ACB-2442-479A-8417-AF2830FDEF9B}">
+					<ChildrenList>
+						<Action Name="" ID="{9218120D-A069-4E59-A41D-4494642BF165}" ShortID="32638477">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="619210767" ID="{0B0923A3-8DBB-4243-AAB7-D074BFBE33D3}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettDash" ID="{40F1251A-C6AE-484A-8542-C97AF4099CA4}">
+					<ChildrenList>
+						<Action Name="" ID="{E1676F78-AC08-4237-B4DA-A1A6E21924AF}" ShortID="696135058">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="918820742" ID="{2FDC78B3-E6A4-4042-B58C-17C8F336FF11}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettWVO" ID="{8E605E47-8016-4F21-8434-4B7813D758F1}">
+					<ChildrenList>
+						<Action Name="" ID="{DD30B10F-35E3-49C7-B999-8D33BA877F0B}" ShortID="392462934">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettWVO" ID="{08DF3A8D-86EA-40B1-877B-69F99EA7744B}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettMenuVO" ID="{C0193FE9-8278-4CA2-BEAE-AB6E5931C02F}">
+					<ChildrenList>
+						<Action Name="" ID="{15434E20-B213-4253-8426-0A618283A059}" ShortID="804952545">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MenuSound" ID="{C4E70D1D-6C56-4A30-B366-49259F531820}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettSwing" ID="{430568A0-E777-4E3A-9E01-D9A30F47EB54}">
+					<ChildrenList>
+						<Action Name="" ID="{FCAF5940-BB1D-43BE-825D-CEC37C1B1E6A}" ShortID="662281487">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Swing" ID="{BF232AFD-44C1-4CFD-B54E-2F66A03B0EED}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettMenuSFX" ID="{CAA4955D-6CF0-43B7-92BC-BB99EA748AB8}">
+					<ChildrenList>
+						<Action Name="" ID="{99FF89C5-B5A9-4023-960D-062B181C7A46}" ShortID="919331877">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="411347999" ID="{B61CDBAF-C078-4358-828E-8A9F2626926C}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettDeath" ID="{6D59BDE6-03C5-4A87-B114-F1244B4E091A}">
+					<ChildrenList>
+						<Action Name="" ID="{5B3FFDE3-E43B-4BB8-B50D-4CE3E59B65D4}" ShortID="780731288">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="307630258" ID="{5952439D-15E1-4FAC-B8FE-576D3186A13F}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettTaunt" ID="{C832E016-C6DF-41AA-9521-17BB92C506A1}">
+					<ChildrenList>
+						<Action Name="" ID="{601F7A90-E038-48C8-BC5A-0A29FE4AFF6D}" ShortID="799940980">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettTaunt" ID="{F8E52409-28CF-47AE-ABBD-8E77A67E2AFF}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettLaugh" ID="{D3E7108A-23E8-4B06-B99D-C4911DF63270}">
+					<ChildrenList>
+						<Action Name="" ID="{FE2DB1B8-7741-4ECC-8D6B-8550911205A9}" ShortID="821374279">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettLaugh" ID="{B54CCCC1-4ED3-4F26-9550-67FC406554B9}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettJoke" ID="{0829FB84-9389-4DF5-8487-836865F5839E}">
+					<ChildrenList>
+						<Action Name="" ID="{BEBDF6CA-D082-4185-A3DE-02E91A5FB45C}" ShortID="711716692">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+								<Property Name="Delay" Type="Real64" Value="3.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettJoke" ID="{185440DC-641C-4162-A65A-554DA7FABF8C}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettBossQuote" ID="{1CF170F6-EED0-451D-AF1C-A023A0AEC25E}">
+					<ChildrenList>
+						<Action Name="" ID="{694CE799-EC82-4583-A558-5629CFDFAE34}" ShortID="815696580">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettBossQuote" ID="{E621BDFC-0EA7-42D7-B038-72BF9C1BB6D1}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettBossKill" ID="{4D92CFEA-AD0A-43C0-95EC-7A11DD500A96}">
+					<ChildrenList>
+						<Action Name="" ID="{8FB27F3E-2BD1-46A1-A6C9-9215B355ED66}" ShortID="138073640">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettBossKill" ID="{35C03D14-67C7-403E-ACB1-D6ACEE6A9E71}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettTeleport" ID="{09047C75-3A00-432D-86B3-6733E586A44D}">
+					<ChildrenList>
+						<Action Name="" ID="{421F6928-37E2-4614-91E3-AFCCC54750A2}" ShortID="972189153">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettTeleport" ID="{DC21F690-E445-46ED-8456-C50C921AC3DC}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="SettWalkQuote" ID="{4EDDBF44-3EE8-4707-B1BD-D38738649FDE}">
+					<ChildrenList>
+						<Action Name="" ID="{A21B2301-02B6-4A5C-845D-970078CD7933}" ShortID="900856859">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SettWalkQuote" ID="{23DD48C8-7BDB-472C-92F5-AC291C595D53}" WorkUnitID="{528EB523-BB89-4D9C-A4E6-A420FAE8A3C7}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
