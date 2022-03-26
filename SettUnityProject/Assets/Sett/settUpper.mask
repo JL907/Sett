@@ -1,0 +1,291 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: settUpper
+  m_Mask: 00000000010000000100000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Mesh_0
+    m_Weight: 0
+  - m_Path: model
+    m_Weight: 0
+  - m_Path: model/Buffbone_Cstm_Healthbar
+    m_Weight: 0
+  - m_Path: model/Buffbone_Glb_Channel_Loc
+    m_Weight: 0
+  - m_Path: model/Buffbone_Glb_Ground_Loc
+    m_Weight: 0
+  - m_Path: model/Buffbone_Glb_Weapon_1
+    m_Weight: 0
+  - m_Path: model/C_Buffbone_Glb_Center_Loc
+    m_Weight: 0
+  - m_Path: model/C_Buffbone_Glb_Layout_Loc
+    m_Weight: 0
+  - m_Path: model/C_Buffbone_Glb_Overhead_Loc
+    m_Weight: 0
+  - m_Path: model/Photo
+    m_Weight: 0
+  - m_Path: model/Root
+    m_Weight: 0
+  - m_Path: model/Root/Coattails
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/L_Coattails_Root
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/L_Coattails_Root/L_Coattails1
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/L_Coattails_Root/L_Coattails1/L_Coattails2
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/L_Coattails_Root/L_Coattails1/L_Coattails2/L_Coattails3
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/R_Coattails_Root
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/R_Coattails_Root/R_Coattails1
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/R_Coattails_Root/R_Coattails1/R_Coattails2
+    m_Weight: 0
+  - m_Path: model/Root/Coattails/R_Coattails_Root/R_Coattails1/R_Coattails2/R_Coattails3
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/L_Hip
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/L_Hip/L_KneeUpper
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/L_Hip/L_KneeUpper/L_KneeLower
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/L_Hip/L_KneeUpper/L_KneeLower/L_Foot
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/L_Hip/L_KneeUpper/L_KneeLower/L_Foot/L_Buffbone_Glb_Foot_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/L_Hip/L_KneeUpper/L_KneeLower/L_Foot/L_Toe
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/R_Hip
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/R_Hip/R_KneeUpper
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/R_Hip/R_KneeUpper/R_KneeLower
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/R_Hip/R_KneeUpper/R_KneeLower/R_Foot
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/R_Hip/R_KneeUpper/R_KneeLower/R_Foot/R_Buffbone_Glb_Foot_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Pelvis/R_Hip/R_KneeUpper/R_KneeLower/R_Foot/R_Toe
+    m_Weight: 0
+  - m_Path: model/Root/Spine1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/C_BackArmor
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/C_Buffbone_Glb_Chest_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/C_Lower_Jets
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Fur1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Fur1/L_Fur2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Forearm_Fur
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Buffbone_Glb_Ablility_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Buffbone_Glb_Hand_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Index1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Index1/L_Index2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Index1/L_Index2/L_Index3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Knuckles
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Knuckles/L_Knuckle_Index
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Knuckles/L_Knuckle_Middle
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Knuckles/L_Knuckle_Pinky
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Knuckles/L_Knuckle_Ring
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Middle1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Middle1/L_Middle2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Middle1/L_Middle2/L_Middle3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Pinky1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Pinky1/L_Pinky2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Pinky1/L_Pinky2/L_Pinky3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Ring1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Ring1/L_Ring2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Ring1/L_Ring2/L_Ring3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Thumb1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Thumb1/L_Thumb2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Clavicle/L_Shoulder/L_Elbow/L_Hand/L_Thumb1/L_Thumb2/L_Thumb3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Emblem
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Fur_Tassle1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Fur_Tassle1/L_Fur_Tassle2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Fur_Tassle1/L_Fur_Tassle2/L_Fur_Tassle3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Jet
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Side_JetArmor
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/L_Upper_JetArmor
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/BackHair
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/C_Buffbone_Glb_Head_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/Hair_Front1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/Hair_Front1/Hair_Front2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/Jaw
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/L_Brow
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/L_Ear1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/L_Ear1/L_Ear2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/L_Ear1/L_Ear2/L_Ear3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/L_MouthCrnr
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/R_Brow
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/R_Ear1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/R_Ear1/R_Ear2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/R_Ear1/R_Ear2/R_Ear3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/Neck/Head/R_MouthCrnr
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Fur1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Fur1/R_Fur2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Forearm_Fur
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Buffbone_Glb_Ablility_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Buffbone_Glb_Hand_Loc
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Index1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Index1/R_Index2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Index1/R_Index2/R_Index3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Knuckles
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Knuckles/R_Knuckle_Index
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Knuckles/R_Knuckle_Middle
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Knuckles/R_Knuckle_Pinky
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Knuckles/R_Knuckle_Ring
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Middle1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Middle1/R_Middle2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Middle1/R_Middle2/R_Middle3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Pinky1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Pinky1/R_Pinky2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Pinky1/R_Pinky2/R_Pinky3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Ring1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Ring1/R_Ring2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Ring1/R_Ring2/R_Ring3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Thumb1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Thumb1/R_Thumb2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Clavicle/R_Shoulder/R_Elbow/R_Hand/R_Thumb1/R_Thumb2/R_Thumb3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Emblem
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Fur_Tassle1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Fur_Tassle1/R_Fur_Tassle2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Fur_Tassle1/R_Fur_Tassle2/R_Fur_Tassle3
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Jet
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Side_JetArmor
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Chest/R_Upper_JetArmor
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Fur
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Fur/FurA1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Fur/FurA1/FurA2
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Fur/FurB1
+    m_Weight: 0
+  - m_Path: model/Root/Spine1/Spine2/Fur/FurB1/FurB2
+    m_Weight: 0
+  - m_Path: model/Vfx_Root
+    m_Weight: 0
+  - m_Path: model/Vfx_Root/Vfx_Main
+    m_Weight: 0
+  - m_Path: model/Vfx_Root/Vfx_Main/Vfx_Lower_Jaw
+    m_Weight: 0
+  - m_Path: model/Vfx_Root/Vfx_Main/Vfx_Upper_Jaw
+    m_Weight: 0
+  - m_Path: model/Vfx_Root/Vfx_Main/Vfx_Upper_Jaw/Vfx_Ears
+    m_Weight: 0
+  - m_Path: model/Vfx_Root/Vfx_Main/Vfx_Upper_Jaw/Vfx_Nose
+    m_Weight: 0
