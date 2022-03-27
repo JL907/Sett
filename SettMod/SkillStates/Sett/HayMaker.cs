@@ -2,6 +2,8 @@
 using R2API;
 using RoR2;
 using SettMod.Modules;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
@@ -136,56 +138,47 @@ namespace SettMod.SkillStates
 
         private void Fire()
         {
-            Ray aimRay = base.GetAimRay();
-            foreach (Collider collider in Physics.OverlapSphere(this.slamIndicatorInstance.transform.position, 15f))
+            List<HurtBox> HurtBoxes = new List<HurtBox>();
+            HurtBoxes = new SphereSearch
             {
-                Vector3 position = collider.transform.position;
-                Vector3 normalized = (aimRay.origin - position).normalized;
-                //if (Vector3.Angle(-normalized, aimRay.direction) <= 45)
-                HealthComponent component = collider.GetComponent<HealthComponent>();
-                if (component)
+                radius = 15f,
+                mask = LayerIndex.entityPrecise.mask,
+                origin = this.slamIndicatorInstance.transform.position
+            }.RefreshCandidates().FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex)).FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();
+
+            foreach (HurtBox hurtbox in HurtBoxes)
+            {
+                float _level = Mathf.Floor(base.characterBody.level / 4f);
+                float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
+
+                DamageInfo damageInfo = new DamageInfo();
+                damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
+                damageInfo.attacker = base.gameObject;
+                damageInfo.inflictor = base.gameObject;
+                damageInfo.force = Vector3.zero;
+                damageInfo.crit = base.RollCrit();
+                damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
+                damageInfo.position = hurtbox.gameObject.transform.position;
+                damageInfo.damageType = DamageType.BypassArmor;
+                DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
+                hurtbox.healthComponent.TakeDamage(damageInfo);
+
+                GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
+                if (hitEffectPrefab)
                 {
-                    TeamComponent component2 = collider.GetComponent<TeamComponent>();
-                    bool flag = false;
-                    if (component2)
+                    EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
                     {
-                        flag = (component2.teamIndex == base.GetTeam());
-                    }
-                    if (!flag)
-                    {
-                        float _level = Mathf.Floor(base.characterBody.level / 4f);
-                        float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
-
-                        DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
-                        damageInfo.attacker = base.gameObject;
-                        damageInfo.inflictor = base.gameObject;
-                        damageInfo.force = Vector3.zero;
-                        damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
-                        damageInfo.position = component.transform.position;
-                        damageInfo.damageType = DamageType.BypassArmor;
-                        DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
-                        component.TakeDamage(damageInfo);
-
-                        GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
-                        if (hitEffectPrefab)
-                        {
-                            EffectManager.SpawnEffect(hitEffectPrefab, new EffectData
-                            {
-                                origin = component.gameObject.transform.position,
-                                rotation = Util.QuaternionSafeLookRotation(normalized),
-                                networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
-                            }, true);
-                        }
-
-                        GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
-                        GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
-
-                    }
+                        origin = hurtbox.healthComponent.gameObject.transform.position,
+                        rotation = Quaternion.identity,
+                        networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
+                    }, true);
                 }
+
+                GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.gameObject);
+                GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.gameObject);
             }
         }
+
         private void CreateIndicator()
         {
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
