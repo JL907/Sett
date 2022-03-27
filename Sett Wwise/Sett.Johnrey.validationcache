@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ValidationCache Version="1" SchemaVersion="97">
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Virtual Acoustics\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Triggers\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Switches\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\States\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\SoundBanks\Default Work Unit.wwu" DateLow="1647020357" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Sett.wproj" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Sett.Johnrey.wsettings" DateLow="1648056956" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Queries\Factory Queries.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Queries\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Presets\Factory Spatial Audio.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Presets\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Modulators\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Mixing Sessions\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Game Parameters\Default Work Unit.wwu" DateLow="1647035465" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Events\Default Work Unit.wwu" DateLow="1647020357" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Effects\Factory Effects.wwu" DateLow="1647160527" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Effects\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Conversion Settings\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Control Surface Sessions\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Audio Devices\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Attenuations\Default Work Unit.wwu" DateLow="1648056956" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett\Sett Wwise\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1647160527" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett Wwise\Virtual Acoustics\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett Wwise\Triggers\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>
 	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Sett Wwise\Switches\Default Work Unit.wwu" DateLow="1646380706" DateHigh="0"/>

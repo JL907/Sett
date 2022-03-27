@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Johnrey\Desktop\Sett Wwise\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Johnrey\Desktop\Sett Wwise\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Johnrey\Desktop\Sett Wwise\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Johnrey\Desktop\Sett Wwise\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="3776814435" Language="SFX" Hash="2548451600">
+		<SoundBank Id="3776814435" Language="SFX" Hash="1385003466">
 			<ObjectPath>\SoundBanks\Default Work Unit\SettBank</ObjectPath>
 			<ShortName>SettBank</ShortName>
 			<Path>SettBank.bnk</Path>
