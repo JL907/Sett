@@ -6,10 +6,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.3.8`
+## Latest Patch Notes `4.3.9`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue where Haymaker did no damage to certain enemies
+* Fixed an issue with Haymaker when player had Death Mark
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -55,6 +55,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.3.8`
+* Fixed an issue where Haymaker did no damage to certain enemies
+
 `4.3.7`
 * Sett sound attenuation lowered to 100 meters down from 200 meters
 

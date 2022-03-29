@@ -174,8 +174,8 @@ namespace SettMod.SkillStates
                     }, true);
                 }
 
-                GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.gameObject);
-                GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.gameObject);
+                GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.healthComponent.gameObject);
+                GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.healthComponent.gameObject);
             }
         }
 
