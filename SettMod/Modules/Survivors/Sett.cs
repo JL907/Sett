@@ -130,6 +130,7 @@ namespace SettMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
             });
+            ((ScriptableObject)mySkillDef).name = "SettPrimary";
             Modules.Skills.AddPrimarySkill(bodyPrefab, mySkillDef);
 
             #endregion Primary
@@ -159,7 +160,7 @@ namespace SettMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1,
             });
-
+            ((ScriptableObject)shootSkillDef).name = "SettFaceBreaker";
             Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
 
             #endregion Secondary
@@ -189,7 +190,7 @@ namespace SettMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1
             });
-
+            ((ScriptableObject)rollSkillDef).name = "SettShowStopper";
             Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
 
             #endregion Utility
@@ -219,7 +220,7 @@ namespace SettMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1
             });
-
+            ((ScriptableObject)bombSkillDef).name = "SettHayMaker";
             Modules.Skills.AddSpecialSkills(bodyPrefab, bombSkillDef);
 
             #endregion Special

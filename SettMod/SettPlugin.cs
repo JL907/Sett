@@ -13,6 +13,7 @@ using UnityEngine;
 namespace SettMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.xoxfaby.BetterUI", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     [R2APISubmoduleDependency(new string[]
@@ -37,10 +38,13 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.3.10";
+        public const string MODVERSION = "4.4.0";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
+
+        public static bool betterUIInstalled = false;
+
         private GritGauge gritGauge;
 
         public void OnDestroy()
@@ -58,27 +62,47 @@ namespace SettMod
         private void Awake()
         {
             instance = this;
-            settDamage = DamageAPI.ReserveDamageType();
+            try
+            {
+                settDamage = DamageAPI.ReserveDamageType();
+                if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterUI")) betterUIInstalled = true;
+                // load assets and read config
+                Modules.Assets.Initialize();
+                Modules.Config.ReadConfig();
+                Modules.CameraParams.InitializeParams();
+                Modules.States.RegisterStates(); // register states for networking
+                Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
+                Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
+                Modules.Tokens.AddTokens(); // register name tokens
+                Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
-            // load assets and read config
-            Modules.Assets.Initialize();
-            Modules.Config.ReadConfig();
-            Modules.CameraParams.InitializeParams();
-            Modules.States.RegisterStates(); // register states for networking
-            Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
-            Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-            Modules.Tokens.AddTokens(); // register name tokens
-            Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+                // survivor initialization
+                new Sett().Initialize();
 
-            // survivor initialization
-            new Sett().Initialize();
+                // now make a content pack and add it- this part will change with the next update
+                new Modules.ContentPacks().Initialize();
 
-            // now make a content pack and add it- this part will change with the next update
-            new Modules.ContentPacks().Initialize();
+                RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
-            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+                Hook();
 
-            Hook();
+                if (betterUIInstalled)
+                {
+                    AddBetterUI();
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e.Message + " - " + e.StackTrace);
+            }
+        }
+
+        private void AddBetterUI()
+        {
+            BetterUI.ProcCoefficientCatalog.AddSkill("SettPrimary", "Knuckle Down", 1f);
+            BetterUI.ProcCoefficientCatalog.AddSkill("SettHayMaker", "HayMaker", 1f);
+            BetterUI.ProcCoefficientCatalog.AddSkill("SettFaceBreaker", "Face Breaker", 1f);
+            BetterUI.ProcCoefficientCatalog.AddSkill("SettShowStopper", "Show Stopper", 1f);
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
