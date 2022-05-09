@@ -1,5 +1,16 @@
 # Sett
 ### SettMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
+
+<p align="center">
+  <h2>My league Mods</h2>
+</p>
+
+<p align="center">
+  <a href="https://thunderstore.io/package/lemonlust/SettMod/"><img width="128" height="128" src="https://user-images.githubusercontent.com/7343912/167464106-0d8f197a-8f71-4446-8853-57dddc300b5b.png"></a>
+  <a href="https://thunderstore.io/package/lemonlust/KatarinaMod/"><img width="128" height="128" src="https://user-images.githubusercontent.com/7343912/167464178-cdc05ba4-1a93-434b-8ef6-3cfb7de6c1f5.png"></a>
+  <a href="https://thunderstore.io/package/lemonlust/JinxMod/"><img width="128" height="128" src="https://user-images.githubusercontent.com/7343912/167464222-08ee52e6-bf9e-4117-9bd8-70636d63b03b.png"></a>
+</p>
+
 ![image](https://user-images.githubusercontent.com/7343912/158014157-fb82f5e3-f2b7-432f-b38d-766fd773d076.png)
 ![image](https://user-images.githubusercontent.com/7343912/158014660-6eebd415-35c3-465e-8acc-f13710159e8e.png)
 
