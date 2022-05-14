@@ -21,7 +21,10 @@ namespace SettMod
 
         private void PlayEffect()
         {
-            this.playID = Util.PlaySound("SettMenuVO", base.gameObject);
+            if (Modules.Config.voiceLines.Value)
+            {
+                this.playID = Util.PlaySound("SettMenuVO", base.gameObject);
+            }
             this.playID2 = Util.PlaySound("SettMenuSFX", base.gameObject);
         }
     }

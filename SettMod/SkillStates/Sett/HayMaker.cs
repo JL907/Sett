@@ -48,7 +48,7 @@ namespace SettMod.SkillStates
             if (this.stopwatch >= this.startUp && !this.hasFired)
             {
                 this.hasFired = true;
-                Util.PlaySound("SettWVO", base.gameObject);
+                if (Modules.Config.voiceLines.Value) Util.PlaySound("SettWVO", base.gameObject);
                 if (NetworkServer.active)
                 {
                     this.Fire();

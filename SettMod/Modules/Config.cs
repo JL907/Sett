@@ -38,8 +38,12 @@ namespace SettMod.Modules
         public static ConfigEntry<KeyCode> laughKeybind;
         public static ConfigEntry<KeyCode> danceKeybind;
 
+        public static ConfigEntry<bool> voiceLines;
+
+
         public static void ReadConfig()
         {
+            voiceLines = SettPlugin.instance.Config.Bind<bool>(new ConfigDefinition("00 - Other", "Voice Lines"), true, new ConfigDescription("Enable Voice Lines", null, Array.Empty<object>()));
             baseHealth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Health"), 180f, new ConfigDescription("", null, Array.Empty<object>()));
             healthGrowth = SettPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Health Growth"), 48f, new ConfigDescription("", null, Array.Empty<object>()));
 

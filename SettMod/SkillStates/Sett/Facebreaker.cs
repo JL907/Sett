@@ -57,7 +57,7 @@ namespace SettMod.SkillStates
                 {
                     this.hasFired = true;
 
-                    Util.PlaySound("SettEVO", base.gameObject);
+                    if (Modules.Config.voiceLines.Value) Util.PlaySound("SettEVO", base.gameObject);
 
                     string clip = "";
                     if (front && back)

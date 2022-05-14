@@ -102,7 +102,7 @@ namespace SettMod.SkillStates
             base.PlayCrossfade("FullBody, Override", Showstopperanim[index], "HighJump.playbackRate", ShowStopper.jumpDuration, 0.05f);
 
             Util.PlaySound("SettRSFX", base.gameObject);
-            Util.PlaySound("SettRVO", base.gameObject);
+            if (Modules.Config.voiceLines.Value) Util.PlaySound("SettRVO", base.gameObject);
 
             base.characterMotor.Motor.ForceUnground();
             base.characterMotor.velocity = base.characterMotor.velocity * 0.65f;

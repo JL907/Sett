@@ -28,12 +28,15 @@ namespace SettMod.Controllers
 
         private void Run_onRunAmbientLevelUp(Run obj)
         {
-            this.activeWalkQuotePlayID = Util.PlaySound("SettWalkQuote", base.gameObject);
+            if (Modules.Config.voiceLines.Value)
+            {
+                this.activeWalkQuotePlayID = Util.PlaySound("SettWalkQuote", base.gameObject);
+            }
         }
 
         private void BossGroup_onBossGroupDefeatedServer(BossGroup obj)
         {
-            if (!killQuotePlayed)
+            if (!killQuotePlayed && Modules.Config.voiceLines.Value)
             {
                 killQuotePlayed = true;
                 this.activeKillQuotePlayID = Util.PlaySound("SettBossKill", base.gameObject);
@@ -42,7 +45,7 @@ namespace SettMod.Controllers
 
         private void BossGroup_onBossGroupStartServer(BossGroup obj)
         {
-            if(!quotePlayed)
+            if(!quotePlayed && Modules.Config.voiceLines.Value)
             {
                 this.quotePlayed = true;
                 this.activePlayID = Util.PlaySound("SettBossQuote", base.gameObject);
@@ -51,7 +54,7 @@ namespace SettMod.Controllers
 
         private void TeleporterInteraction_onTeleporterFinishGlobal(TeleporterInteraction obj)
         {
-            if (!teleportQuotePlayed)
+            if (!teleportQuotePlayed && Modules.Config.voiceLines.Value)
             {
                 this.teleportQuotePlayed = true;
                 this.activeTeleportQuotePlayID = Util.PlaySound("SettTeleport", base.gameObject);

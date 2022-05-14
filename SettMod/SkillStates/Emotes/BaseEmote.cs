@@ -40,7 +40,7 @@ namespace SettMod.SkillStates.Emotes
             if (this.duration > 0) base.PlayAnimation("FullBody, Override", this.animString, "Emote.playbackRate", this.duration);
             else base.PlayAnimation("FullBody, Override", this.animString, "Emote.playbackRate", this.animDuration);
 
-            this.activePlayID = Util.PlaySound(soundString, base.gameObject);
+            if (Modules.Config.voiceLines.Value) this.activePlayID = Util.PlaySound(soundString, base.gameObject);
 
             if (this.normalizeModel)
             {
