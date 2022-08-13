@@ -9,9 +9,10 @@ namespace SettMod.UI
     {
         private Image gritBar;
         private Image gritBarBG;
+
         private TextMeshProUGUI gritText;
         public GritComponent source { get; set; }
-
+        
         public void Update()
         {
             this.UpdateGritGauge(Time.deltaTime);
@@ -40,11 +41,11 @@ namespace SettMod.UI
                 gritBar.fillAmount = this.source.GetCurrentGrit() / this.source.GetMaxGrit();
                 if (gritBar.fillAmount >= 1)
                 {
-                    gritBarBG.sprite = Resources.Load<Sprite>("cp_tensiontex_base00_Eff");
+                    gritBarBG.sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cp_tensiontex_base00_Eff");
                 }
                 else if (gritBar.fillAmount < 1)
                 {
-                    gritBarBG.sprite = Resources.Load<Sprite>("cp_tensiontex_base00_S3");
+                    gritBarBG.sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cp_tensiontex_base00_S3");
                 }
             }
         }

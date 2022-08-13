@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 956172223
+CRC: 2657462950
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d54220a54d5673223246c1f1fe922646
+    Hash: 6cfe57e49a6276016469d4618f7df952
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c62e26f3f51aa0164abc90f83f00e333
+    Hash: a9aa8215a20856cf0ab8127f267c4dbe
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,9 +38,9 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
@@ -114,6 +114,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
 - Assets/Sett/VFX/Materials/matSwingShadow.mat
 - Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
+- Assets/Sett/ui/greenbar.png
 - Assets/Sett/textures/skin14_0.png
 - Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
 - Assets/Sett/textures/skin13_0.png
@@ -125,6 +126,7 @@ Assets:
 - Assets/Sett/VFX/ImpactSettSlash.prefab
 - Assets/Sett/VFX/SettSwordSwingEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_spark_round_bloom.dds
+- Assets/Sett/ui/cp_lifegauge_animmask.png
 - Assets/Sett/icons/firecracker_square.png
 - Assets/Sett/VFX/Textures/sett_base_soft_noise.dds
 - Assets/Sett/VFX/Materials/matFire.mat
@@ -162,7 +164,7 @@ Assets:
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
-- Assets/Sett/ui/cp_tensiontex_06.png
+- Assets/Sett/ui/orangebar.png
 - Assets/Sett/icons/prestige_square.png
 - Assets/Sett/icons/Lethal_Tempo_rune.png
 - Assets/Sett/VFX/Textures/texRipple.png
@@ -242,6 +244,7 @@ Assets:
 - Assets/Sett/VFX/Textures/New Material 1.mat
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
 - Assets/Sett/icons/mecha_square.png
+- Assets/Sett/ui/bluebar.png
 - Assets/Sett/VFX/BombExplosionEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/settDisplay.prefab
@@ -259,6 +262,7 @@ Assets:
 - Assets/Sett/icons/texUIMainRect.png
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
+- Assets/Sett/ui/yellowbar.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
 - Assets/Sett/icons/Electrocute_rune.png
 - Assets/Sett/VFX/Materials/matFistSwing.mat
