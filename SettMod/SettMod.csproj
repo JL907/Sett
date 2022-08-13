@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 	  <Reference Include="BetterUI">
-	    <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins\BetterUI.dll</HintPath>
+	    <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\RiskOfRain2\profiles\Lemonlust Testing\BepInEx\plugins\XoXFaby-BetterUI\BetterUI.dll</HintPath>
 	  </Reference>
 	  <Reference Include="MMHOOK_RoR2">
 	    <HintPath>..\..\libs\MMHOOK_RoR2.dll</HintPath>

@@ -146,7 +146,7 @@ namespace SettMod
                     gritGauge = hud.mainUIPanel.GetComponentInChildren<GritGauge>();
                     if (!gritGauge)
                     {
-                        var gritGaugePanel = Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("GritGaugePanel"));
+                        var gritGaugePanel = Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("GritGaugePanelNew"));
                         gritGauge = gritGaugePanel.AddComponent<GritGauge>();
                         gritGaugePanel.transform.SetParent(hud.mainUIPanel.transform);
                         var rectTransform = gritGaugePanel.GetComponent<RectTransform>();

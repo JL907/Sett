@@ -8,6 +8,7 @@ namespace SettMod.UI
     public class GritGauge : MonoBehaviour
     {
         private Image gritBar;
+        private Image gritBarBG;
         private TextMeshProUGUI gritText;
         public GritComponent source { get; set; }
 
@@ -21,6 +22,8 @@ namespace SettMod.UI
             gritText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
             var _gritBar = this.gameObject.GetComponentInChildren<Transform>().Find("Grit");
             gritBar = _gritBar.GetComponent<Image>();
+            var _gritBarBG = this.gameObject.GetComponentInChildren<Transform>().Find("Background");
+            gritBarBG = _gritBarBG.GetComponent<Image>();
         }
 
         private void Start()
@@ -37,11 +40,11 @@ namespace SettMod.UI
                 gritBar.fillAmount = this.source.GetCurrentGrit() / this.source.GetMaxGrit();
                 if (gritBar.fillAmount >= 1)
                 {
-                    gritBar.color = new Color(255, 167, 0, 255);
+                    gritBarBG.sprite = Resources.Load<Sprite>("cp_tensiontex_base00_Eff");
                 }
                 else if (gritBar.fillAmount < 1)
                 {
-                    gritBar.color = new Color(255, 255, 255, 255);
+                    gritBarBG.sprite = Resources.Load<Sprite>("cp_tensiontex_base00_S3");
                 }
             }
         }

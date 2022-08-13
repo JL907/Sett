@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 984421943
+CRC: 956172223
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 97a934e7a42aa9dbe094b225c0040a40
+    Hash: d54220a54d5673223246c1f1fe922646
   TypeTreeHash:
     serializedVersion: 2
-    Hash: a9aa8215a20856cf0ab8127f267c4dbe
+    Hash: c62e26f3f51aa0164abc90f83f00e333
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,9 +38,9 @@ ClassTypes:
 - Class: 108
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
@@ -92,7 +92,6 @@ Assets:
 - Assets/Sett/momPortrait.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
 - Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
-- Assets/Sett/model/poolpartysett.fbx
 - Assets/Sett/textures/skin0_0.png
 - Assets/Sett/VFX/Textures/texHenrySwing2.png
 - Assets/Sett/materials/prestigeMat.mat
@@ -143,6 +142,7 @@ Assets:
 - Assets/Sett/customanimations/Falling Idle.anim
 - Assets/Sett/materials/Joke.mat
 - Assets/Sett/VFX/Textures/sett_base_w_smoke_2_erosion.dds
+- Assets/Sett/ui/cp_tensiontex_base00_S3.png
 - Assets/Sett/VFX/Textures/texPunchImpact.png
 - Assets/Sett/materials/mechaMat.mat
 - Assets/Sett/VFX/Textures/texSmoke.png
@@ -161,8 +161,8 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_horizontal_erode_a.dds
 - Assets/Sett/VFX/Materials/matPunchEffect.mat
 - Assets/Sett/VFX/Materials/matHitSpark.mat
-- Assets/Sett/model/prestige.fbx
 - Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
+- Assets/Sett/ui/cp_tensiontex_06.png
 - Assets/Sett/icons/prestige_square.png
 - Assets/Sett/icons/Lethal_Tempo_rune.png
 - Assets/Sett/VFX/Textures/texRipple.png
@@ -171,7 +171,6 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
 - Assets/Sett/materials/obsidianMat.mat
-- Assets/Sett/model/obsidian tpose.fbx
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
 - Assets/Sett/icons/pool_square.png
 - Assets/Sett/materials/SettMat.mat
@@ -189,6 +188,7 @@ Assets:
 - Assets/Sett/materials/skin12_0.mat
 - Assets/Sett/VFX/Materials/matDust.mat
 - Assets/Sett/icons/sett_w.png
+- Assets/Sett/ui/cp_tensiontex_base00_Eff.png
 - Assets/Sett/textures/skin9_0.png
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_mask_flicker.dds
@@ -204,6 +204,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_emote_blush.dds
 - Assets/Sett/icons/sett_circle_8.dds
 - Assets/Sett/VFX/Textures/texLightning.tif
+- Assets/Sett/ui/GritGaugePanelNew.prefab
 - Assets/Sett/icons/sett_q.png
 - Assets/Sett/VFX/Textures/sett_base_hit_spark.dds
 - Assets/Sett/VFX/Textures/texSwingEffect.png
