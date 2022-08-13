@@ -38,7 +38,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.4.1";
+        public const string MODVERSION = "4.4.2";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
@@ -146,7 +146,7 @@ namespace SettMod
                     gritGauge = hud.mainUIPanel.GetComponentInChildren<GritGauge>();
                     if (!gritGauge)
                     {
-                        var gritGaugePanel = Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("GritGaugePanel"));
+                        var gritGaugePanel = Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("GritGaugePanelNew"));
                         gritGauge = gritGaugePanel.AddComponent<GritGauge>();
                         gritGaugePanel.transform.SetParent(hud.mainUIPanel.transform);
                         var rectTransform = gritGaugePanel.GetComponent<RectTransform>();
