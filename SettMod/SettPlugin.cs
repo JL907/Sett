@@ -154,8 +154,9 @@ namespace SettMod
                         rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
                         rectTransform.pivot = new Vector2(0.5f, 0.5f);
                         rectTransform.sizeDelta = new Vector2(120, 120);
-                        rectTransform.anchoredPosition = new Vector2(0, -430f);
-                        rectTransform.localScale = new Vector3(2, 2, 2);
+                        rectTransform.anchoredPosition = new Vector2(-619, -472);
+                        rectTransform.localRotation = Quaternion.Euler(0, 354, 0);
+                        rectTransform.localScale = new Vector3(0.427f, 0.427f, 0.427f);
                         gritGaugePanel.gameObject.SetActive(false);
                     }
                 }

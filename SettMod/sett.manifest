@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2657462950
+CRC: 3807739601
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6cfe57e49a6276016469d4618f7df952
+    Hash: 992c148a24f09300ef79437dd6c38112
   TypeTreeHash:
     serializedVersion: 2
     Hash: a9aa8215a20856cf0ab8127f267c4dbe
@@ -172,6 +172,7 @@ Assets:
 - Assets/Sett/VFX/Materials/matHenrySwing2.mat
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
 - Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
+- Assets/Sett/ui/New Material.mat
 - Assets/Sett/materials/obsidianMat.mat
 - Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
 - Assets/Sett/icons/pool_square.png
@@ -234,6 +235,7 @@ Assets:
 - Assets/Sett/VFX/Materials/matTrail.mat
 - Assets/Sett/VFX/Textures/texPunchImpactShadow.png
 - Assets/Sett/textures/skin16_0.png
+- Assets/Sett/ui/Risk_of_Rain_2_N8Qw6Jclj1.jpg
 - Assets/Sett/settUpper.mask
 - Assets/Sett/animSett.controller
 - Assets/Sett/VFX/Textures/texHitSpark.png
@@ -263,6 +265,7 @@ Assets:
 - Assets/Sett/VFX/ImpactSettPunch.prefab
 - Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
 - Assets/Sett/ui/yellowbar.png
+- Assets/Sett/ui/cp_tensiontex_base00.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
 - Assets/Sett/icons/Electrocute_rune.png
 - Assets/Sett/VFX/Materials/matFistSwing.mat

@@ -39,14 +39,6 @@ namespace SettMod.UI
                 string text = ((int)this.source.GetCurrentGrit()).ToString() + " / " + ((int)this.source.GetMaxGrit()).ToString();
                 gritText.text = text;
                 gritBar.fillAmount = this.source.GetCurrentGrit() / this.source.GetMaxGrit();
-                if (gritBar.fillAmount >= 1)
-                {
-                    gritBarBG.sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cp_tensiontex_base00_Eff");
-                }
-                else if (gritBar.fillAmount < 1)
-                {
-                    gritBarBG.sprite = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("cp_tensiontex_base00_S3");
-                }
             }
         }
     }
