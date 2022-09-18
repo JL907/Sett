@@ -156,7 +156,7 @@ namespace SettMod
                         rectTransform.sizeDelta = new Vector2(120, 120);
                         rectTransform.anchoredPosition = new Vector2(-619, -478);
                         rectTransform.localRotation = Quaternion.Euler(0, 354, 0);
-                        rectTransform.localScale = new Vector3(0.427f, 0.427f, 0.427f);
+                        rectTransform.localScale = new Vector3(1, 1, 1);
                         gritGaugePanel.gameObject.SetActive(false);
                     }
                 }
