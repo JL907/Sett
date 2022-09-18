@@ -10,7 +10,8 @@ namespace SettMod.UI
         private Image gritBar;
         private Image gritBarBG;
 
-        private TextMeshProUGUI gritText;
+        private TextMeshProUGUI currentGritText;
+        private TextMeshProUGUI maxGritText;
         public GritComponent source { get; set; }
         
         public void Update()
@@ -20,11 +21,17 @@ namespace SettMod.UI
 
         private void Awake()
         {
-            gritText = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            var _text = this.gameObject.GetComponentInChildren<Transform>().Find("Text");
+            var _currentGrit = _text.GetComponentInChildren<Transform>().Find("CurrentGrit");
+            var _currentText = _currentGrit.GetComponent<TextMeshProUGUI>();
+            var _maxGrit = _text.GetComponentInChildren<Transform>().Find("MaxGrit");
+            var _maxText = _maxGrit.GetComponent<TextMeshProUGUI>();
             var _gritBar = this.gameObject.GetComponentInChildren<Transform>().Find("Grit");
             gritBar = _gritBar.GetComponent<Image>();
             var _gritBarBG = this.gameObject.GetComponentInChildren<Transform>().Find("Background");
             gritBarBG = _gritBarBG.GetComponent<Image>();
+            if (_currentText) currentGritText = _currentText;
+            if (_maxText) maxGritText = _maxText;
         }
 
         private void Start()
@@ -36,8 +43,8 @@ namespace SettMod.UI
         {
             if (this.source && gritBar)
             {
-                string text = ((int)this.source.GetCurrentGrit()).ToString() + " / " + ((int)this.source.GetMaxGrit()).ToString();
-                gritText.text = text;
+                currentGritText.text = ((int)this.source.GetCurrentGrit()).ToString();
+                maxGritText.text = ((int)this.source.GetMaxGrit()).ToString();
                 gritBar.fillAmount = this.source.GetCurrentGrit() / this.source.GetMaxGrit();
             }
         }
