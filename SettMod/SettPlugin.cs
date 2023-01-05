@@ -13,19 +13,15 @@ using UnityEngine;
 namespace SettMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.prefab", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.language", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.sound", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.networking", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.loadout", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.damagetype", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.xoxfaby.BetterUI", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        "PrefabAPI",
-        "LanguageAPI",
-        "SoundAPI",
-        "NetworkingAPi",
-        "SkinAPI",
-        "LoadoutAPI",
-        "DamageAPI"
-    })]
     public class SettPlugin : BaseUnityPlugin
     {
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
@@ -38,7 +34,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.4.5";
+        public const string MODVERSION = "4.5.0";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
