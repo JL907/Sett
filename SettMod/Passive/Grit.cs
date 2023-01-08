@@ -136,21 +136,17 @@ namespace SettMod.Modules
             {
                 gritUptimeStopwatch += Time.fixedDeltaTime;
             }
-            if (throttleUpdateTime < MaxTrottleUpdateTime)
+            else
             {
-                throttleUpdateTime += Time.fixedDeltaTime;
-            }
-            if (throttleUpdateTime >= MaxTrottleUpdateTime && gritUptimeStopwatch > GritMaxUptime)
-            {
-                throttleUpdateTime = 0f;
-                var gritDecayAmount = 0.3f;
-                var snapShotGrit = this.NetworkGrit;
-                this.NetworkGrit -= Mathf.Max(snapShotGrit * gritDecayAmount, 0);
-            }
-            if (this.NetworkGrit <= 0f)
-            {
-                gritUptimeStopwatch = 0f;
-                this.NetworkGrit = 0f;
+                float decayAmount = 0.3f;
+                float finalGritValue = Mathf.Max(this.NetworkGrit - this.NetworkGrit * decayAmount, 0);
+                float decayDuration = 1.0f;
+                this.NetworkGrit = Mathf.Lerp(this.NetworkGrit, finalGritValue, Time.fixedDeltaTime / decayDuration);
+                if (this.NetworkGrit < 0.01f)
+                {
+                    this.NetworkGrit = 0;
+                    gritUptimeStopwatch = 0;
+                }
             }
         }
 
