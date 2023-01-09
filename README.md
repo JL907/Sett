@@ -17,10 +17,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.5.0`
+## Latest Patch Notes `4.5.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* R2API Conversion
+* Sett's grit now decays smoothly
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -66,9 +66,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
-`4.4.5`
-`Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
+`4.5.0`
+* R2API Conversion
 
+`4.4.5`
 * Fixed an issue where Sett's death animation wasn't playing.
 * Adjusted Gritbar text styling
 

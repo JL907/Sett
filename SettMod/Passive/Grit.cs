@@ -9,11 +9,8 @@ namespace SettMod.Modules
     {
         private CharacterBody body;
         private EntityStateMachine outer = null;
-        public const float GritUpdateTime = 1.0f;
         public const float GritMaxUptime = 4.0f;
-        public const float MaxTrottleUpdateTime = 1.0f;
         public float gritUptimeStopwatch = 0.0f;
-        private float throttleUpdateTime = 0.0f;
         public float NetworkGrit
         {
             get
