@@ -20,7 +20,8 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## Latest Patch Notes `4.5.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* 
+* ![image](https://user-images.githubusercontent.com/7343912/218568185-a67fd5c4-a7c4-4de1-9bb5-004ff10547f5.png)
+
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
