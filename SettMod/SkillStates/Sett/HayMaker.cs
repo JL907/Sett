@@ -150,19 +150,22 @@ namespace SettMod.SkillStates
             {
                 float _level = Mathf.Floor(base.characterBody.level / 4f);
                 float bonus = HayMaker.hayMakerGritBonus + (_level * HayMaker.hayMakerGritBonusPer4);
+                Vector3 direction = (hurtbox.gameObject.transform.position - base.characterBody.corePosition).normalized;
 
                 DamageInfo damageInfo = new DamageInfo();
                 damageInfo.damage = (this.damageStat * HayMaker.hayMakerDamageCoefficient) + (this.gritSnapShot * bonus);
                 damageInfo.attacker = base.gameObject;
                 damageInfo.inflictor = base.gameObject;
-                damageInfo.force = Vector3.zero;
+                damageInfo.force = Vector3.zero + direction * 3000f;
                 damageInfo.crit = base.RollCrit();
                 damageInfo.procCoefficient = HayMaker.hayMakerProcCoefficient;
                 damageInfo.position = hurtbox.gameObject.transform.position;
                 damageInfo.damageType = DamageType.BypassArmor;
                 DamageAPI.AddModdedDamageType(damageInfo, SettPlugin.settDamage);
-                hurtbox.healthComponent.TakeDamage(damageInfo);
 
+                hurtbox.healthComponent.TakeDamage(damageInfo);
+                GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.healthComponent.gameObject);
+                GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.healthComponent.gameObject);
                 GameObject hitEffectPrefab = Modules.Assets.swordHitImpactEffect;
                 if (hitEffectPrefab)
                 {
@@ -173,9 +176,6 @@ namespace SettMod.SkillStates
                         networkSoundEventIndex = Modules.Assets.swordHitSoundEvent.index
                     }, true);
                 }
-
-                GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.healthComponent.gameObject);
-                GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.healthComponent.gameObject);
             }
         }
 

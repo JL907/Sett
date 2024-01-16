@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using R2API;
 using RoR2;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -169,7 +170,9 @@ namespace SettMod.SkillStates
             search.RefreshCandidates();
             search.FilterOutGameObject(base.gameObject);
 
-            HurtBox target = search.GetResults().FirstOrDefault<HurtBox>();
+            List<HurtBox> sortedCandidates = search.GetResults().OrderByDescending(candidate => GetHurtBoxFullCombinedHealth(candidate)).ToList();
+
+            HurtBox target = sortedCandidates.FirstOrDefault();
             if (target)
             {
                 if (target.healthComponent && target.healthComponent.body)
@@ -186,6 +189,11 @@ namespace SettMod.SkillStates
                     }
                 }
             }
+        }
+
+        private float GetHurtBoxFullCombinedHealth(HurtBox hurtBox)
+        {
+            return hurtBox.healthComponent.fullCombinedHealth;
         }
 
         private bool BodyMeetsGrabConditions(CharacterBody targetBody)

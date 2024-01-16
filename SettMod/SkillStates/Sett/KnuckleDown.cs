@@ -65,7 +65,7 @@ namespace SettMod.SkillStates.BaseStates
                 if (this.animator) this.animator.SetFloat("Slash.playbackRate", 0f);
             }
 
-            if (this.stopwatch >= this.duration * 0.2f && this.stopwatch <= this.duration * 0.4)
+            if (this.stopwatch >= this.duration * 0.2f && this.stopwatch <= this.duration * 0.4f)
             {
                 this.FireAttack();
             }
@@ -113,6 +113,19 @@ namespace SettMod.SkillStates.BaseStates
             else if ((!(this.animator.GetBool("isMoving"))) && this.animator.GetBool("isGrounded"))
             {
                 base.PlayCrossfade("FullBody, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
+            }
+
+            if (!this.hasFired)
+            {
+                Util.PlayAttackSpeedSound("SettSwing", base.gameObject, this.attackSpeedStat);
+
+                if (UnityEngine.Random.value >= 0.75 && Modules.Config.voiceLines.Value) Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
+
+                if (base.isAuthority)
+                {
+                    EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
+                    base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
+                }
             }
 
             this.CreateAttack();
@@ -168,16 +181,6 @@ namespace SettMod.SkillStates.BaseStates
             if (!this.hasFired)
             {
                 this.hasFired = true;
-
-                Util.PlayAttackSpeedSound("SettSwing", base.gameObject, this.attackSpeedStat);
-
-                if (UnityEngine.Random.value >= 0.75 && Modules.Config.voiceLines.Value) Util.PlayAttackSpeedSound(this.swingSoundString, base.gameObject, this.attackSpeedStat);
-
-                if (base.isAuthority)
-                {
-                    EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
-                    base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
-                }
             }
 
             if (base.isAuthority)
