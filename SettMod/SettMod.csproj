@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 	  <Reference Include="BetterUI">
-	    <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\RiskOfRain2\profiles\Lemonlust Testing\BepInEx\plugins\XoXFaby-BetterUI\BetterUI\BetterUI.dll</HintPath>
+	    <HintPath>..\..\..\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Lemonlust Testing\BepInEx\plugins\XoXFaby-BetterUI\BetterUI\BetterUI.dll</HintPath>
 	  </Reference>
 	  <Reference Include="MMHOOK_RoR2">
 	    <HintPath>..\..\libs\MMHOOK_RoR2.dll</HintPath>
