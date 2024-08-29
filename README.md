@@ -17,12 +17,10 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.5.3`
+## Latest Patch Notes `4.6.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed Knuckle Down SFX not aligning with animation
-* Added Knockback to HayMaker
-* ShowStopper will now try to prioritize the enemy with the highest maximum health total
+* Updated for SOTS
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -68,6 +66,11 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.5.3`
+* Fixed Knuckle Down SFX not aligning with animation
+* Added Knockback to HayMaker
+* ShowStopper will now try to prioritize the enemy with the highest maximum health total
+
 `4.5.1`
 * Sett's grit now decays smoothly
 

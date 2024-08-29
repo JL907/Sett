@@ -17,7 +17,7 @@ namespace SettMod.States.Emotes
             base.OnEnter();
             if(!this.mom)
             {
-                this.mom = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("momPortrait"));
+                this.mom = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("momPortrait"));
             }
             this.mom.SetActive(false);
         }

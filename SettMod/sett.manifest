@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4103436398
+CRC: 3314873849
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f98be433449baf458f7f514b618570ce
+    Hash: 4696020f0f93150d4c7487abaf46a6ba
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 3d13acf2cf7e0bfb242ff71abc15cb82
+    Hash: c7e8ecb2294e42f513bd2ed5e9033667
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -40,11 +40,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 115
@@ -65,207 +65,243 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 319
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: ChildLocator/NameTransformPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 Assets:
-- Assets/Sett/VFX/Textures/sett_emote_heart.dds
-- Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
-- Assets/Sett/textures/skin12_0.png
-- Assets/Sett/VFX/Textures/New Material.mat
-- Assets/Sett/icons/texUICombatHealthbar.png
-- Assets/Sett/animDisplay.controller
-- Assets/Sett/icons/obsidian_square.png
-- Assets/Sett/icons/Phase_Rush_rune.png
-- Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
-- Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
-- Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
-- Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
-- Assets/Sett/model/model_Dance_Base_model.anim
-- Assets/Sett/textures/skin17_0.png
-- Assets/Sett/customanimations/punch.anim
-- Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
-- Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
-- Assets/Sett/customanimations/RunHasteFootsteps.anim
-- Assets/Sett/VFX/Textures/sett_base_flare_star.dds
-- Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
-- Assets/Sett/momPortrait.prefab
-- Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
-- Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
-- Assets/Sett/textures/skin0_0.png
-- Assets/Sett/VFX/Textures/texHenrySwing2.png
-- Assets/Sett/materials/prestigeMat.mat
-- Assets/Sett/textures/skin8_0.png
-- Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
-- Assets/Sett/VFX/Textures/sett_base_r_impact.dds
-- Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
-- Assets/Sett/VFX/Textures/texSlash.png
-- Assets/Sett/VFX/Textures/sett_base_r_rocks.dds
-- Assets/Sett/textures/skin11_0.png
-- Assets/Sett/model/obsidianMesh.mesh
-- Assets/Sett/VFX/Textures/sett_base_r_rocks_2x2.dds
-- Assets/Sett/model/poolMesh.mesh
-- Assets/Sett/VFX/SettFistSwingEffect.prefab
-- Assets/Sett/VFX/Materials/matRipple.mat
-- Assets/Sett/VFX/Textures/sett_base_wind_lines.dds
-- Assets/Sett/VFX/SettBazookaMuzzleFlash.prefab
-- Assets/Sett/model/prestigeMesh.mesh
-- Assets/Sett/VFX/Textures/sett_base_smoke_64x64.dds
-- Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
-- Assets/Sett/VFX/Materials/matSwingShadow.mat
-- Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
-- Assets/Sett/ui/greenbar.png
-- Assets/Sett/textures/skin14_0.png
-- Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
-- Assets/Sett/textures/skin13_0.png
-- Assets/Sett/icons/regenicon.png
-- Assets/Sett/VFX/Textures/texFire.tga
-- Assets/Sett/icons/Sett_Circle.png
-- Assets/Sett/VFX/Textures/sett_base_erode_a.dds
-- Assets/Sett/materials/skin15_0.mat
-- Assets/Sett/VFX/ImpactSettSlash.prefab
-- Assets/Sett/VFX/SettSwordSwingEffect.prefab
-- Assets/Sett/VFX/Textures/sett_base_spark_round_bloom.dds
-- Assets/Sett/ui/cp_lifegauge_animmask.png
-- Assets/Sett/icons/firecracker_square.png
-- Assets/Sett/VFX/Textures/sett_base_soft_noise.dds
-- Assets/Sett/VFX/Materials/matFire.mat
-- Assets/Sett/VFX/Textures/sett_base_w_mis_b.dds
-- Assets/Sett/VFX/Textures/sett_base_mask_horizontal_a.dds
-- Assets/Sett/VFX/Materials/matSlash.mat
-- Assets/Sett/fonts/BOMBARD_ SDF.asset
-- Assets/Sett/VFX/Textures/sett_base_w_glow05_firepulse.dds
-- Assets/Sett/VFX/Materials/matSettE.mat
-- Assets/Sett/VFX/Materials/matAnimeShapes.mat
-- Assets/Sett/model/mechaMesh.mesh
-- Assets/Sett/VFX/Textures/sett_base_mask_horizontal_b.dds
-- Assets/Sett/VFX/Textures/sett_base_fire_erode.dds
-- Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar.dds
-- Assets/Sett/customanimations/Falling Idle.anim
-- Assets/Sett/materials/Joke.mat
-- Assets/Sett/VFX/Textures/sett_base_w_smoke_2_erosion.dds
-- Assets/Sett/ui/cp_tensiontex_base00_S3.png
-- Assets/Sett/VFX/Textures/texPunchImpact.png
-- Assets/Sett/materials/mechaMat.mat
-- Assets/Sett/VFX/Textures/texSmoke.png
-- Assets/Sett/VFX/Textures/sett_base_air_swoosh.dds
-- Assets/Sett/model/Sett.fbx
-- Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
-- Assets/Sett/materials/skin13_0.mat
-- Assets/Sett/textures/skin19_1.png
-- Assets/Sett/textures/skin1_0.png
-- Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
-- Assets/Sett/textures/skin10_0.png
-- Assets/Sett/icons/sett_buff.png
-- Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy_erode.dds
 - Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_mask.dds
-- Assets/Sett/customanimations/RunFootSteps.anim
+- Assets/Sett/icons/sett_w.png
 - Assets/Sett/VFX/Textures/sett_base_horizontal_erode_a.dds
-- Assets/Sett/VFX/Materials/matPunchEffect.mat
-- Assets/Sett/VFX/Materials/matHitSpark.mat
-- Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
-- Assets/Sett/ui/orangebar.png
-- Assets/Sett/icons/prestige_square.png
+- Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
+- Assets/Sett/materials/skin11_0.mat
+- Assets/Sett/textures/skin10_0.png
+- Assets/Sett/textures/skin12_0.png
+- Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth.dds
+- Assets/Sett/VFX/Textures/texFire.tga
+- Assets/Sett/VFX/Textures/sett_base_vertical_mask_flicker.dds
+- Assets/Sett/textures/skin18_0.png
+- Assets/Sett/VFX/Textures/New Material 1.mat
+- Assets/Sett/textures/skin1_0.png
+- Assets/Sett/VFX/Materials/matSwingEffect.mat
+- Assets/Sett/mdlSett.prefab
+- Assets/Sett/ui/bluebar.png
+- Assets/Sett/ui/New Material.mat
+- Assets/Sett/VFX/Textures/sett_base_erode_a.dds
+- Assets/Sett/VFX/Materials/matPunchImpactShadow.mat
+- Assets/Sett/VFX/Textures/sett_base_ba_glow_arm_l.dds
+- Assets/Sett/VFX/Textures/sett_base_w_glow05_firepulse.dds
+- Assets/Sett/customanimations/Jumping UP.anim
+- Assets/Sett/ui/cp_lifegauge_animmask.png
+- Assets/Sett/ui/cp_tensiontex_base00.png
+- Assets/Sett/VFX/Textures/sett_base_center_mask_a.dds
+- Assets/Sett/VFX/Textures/sett_base_p_radial_soft.dds
+- Assets/Sett/materials/firecrackerMat.mat
+- Assets/Sett/VFX/Textures/hiteffect.dds
+- Assets/Sett/VFX/Textures/texPunchImpact.png
+- Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
+- Assets/Sett/VFX/Textures/sett_base_smoke_64x64.dds
+- Assets/Sett/VFX/Textures/texHitSpark.png
+- Assets/Sett/textures/skin11_0.png
+- Assets/Sett/icons/Phase_Rush_rune.png
+- Assets/Sett/VFX/FistBarrageEffect.prefab
+- Assets/Sett/VFX/Textures/sett_base_glow_solid.dds
+- Assets/Sett/ui/cp_tensiontex_base00_Eff.png
+- Assets/Sett/VFX/ImpactSettPunch.prefab
+- Assets/Sett/VFX/Textures/sett_base_swipe_mult.dds
+- Assets/Sett/VFX/Textures/sett_base_distort_ring.dds
+- Assets/Sett/VFX/Textures/sett_base_fire_erode.dds
+- Assets/Sett/VFX/Textures/texSmoke.png
+- Assets/Sett/materials/prestigeMat.mat
+- Assets/Sett/momPortrait.prefab
+- Assets/Sett/VFX/Materials/sett_base_w_ui_indicator.mat
+- Assets/Sett/fonts/BOMBARD_ SDF.asset
+- Assets/Sett/materials/skin15_0.mat
+- Assets/Sett/VFX/Textures/sett_base_w_ui_indicator.dds
+- Assets/Sett/textures/skin14_0.png
+- Assets/Sett/VFX/Textures/sett_base_spark_round_bloom.dds
+- Assets/Sett/VFX/Textures/sett_base_e_dome_swipe_mult.dds
+- Assets/Sett/customanimations/Falling Idle.anim
+- Assets/Sett/VFX/Materials/matRipple.mat
+- Assets/Sett/VFX/ImpactSettSlash.prefab
+- Assets/Sett/VFX/Textures/sett_base_r_impact.dds
+- Assets/Sett/VFX/Textures/sett_emote_heart.dds
+- Assets/Sett/VFX/Materials/matHenrySwing2.mat
+- Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
+- Assets/Sett/VFX/Textures/texSlash.png
+- Assets/Sett/materials/poolSettMat.mat
+- Assets/Sett/icons/texUICombatHealthbar.png
+- Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
+- Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
+- Assets/Sett/materials/SettMat.mat
+- Assets/Sett/VFX/Textures/sett_base_spark_vertical.dds
+- Assets/Sett/VFX/Materials/matSlash.mat
+- Assets/Sett/icons/mecha_square.png
+- Assets/Sett/VFX/Textures/sett_base_w_smoke_2_erosion.dds
+- Assets/Sett/VFX/Textures/sett_base_wind_lines.dds
+- Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
 - Assets/Sett/icons/Lethal_Tempo_rune.png
 - Assets/Sett/VFX/Textures/texRipple.png
-- Assets/Sett/VFX/Textures/sett_base_w_mis_a.dds
-- Assets/Sett/VFX/Materials/matHenrySwing2.mat
-- Assets/Sett/VFX/Textures/sett_base_w_mid_decal.dds
-- Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
-- Assets/Sett/ui/New Material.mat
-- Assets/Sett/materials/obsidianMat.mat
-- Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
-- Assets/Sett/icons/pool_square.png
-- Assets/Sett/materials/SettMat.mat
-- Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge_flip.dds
-- Assets/Sett/VFX/Textures/sett_base_ground_trail_erode.dds
-- Assets/Sett/model/mom.fbx
-- Assets/Sett/VFX/Materials/matSwingEffect.mat
-- Assets/Sett/VFX/Textures/sett_base_fire_trail_graphic.dds
-- Assets/Sett/VFX/Textures/sett_base_vertical_streaks.dds
-- Assets/Sett/VFX/Textures/aura_self.dds
-- Assets/Sett/VFX/Textures/texDust.png
-- Assets/Sett/icons/sett_p.png
-- Assets/Sett/VFX/Mesh/meshPunchShockwave.mesh
-- Assets/Sett/VFX/Textures/color-hold.dds
-- Assets/Sett/materials/skin12_0.mat
-- Assets/Sett/VFX/Materials/matDust.mat
-- Assets/Sett/icons/sett_w.png
-- Assets/Sett/ui/cp_tensiontex_base00_Eff.png
-- Assets/Sett/textures/skin9_0.png
-- Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge.dds
-- Assets/Sett/VFX/Textures/sett_base_vertical_mask_flicker.dds
-- Assets/Sett/VFX/Textures/sett_base_w_ui_indicator.dds
-- Assets/Sett/VFX/Textures/sett_base_adrenaline_burst_avatar.dds
-- Assets/Sett/VFX/Textures/sett_base_mask_vert_a.dds
-- Assets/Sett/VFX/Materials/hiteffectmat.mat
-- Assets/Sett/ui/GritGaugePanel.prefab
-- Assets/Sett/icons/sett_e.png
-- Assets/Sett/model/firecrackerMesh.mesh
-- Assets/Sett/VFX/Textures/sett_base_distort_rgba.dds
-- Assets/Sett/VFX/Textures/sett_emote_blush.dds
-- Assets/Sett/icons/sett_circle_8.dds
-- Assets/Sett/VFX/Textures/texLightning.tif
-- Assets/Sett/ui/GritGaugePanelNew.prefab
-- Assets/Sett/icons/sett_q.png
-- Assets/Sett/VFX/Textures/sett_base_hit_spark.dds
-- Assets/Sett/VFX/Textures/texSwingEffect.png
-- Assets/Sett/textures/skin18_0.png
-- Assets/Sett/materials/skin16_0.mat
-- Assets/Sett/materials/skin14_0.mat
-- Assets/Sett/VFX/Materials/matSmoke.mat
-- Assets/Sett/VFX/SettDustEffect.prefab
-- Assets/Sett/VFX/Textures/sett_base_smokeerode.dds
-- Assets/Sett/VFX/Mesh/meshSwing.asset
-- Assets/Sett/VFX/Materials/matPunchImpact.mat
-- Assets/Sett/materials/poolSettMat.mat
-- Assets/Sett/VFX/Materials/matPunchImpactShadow.mat
-- Assets/Sett/icons/sett_r.png
-- Assets/Sett/textures/skin0_1.png
-- Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth_soft.dds
-- Assets/Sett/VFX/FistBarrageEffect.prefab
-- Assets/Sett/customanimations/Jumping UP.anim
-- Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_alpha.dds
-- Assets/Sett/icons/Conqueror_rune.png
-- Assets/Sett/VFX/Textures/sett_base_p_radial_soft.dds
-- Assets/Sett/VFX/Mesh/meshBoxingGlove.mesh
-- Assets/Sett/VFX/Textures/texEmbers.png
-- Assets/Sett/VFX/Textures/sett_base_crater_mesh_glow.dds
-- Assets/Sett/VFX/Materials/matTrail.mat
-- Assets/Sett/VFX/Textures/texPunchImpactShadow.png
-- Assets/Sett/textures/skin16_0.png
-- Assets/Sett/ui/Risk_of_Rain_2_N8Qw6Jclj1.jpg
-- Assets/Sett/settUpper.mask
-- Assets/Sett/animSett.controller
-- Assets/Sett/VFX/Textures/texHitSpark.png
-- Assets/Sett/materials/skin11_0.mat
-- Assets/Sett/VFX/Textures/sett_base_energy_round.dds
-- Assets/Sett/VFX/Textures/sett_base_vertical_mask_center.dds
-- Assets/Sett/icons/sett_square.png
-- Assets/Sett/VFX/Textures/New Material 1.mat
-- Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
-- Assets/Sett/icons/mecha_square.png
-- Assets/Sett/ui/bluebar.png
-- Assets/Sett/VFX/BombExplosionEffect.prefab
-- Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
 - Assets/Sett/settDisplay.prefab
-- Assets/Sett/materials/firecrackerMat.mat
-- Assets/Sett/VFX/Materials/matEmbers.mat
-- Assets/Sett/VFX/Textures/texFistSwing.png
-- Assets/Sett/textures/skin15_0.png
-- Assets/Sett/VFX/Textures/sett_base_regen_particulates.dds
-- Assets/Sett/VFX/Materials/matHitSparkPunch.mat
-- Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
-- Assets/Sett/mdlSett.prefab
-- Assets/Sett/VFX/Textures/hiteffect.dds
-- Assets/Sett/VFX/Textures/sett_base_noise_perlin.dds
-- Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
 - Assets/Sett/icons/texUIMainRect.png
-- Assets/Sett/VFX/ImpactSettPunch.prefab
-- Assets/Sett/VFX/Textures/sett_base_ba_ring.dds
-- Assets/Sett/ui/yellowbar.png
-- Assets/Sett/ui/cp_tensiontex_base00.png
-- Assets/Sett/VFX/Textures/sett_base_horizontal_streaks.dds
+- Assets/Sett/icons/prestige_square.png
+- Assets/Sett/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/Sett/VFX/Textures/sett_base_vertical_glow.dds
+- Assets/Sett/VFX/Textures/sett_base_mask_horizontal_b.dds
+- Assets/Sett/textures/skin17_0.png
+- Assets/Sett/customanimations/RunHasteFootsteps.anim
+- Assets/Sett/ui/cp_tensiontex_base00_S3.png
+- Assets/Sett/VFX/Materials/matSettE.mat
 - Assets/Sett/icons/Electrocute_rune.png
-- Assets/Sett/VFX/Materials/matFistSwing.mat
-- Assets/Sett/VFX/Textures/sett_base_distort_ring.dds
+- Assets/Sett/VFX/Textures/sett_base_ground_trail_erode.dds
+- Assets/Sett/VFX/Textures/sett_base_r_rocks.dds
+- Assets/Sett/VFX/Textures/sett_base_distort_rgba.dds
+- Assets/Sett/textures/skin9_0.png
+- Assets/Sett/materials/Joke.mat
+- Assets/Sett/VFX/Textures/sett_base_w_animeshapes02.dds
+- Assets/Sett/VFX/Textures/sett_base_radial_flare.dds
+- Assets/Sett/ui/GritGaugePanelNew.prefab
+- Assets/Sett/VFX/SettSwordSwingEffect.prefab
+- Assets/Sett/VFX/Materials/matAnimeShapes.mat
+- Assets/Sett/VFX/Textures/sett_base_hit_spark.dds
+- Assets/Sett/VFX/Textures/sett_base_flare_star.dds
+- Assets/Sett/textures/skin13_0.png
+- Assets/Sett/VFX/Textures/aura_self.dds
+- Assets/Sett/VFX/Textures/sett_base_crater_mesh_erode.dds
+- Assets/Sett/VFX/BombExplosionEffect.prefab
+- Assets/Sett/VFX/SettDustEffect.prefab
+- Assets/Sett/icons/obsidian_square.png
+- Assets/Sett/icons/sett_square.png
+- Assets/Sett/VFX/Materials/hiteffectmat.mat
+- Assets/Sett/VFX/Textures/sett_base_energy_round.dds
+- Assets/Sett/VFX/Materials/matSmoke.mat
+- Assets/Sett/icons/sett_r.png
+- Assets/Sett/model/Sett.fbx
+- Assets/Sett/model/poolMesh.mesh
+- Assets/Sett/VFX/SettBazookaMuzzleFlash.prefab
+- Assets/Sett/textures/skin8_0.png
+- Assets/Sett/textures/skin15_0.png
+- Assets/Sett/VFX/Textures/sett_base_air_swoosh.dds
+- Assets/Sett/VFX/Materials/matPunchEffect.mat
+- Assets/Sett/VFX/Textures/texEmbers.png
+- Assets/Sett/materials/skin14_0.mat
+- Assets/Sett/model/mom.fbx
+- Assets/Sett/customanimations/RunFootSteps.anim
+- Assets/Sett/icons/sett_e.png
+- Assets/Sett/model/mechaMesh.mesh
+- Assets/Sett/VFX/Textures/sett_base_r_rocks_2x2.dds
+- Assets/Sett/VFX/Textures/texPunchImpactShadow.png
+- Assets/Sett/model/firecrackerMesh.mesh
+- Assets/Sett/VFX/Textures/sett_base_crater_mesh.dds
+- Assets/Sett/materials/obsidianMat.mat
 - Assets/Sett/VFX/Textures/sett_base_energy_trail.dds
+- Assets/Sett/textures/skin0_0.png
+- Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge.dds
+- Assets/Sett/icons/sett_circle_8.dds
+- Assets/Sett/animSett.controller
+- Assets/Sett/VFX/Materials/matTrail.mat
+- Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy_erode.dds
+- Assets/Sett/icons/sett_q.png
+- Assets/Sett/VFX/Textures/texHenrySwing2.png
+- Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth_soft.dds
+- Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
+- Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
+- Assets/Sett/VFX/SettFistSwingEffect.prefab
+- Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
+- Assets/Sett/icons/pool_square.png
+- Assets/Sett/VFX/Textures/sett_base_mask_vert_a.dds
+- Assets/Sett/VFX/Textures/texDust.png
+- Assets/Sett/VFX/Materials/matFistSwing.mat
+- Assets/Sett/materials/skin13_0.mat
+- Assets/Sett/VFX/Textures/sett_base_fire_trail_graphic.dds
+- Assets/Sett/animDisplay.controller
+- Assets/Sett/ui/yellowbar.png
+- Assets/Sett/VFX/Textures/texLightning.tif
+- Assets/Sett/ui/greenbar.png
+- Assets/Sett/model/obsidianMesh.mesh
+- Assets/Sett/VFX/Materials/matHitSpark.mat
+- Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar_alpha.dds
+- Assets/Sett/materials/skin16_0.mat
+- Assets/Sett/ui/orangebar.png
+- Assets/Sett/icons/sett_buff.png
+- Assets/Sett/textures/skin16_0.png
+- Assets/Sett/VFX/Textures/sett_base_ring_hit.dds
+- Assets/Sett/VFX/Textures/sett_base_adrenaline_burst_avatar.dds
+- Assets/Sett/VFX/Textures/sett_base_vertical_mask_center.dds
+- Assets/Sett/VFX/Textures/sett_base_vertical_streaks.dds
+- Assets/Sett/VFX/Materials/matEmbers.mat
+- Assets/Sett/icons/firecracker_square.png
+- Assets/Sett/VFX/Materials/matSwingShadow.mat
+- Assets/Sett/VFX/Materials/matHitSparkPunch.mat
+- Assets/Sett/VFX/Textures/texFistSwing.png
+- Assets/Sett/VFX/Textures/sett_base_regen_particulates.dds
+- Assets/Sett/settUpper.mask
+- Assets/Sett/VFX/Textures/New Material.mat
+- Assets/Sett/textures/skin19_1.png
+- Assets/Sett/VFX/Textures/sett_base_mask_horizontal_a.dds
+- Assets/Sett/VFX/Textures/sett_base_vertical_mask_wispy.dds
+- Assets/Sett/model/model_Dance_Base_model.anim
+- Assets/Sett/VFX/Textures/sett_base_vertical_mask_leading_edge_flip.dds
+- Assets/Sett/VFX/Textures/sett_base_w_mid_decal_edge.dds
+- Assets/Sett/VFX/Materials/matPunchImpact.mat
+- Assets/Sett/ui/GritGaugePanel.prefab
+- Assets/Sett/VFX/Textures/sett_base_trail_horizontal.dds
+- Assets/Sett/VFX/Materials/matDust.mat
+- Assets/Sett/VFX/Mesh/meshSwing.asset
+- Assets/Sett/VFX/Textures/sett_base_smokeerode.dds
+- Assets/Sett/icons/Conqueror_rune.png
+- Assets/Sett/VFX/Textures/sett_base_w_hit_flare.dds
+- Assets/Sett/VFX/Textures/sett_emote_blush.dds
+- Assets/Sett/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/Sett/ui/Risk_of_Rain_2_N8Qw6Jclj1.jpg
+- Assets/Sett/customanimations/punch.anim
+- Assets/Sett/VFX/Textures/sett_base_w_mis_b.dds
+- Assets/Sett/icons/Sett_Circle.png
+- Assets/Sett/VFX/Textures/sett_base_adrenaline_max_avatar.dds
+- Assets/Sett/VFX/Textures/sett_base_soft_noise.dds
+- Assets/Sett/textures/skin0_1.png
+- Assets/Sett/VFX/Materials/matFire.mat
+- Assets/Sett/model/prestigeMesh.mesh
+- Assets/Sett/VFX/SettBazookaExplosionEffect.prefab
+- Assets/Sett/icons/regenicon.png
+- Assets/Sett/icons/sett_p.png
+- Assets/Sett/materials/skin12_0.mat
+- Assets/Sett/VFX/Textures/sett_base_w_head_mesh.dds
+- Assets/Sett/materials/mechaMat.mat
+- Assets/Sett/VFX/Textures/sett_base_tendril_trail.dds
+- Assets/Sett/VFX/Textures/color-hold.dds
+- Assets/Sett/VFX/Textures/texSwingEffect.png
 Dependencies: []

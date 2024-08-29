@@ -1,474 +1,659 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Johnrey\Desktop\Sett\Sett Wwise\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
-	<StreamedFiles/>
-	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="1119586035">
-			<ObjectPath>Init</ObjectPath>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{B3861A92-4A02-8CDF-F30C-285866FDC893}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3776814435" Language="SFX" Hash="1385003466">
-			<ObjectPath>\SoundBanks\Default Work Unit\SettBank</ObjectPath>
+		<SoundBank Id="3776814435" Type="User" Language="SFX" Hash="{CB684DE8-A03E-C949-5F36-C155B2A12106}">
 			<ShortName>SettBank</ShortName>
 			<Path>SettBank.bnk</Path>
-			<IncludedEvents>
-				<Event Id="733921650" Name="SettBossKill" ObjectPath="\Events\Default Work Unit\SettBossKill">
-					<IncludedMemoryFiles>
-						<File Id="341405818" Language="SFX">
-							<ShortName>464918369.wav</ShortName>
-							<Path>SFX\464918369_0D5756A9.wem</Path>
-						</File>
-						<File Id="608766430" Language="SFX">
-							<ShortName>256720301.wav</ShortName>
-							<Path>SFX\256720301_0D5756A9.wem</Path>
-						</File>
-						<File Id="730073636" Language="SFX">
-							<ShortName>227635969.wav</ShortName>
-							<Path>SFX\227635969_0D5756A9.wem</Path>
-						</File>
-						<File Id="841492736" Language="SFX">
-							<ShortName>384955048.wav</ShortName>
-							<Path>SFX\384955048_0D5756A9.wem</Path>
-						</File>
-						<File Id="895332209" Language="SFX">
-							<ShortName>226767399.wav</ShortName>
-							<Path>SFX\226767399_0D5756A9.wem</Path>
-						</File>
-						<File Id="897198013" Language="SFX">
-							<ShortName>980547364.wav</ShortName>
-							<Path>SFX\980547364_0D5756A9.wem</Path>
-						</File>
-						<File Id="1067552803" Language="SFX">
-							<ShortName>241773345.wav</ShortName>
-							<Path>SFX\241773345_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+			<Media>
+				<File Id="24104798" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>197676997.wav</ShortName>
+					<CachePath>SFX/197676997_C214D156.wem</CachePath>
+				</File>
+				<File Id="24815094" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>201113605.wav</ShortName>
+					<CachePath>SFX/201113605_C214D156.wem</CachePath>
+				</File>
+				<File Id="38209527" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>697756361.wav</ShortName>
+					<CachePath>SFX/697756361_C214D156.wem</CachePath>
+				</File>
+				<File Id="43354235" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>878489674.wav</ShortName>
+					<CachePath>SFX/878489674_C214D156.wem</CachePath>
+				</File>
+				<File Id="48835020" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>68839073.wav</ShortName>
+					<CachePath>SFX/68839073_C214D156.wem</CachePath>
+				</File>
+				<File Id="57474665" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>90901994.wav</ShortName>
+					<CachePath>SFX/90901994_C214D156.wem</CachePath>
+				</File>
+				<File Id="59126964" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>746109078.wav</ShortName>
+					<CachePath>SFX/746109078_C214D156.wem</CachePath>
+				</File>
+				<File Id="68212955" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>709607113.wav</ShortName>
+					<CachePath>SFX/709607113_C214D156.wem</CachePath>
+				</File>
+				<File Id="74593906" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>525923478.wav</ShortName>
+					<CachePath>SFX/525923478_C214D156.wem</CachePath>
+				</File>
+				<File Id="81546599" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>269847681.wav</ShortName>
+					<CachePath>SFX/269847681_C214D156.wem</CachePath>
+				</File>
+				<File Id="89560628" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>131842364.wav</ShortName>
+					<CachePath>SFX/131842364_C214D156.wem</CachePath>
+				</File>
+				<File Id="102348998" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>519792345.wav</ShortName>
+					<CachePath>SFX/519792345_C214D156.wem</CachePath>
+				</File>
+				<File Id="111331701" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>23542778.wav</ShortName>
+					<CachePath>SFX/23542778_C214D156.wem</CachePath>
+				</File>
+				<File Id="116728601" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>231924754.wav</ShortName>
+					<CachePath>SFX/231924754_C214D156.wem</CachePath>
+				</File>
+				<File Id="150509470" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>653945249.wav</ShortName>
+					<CachePath>SFX/653945249_C214D156.wem</CachePath>
+				</File>
+				<File Id="156408992" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>332160844.wav</ShortName>
+					<CachePath>SFX/332160844_C214D156.wem</CachePath>
+				</File>
+				<File Id="180256767" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>226551560.wav</ShortName>
+					<CachePath>SFX/226551560_C214D156.wem</CachePath>
+				</File>
+				<File Id="198736675" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>199046395.wav</ShortName>
+					<CachePath>SFX/199046395_C214D156.wem</CachePath>
+				</File>
+				<File Id="201477697" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>323783674.wav</ShortName>
+					<CachePath>SFX/323783674_C214D156.wem</CachePath>
+				</File>
+				<File Id="208863292" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>310525863.wav</ShortName>
+					<CachePath>SFX/310525863_C214D156.wem</CachePath>
+				</File>
+				<File Id="210673516" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>537944164.wav</ShortName>
+					<CachePath>SFX/537944164_C214D156.wem</CachePath>
+				</File>
+				<File Id="210740296" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>471295488.wav</ShortName>
+					<CachePath>SFX/471295488_C214D156.wem</CachePath>
+				</File>
+				<File Id="211638643" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>619210767.wav</ShortName>
+					<CachePath>SFX/619210767_C214D156.wem</CachePath>
+				</File>
+				<File Id="223133577" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>62475787.wav</ShortName>
+					<CachePath>SFX/62475787_C214D156.wem</CachePath>
+				</File>
+				<File Id="234330301" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>866143360.wav</ShortName>
+					<CachePath>SFX/866143360_C214D156.wem</CachePath>
+				</File>
+				<File Id="246268946" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>145729953.wav</ShortName>
+					<CachePath>SFX/145729953_C214D156.wem</CachePath>
+				</File>
+				<File Id="265653348" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>460655232.wav</ShortName>
+					<CachePath>SFX/460655232_C214D156.wem</CachePath>
+				</File>
+				<File Id="283517868" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>678927944.wav</ShortName>
+					<CachePath>SFX/678927944_C214D156.wem</CachePath>
+				</File>
+				<File Id="285069226" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>490237667.wav</ShortName>
+					<CachePath>SFX/490237667_C214D156.wem</CachePath>
+				</File>
+				<File Id="286991458" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>197911993.wav</ShortName>
+					<CachePath>SFX/197911993_C214D156.wem</CachePath>
+				</File>
+				<File Id="307705509" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>18718757.wav</ShortName>
+					<CachePath>SFX/18718757_C214D156.wem</CachePath>
+				</File>
+				<File Id="323568048" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>616726028.wav</ShortName>
+					<CachePath>SFX/616726028_C214D156.wem</CachePath>
+				</File>
+				<File Id="337452336" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>303706326.wav</ShortName>
+					<CachePath>SFX/303706326_C214D156.wem</CachePath>
+				</File>
+				<File Id="340442933" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>153332019.wav</ShortName>
+					<CachePath>SFX/153332019_C214D156.wem</CachePath>
+				</File>
+				<File Id="341405818" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>464918369.wav</ShortName>
+					<CachePath>SFX/464918369_C214D156.wem</CachePath>
+				</File>
+				<File Id="360690111" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>426533113.wav</ShortName>
+					<CachePath>SFX/426533113_C214D156.wem</CachePath>
+				</File>
+				<File Id="379178228" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>21748416.wav</ShortName>
+					<CachePath>SFX/21748416_C214D156.wem</CachePath>
+				</File>
+				<File Id="400540290" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>330060815.wav</ShortName>
+					<CachePath>SFX/330060815_C214D156.wem</CachePath>
+				</File>
+				<File Id="409264362" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>102627183.wav</ShortName>
+					<CachePath>SFX/102627183_C214D156.wem</CachePath>
+				</File>
+				<File Id="413250199" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>1049280435.wav</ShortName>
+					<CachePath>SFX/1049280435_C214D156.wem</CachePath>
+				</File>
+				<File Id="416498992" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>167562216.wav</ShortName>
+					<CachePath>SFX/167562216_C214D156.wem</CachePath>
+				</File>
+				<File Id="418185666" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>32059305.wav</ShortName>
+					<CachePath>SFX/32059305_C214D156.wem</CachePath>
+				</File>
+				<File Id="422312325" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>243041943.wav</ShortName>
+					<CachePath>SFX/243041943_C214D156.wem</CachePath>
+				</File>
+				<File Id="423566998" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>134762493.wav</ShortName>
+					<CachePath>SFX/134762493_C214D156.wem</CachePath>
+				</File>
+				<File Id="426753782" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>85697110.wav</ShortName>
+					<CachePath>SFX/85697110_C214D156.wem</CachePath>
+				</File>
+				<File Id="449072651" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>46421989.wav</ShortName>
+					<CachePath>SFX/46421989_C214D156.wem</CachePath>
+				</File>
+				<File Id="505005528" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>411347999.wav</ShortName>
+					<CachePath>SFX/411347999_C214D156.wem</CachePath>
+				</File>
+				<File Id="530109862" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>739854810.wav</ShortName>
+					<CachePath>SFX/739854810_C214D156.wem</CachePath>
+				</File>
+				<File Id="538536682" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>307630258.wav</ShortName>
+					<CachePath>SFX/307630258_C214D156.wem</CachePath>
+				</File>
+				<File Id="543168062" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>738309911.wav</ShortName>
+					<CachePath>SFX/738309911_C214D156.wem</CachePath>
+				</File>
+				<File Id="545428110" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>21228998.wav</ShortName>
+					<CachePath>SFX/21228998_C214D156.wem</CachePath>
+				</File>
+				<File Id="550651330" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>517379583.wav</ShortName>
+					<CachePath>SFX/517379583_C214D156.wem</CachePath>
+				</File>
+				<File Id="554839381" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>310749678.wav</ShortName>
+					<CachePath>SFX/310749678_C214D156.wem</CachePath>
+				</File>
+				<File Id="575443414" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>189958465.wav</ShortName>
+					<CachePath>SFX/189958465_C214D156.wem</CachePath>
+				</File>
+				<File Id="593853212" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>5331247.wav</ShortName>
+					<CachePath>SFX/5331247_C214D156.wem</CachePath>
+				</File>
+				<File Id="608766430" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>256720301.wav</ShortName>
+					<CachePath>SFX/256720301_C214D156.wem</CachePath>
+				</File>
+				<File Id="610040333" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>918820742.wav</ShortName>
+					<CachePath>SFX/918820742_C214D156.wem</CachePath>
+				</File>
+				<File Id="627254952" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>145875936.wav</ShortName>
+					<CachePath>SFX/145875936_C214D156.wem</CachePath>
+				</File>
+				<File Id="632465909" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>4361110.wav</ShortName>
+					<CachePath>SFX/4361110_C214D156.wem</CachePath>
+				</File>
+				<File Id="649399786" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>566088881.wav</ShortName>
+					<CachePath>SFX/566088881_C214D156.wem</CachePath>
+				</File>
+				<File Id="674053136" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>55935146.wav</ShortName>
+					<CachePath>SFX/55935146_C214D156.wem</CachePath>
+				</File>
+				<File Id="708639274" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>866819730.wav</ShortName>
+					<CachePath>SFX/866819730_C214D156.wem</CachePath>
+				</File>
+				<File Id="710544947" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>397775409.wav</ShortName>
+					<CachePath>SFX/397775409_C214D156.wem</CachePath>
+				</File>
+				<File Id="725731603" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>18836543.wav</ShortName>
+					<CachePath>SFX/18836543_C214D156.wem</CachePath>
+				</File>
+				<File Id="730073636" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>227635969.wav</ShortName>
+					<CachePath>SFX/227635969_C214D156.wem</CachePath>
+				</File>
+				<File Id="735896382" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>296294238.wav</ShortName>
+					<CachePath>SFX/296294238_C214D156.wem</CachePath>
+				</File>
+				<File Id="758917346" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>998771540.wav</ShortName>
+					<CachePath>SFX/998771540_C214D156.wem</CachePath>
+				</File>
+				<File Id="841492736" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>384955048.wav</ShortName>
+					<CachePath>SFX/384955048_C214D156.wem</CachePath>
+				</File>
+				<File Id="860488190" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>131209298.wav</ShortName>
+					<CachePath>SFX/131209298_C214D156.wem</CachePath>
+				</File>
+				<File Id="872748970" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>917935100.wav</ShortName>
+					<CachePath>SFX/917935100_C214D156.wem</CachePath>
+				</File>
+				<File Id="895332209" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>226767399.wav</ShortName>
+					<CachePath>SFX/226767399_C214D156.wem</CachePath>
+				</File>
+				<File Id="897198013" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>980547364.wav</ShortName>
+					<CachePath>SFX/980547364_C214D156.wem</CachePath>
+				</File>
+				<File Id="905201967" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>57852014.wav</ShortName>
+					<CachePath>SFX/57852014_C214D156.wem</CachePath>
+				</File>
+				<File Id="908362427" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>193228366.wav</ShortName>
+					<CachePath>SFX/193228366_C214D156.wem</CachePath>
+				</File>
+				<File Id="915666589" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>435575398.wav</ShortName>
+					<CachePath>SFX/435575398_C214D156.wem</CachePath>
+				</File>
+				<File Id="932612963" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>859091009.wav</ShortName>
+					<CachePath>SFX/859091009_C214D156.wem</CachePath>
+				</File>
+				<File Id="950868700" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>236914936.wav</ShortName>
+					<CachePath>SFX/236914936_C214D156.wem</CachePath>
+				</File>
+				<File Id="966522622" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>706012001.wav</ShortName>
+					<CachePath>SFX/706012001_C214D156.wem</CachePath>
+				</File>
+				<File Id="976966261" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>203409424.wav</ShortName>
+					<CachePath>SFX/203409424_C214D156.wem</CachePath>
+				</File>
+				<File Id="988465059" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>90450655.wav</ShortName>
+					<CachePath>SFX/90450655_C214D156.wem</CachePath>
+				</File>
+				<File Id="1039411873" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>209435198.wav</ShortName>
+					<CachePath>SFX/209435198_C214D156.wem</CachePath>
+				</File>
+				<File Id="1040449469" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>740000307.wav</ShortName>
+					<CachePath>SFX/740000307_C214D156.wem</CachePath>
+				</File>
+				<File Id="1044199059" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>61784837.wav</ShortName>
+					<CachePath>SFX/61784837_C214D156.wem</CachePath>
+				</File>
+				<File Id="1048687820" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>11049123.wav</ShortName>
+					<CachePath>SFX/11049123_C214D156.wem</CachePath>
+				</File>
+				<File Id="1050650677" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>325705301.wav</ShortName>
+					<CachePath>SFX/325705301_C214D156.wem</CachePath>
+				</File>
+				<File Id="1055637023" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>866209816.wav</ShortName>
+					<CachePath>SFX/866209816_C214D156.wem</CachePath>
+				</File>
+				<File Id="1065084777" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>277100981.wav</ShortName>
+					<CachePath>SFX/277100981_C214D156.wem</CachePath>
+				</File>
+				<File Id="1066292399" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>369836552.wav</ShortName>
+					<CachePath>SFX/369836552_C214D156.wem</CachePath>
+				</File>
+				<File Id="1066461175" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>423623493.wav</ShortName>
+					<CachePath>SFX/423623493_C214D156.wem</CachePath>
+				</File>
+				<File Id="1067552803" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>241773345.wav</ShortName>
+					<CachePath>SFX/241773345_C214D156.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<ShareSets>
+					<Plugin Id="59662939" Name="Dialog_Too_Quiet" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="2258521792" Name="Brick_Wall_Minus_1dB_Peak_Slow_Release" LibName="Wwise Peak Limiter" LibId="7208963"/>
+				</ShareSets>
+			</Plugins>
+			<Events>
+				<Event Id="733921650" Name="SettBossKill">
+					<MediaRefs>
+						<MediaRef Id="341405818"/>
+						<MediaRef Id="608766430"/>
+						<MediaRef Id="730073636"/>
+						<MediaRef Id="841492736"/>
+						<MediaRef Id="895332209"/>
+						<MediaRef Id="897198013"/>
+						<MediaRef Id="1067552803"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="4031773514" Name="SettBossQuote" ObjectPath="\Events\Default Work Unit\SettBossQuote">
-					<IncludedMemoryFiles>
-						<File Id="68212955" Language="SFX">
-							<ShortName>709607113.wav</ShortName>
-							<Path>SFX\709607113_0D5756A9.wem</Path>
-						</File>
-						<File Id="156408992" Language="SFX">
-							<ShortName>332160844.wav</ShortName>
-							<Path>SFX\332160844_0D5756A9.wem</Path>
-						</File>
-						<File Id="201477697" Language="SFX">
-							<ShortName>323783674.wav</ShortName>
-							<Path>SFX\323783674_0D5756A9.wem</Path>
-						</File>
-						<File Id="210740296" Language="SFX">
-							<ShortName>471295488.wav</ShortName>
-							<Path>SFX\471295488_0D5756A9.wem</Path>
-						</File>
-						<File Id="285069226" Language="SFX">
-							<ShortName>490237667.wav</ShortName>
-							<Path>SFX\490237667_0D5756A9.wem</Path>
-						</File>
-						<File Id="400540290" Language="SFX">
-							<ShortName>330060815.wav</ShortName>
-							<Path>SFX\330060815_0D5756A9.wem</Path>
-						</File>
-						<File Id="550651330" Language="SFX">
-							<ShortName>517379583.wav</ShortName>
-							<Path>SFX\517379583_0D5756A9.wem</Path>
-						</File>
-						<File Id="710544947" Language="SFX">
-							<ShortName>397775409.wav</ShortName>
-							<Path>SFX\397775409_0D5756A9.wem</Path>
-						</File>
-						<File Id="1048687820" Language="SFX">
-							<ShortName>11049123.wav</ShortName>
-							<Path>SFX\11049123_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4031773514" Name="SettBossQuote">
+					<MediaRefs>
+						<MediaRef Id="68212955"/>
+						<MediaRef Id="156408992"/>
+						<MediaRef Id="201477697"/>
+						<MediaRef Id="210740296"/>
+						<MediaRef Id="285069226"/>
+						<MediaRef Id="400540290"/>
+						<MediaRef Id="550651330"/>
+						<MediaRef Id="710544947"/>
+						<MediaRef Id="1048687820"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="1803938789" Name="SettDash" ObjectPath="\Events\Default Work Unit\SettDash">
-					<IncludedMemoryFiles>
-						<File Id="610040333" Language="SFX">
-							<ShortName>918820742.wav</ShortName>
-							<Path>SFX\918820742_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1803938789" Name="SettDash">
+					<MediaRefs>
+						<MediaRef Id="610040333"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2077079117" Name="SettDeath" ObjectPath="\Events\Default Work Unit\SettDeath">
-					<IncludedMemoryFiles>
-						<File Id="538536682" Language="SFX">
-							<ShortName>307630258.wav</ShortName>
-							<Path>SFX\307630258_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2077079117" Name="SettDeath">
+					<MediaRefs>
+						<MediaRef Id="538536682"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="4229278743" Name="SettESFX" ObjectPath="\Events\Default Work Unit\SettESFX">
-					<IncludedMemoryFiles>
-						<File Id="246268946" Language="SFX">
-							<ShortName>145729953.wav</ShortName>
-							<Path>SFX\145729953_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4229278743" Name="SettESFX">
+					<MediaRefs>
+						<MediaRef Id="246268946"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1955653731" Name="SettEVO" ObjectPath="\Events\Default Work Unit\SettEVO">
-					<IncludedMemoryFiles>
-						<File Id="59126964" Language="SFX">
-							<ShortName>746109078.wav</ShortName>
-							<Path>SFX\746109078_0D5756A9.wem</Path>
-						</File>
-						<File Id="265653348" Language="SFX">
-							<ShortName>460655232.wav</ShortName>
-							<Path>SFX\460655232_0D5756A9.wem</Path>
-						</File>
-						<File Id="1040449469" Language="SFX">
-							<ShortName>740000307.wav</ShortName>
-							<Path>SFX\740000307_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1955653731" Name="SettEVO">
+					<MediaRefs>
+						<MediaRef Id="59126964"/>
+						<MediaRef Id="265653348"/>
+						<MediaRef Id="1040449469"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="2680314753" Name="SettHitSFX" ObjectPath="\Events\Default Work Unit\SettHitSFX">
-					<IncludedMemoryFiles>
-						<File Id="48835020" Language="SFX">
-							<ShortName>68839073.wav</ShortName>
-							<Path>SFX\68839073_0D5756A9.wem</Path>
-						</File>
-						<File Id="81546599" Language="SFX">
-							<ShortName>269847681.wav</ShortName>
-							<Path>SFX\269847681_0D5756A9.wem</Path>
-						</File>
-						<File Id="89560628" Language="SFX">
-							<ShortName>131842364.wav</ShortName>
-							<Path>SFX\131842364_0D5756A9.wem</Path>
-						</File>
-						<File Id="286991458" Language="SFX">
-							<ShortName>197911993.wav</ShortName>
-							<Path>SFX\197911993_0D5756A9.wem</Path>
-						</File>
-						<File Id="307705509" Language="SFX">
-							<ShortName>18718757.wav</ShortName>
-							<Path>SFX\18718757_0D5756A9.wem</Path>
-						</File>
-						<File Id="337452336" Language="SFX">
-							<ShortName>303706326.wav</ShortName>
-							<Path>SFX\303706326_0D5756A9.wem</Path>
-						</File>
-						<File Id="340442933" Language="SFX">
-							<ShortName>153332019.wav</ShortName>
-							<Path>SFX\153332019_0D5756A9.wem</Path>
-						</File>
-						<File Id="416498992" Language="SFX">
-							<ShortName>167562216.wav</ShortName>
-							<Path>SFX\167562216_0D5756A9.wem</Path>
-						</File>
-						<File Id="423566998" Language="SFX">
-							<ShortName>134762493.wav</ShortName>
-							<Path>SFX\134762493_0D5756A9.wem</Path>
-						</File>
-						<File Id="554839381" Language="SFX">
-							<ShortName>310749678.wav</ShortName>
-							<Path>SFX\310749678_0D5756A9.wem</Path>
-						</File>
-						<File Id="575443414" Language="SFX">
-							<ShortName>189958465.wav</ShortName>
-							<Path>SFX\189958465_0D5756A9.wem</Path>
-						</File>
-						<File Id="627254952" Language="SFX">
-							<ShortName>145875936.wav</ShortName>
-							<Path>SFX\145875936_0D5756A9.wem</Path>
-						</File>
-						<File Id="632465909" Language="SFX">
-							<ShortName>4361110.wav</ShortName>
-							<Path>SFX\4361110_0D5756A9.wem</Path>
-						</File>
-						<File Id="908362427" Language="SFX">
-							<ShortName>193228366.wav</ShortName>
-							<Path>SFX\193228366_0D5756A9.wem</Path>
-						</File>
-						<File Id="950868700" Language="SFX">
-							<ShortName>236914936.wav</ShortName>
-							<Path>SFX\236914936_0D5756A9.wem</Path>
-						</File>
-						<File Id="988465059" Language="SFX">
-							<ShortName>90450655.wav</ShortName>
-							<Path>SFX\90450655_0D5756A9.wem</Path>
-						</File>
-						<File Id="1044199059" Language="SFX">
-							<ShortName>61784837.wav</ShortName>
-							<Path>SFX\61784837_0D5756A9.wem</Path>
-						</File>
-						<File Id="1066292399" Language="SFX">
-							<ShortName>369836552.wav</ShortName>
-							<Path>SFX\369836552_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2680314753" Name="SettHitSFX">
+					<MediaRefs>
+						<MediaRef Id="48835020"/>
+						<MediaRef Id="81546599"/>
+						<MediaRef Id="89560628"/>
+						<MediaRef Id="286991458"/>
+						<MediaRef Id="307705509"/>
+						<MediaRef Id="337452336"/>
+						<MediaRef Id="340442933"/>
+						<MediaRef Id="416498992"/>
+						<MediaRef Id="423566998"/>
+						<MediaRef Id="554839381"/>
+						<MediaRef Id="575443414"/>
+						<MediaRef Id="627254952"/>
+						<MediaRef Id="632465909"/>
+						<MediaRef Id="908362427"/>
+						<MediaRef Id="950868700"/>
+						<MediaRef Id="988465059"/>
+						<MediaRef Id="1044199059"/>
+						<MediaRef Id="1066292399"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4007119785" Name="SettHitVO" ObjectPath="\Events\Default Work Unit\SettHitVO">
-					<IncludedMemoryFiles>
-						<File Id="210673516" Language="SFX">
-							<ShortName>537944164.wav</ShortName>
-							<Path>SFX\537944164_0D5756A9.wem</Path>
-						</File>
-						<File Id="409264362" Language="SFX">
-							<ShortName>102627183.wav</ShortName>
-							<Path>SFX\102627183_0D5756A9.wem</Path>
-						</File>
-						<File Id="543168062" Language="SFX">
-							<ShortName>738309911.wav</ShortName>
-							<Path>SFX\738309911_0D5756A9.wem</Path>
-						</File>
-						<File Id="674053136" Language="SFX">
-							<ShortName>55935146.wav</ShortName>
-							<Path>SFX\55935146_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4007119785" Name="SettHitVO">
+					<MediaRefs>
+						<MediaRef Id="210673516"/>
+						<MediaRef Id="409264362"/>
+						<MediaRef Id="543168062"/>
+						<MediaRef Id="674053136"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="749031040" Name="SettJoke" ObjectPath="\Events\Default Work Unit\SettJoke">
-					<IncludedMemoryFiles>
-						<File Id="915666589" Language="SFX">
-							<ShortName>435575398.wav</ShortName>
-							<Path>SFX\435575398_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="749031040" Name="SettJoke">
+					<MediaRefs>
+						<MediaRef Id="915666589"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="228130932" Name="SettLaugh" ObjectPath="\Events\Default Work Unit\SettLaugh">
-					<IncludedMemoryFiles>
-						<File Id="150509470" Language="SFX">
-							<ShortName>653945249.wav</ShortName>
-							<Path>SFX\653945249_0D5756A9.wem</Path>
-						</File>
-						<File Id="976966261" Language="SFX">
-							<ShortName>203409424.wav</ShortName>
-							<Path>SFX\203409424_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="228130932" Name="SettLaugh">
+					<MediaRefs>
+						<MediaRef Id="150509470"/>
+						<MediaRef Id="976966261"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="3542766465" Name="SettMenuSFX" ObjectPath="\Events\Default Work Unit\SettMenuSFX">
-					<IncludedMemoryFiles>
-						<File Id="505005528" Language="SFX">
-							<ShortName>411347999.wav</ShortName>
-							<Path>SFX\411347999_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3542766465" Name="SettMenuSFX">
+					<MediaRefs>
+						<MediaRef Id="505005528"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3433755561" Name="SettMenuVO" ObjectPath="\Events\Default Work Unit\SettMenuVO">
-					<IncludedMemoryFiles>
-						<File Id="57474665" Language="SFX">
-							<ShortName>90901994.wav</ShortName>
-							<Path>SFX\90901994_0D5756A9.wem</Path>
-						</File>
-						<File Id="198736675" Language="SFX">
-							<ShortName>199046395.wav</ShortName>
-							<Path>SFX\199046395_0D5756A9.wem</Path>
-						</File>
-						<File Id="223133577" Language="SFX">
-							<ShortName>62475787.wav</ShortName>
-							<Path>SFX\62475787_0D5756A9.wem</Path>
-						</File>
-						<File Id="422312325" Language="SFX">
-							<ShortName>243041943.wav</ShortName>
-							<Path>SFX\243041943_0D5756A9.wem</Path>
-						</File>
-						<File Id="426753782" Language="SFX">
-							<ShortName>85697110.wav</ShortName>
-							<Path>SFX\85697110_0D5756A9.wem</Path>
-						</File>
-						<File Id="449072651" Language="SFX">
-							<ShortName>46421989.wav</ShortName>
-							<Path>SFX\46421989_0D5756A9.wem</Path>
-						</File>
-						<File Id="545428110" Language="SFX">
-							<ShortName>21228998.wav</ShortName>
-							<Path>SFX\21228998_0D5756A9.wem</Path>
-						</File>
-						<File Id="860488190" Language="SFX">
-							<ShortName>131209298.wav</ShortName>
-							<Path>SFX\131209298_0D5756A9.wem</Path>
-						</File>
-						<File Id="905201967" Language="SFX">
-							<ShortName>57852014.wav</ShortName>
-							<Path>SFX\57852014_0D5756A9.wem</Path>
-						</File>
-						<File Id="1039411873" Language="SFX">
-							<ShortName>209435198.wav</ShortName>
-							<Path>SFX\209435198_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3433755561" Name="SettMenuVO">
+					<MediaRefs>
+						<MediaRef Id="57474665"/>
+						<MediaRef Id="198736675"/>
+						<MediaRef Id="223133577"/>
+						<MediaRef Id="422312325"/>
+						<MediaRef Id="426753782"/>
+						<MediaRef Id="449072651"/>
+						<MediaRef Id="545428110"/>
+						<MediaRef Id="860488190"/>
+						<MediaRef Id="905201967"/>
+						<MediaRef Id="1039411873"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="2843348803" Name="SettRImpact" ObjectPath="\Events\Default Work Unit\SettRImpact">
-					<IncludedMemoryFiles>
-						<File Id="211638643" Language="SFX">
-							<ShortName>619210767.wav</ShortName>
-							<Path>SFX\619210767_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2843348803" Name="SettRImpact">
+					<MediaRefs>
+						<MediaRef Id="211638643"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2833799674" Name="SettRSFX" ObjectPath="\Events\Default Work Unit\SettRSFX">
-					<IncludedMemoryFiles>
-						<File Id="725731603" Language="SFX">
-							<ShortName>18836543.wav</ShortName>
-							<Path>SFX\18836543_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2833799674" Name="SettRSFX">
+					<MediaRefs>
+						<MediaRef Id="725731603"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1991033280" Name="SettRVO" ObjectPath="\Events\Default Work Unit\SettRVO">
-					<IncludedMemoryFiles>
-						<File Id="234330301" Language="SFX">
-							<ShortName>866143360.wav</ShortName>
-							<Path>SFX\866143360_0D5756A9.wem</Path>
-						</File>
-						<File Id="360690111" Language="SFX">
-							<ShortName>426533113.wav</ShortName>
-							<Path>SFX\426533113_0D5756A9.wem</Path>
-						</File>
-						<File Id="418185666" Language="SFX">
-							<ShortName>32059305.wav</ShortName>
-							<Path>SFX\32059305_0D5756A9.wem</Path>
-						</File>
-						<File Id="530109862" Language="SFX">
-							<ShortName>739854810.wav</ShortName>
-							<Path>SFX\739854810_0D5756A9.wem</Path>
-						</File>
-						<File Id="649399786" Language="SFX">
-							<ShortName>566088881.wav</ShortName>
-							<Path>SFX\566088881_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1991033280" Name="SettRVO">
+					<MediaRefs>
+						<MediaRef Id="234330301"/>
+						<MediaRef Id="360690111"/>
+						<MediaRef Id="418185666"/>
+						<MediaRef Id="530109862"/>
+						<MediaRef Id="649399786"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="268375865" Name="SettSwing" ObjectPath="\Events\Default Work Unit\SettSwing">
-					<IncludedMemoryFiles>
-						<File Id="24104798" Language="SFX">
-							<ShortName>197676997.wav</ShortName>
-							<Path>SFX\197676997_0D5756A9.wem</Path>
-						</File>
-						<File Id="111331701" Language="SFX">
-							<ShortName>23542778.wav</ShortName>
-							<Path>SFX\23542778_0D5756A9.wem</Path>
-						</File>
-						<File Id="379178228" Language="SFX">
-							<ShortName>21748416.wav</ShortName>
-							<Path>SFX\21748416_0D5756A9.wem</Path>
-						</File>
-						<File Id="593853212" Language="SFX">
-							<ShortName>5331247.wav</ShortName>
-							<Path>SFX\5331247_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="268375865" Name="SettSwing">
+					<MediaRefs>
+						<MediaRef Id="24104798"/>
+						<MediaRef Id="111331701"/>
+						<MediaRef Id="379178228"/>
+						<MediaRef Id="593853212"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2387457643" Name="SettTaunt" ObjectPath="\Events\Default Work Unit\SettTaunt">
-					<IncludedMemoryFiles>
-						<File Id="1055637023" Language="SFX">
-							<ShortName>866209816.wav</ShortName>
-							<Path>SFX\866209816_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2387457643" Name="SettTaunt">
+					<MediaRefs>
+						<MediaRef Id="1055637023"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="646071604" Name="SettTeleport" ObjectPath="\Events\Default Work Unit\SettTeleport">
-					<IncludedMemoryFiles>
-						<File Id="38209527" Language="SFX">
-							<ShortName>697756361.wav</ShortName>
-							<Path>SFX\697756361_0D5756A9.wem</Path>
-						</File>
-						<File Id="208863292" Language="SFX">
-							<ShortName>310525863.wav</ShortName>
-							<Path>SFX\310525863_0D5756A9.wem</Path>
-						</File>
-						<File Id="708639274" Language="SFX">
-							<ShortName>866819730.wav</ShortName>
-							<Path>SFX\866819730_0D5756A9.wem</Path>
-						</File>
-						<File Id="758917346" Language="SFX">
-							<ShortName>998771540.wav</ShortName>
-							<Path>SFX\998771540_0D5756A9.wem</Path>
-						</File>
-						<File Id="872748970" Language="SFX">
-							<ShortName>917935100.wav</ShortName>
-							<Path>SFX\917935100_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="646071604" Name="SettTeleport">
+					<MediaRefs>
+						<MediaRef Id="38209527"/>
+						<MediaRef Id="208863292"/>
+						<MediaRef Id="708639274"/>
+						<MediaRef Id="758917346"/>
+						<MediaRef Id="872748970"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="1447853158" Name="SettWalkQuote" ObjectPath="\Events\Default Work Unit\SettWalkQuote">
-					<IncludedMemoryFiles>
-						<File Id="24815094" Language="SFX">
-							<ShortName>201113605.wav</ShortName>
-							<Path>SFX\201113605_0D5756A9.wem</Path>
-						</File>
-						<File Id="43354235" Language="SFX">
-							<ShortName>878489674.wav</ShortName>
-							<Path>SFX\878489674_0D5756A9.wem</Path>
-						</File>
-						<File Id="74593906" Language="SFX">
-							<ShortName>525923478.wav</ShortName>
-							<Path>SFX\525923478_0D5756A9.wem</Path>
-						</File>
-						<File Id="102348998" Language="SFX">
-							<ShortName>519792345.wav</ShortName>
-							<Path>SFX\519792345_0D5756A9.wem</Path>
-						</File>
-						<File Id="116728601" Language="SFX">
-							<ShortName>231924754.wav</ShortName>
-							<Path>SFX\231924754_0D5756A9.wem</Path>
-						</File>
-						<File Id="180256767" Language="SFX">
-							<ShortName>226551560.wav</ShortName>
-							<Path>SFX\226551560_0D5756A9.wem</Path>
-						</File>
-						<File Id="283517868" Language="SFX">
-							<ShortName>678927944.wav</ShortName>
-							<Path>SFX\678927944_0D5756A9.wem</Path>
-						</File>
-						<File Id="323568048" Language="SFX">
-							<ShortName>616726028.wav</ShortName>
-							<Path>SFX\616726028_0D5756A9.wem</Path>
-						</File>
-						<File Id="1050650677" Language="SFX">
-							<ShortName>325705301.wav</ShortName>
-							<Path>SFX\325705301_0D5756A9.wem</Path>
-						</File>
-						<File Id="1065084777" Language="SFX">
-							<ShortName>277100981.wav</ShortName>
-							<Path>SFX\277100981_0D5756A9.wem</Path>
-						</File>
-						<File Id="1066461175" Language="SFX">
-							<ShortName>423623493.wav</ShortName>
-							<Path>SFX\423623493_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1447853158" Name="SettWalkQuote">
+					<MediaRefs>
+						<MediaRef Id="24815094"/>
+						<MediaRef Id="43354235"/>
+						<MediaRef Id="74593906"/>
+						<MediaRef Id="102348998"/>
+						<MediaRef Id="116728601"/>
+						<MediaRef Id="180256767"/>
+						<MediaRef Id="283517868"/>
+						<MediaRef Id="323568048"/>
+						<MediaRef Id="1050650677"/>
+						<MediaRef Id="1065084777"/>
+						<MediaRef Id="1066461175"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-				<Event Id="12410265" Name="SettWSFX" ObjectPath="\Events\Default Work Unit\SettWSFX">
-					<IncludedMemoryFiles>
-						<File Id="735896382" Language="SFX">
-							<ShortName>296294238.wav</ShortName>
-							<Path>SFX\296294238_0D5756A9.wem</Path>
-						</File>
-						<File Id="966522622" Language="SFX">
-							<ShortName>706012001.wav</ShortName>
-							<Path>SFX\706012001_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="12410265" Name="SettWSFX">
+					<MediaRefs>
+						<MediaRef Id="735896382"/>
+						<MediaRef Id="966522622"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2226361105" Name="SettWVO" ObjectPath="\Events\Default Work Unit\SettWVO">
-					<IncludedMemoryFiles>
-						<File Id="413250199" Language="SFX">
-							<ShortName>1049280435.wav</ShortName>
-							<Path>SFX\1049280435_0D5756A9.wem</Path>
-						</File>
-						<File Id="932612963" Language="SFX">
-							<ShortName>859091009.wav</ShortName>
-							<Path>SFX\859091009_0D5756A9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2226361105" Name="SettWVO">
+					<MediaRefs>
+						<MediaRef Id="413250199"/>
+						<MediaRef Id="932612963"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="59662939"/>
+							<PluginRef Id="2258521792"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
-			</IncludedEvents>
+			</Events>
 			<GameParameters>
-				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
+	<FileHash>{4185AD43-64FE-6AED-C14D-A5B5918CB2E2}</FileHash>
 </SoundBanksInfo>

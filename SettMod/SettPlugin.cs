@@ -12,14 +12,13 @@ using UnityEngine;
 
 namespace SettMod
 {
-    [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.core", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.prefab", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.language", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.sound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.networking", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.loadout", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.bepis.r2api.damagetype", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.xoxfaby.BetterUI", BepInDependency.DependencyFlags.SoftDependency)]
+    //[BepInDependency("com.bepis.r2api.damagetype", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class SettPlugin : BaseUnityPlugin
@@ -34,12 +33,10 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.5.3";
+        public const string MODVERSION = "4.6.0";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
-
-        public static bool betterUIInstalled = false;
 
         private GritGauge gritGauge;
 
@@ -61,7 +58,6 @@ namespace SettMod
             try
             {
                 settDamage = DamageAPI.ReserveDamageType();
-                if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterUI")) betterUIInstalled = true;
                 // load assets and read config
                 Modules.Assets.Initialize();
                 Modules.Config.ReadConfig();
@@ -81,24 +77,11 @@ namespace SettMod
                 RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
                 Hook();
-
-                if (betterUIInstalled)
-                {
-                    AddBetterUI();
-                }
             }
             catch (Exception e)
             {
                 Logger.LogError(e.Message + " - " + e.StackTrace);
             }
-        }
-
-        private void AddBetterUI()
-        {
-            BetterUI.ProcCoefficientCatalog.AddSkill("SettPrimary", "Knuckle Down", 1f);
-            BetterUI.ProcCoefficientCatalog.AddSkill("SettHayMaker", "HayMaker", 1f);
-            BetterUI.ProcCoefficientCatalog.AddSkill("SettFaceBreaker", "Face Breaker", 1f);
-            BetterUI.ProcCoefficientCatalog.AddSkill("SettShowStopper", "Show Stopper", 1f);
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
