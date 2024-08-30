@@ -31,15 +31,6 @@ namespace SettMod.SkillStates
             Util.PlaySound(Dash.dodgeSoundString, base.gameObject);
         }
 
-        protected Ray GetAimRay()
-        {
-            if (base.inputBank)
-            {
-                return new Ray(base.inputBank.aimOrigin, base.inputBank.aimDirection);
-            }
-            return new Ray(base.transform.position, base.transform.forward);
-        }
-
         public static Vector3 CalculateLungeVelocity(Vector3 currentVelocity, Vector3 aimDirection, float charge, float minLungeSpeed, float maxLungeSpeed)
         {
             currentVelocity = ((Vector3.Dot(currentVelocity, aimDirection) < 0f) ? Vector3.zero : Vector3.Project(currentVelocity, aimDirection));

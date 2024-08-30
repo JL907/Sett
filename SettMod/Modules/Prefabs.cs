@@ -263,7 +263,7 @@ namespace SettMod.Modules
 
             characterModel.autoPopulateLightInfos = true;
             characterModel.invisibilityCount = 0;
-            characterModel.temporaryOverlays = new List<TemporaryOverlay>();
+            characterModel.temporaryOverlays = new List<TemporaryOverlayInstance>();
 
             if (mainRendererIndex > characterModel.baseRendererInfos.Length)
             {
@@ -348,24 +348,24 @@ namespace SettMod.Modules
             KinematicCharacterMotor kinematicCharacterMotor = prefab.GetComponent<KinematicCharacterMotor>();
             kinematicCharacterMotor.CharacterController = prefab.GetComponent<CharacterMotor>();
             kinematicCharacterMotor.Capsule = prefab.GetComponent<CapsuleCollider>();
-            kinematicCharacterMotor.Rigidbody = prefab.GetComponent<Rigidbody>();
+            kinematicCharacterMotor._attachedRigidbody = prefab.GetComponent<Rigidbody>();
 
-            kinematicCharacterMotor.DetectDiscreteCollisions = false;
+            kinematicCharacterMotor.DiscreteCollisionEvents = false;
             kinematicCharacterMotor.GroundDetectionExtraDistance = 0f;
             kinematicCharacterMotor.MaxStepHeight = 0.2f;
             kinematicCharacterMotor.MinRequiredStepDepth = 0.1f;
             kinematicCharacterMotor.MaxStableSlopeAngle = 55f;
             kinematicCharacterMotor.MaxStableDistanceFromLedge = 0.5f;
-            kinematicCharacterMotor.PreventSnappingOnLedges = false;
+            //kinematicCharacterMotor.PreventSnappingOnLedges = false;
             kinematicCharacterMotor.MaxStableDenivelationAngle = 55f;
             kinematicCharacterMotor.RigidbodyInteractionType = RigidbodyInteractionType.None;
             kinematicCharacterMotor.PreserveAttachedRigidbodyMomentum = true;
             kinematicCharacterMotor.HasPlanarConstraint = false;
             kinematicCharacterMotor.PlanarConstraintAxis = Vector3.up;
             kinematicCharacterMotor.StepHandling = StepHandlingMethod.None;
-            kinematicCharacterMotor.LedgeHandling = true;
+            kinematicCharacterMotor.LedgeAndDenivelationHandling = true;
             kinematicCharacterMotor.InteractiveRigidbodyHandling = true;
-            kinematicCharacterMotor.SafeMovement = false;
+            kinematicCharacterMotor.CheckMovementInitialOverlaps = false;
         }
 
         private static void SetupMainHurtbox(GameObject prefab, GameObject model)

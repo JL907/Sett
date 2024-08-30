@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="Sett" GUID="{848D6F45-FA16-450A-A46E-57924E3B5D50}" Generator="2023.1.4.8496"/>
+	<CacheRoot>../.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Windows" GUID="{7FEE54D9-C70B-4B48-A745-D4D72D6E14BA}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{5B0093FA-D045-40EB-8B20-C09293677B3F}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{883D8138-2652-FEBE-F499-203C1FB9DC43}</FileHash>
+</ProjectInfo>
