@@ -20,8 +20,10 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## Latest Patch Notes `4.6.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue with KnuckleDown's swing speed and duration
+* Fixed an issue with Knuckle Down's swing speed and duration
 * Fixed an issue with Keystone Skill Family
+* Slightly Tweaked ShowStopper Camera
+* Removed Recoil on Knuckle Down
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
