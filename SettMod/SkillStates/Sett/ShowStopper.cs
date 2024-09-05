@@ -11,7 +11,7 @@ namespace SettMod.SkillStates
     public class ShowStopper : BaseSkillState
     {
         public static float bonusHealthCoefficient = Modules.Config.bonusHealthCoefficient.Value;
-        public static Vector3 CameraPosition = new Vector3(0f, 2f, -25f);
+        public static Vector3 CameraPosition = new Vector3(0f, 3f, -25f);
         public static float dodgeFOV;
         public static float dropForce = 80f;
         public static float jumpDuration = 0.6f;
@@ -40,7 +40,7 @@ namespace SettMod.SkillStates
             CharacterCameraParamsData characterCameraParamsData = ctp.currentCameraParamsData;
             float denom = (1 + Time.fixedTime - this.initialTime);
             float smoothFactor = 8 / Mathf.Pow(denom, 2);
-            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
+            Vector3 smoothVector = new Vector3(0, 0, -1);
             characterCameraParamsData.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
 
             CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
@@ -52,7 +52,6 @@ namespace SettMod.SkillStates
 
             handle = ctp.AddParamsOverride(request);
             base.cameraTargetParams.RemoveParamsOverride(handle);
-
 
             if (!this.hasDropped)
             {

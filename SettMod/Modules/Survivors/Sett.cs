@@ -131,7 +131,7 @@ namespace SettMod.Modules.Survivors
                 stockToConsume = 1,
             });
             ((ScriptableObject)mySkillDef).name = "SettPrimary";
-            Modules.Skills.AddPrimarySkill(bodyPrefab, mySkillDef);
+            Modules.Skills.AddPrimarySkills(bodyPrefab, mySkillDef);
 
             #endregion Primary
 
@@ -235,7 +235,7 @@ namespace SettMod.Modules.Survivors
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, conquerorSkillDef);
+            Modules.Skills.AddKeystoneSkills(bodyPrefab, conquerorSkillDef);
 
             SkillDef lethalSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -245,7 +245,7 @@ namespace SettMod.Modules.Survivors
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, lethalSkillDef);
+            Modules.Skills.AddKeystoneSkills(bodyPrefab, lethalSkillDef);
 
             SkillDef phaseSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -255,7 +255,7 @@ namespace SettMod.Modules.Survivors
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, phaseSkillDef);
+            Modules.Skills.AddKeystoneSkills(bodyPrefab, phaseSkillDef);
 
             SkillDef electrocuteSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
@@ -265,7 +265,7 @@ namespace SettMod.Modules.Survivors
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Electrocute_rune"),
             });
 
-            Modules.Skills.AddKeyStone(bodyPrefab, electrocuteSkillDef);
+            Modules.Skills.AddKeystoneSkills(bodyPrefab, electrocuteSkillDef);
 
             #endregion KeyStone
         }

@@ -17,10 +17,13 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.6.0`
+## Latest Patch Notes `4.6.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Updated for SOTS
+* Fixed an issue with Knuckle Down's swing speed and duration
+* Fixed an issue with Keystone Skill Family
+* Slightly Tweaked ShowStopper Camera
+* Removed Recoil on Knuckle Down
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -66,6 +69,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.6.0`
+* Updated for SOTS
+
 `4.5.3`
 * Fixed Knuckle Down SFX not aligning with animation
 * Added Knockback to HayMaker
