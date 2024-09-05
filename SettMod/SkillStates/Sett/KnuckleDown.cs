@@ -14,9 +14,9 @@ namespace SettMod.SkillStates.BaseStates
         public float duration;
         public int swingIndex;
         protected Animator animator;
-        protected float attackRecoil = 1.15f;
-        protected float baseDuration = 0.9f;
-        protected float baseEarlyExitTime = 0.58f;
+        protected float attackRecoil = 1f;
+        protected float baseDuration = 0.7f;
+        protected float baseEarlyExitTime = 0.48f;
         protected Vector3 bonusForce = Vector3.zero;
         protected float damageCoefficient = 3.5f;
         protected DamageType damageType = DamageType.Generic;
@@ -69,13 +69,13 @@ namespace SettMod.SkillStates.BaseStates
             {
                 this.FireAttack();
             }
-            if (this.fixedAge >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
+            if (this.stopwatch >= this.earlyExitDuration && base.inputBank.skill1.down && base.isAuthority)
             {
                 this.NextSwing(false);
                 return;
             }
 
-            if (base.fixedAge >= this.duration && base.isAuthority)
+            if (this.stopwatch >= this.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
                 return;
@@ -124,7 +124,7 @@ namespace SettMod.SkillStates.BaseStates
                 if (base.isAuthority)
                 {
                     EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
-                    base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
+                    //base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
                 }
             }
 
@@ -203,7 +203,7 @@ namespace SettMod.SkillStates.BaseStates
                     {
                         this.storedVelocity = base.characterMotor.velocity;
                         this.hitStopCachedState = base.CreateHitStopCachedState(base.characterMotor, this.animator, "Slash.playbackRate");
-                        this.hitPauseTimer = (1.5f * EntityStates.Merc.GroundLight.hitPauseDuration) / this.attackSpeedStat;
+                        this.hitPauseTimer = EntityStates.Merc.GroundLight.hitPauseDuration / this.attackSpeedStat;
                         this.inHitPause = true;
                     }
 

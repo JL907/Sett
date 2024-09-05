@@ -1,6 +1,6 @@
 {
 	"name": "SettMod",
-	"version_number": "4.6.0",
+	"version_number": "4.6.1",
 	"website_url": "https://github.com/JL907/Sett",
 	"description": "The Boss.",
 	"dependencies": [
@@ -12,7 +12,7 @@
 		"RiskofThunder-R2API_Sound-1.0.3",
 		"RiskofThunder-R2API_Networking-1.0.2",
 		"RiskofThunder-R2API_Loadout-1.0.2",
-		"RiskofThunder-R2API_DamageType-1.1.1",
-		"RiskofThunder-RoR2BepInExPack-1.19.0"
+		"RiskofThunder-R2API_DamageType-1.1.2",
+		"RiskofThunder-RoR2BepInExPack-1.22.0"
 	]
 }
