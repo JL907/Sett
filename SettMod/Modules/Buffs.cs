@@ -8,14 +8,6 @@ namespace SettMod.Modules
     {
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
-        internal static BuffDef conquerorBuff;
-
-        internal static BuffDef electrocuteDebuff;
-        internal static BuffDef lethalBuff;
-        internal static BuffDef movementSpeedBuff;
-
-        internal static BuffDef phaseRushDebuff;
-
         // armor buff gained during roll
         internal static BuffDef regenBuff;
 
@@ -36,16 +28,6 @@ namespace SettMod.Modules
         internal static void RegisterBuffs()
         {
             regenBuff = AddNewBuff("SettRegenBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("regenicon"), Color.white, true, false);
-
-            conquerorBuff = AddNewBuff("ConquerorBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"), Color.white, true, false);
-
-            lethalBuff = AddNewBuff("LethalBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"), Color.white, true, false);
-
-            phaseRushDebuff = AddNewBuff("PhaseRushDebuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"), Color.white, true, true);
-
-            electrocuteDebuff = AddNewBuff("ElectrocuteDebuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Electrocute_rune"), Color.white, true, true);
-
-            movementSpeedBuff = AddNewBuff("MovementSpeedBuff", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"), Color.white, true, false);
         }
     }
 }

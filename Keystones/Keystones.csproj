@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>7.3</LangVersion>
+		<Version>1.0.0</Version>
+		<RootNamespace>Keystones</RootNamespace>
+		<AssemblyName>Keystones</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Rune icons are embedded so the mod needs no asset bundle. Resource names: Keystones.Icons.<File>.png -->
+		<EmbeddedResource Include="Icons\*.png" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<Deterministic>true</Deterministic>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="RoR2BepInExPack" Version="*" />
+
+		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
+
+		<PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="MMHOOK.RoR2" Version="2025.11.19" NoWarn="NU1701" />
+
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
+
+		<PackageReference Include="UnityEngine.Modules" Version="2021.3.45" />
+
+		<PackageReference Include="R2API.Core" Version="*" />
+		<PackageReference Include="R2API.Language" Version="*" />
+	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="if &quot;$(Configuration)&quot; == &quot;Release&quot; (&#xA;    powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', '$(ProjectDir)icon.png', '$(ProjectDir)manifest.json', '$(ProjectDir)README.md' -DestinationPath '$(ProjectDir)$(ProjectName) $(Version).zip' -Force&#xA;)&#xA;" />
+	</Target>
+
+	<Target Name="CopyToR2Modman" AfterTargets="Build">
+		<PropertyGroup>
+			<PluginDir>$(APPDATA)\r2modmanPlus-local\RiskOfRain2\profiles\Default\BepInEx\plugins\$(TargetName)</PluginDir>
+		</PropertyGroup>
+		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(PluginDir)" SkipUnchangedFiles="true" />
+	</Target>
+
+</Project>

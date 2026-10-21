@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>4.6.3</Version>
+		<Version>4.7.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -42,6 +42,11 @@
 		<PackageReference Include="R2API.Networking" Version="*" />
 		<PackageReference Include="R2API.Loadout" Version="*" />
 		<PackageReference Include="R2API.DamageType" Version="*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Keystones ships as its own Thunderstore package; reference it but don't copy it. -->
+		<ProjectReference Include="..\Keystones\Keystones.csproj" Private="false" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
