@@ -262,7 +262,6 @@ namespace SettMod.Modules
             characterModel.baseRendererInfos = rendererInfos.ToArray();
 
             characterModel.autoPopulateLightInfos = true;
-            characterModel.invisibilityCount = 0;
             characterModel.temporaryOverlays = new List<TemporaryOverlayInstance>();
 
             if (mainRendererIndex > characterModel.baseRendererInfos.Length)

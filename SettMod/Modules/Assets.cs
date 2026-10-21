@@ -42,26 +42,14 @@ namespace SettMod.Modules
 
         public static Material CreateMaterial(string materialName, float emission, Color emissionColor, float normalStrength)
         {
-            if (!commandoMat) commandoMat = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<CharacterModel>().baseRendererInfos[0].defaultMaterial;
+            Material mat = mainAssetBundle ? mainAssetBundle.LoadAsset<Material>(materialName) : null;
 
-            Material mat = UnityEngine.Object.Instantiate<Material>(commandoMat);
-            Material tempMat = Assets.mainAssetBundle.LoadAsset<Material>(materialName);
-
-            if (!tempMat)
+            if (!mat)
             {
                 Debug.LogError("Failed to load material: " + materialName + " - Check to see that the name in your Unity project matches the one in this code");
-                return commandoMat;
             }
 
-            mat.name = materialName;
-            mat.SetColor("_Color", tempMat.GetColor("_Color"));
-            mat.SetTexture("_MainTex", tempMat.GetTexture("_MainTex"));
-            mat.SetColor("_EmColor", emissionColor);
-            mat.SetFloat("_EmPower", emission);
-            mat.SetTexture("_EmTex", tempMat.GetTexture("_EmissionMap"));
-            mat.SetFloat("_NormalStrength", normalStrength);
-
-            return tempMat;
+            return mat;
         }
 
         public static Material CreateMaterial(string materialName)

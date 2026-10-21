@@ -33,7 +33,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.6.2";
+        public const string MODVERSION = "4.6.3";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
@@ -48,7 +48,7 @@ namespace SettMod
             }
             catch (Exception e)
             {
-                Logger.LogError(e.Message + " - " + e.StackTrace);
+                Logger.LogError(e.ToString());
             }
         }
 
@@ -80,7 +80,7 @@ namespace SettMod
             }
             catch (Exception e)
             {
-                Logger.LogError(e.Message + " - " + e.StackTrace);
+                Logger.LogError(e.ToString());
             }
         }
 
