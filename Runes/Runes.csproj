@@ -4,12 +4,12 @@
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>7.3</LangVersion>
 		<Version>1.0.0</Version>
-		<RootNamespace>Keystones</RootNamespace>
-		<AssemblyName>Keystones</AssemblyName>
+		<RootNamespace>Runes</RootNamespace>
+		<AssemblyName>Runes</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- Rune icons are embedded so the mod needs no asset bundle. Resource names: Keystones.Icons.<File>.png -->
+		<!-- Rune icons are embedded so the mod needs no asset bundle. Resource names: Runes.Icons.<File>.png -->
 		<EmbeddedResource Include="Icons\*.png" />
 	</ItemGroup>
 
@@ -29,7 +29,7 @@
 
 		<PackageReference Include="MMHOOK.RoR2" Version="2025.11.19" NoWarn="NU1701" />
 
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.5.0-r.1" />
 
 		<PackageReference Include="UnityEngine.Modules" Version="2021.3.45" />
 

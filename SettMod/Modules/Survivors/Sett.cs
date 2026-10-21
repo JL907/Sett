@@ -225,8 +225,8 @@ namespace SettMod.Modules.Survivors
 
             #endregion Special
 
-            // Keystones now come from the standalone Keystones mod.
-            Keystones.KeystoneAPI.RegisterSurvivor(bodyPrefab);
+            // Keystones now come from the standalone Runes mod.
+            Runes.KeystoneAPI.RegisterSurvivor(bodyPrefab);
         }
 
         internal override void InitializeSkins()

@@ -18,7 +18,7 @@ namespace SettMod
     [BepInDependency("com.bepis.r2api.networking", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.loadout", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.damagetype", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency(Keystones.KeystonePlugin.GUID, BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(Runes.KeystonePlugin.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class SettPlugin : BaseUnityPlugin

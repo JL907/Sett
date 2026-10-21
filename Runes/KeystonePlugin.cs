@@ -7,7 +7,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace Keystones
+namespace Runes
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.language", BepInDependency.DependencyFlags.HardDependency)]
@@ -15,8 +15,8 @@ namespace Keystones
     [BepInPlugin(GUID, NAME, VERSION)]
     public class KeystonePlugin : BaseUnityPlugin
     {
-        public const string GUID = "com.Lemonlust.Keystones";
-        public const string NAME = "Keystones";
+        public const string GUID = "com.Lemonlust.Runes";
+        public const string NAME = "Runes";
         public const string VERSION = "1.0.0";
 
         internal static ManualLogSource Log;
@@ -37,6 +37,11 @@ namespace Keystones
 
                 On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
                 GlobalEventManager.onCharacterDeathGlobal += OnCharacterDeathGlobal;
+
+                foreach (Keystone keystone in KeystoneContent.keystones)
+                {
+                    keystone.Hook();
+                }
             }
             catch (Exception e)
             {
@@ -49,6 +54,11 @@ namespace Keystones
             ContentManager.onContentPacksAssigned -= AddKeystoneSlots;
             On.RoR2.CharacterBody.RecalculateStats -= CharacterBody_RecalculateStats;
             GlobalEventManager.onCharacterDeathGlobal -= OnCharacterDeathGlobal;
+
+            foreach (Keystone keystone in KeystoneContent.keystones)
+            {
+                keystone.Unhook();
+            }
         }
 
         private static void AddKeystoneSlots(HG.ReadOnlyArray<ReadOnlyContentPack> packs)
@@ -115,22 +125,9 @@ namespace Keystones
             if (!self) return;
 
             float levelSteps = Mathf.Floor(self.level / 4f);
-
-            int lethal = self.GetBuffCount(KeystoneContent.lethalBuff);
-            if (lethal > 0)
+            foreach (Keystone keystone in KeystoneContent.keystones)
             {
-                self.attackSpeed += self.attackSpeed * lethal * KeystoneConfig.lethalAttackSpeedPerStack.Value;
-            }
-
-            int conqueror = self.GetBuffCount(KeystoneContent.conquerorBuff);
-            if (conqueror > 0)
-            {
-                self.damage += conqueror * (KeystoneConfig.conquerorDamagePerStack.Value + levelSteps * KeystoneConfig.conquerorDamagePerStackPerLevelStep.Value);
-            }
-
-            if (self.HasBuff(KeystoneContent.phaseRushSpeedBuff))
-            {
-                self.moveSpeed += self.moveSpeed * (KeystoneConfig.phaseRushSpeed.Value + levelSteps * KeystoneConfig.phaseRushSpeedPerLevelStep.Value);
+                keystone.RecalculateStats(self, levelSteps);
             }
         }
 
@@ -141,9 +138,10 @@ namespace Keystones
             if (damageReport.victimTeamIndex == damageReport.attackerTeamIndex) return;
 
             KeystoneHandler handler = damageReport.attackerBody.GetComponent<KeystoneHandler>();
-            if (handler && handler.CurrentKeystone == KeystoneType.PhaseRush)
+            Keystone keystone = handler ? handler.Current : null;
+            if (keystone != null)
             {
-                KeystoneHandler.GrantPhaseRush(damageReport.attackerBody);
+                keystone.OnKillServer(handler, damageReport);
             }
         }
     }

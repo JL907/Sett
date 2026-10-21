@@ -45,8 +45,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<!-- Keystones ships as its own Thunderstore package; reference it but don't copy it. -->
-		<ProjectReference Include="..\Keystones\Keystones.csproj" Private="false" />
+		<!-- Runes ships as its own Thunderstore package; reference it but don't copy it. -->
+		<ProjectReference Include="..\Runes\Runes.csproj" Private="false" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

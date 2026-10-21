@@ -20,7 +20,7 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ## Latest Patch Notes `4.7.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Keystones moved to the standalone [Keystones](https://thunderstore.io/package/lemonlust/Keystones/) mod, which now works on every survivor. Sett still gets the slot automatically; it now defaults to No Keystone, so pick one in the loadout screen.
+* Keystones moved to the standalone [Runes](https://thunderstore.io/package/lemonlust/Runes/) mod, which now works on every survivor. Sett still gets the slot automatically; it now defaults to No Keystone, so pick one in the loadout screen.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">

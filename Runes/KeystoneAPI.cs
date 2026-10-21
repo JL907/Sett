@@ -2,11 +2,11 @@ using RoR2;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Keystones
+namespace Runes
 {
     /// <summary>
     /// Public entry points for other survivor mods. Add
-    /// [BepInDependency(Keystones.KeystonePlugin.GUID)] to your plugin and call these from Awake,
+    /// [BepInDependency(Runes.KeystonePlugin.GUID)] to your plugin and call these from Awake,
     /// before content packs are assigned.
     /// </summary>
     public static class KeystoneAPI
@@ -46,11 +46,13 @@ namespace Keystones
             return body && body.GetComponent<KeystoneHandler>();
         }
 
-        public static BuffDef ConquerorBuff => KeystoneContent.conquerorBuff;
-        public static BuffDef LethalTempoBuff => KeystoneContent.lethalBuff;
-        public static BuffDef PhaseRushDebuff => KeystoneContent.phaseRushDebuff;
-        public static BuffDef PhaseRushSpeedBuff => KeystoneContent.phaseRushSpeedBuff;
-        public static BuffDef ElectrocuteDebuff => KeystoneContent.electrocuteDebuff;
+        public static BuffDef ConquerorBuff => Conqueror.buff;
+        public static BuffDef LethalTempoBuff => LethalTempo.buff;
+        public static BuffDef StormraidersSurgeBuff => StormraidersSurge.speedBuff;
+        public static BuffDef StormraidersSurgeCooldownBuff => StormraidersSurge.cooldownBuff;
+        public static BuffDef ElectrocuteDebuff => Electrocute.debuff;
+        public static BuffDef GraspReadyBuff => GraspOfTheUndying.readyBuff;
+        public static BuffDef GraspHealthBuff => GraspOfTheUndying.healthBuff;
 
         private static void WarnIfLate(string bodyName)
         {
