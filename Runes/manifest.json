@@ -2,7 +2,7 @@
 	"name": "Runes",
 	"version_number": "1.0.0",
 	"website_url": "https://github.com/JL907/Sett",
-	"description": "Adds a League-style Keystone loadout slot (Conqueror, Lethal Tempo, Stormraider's Surge, Electrocute, Grasp of the Undying, Glacial Augment) to every survivor.",
+	"description": "Adds a League-style Keystone loadout slot (Conqueror, Lethal Tempo, Stormraider's Surge, Electrocute, Grasp of the Undying) to every survivor.",
 	"dependencies": [
 		"bbepis-BepInExPack-5.4.2122",
 		"RiskofThunder-HookGenPatcher-1.2.9",

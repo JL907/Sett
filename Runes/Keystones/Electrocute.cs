@@ -2,18 +2,23 @@ using BepInEx.Configuration;
 using RoR2;
 using RoR2.Orbs;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Runes
 {
+    /// <summary>
+    /// Stacks build on the attacker, not the target: every third hit within the window, on any enemies,
+    /// calls down lightning on the enemy struck. If that hit was a kill, the bolt jumps to the nearest enemy.
+    /// </summary>
     internal sealed class Electrocute : Keystone
     {
+        private const int HitsToStrike = 3;
+
         internal static ConfigEntry<float> window;
-        internal static ConfigEntry<float> cooldown;
         internal static ConfigEntry<float> damage;
         internal static ConfigEntry<float> damagePerLevelStep;
+        internal static ConfigEntry<float> retargetRange;
 
-        internal static BuffDef debuff;
+        internal static BuffDef buff;
 
         public override KeystoneType Type => KeystoneType.Electrocute;
         public override string Id => "ELECTROCUTE";
@@ -23,104 +28,90 @@ namespace Runes
         internal override void BindConfig(ConfigFile config)
         {
             const string section = "Electrocute";
-            window = config.Bind(section, "Stack Window", 3f, "Seconds each Electrocute stack lasts on a target.");
-            cooldown = config.Bind(section, "Cooldown Per Target", 5f, "");
-            damage = config.Bind(section, "Damage Coefficient", 6f, "Lightning damage as a multiple of your damage stat.");
+            window = config.Bind(section, "Stack Window", 3f, "Seconds each Electrocute stack lasts. Three stacks at once call down lightning.");
+            damage = config.Bind(section, "Damage Coefficient", 2f, "Lightning damage as a multiple of your damage stat.");
             damagePerLevelStep = config.Bind(section, "Damage Coefficient Per 4 Levels", 0.75f, "");
+            retargetRange = config.Bind(section, "Retarget Range", 30f, "If the third hit kills its target, the lightning strikes the nearest enemy within this many meters instead.");
         }
 
         internal override void CreateBuffs()
         {
-            debuff = KeystoneContent.AddBuff("KeystoneElectrocuteDebuff", icon, true, true);
+            // A self buff so the player can see their stacks; it moves with them from enemy to enemy.
+            buff = KeystoneContent.AddBuff("KeystoneElectrocuteBuff", icon, true, false);
         }
 
         internal override string Description()
         {
-            return Hit + " apply <color=#c9aa71>1</color> stack to enemies. Applying <color=#ffffff>3</color> stacks to a target within " +
-                Num(window.Value) + " seconds strikes it with lightning for <color=#f68835>" + Pct(damage.Value) + "</color> " +
+            return Hit + " against enemies grant <color=#c9aa71>1</color> stack. Reaching <color=#ffffff>3</color> stacks within " +
+                Num(window.Value) + " seconds, on any enemies, strikes the enemy you hit with lightning for <color=#f68835>" + Pct(damage.Value) + "</color> " +
                 "<color=#d62d20>(+" + Pct(damagePerLevelStep.Value) + " every 4 levels)</color> damage. " +
-                Num(cooldown.Value) + " second cooldown per target.";
+                "If that hit was a kill, the lightning strikes the nearest enemy instead.";
         }
 
         internal override void OnHitServer(KeystoneHandler handler, DamageReport damageReport)
         {
-            ElectrocuteHandler electrocute = damageReport.victimBody.GetComponent<ElectrocuteHandler>();
-            if (!electrocute)
+            // The lightning itself must not build stacks, or it would feed the next strike.
+            if (damageReport.damageInfo.procChainMask.HasProc(ProcType.LightningStrikeOnHit)) return;
+
+            CharacterBody body = handler.body;
+            if (body.GetBuffCount(buff) + 1 >= HitsToStrike)
             {
-                electrocute = damageReport.victimBody.gameObject.AddComponent<ElectrocuteHandler>();
-                electrocute.attackerBody = handler.body;
+                body.ClearTimedBuffs(buff.buffIndex);
+                Fire(body, damageReport.victimBody);
             }
-            electrocute.AddStack();
-        }
-    }
-
-    /// <summary>
-    /// Added to an enemy (server side) the first time it's hit by someone running Electrocute.
-    /// Three stacks fire a lightning strike, then the target is immune until the component expires.
-    /// </summary>
-    public class ElectrocuteHandler : MonoBehaviour
-    {
-        private const int MaxStacks = 3;
-
-        public CharacterBody attackerBody;
-
-        private CharacterBody body;
-        private float stopwatch;
-        private bool fired;
-
-        private void Awake()
-        {
-            body = GetComponent<CharacterBody>();
-        }
-
-        public void AddStack()
-        {
-            if (fired || !body) return;
-            if (body.GetBuffCount(Electrocute.debuff) < MaxStacks)
+            else
             {
-                body.AddTimedBuff(Electrocute.debuff, Electrocute.window.Value);
+                // Each stack has its own timer, so only hits from the last few seconds count.
+                body.AddTimedBuff(buff, window.Value);
             }
         }
 
-        private void FixedUpdate()
+        private static void Fire(CharacterBody attacker, CharacterBody victim)
         {
-            if (!NetworkServer.active)
-            {
-                return;
-            }
+            HurtBox target = null;
+            if (victim && victim.healthComponent && victim.healthComponent.alive) target = victim.mainHurtBox;
+            if (!target) target = FindNearestEnemy(attacker, victim ? victim.corePosition : attacker.corePosition, victim);
+            if (!target) return;
 
-            if (!fired && body && body.GetBuffCount(Electrocute.debuff) >= MaxStacks)
-            {
-                Fire();
-            }
+            float levelSteps = Mathf.Floor(attacker.level / 4f);
+            float coefficient = damage.Value + levelSteps * damagePerLevelStep.Value;
 
-            stopwatch += Time.fixedDeltaTime;
-            if (stopwatch >= Electrocute.cooldown.Value)
-            {
-                Destroy(this);
-            }
-        }
-
-        private void Fire()
-        {
-            fired = true;
-            body.SetBuffCount(Electrocute.debuff.buffIndex, 0);
-
-            if (!attackerBody || !body.mainHurtBox) return;
-
-            float levelSteps = Mathf.Floor(attackerBody.level / 4f);
-            float coefficient = Electrocute.damage.Value + levelSteps * Electrocute.damagePerLevelStep.Value;
+            // Tagged as a lightning strike so it can't feed Electrocute or retrigger Charged Perforator.
+            ProcChainMask procChainMask = default(ProcChainMask);
+            procChainMask.AddProc(ProcType.LightningStrikeOnHit);
 
             OrbManager.instance.AddOrb(new SimpleLightningStrikeOrb
             {
-                attacker = attackerBody.gameObject,
+                attacker = attacker.gameObject,
                 damageColorIndex = DamageColorIndex.Item,
-                damageValue = attackerBody.damage * coefficient,
-                isCrit = Util.CheckRoll(attackerBody.crit, attackerBody.master),
-                procChainMask = default(ProcChainMask),
+                damageValue = attacker.damage * coefficient,
+                isCrit = Util.CheckRoll(attacker.crit, attacker.master),
+                procChainMask = procChainMask,
                 procCoefficient = 1f,
-                target = body.mainHurtBox
+                target = target
             });
+        }
+
+        private static HurtBox FindNearestEnemy(CharacterBody attacker, Vector3 origin, CharacterBody exclude)
+        {
+            if (!attacker.teamComponent) return null;
+
+            BullseyeSearch search = new BullseyeSearch
+            {
+                searchOrigin = origin,
+                maxDistanceFilter = retargetRange.Value,
+                teamMaskFilter = TeamMask.GetEnemyTeams(attacker.teamComponent.teamIndex),
+                sortMode = BullseyeSearch.SortMode.Distance,
+                filterByLoS = false
+            };
+            search.RefreshCandidates();
+            if (exclude) search.FilterOutGameObject(exclude.gameObject);
+
+            foreach (HurtBox hurtBox in search.GetResults())
+            {
+                if (hurtBox && hurtBox.healthComponent && hurtBox.healthComponent.alive) return hurtBox;
+            }
+            return null;
         }
     }
 }

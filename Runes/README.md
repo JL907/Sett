@@ -10,10 +10,9 @@ Runes was created under Riot Games' "Legal Jibber Jabber" policy using assets ow
 |---|---|
 | **Conqueror** | Hits grant a stack, up to 12. Each stack gives +0.6 base damage (+0.045 every 4 levels). At max stacks, heal for 6% of damage dealt. |
 | **Lethal Tempo** | Hits grant a stack, up to 6. Each stack gives +10% attack speed (60% at max). |
-| **Stormraider's Surge** | Dealing 25% of an enemy's max health within 3s gives +48% movement speed and 50% slow resistance for 4s. Cooldown goes from 20s at level 1 down to 10s at level 18. Replaces Phase Rush, and takes over its loadout pick. |
-| **Electrocute** | 3 hits on the same target within 3s strike it with lightning for 600% damage (+75% every 4 levels). 5s cooldown per target. |
+| **Stormraider's Surge** | Dealing 25% of an enemy's max health within 3s gives +48% movement speed and 50% slow resistance for 4s. No cooldown: it can trigger again as soon as it ends. Replaces Phase Rush, and takes over its loadout pick. |
+| **Electrocute** | Every 3 hits within 3s, on any enemies, strike the enemy you hit with lightning for 200% damage (+75% every 4 levels). Stacks stay with you, so kills don't waste them; if the third hit is a kill, the lightning jumps to the nearest enemy. No cooldown. |
 | **Grasp of the Undying** | Every 4s, your next hit deals bonus damage equal to 5% of your max health, heals you for 2% of your max health, and permanently gives +1 max health for the rest of the run. |
-| **Glacial Augment** | Stunning, freezing, shocking or rooting an enemy (Stun Grenade counts) sends 3 glacial rays from it towards you and nearby allies. The frozen zones last 3s plus the stun's duration; enemies inside are slowed 20% and deal 15% less damage. 25s cooldown. |
 
 A hit is anything with a proc coefficient above 0, so damage-over-time ticks don't build stacks. Stormraider's Surge is the exception: all damage counts toward its threshold. Stacks start falling off after 4s (Conqueror) or 6s (Lethal Tempo) without landing a hit.
 

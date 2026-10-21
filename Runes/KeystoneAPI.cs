@@ -49,7 +49,7 @@ namespace Runes
         public static BuffDef ConquerorBuff => Conqueror.buff;
         public static BuffDef LethalTempoBuff => LethalTempo.buff;
         public static BuffDef StormraidersSurgeBuff => StormraidersSurge.speedBuff;
-        public static BuffDef ElectrocuteDebuff => Electrocute.debuff;
+        public static BuffDef ElectrocuteBuff => Electrocute.buff;
         public static BuffDef GraspReadyBuff => GraspOfTheUndying.readyBuff;
         public static BuffDef GraspHealthBuff => GraspOfTheUndying.healthBuff;
 
