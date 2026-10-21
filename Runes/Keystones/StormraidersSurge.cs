@@ -16,12 +16,8 @@ namespace Runes
         internal static ConfigEntry<float> duration;
         internal static ConfigEntry<float> speed;
         internal static ConfigEntry<float> slowResistance;
-        internal static ConfigEntry<float> cooldownStart;
-        internal static ConfigEntry<float> cooldownEnd;
-        internal static ConfigEntry<int> cooldownEndLevel;
 
         internal static BuffDef speedBuff;
-        internal static BuffDef cooldownBuff;
 
         public override KeystoneType Type => KeystoneType.StormraidersSurge;
         // Kept from Phase Rush (Riot did the same) so saved loadouts keep this pick.
@@ -41,25 +37,18 @@ namespace Runes
             duration = config.Bind(section, "Duration", 4f, "");
             speed = config.Bind(section, "Movement Speed", 0.48f, "Fraction of movement speed added.");
             slowResistance = config.Bind(section, "Slow Resistance", 0.5f, "Fraction of incoming slows ignored while active.");
-            cooldownStart = config.Bind(section, "Cooldown At Level 1", 20f, "");
-            cooldownEnd = config.Bind(section, "Cooldown At Max Level", 10f, "");
-            cooldownEndLevel = config.Bind(section, "Max Cooldown Level", 18, "Level at which the cooldown reaches its lowest value. It scales evenly from level 1.");
         }
 
         internal override void CreateBuffs()
         {
             speedBuff = KeystoneContent.AddBuff("KeystoneStormraidersSurgeBuff", icon, false, false);
-            cooldownBuff = KeystoneContent.AddBuff("KeystoneStormraidersSurgeCooldown", icon, false, false);
-            cooldownBuff.buffColor = new Color(0.45f, 0.45f, 0.45f);
-            cooldownBuff.isCooldown = true;
         }
 
         internal override string Description()
         {
             return "Dealing damage equal to <color=#f68835>" + Pct(damageThreshold.Value) + " of an enemy's max health</color> within " +
                 Num(window.Value) + " seconds grants <color=#f68835>" + Pct(speed.Value) + "</color> bonus <color=#c9aa71>movement speed</color> and " +
-                "<color=#c9aa71>" + Pct(slowResistance.Value) + " slow resistance</color> for " + Num(duration.Value) + " seconds. " +
-                "Cooldown: " + Num(cooldownStart.Value) + " - " + Num(cooldownEnd.Value) + " seconds (based on level).";
+                "<color=#c9aa71>" + Pct(slowResistance.Value) + " slow resistance</color> for " + Num(duration.Value) + " seconds.";
         }
 
         internal override void OnHitServer(KeystoneHandler handler, DamageReport damageReport)
@@ -72,13 +61,12 @@ namespace Runes
             if (!tracker) tracker = body.gameObject.AddComponent<SurgeTracker>();
 
             float total = tracker.AddDamage(victim, damageReport.damageDealt, window.Value);
-            if (body.HasBuff(cooldownBuff) || body.HasBuff(speedBuff)) return;
+            if (body.HasBuff(speedBuff)) return;
 
             if (total >= victim.fullCombinedHealth * damageThreshold.Value)
             {
                 tracker.Clear();
                 body.AddTimedBuff(speedBuff, duration.Value);
-                body.AddTimedBuff(cooldownBuff, Cooldown(body.level));
             }
         }
 
@@ -95,13 +83,6 @@ namespace Runes
             {
                 body.moveSpeed *= (1f + slow) / (1f + slow * (1f - resist));
             }
-        }
-
-        private static float Cooldown(float level)
-        {
-            int endLevel = Mathf.Max(2, cooldownEndLevel.Value);
-            float t = Mathf.Clamp01((level - 1f) / (endLevel - 1f));
-            return Mathf.Lerp(cooldownStart.Value, cooldownEnd.Value, t);
         }
 
         // Vanilla slow buffs and how much each adds to the slow divisor. Looked up by name so a buff
