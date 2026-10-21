@@ -1,6 +1,6 @@
 {
 	"name": "SettMod",
-	"version_number": "4.6.3",
+	"version_number": "4.7.0",
 	"website_url": "https://github.com/JL907/Sett",
 	"description": "The Boss.",
 	"dependencies": [
@@ -13,6 +13,7 @@
 		"RiskofThunder-R2API_Networking-1.0.4",
 		"RiskofThunder-R2API_Loadout-1.0.2",
 		"RiskofThunder-R2API_DamageType-1.1.7",
-		"RiskofThunder-RoR2BepInExPack-1.47.0"
+		"RiskofThunder-RoR2BepInExPack-1.47.0",
+		"lemonlust-Keystones-1.0.0"
 	]
 }

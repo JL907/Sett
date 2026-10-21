@@ -225,49 +225,8 @@ namespace SettMod.Modules.Survivors
 
             #endregion Special
 
-            #region KeyStone
-
-            SkillDef conquerorSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_CONQUEROR_NAME",
-                skillNameToken = prefix + "_CONQUEROR_NAME",
-                skillDescriptionToken = prefix + "_CONQUEROR_DESC",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Conqueror_rune"),
-            });
-
-            Modules.Skills.AddKeystoneSkills(bodyPrefab, conquerorSkillDef);
-
-            SkillDef lethalSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_LETHAL_NAME",
-                skillNameToken = prefix + "_LETHAL_NAME",
-                skillDescriptionToken = prefix + "_LETHAL_DESC",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Lethal_Tempo_rune"),
-            });
-
-            Modules.Skills.AddKeystoneSkills(bodyPrefab, lethalSkillDef);
-
-            SkillDef phaseSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_PHASE_RUSH_NAME",
-                skillNameToken = prefix + "_PHASE_RUSH_NAME",
-                skillDescriptionToken = prefix + "_PHASE_RUSH_DESC",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Phase_Rush_rune"),
-            });
-
-            Modules.Skills.AddKeystoneSkills(bodyPrefab, phaseSkillDef);
-
-            SkillDef electrocuteSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = prefix + "_ELECTROCUTE_NAME",
-                skillNameToken = prefix + "_ELECTROCUTE_NAME",
-                skillDescriptionToken = prefix + "_ELECTROCUTE_DESC",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("Electrocute_rune"),
-            });
-
-            Modules.Skills.AddKeystoneSkills(bodyPrefab, electrocuteSkillDef);
-
-            #endregion KeyStone
+            // Keystones now come from the standalone Keystones mod.
+            Keystones.KeystoneAPI.RegisterSurvivor(bodyPrefab);
         }
 
         internal override void InitializeSkins()

@@ -4,7 +4,6 @@ using R2API.Utils;
 using RoR2;
 using SettMod.Modules;
 using SettMod.Modules.Survivors;
-using SettMod.SkillStates.Keystone;
 using SettMod.UI;
 using System;
 using System.Collections.Generic;
@@ -19,6 +18,7 @@ namespace SettMod
     [BepInDependency("com.bepis.r2api.networking", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.loadout", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.damagetype", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency(Keystones.KeystonePlugin.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class SettPlugin : BaseUnityPlugin
@@ -33,7 +33,7 @@ namespace SettMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.6.3";
+        public const string MODVERSION = "4.7.0";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
@@ -95,23 +95,6 @@ namespace SettMod
                 {
                     float count = self.GetBuffCount(Modules.Buffs.regenBuff);
                     self.regen += count * (0.25f + (_level * 0.25f));
-                }
-
-                if (self.HasBuff(Modules.Buffs.lethalBuff))
-                {
-                    float count = self.GetBuffCount(Modules.Buffs.lethalBuff);
-                    self.attackSpeed += self.attackSpeed * (count * 0.10f);
-                }
-
-                if (self.HasBuff(Modules.Buffs.conquerorBuff))
-                {
-                    float count = self.GetBuffCount(Modules.Buffs.conquerorBuff);
-                    self.damage += count * (0.6f + (_level * 0.045f));
-                }
-
-                if (self.HasBuff(Modules.Buffs.movementSpeedBuff))
-                {
-                    self.moveSpeed += self.moveSpeed * (0.30f + (_level * 0.05f));
                 }
             }
         }

@@ -2,7 +2,6 @@
 using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
-using SettMod.SkillStates.Keystone;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,14 +24,11 @@ namespace SettMod.Modules
             }
 
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
-            KeyStoneHandler keyStoneHandler = targetPrefab.GetComponent<KeyStoneHandler>();
 
             skillLocator.primary = CreateGenericSkillWithSkillFamily(targetPrefab, "Primary");
             skillLocator.secondary = CreateGenericSkillWithSkillFamily(targetPrefab, "Secondary");
             skillLocator.utility = CreateGenericSkillWithSkillFamily(targetPrefab, "Utility");
             skillLocator.special = CreateGenericSkillWithSkillFamily(targetPrefab, "Special");
-
-            keyStoneHandler.keyStone = CreateGenericSkillWithSkillFamily(targetPrefab, "KeyStone");
 
 
             skillLocator.passiveSkill.enabled = true;
@@ -55,11 +51,6 @@ namespace SettMod.Modules
 
             skillFamilies.Add(newFamily);
             return skill;
-        }
-
-        public static void AddKeystoneSkills(GameObject targetPrefab, params SkillDef[] skillDefs)
-        {
-            AddSkillsToFamily(targetPrefab.GetComponent<KeyStoneHandler>().keyStone.skillFamily, skillDefs);
         }
 
         public static void AddSkillToFamily(SkillFamily skillFamily, SkillDef skillDef, UnlockableDef unlockableDef = null)
