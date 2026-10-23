@@ -36,6 +36,7 @@ namespace SettMod.Modules.LeagueSkins
         internal const string BaseMeshFile = "sett.skn";
         internal const bool TransferExtraBoneWeights = true;
         internal static readonly string[] BaseExcludedParts = { "Joke", "Wolverine" };
+        internal static readonly string[] TransferIgnoredBoneKeywords = { "Coattail", "Fur", "Emblem", "Tassle", "Jet", "Armor", "Photo", "Buffbone", "Vfx" };
         internal const string FallbackBone = "Root";
         internal const bool ReverseWinding = true;
         internal const float MaxRotationRebind = 30f;
@@ -574,10 +575,27 @@ namespace SettMod.Modules.LeagueSkins
                     if (weight <= 0f || influence >= baseSkeleton.influences.Length) continue;
                     int joint = baseSkeleton.influences[influence];
                     if (joint >= baseSkeleton.names.Length) continue;
-                    if (bodyBones.TryGetValue(baseSkeleton.names[joint], out Transform bone))
+                    string jointName = baseSkeleton.names[joint];
+                    if (IsIgnored(jointName)) continue;
+                    if (bodyBones.TryGetValue(jointName, out Transform bone))
                     {
                         result.bones[i * 4 + k] = bone;
                         result.weights[i * 4 + k] = weight;
+                    }
+                }
+
+                float kept = 0f;
+                for (int k = 0; k < 4; k++) kept += result.weights[i * 4 + k];
+                if (kept >= 0.5f)
+                {
+                    for (int k = 0; k < 4; k++) result.weights[i * 4 + k] /= kept;
+                }
+                else
+                {
+                    for (int k = 0; k < 4; k++)
+                    {
+                        result.bones[i * 4 + k] = null;
+                        result.weights[i * 4 + k] = 0f;
                     }
                 }
             }
@@ -586,6 +604,7 @@ namespace SettMod.Modules.LeagueSkins
             if (result.cellSize <= 0f) result.cellSize = 0.05f;
             for (int i = 0; i < result.positions.Length; i++)
             {
+                if (result.weights[i * 4] <= 0f && result.weights[i * 4 + 1] <= 0f && result.weights[i * 4 + 2] <= 0f && result.weights[i * 4 + 3] <= 0f) continue;
                 long key = result.Key(result.Cell(result.positions[i].x), result.Cell(result.positions[i].y), result.Cell(result.positions[i].z));
                 if (!result.grid.TryGetValue(key, out List<int> list))
                 {
@@ -596,6 +615,15 @@ namespace SettMod.Modules.LeagueSkins
             }
 
             return result;
+        }
+
+        private static bool IsIgnored(string jointName)
+        {
+            foreach (string keyword in LeagueSkinBuilder.TransferIgnoredBoneKeywords)
+            {
+                if (jointName.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0) return true;
+            }
+            return false;
         }
 
         private int Cell(float value)

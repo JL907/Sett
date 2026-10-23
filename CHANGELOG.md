@@ -1,5 +1,9 @@
 # Changelog
 
+`4.9.0`
+* Added 6 new skins: Spirit Blossom, Soul Fighter, HEARTSTEEL, Radiant Serpent, Spirit Blossom Springs and HEARTSTEEL: Live My Life
+* Skin names no longer include "Sett", and the default skin is now called Default
+
 `4.8.1`
 * Fixed The Show Stopper not syncing to other players, so they now see the leap, indicator and landing
 * Fixed Sett staying immune to all damage after The Show Stopper when he isn't the host
