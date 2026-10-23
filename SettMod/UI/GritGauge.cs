@@ -13,7 +13,7 @@ namespace SettMod.UI
         public const float trailDelay = 0.4f;
         public const float trailSpeed = 0.8f;
         public const float spacing = 4f;
-        public const float horizontalOffset = -3f;
+        public const float horizontalOffset = -2f;
 
         private Image fill;
         private Image trail;
