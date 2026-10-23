@@ -1,9 +1,6 @@
 ﻿using EntityStates;
 using RoR2;
 using SettMod.States.Emotes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 namespace SettMod.SkillStates.Emotes

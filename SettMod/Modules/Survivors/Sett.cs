@@ -67,7 +67,6 @@ namespace SettMod.Modules.Survivors
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
 #pragma warning disable CS0169
-        private static UnlockableDef masterySkinUnlockableDef;
 #pragma warning restore CS0169
 
         internal override void InitializeCharacter()
@@ -3037,18 +3036,6 @@ localScale = new Vector3(0.1233F, 0.1233F, 0.1233F),
 
             itemDisplayRuleSet.keyAssetRuleGroups = itemDisplayRules.ToArray();
             itemDisplayRuleSet.GenerateRuntimeValues();
-        }
-
-        private static CharacterModel.RendererInfo[] SkinRendererInfos(CharacterModel.RendererInfo[] defaultRenderers, Material[] materials)
-        {
-            CharacterModel.RendererInfo[] newRendererInfos = new CharacterModel.RendererInfo[defaultRenderers.Length];
-            defaultRenderers.CopyTo(newRendererInfos, 0);
-
-            newRendererInfos[0].defaultMaterial = materials[0];
-            newRendererInfos[1].defaultMaterial = materials[1];
-            newRendererInfos[instance.mainRendererIndex].defaultMaterial = materials[2];
-
-            return newRendererInfos;
         }
     }
 }

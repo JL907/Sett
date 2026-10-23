@@ -37,13 +37,7 @@ namespace SettMod.UI
             HealthBar template = hud.healthBar;
             Transform parent = template.transform.parent;
 
-            Sprite sprite = null;
-            Image.Type imageType = Image.Type.Sliced;
-            if (template.style)
-            {
-                sprite = template.style.trailingOverHealthBarStyle.sprite;
-                imageType = template.style.trailingOverHealthBarStyle.imageType;
-            }
+            Sprite sprite = template.style ? template.style.trailingOverHealthBarStyle.sprite : null;
 
             GameObject holder = new GameObject("SettGritGaugeHolder");
             holder.SetActive(false);
@@ -119,8 +113,8 @@ namespace SettMod.UI
             Object.Destroy(holder);
 
             GritGauge gauge = clone.AddComponent<GritGauge>();
-            gauge.trail = GritGauge.CreateBar(container, "GritTrail", sprite, imageType, GritGauge.trailColor);
-            gauge.fill = GritGauge.CreateBar(container, "GritFill", sprite, imageType, GritGauge.gritColor);
+            gauge.trail = GritGauge.CreateBar(container, "GritTrail", sprite, GritGauge.trailColor);
+            gauge.fill = GritGauge.CreateBar(container, "GritFill", sprite, GritGauge.gritColor);
             gauge.currentText = current;
             gauge.maxText = max;
             gauge.rect = cloneRect;
@@ -132,7 +126,7 @@ namespace SettMod.UI
             return gauge;
         }
 
-        private static Image CreateBar(RectTransform container, string name, Sprite sprite, Image.Type imageType, Color color)
+        private static Image CreateBar(RectTransform container, string name, Sprite sprite, Color color)
         {
             GameObject bar = new GameObject(name, typeof(RectTransform), typeof(Image));
             RectTransform rect = bar.GetComponent<RectTransform>();

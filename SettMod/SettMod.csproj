@@ -49,7 +49,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="if &quot;$(Configuration)&quot; == &quot;Release&quot; (&#xA;    powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md' -DestinationPath '$(SolutionDir)$(ProjectName) $(Version).zip' -Force&#xA;)&#xA;" />
+		<Exec Command="if &quot;$(Configuration)&quot; == &quot;Release&quot; (&#xA;    powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md', '$(SolutionDir)CHANGELOG.md' -DestinationPath '$(SolutionDir)$(ProjectName) $(Version).zip' -Force&#xA;)&#xA;" />
 	</Target>
 
 	<Target Name="CopyToR2Modman" AfterTargets="Build">

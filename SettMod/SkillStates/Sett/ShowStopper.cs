@@ -50,7 +50,6 @@ namespace SettMod.SkillStates
                 cameraParamsData = characterCameraParamsData,
                 priority = 0,
             };
-            
 
             handle = ctp.AddParamsOverride(request);
             base.cameraTargetParams.RemoveParamsOverride(handle);

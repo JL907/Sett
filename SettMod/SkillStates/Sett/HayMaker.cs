@@ -2,11 +2,8 @@
 using R2API;
 using RoR2;
 using SettMod.Modules;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {
@@ -14,11 +11,9 @@ namespace SettMod.SkillStates
     {
         public static Vector3 CameraPosition = new Vector3(1.8f, -2.4f, -8f);
         public static float hayMakerDamageCoefficient = Modules.Config.hayMakerDamageCoefficient.Value;
-        public static float hayMakerForce = 1000f;
         public static float hayMakerGritBonus = Modules.Config.hayMakerGritBonus.Value;
         public static float hayMakerGritBonusPer4 = Modules.Config.hayMakerGritBonusPer4.Value;
         public static float hayMakerProcCoefficient = 1f;
-        public static float hayMakerRadius = 55f;
         public GameObject blastEffectPrefab = Addressables.LoadAssetAsync<GameObject>(key: "RoR2/Junk/Treebot/SonicBoomEffect.prefab").WaitForCompletion();
         public float duration;
         protected Animator animator;
@@ -80,7 +75,7 @@ namespace SettMod.SkillStates
                         origin = this.characterBody.corePosition,
                         scale = 100f,
                         rotation = Util.QuaternionSafeLookRotation(vector)
-                    }, false); ;
+                    }, false);
                 }
             }
 

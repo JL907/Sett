@@ -1,7 +1,6 @@
 ﻿using RoR2;
 using EntityStates;
 using UnityEngine;
-using System;
 
 namespace SettMod.States
 {

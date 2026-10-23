@@ -1,5 +1,4 @@
 ﻿using EntityStates;
-using R2API;
 using SettMod.Modules;
 using SettMod.SkillStates.Emotes;
 using UnityEngine;

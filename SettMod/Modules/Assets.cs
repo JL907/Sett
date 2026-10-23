@@ -12,8 +12,6 @@ namespace SettMod.Modules
     {
         internal static GameObject bombExplosionEffect;
 
-        internal static Material commandoMat;
-
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
 
         internal static GameObject faceBreakerEffect;
@@ -207,24 +205,6 @@ namespace SettMod.Modules
             newEffectDef.spawnSoundEventName = soundName;
 
             effectDefs.Add(newEffectDef);
-        }
-
-        private static GameObject CreateTracer(string originalTracerName, string newTracerName)
-        {
-            if (RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName) == null) return null;
-
-            GameObject newTracer = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
-
-            if (!newTracer.GetComponent<EffectComponent>()) newTracer.AddComponent<EffectComponent>();
-            if (!newTracer.GetComponent<VFXAttributes>()) newTracer.AddComponent<VFXAttributes>();
-            if (!newTracer.GetComponent<NetworkIdentity>()) newTracer.AddComponent<NetworkIdentity>();
-
-            newTracer.GetComponent<Tracer>().speed = 250f;
-            newTracer.GetComponent<Tracer>().length = 50f;
-
-            AddNewEffectDef(newTracer);
-
-            return newTracer;
         }
 
         private static GameObject LoadEffect(string resourceName)

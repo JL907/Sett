@@ -10,11 +10,9 @@ namespace SettMod.SkillStates.BaseStates
 {
     public class KnuckleDown : BaseSkillState
     {
-        public static float baseDurationBeforeInterruptable;
         public float duration;
         public int swingIndex;
         protected Animator animator;
-        protected float attackRecoil = 1f;
         protected float baseDuration = 0.7f;
         protected float baseEarlyExitTime = 0.48f;
         protected Vector3 bonusForce = Vector3.zero;
@@ -174,7 +172,7 @@ namespace SettMod.SkillStates.BaseStates
             this.attack.forceVector = this.bonusForce;
             this.attack.pushAwayForce = this.pushForce;
             this.attack.hitBoxGroup = hitBoxGroup;
-            this.attack.isCrit = base.RollCrit(); ;
+            this.attack.isCrit = base.RollCrit();
             this.attack.impactSound = this.impactSound;
             DamageAPI.AddModdedDamageType(attack, SettPlugin.settDamage);
         }
