@@ -22,16 +22,16 @@ namespace SettMod.Modules
         {
             LanguageAPI.Add("SETT_NAME", characterName);
             LanguageAPI.Add("SETT_NAME_SUBTITLE", characterSubtitle);
-            LanguageAPI.Add("OBSIDIAN_SETT_NAME", "<color=#ffa700>Obsidian Dragon Sett</color>");
-            LanguageAPI.Add("POOL_SETT_NAME", "<color=#ffa700>Pool Party Sett</color>");
-            LanguageAPI.Add("PRESTIGE_SETT_NAME", "<color=#ffa700>Prestige Obsidian Dragon Sett</color>");
-            LanguageAPI.Add("MECHA_SETT_NAME", "<color=#ffa700>Mecha Kingdoms Sett</color>");
-            LanguageAPI.Add("FIRECRACKER_SETT_NAME", "<color=#ffa700>Firecracker Sett</color>");
+            LanguageAPI.Add("OBSIDIAN_SETT_NAME", "<color=#ffa700>Obsidian Dragon</color>");
+            LanguageAPI.Add("POOL_SETT_NAME", "<color=#ffa700>Pool Party</color>");
+            LanguageAPI.Add("PRESTIGE_SETT_NAME", "<color=#ffa700>Prestige Obsidian Dragon</color>");
+            LanguageAPI.Add("MECHA_SETT_NAME", "<color=#ffa700>Mecha Kingdoms</color>");
+            LanguageAPI.Add("FIRECRACKER_SETT_NAME", "<color=#ffa700>Firecracker</color>");
             LanguageAPI.Add("SETT_DESCRIPTION", descriptionText);
             LanguageAPI.Add("SETT_LORE", characterLore);
             LanguageAPI.Add("SETT_OUTRO_FLAVOR", characterOutro);
             LanguageAPI.Add("SETT_OUTRO_FAILURE", characterOutroFailure);
-            LanguageAPI.Add("SETT_DEFAULT_SKIN_NAME", "<color=#ffa700>Sett</color>");
+            LanguageAPI.Add("SETT_DEFAULT_SKIN_NAME", "<color=#ffa700>Default</color>");
 
             LanguageAPI.Add("SETT_PASSIVE_NAME", "<color=#ffa700>HEART OF THE HALF-BEAST</color>");
             LanguageAPI.Add("SETT_PASSIVE_DESC", "Sett <color=#c9aa71>regenerates</color> an additional <color=#008744>0.25 health per second</color> <color=#d62d20>(+ 0.25 every 4 levels)</color> for every <color=#f68835>5%</color> of his <color=#d62d20>missing health.</color>");

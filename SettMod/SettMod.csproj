@@ -13,6 +13,7 @@
 	<ItemGroup>
 		<EmbeddedResource Include="sett" />
 		<EmbeddedResource Include="SettBank.bnk" />
+		<EmbeddedResource Include="LeagueSkins\**\*.*" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">

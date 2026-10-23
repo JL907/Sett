@@ -235,6 +235,8 @@ namespace SettMod.Modules.Survivors
 
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
+            List<LeagueSkins.BuiltLeagueSkin> leagueSkins = LeagueSkins.LeagueSkinBuilder.BuildAll(model, mainRenderer, characterModel, displayPrefab);
+
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
             List<SkinDef> skins = new List<SkinDef>();
@@ -288,7 +290,6 @@ namespace SettMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(poolSkinDefInfo.RendererInfos, 0);
 
             poolSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("poolSettMat");
-            poolSkinDefInfo.RendererInfos[poolSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("poolSettMat");
 
             SkinDef poolSkin = Skins.CreateSkinDef(poolSkinDefInfo);
             skins.Add(poolSkin);
@@ -323,7 +324,6 @@ namespace SettMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(obsidianSkinDefInfo.RendererInfos, 0);
 
             obsidianSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("obsidianMat");
-            obsidianSkinDefInfo.RendererInfos[obsidianSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("obsidianMat");
 
             SkinDef obsidianSkin = Skins.CreateSkinDef(obsidianSkinDefInfo);
             skins.Add(obsidianSkin);
@@ -358,7 +358,6 @@ namespace SettMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(prestiegeSkinDefInfo.RendererInfos, 0);
 
             prestiegeSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("prestigeMat");
-            prestiegeSkinDefInfo.RendererInfos[prestiegeSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("prestigeMat");
 
             SkinDef prestigeSkin = Skins.CreateSkinDef(prestiegeSkinDefInfo);
             skins.Add(prestigeSkin);
@@ -393,7 +392,6 @@ namespace SettMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(mechaSkinDefInfo.RendererInfos, 0);
 
             mechaSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("mechaMat");
-            mechaSkinDefInfo.RendererInfos[mechaSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("mechaMat");
 
             SkinDef mechaSkin = Skins.CreateSkinDef(mechaSkinDefInfo);
             skins.Add(mechaSkin);
@@ -427,11 +425,12 @@ namespace SettMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(firecrackerSkinDefInfo.RendererInfos, 0);
 
             firecrackerSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("firecrackerMat");
-            firecrackerSkinDefInfo.RendererInfos[firecrackerSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("firecrackerMat");
 
             SkinDef firecrackerSkin = Skins.CreateSkinDef(firecrackerSkinDefInfo);
             skins.Add(firecrackerSkin);
             #endregion
+
+            LeagueSkins.LeagueSkinBuilder.AddSkins(skins, leagueSkins, model, mainRenderer, characterModel);
 
             skinController.skins = skins.ToArray();
         }
