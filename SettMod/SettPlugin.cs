@@ -29,7 +29,7 @@ namespace SettMod
 
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.9.0";
+        public const string MODVERSION = "4.9.1";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
 

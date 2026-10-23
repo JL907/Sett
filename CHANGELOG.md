@@ -1,5 +1,9 @@
 # Changelog
 
+`4.9.1`
+* Fixed a possible error during the Joke emote if Sett's portrait prop fails to load
+* Code cleanup: removed unused code and tidied up skills, skins and item display setup. No gameplay changes
+
 `4.9.0`
 * Added 6 new skins: Spirit Blossom, Soul Fighter, HEARTSTEEL, Radiant Serpent, Spirit Blossom Springs and HEARTSTEEL: Live My Life
 * Skin names no longer include "Sett", and the default skin is now called Default
