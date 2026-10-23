@@ -65,7 +65,24 @@ namespace SettMod.SkillStates
             if (this.direction) this.direction.enabled = true;
             if (this.capsuleCollider) this.capsuleCollider.enabled = true;
             if (this.sphereCollider) this.sphereCollider.enabled = true;
+            SettGrabController.RemoveGrabInvincibility(this.grabber);
             Destroy(this);
+        }
+
+        private void OnDestroy()
+        {
+            SettGrabController.RemoveGrabInvincibility(this.grabber);
+        }
+
+        public static void RemoveGrabInvincibility(GameObject grabber)
+        {
+            if (!NetworkServer.active || !grabber) return;
+            CharacterBody grabberBody = grabber.GetComponent<CharacterBody>();
+            if (!grabberBody) return;
+            while (grabberBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
+            {
+                grabberBody.RemoveBuff(RoR2Content.Buffs.HiddenInvincibility);
+            }
         }
 
         private void Awake()

@@ -25,6 +25,7 @@ namespace SettMod.Modules
         internal static GameObject swordHitImpactEffect;
 
         internal static NetworkSoundEventDef swordHitSoundEvent;
+        internal static NetworkSoundEventDef showStopperImpactSoundEvent;
 
         internal static GameObject swordSwingEffect;
 
@@ -147,6 +148,7 @@ namespace SettMod.Modules
             }
 
             swordHitSoundEvent = CreateNetworkSoundEventDef("SettSwordHit");
+            showStopperImpactSoundEvent = CreateNetworkSoundEventDef("SettRImpact");
 
             bombExplosionEffect = LoadEffect("BombExplosionEffect", "SettBombExplosion");
 

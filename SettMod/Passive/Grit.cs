@@ -1,10 +1,46 @@
-﻿using RoR2;
+﻿using R2API.Networking;
+using R2API.Networking.Interfaces;
+using RoR2;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace SettMod.Modules
 {
+    public class SyncAddGrit : INetMessage
+    {
+        private NetworkInstanceId bodyId;
+        private float amount;
+
+        public SyncAddGrit() { }
+
+        public SyncAddGrit(NetworkInstanceId bodyId, float amount)
+        {
+            this.bodyId = bodyId;
+            this.amount = amount;
+        }
+
+        public void Serialize(NetworkWriter writer)
+        {
+            writer.Write(this.bodyId);
+            writer.Write(this.amount);
+        }
+
+        public void Deserialize(NetworkReader reader)
+        {
+            this.bodyId = reader.ReadNetworkId();
+            this.amount = reader.ReadSingle();
+        }
+
+        public void OnReceived()
+        {
+            if (!NetworkServer.active) return;
+            GameObject bodyObject = Util.FindNetworkObject(this.bodyId);
+            GritComponent grit = bodyObject ? bodyObject.GetComponent<GritComponent>() : null;
+            if (grit) grit.AddGrit(this.amount);
+        }
+    }
+
     public class GritComponent : NetworkBehaviour, IOnDamageDealtServerReceiver, IOnTakeDamageServerReceiver
     {
         private CharacterBody body;
@@ -128,18 +164,13 @@ namespace SettMod.Modules
                 this.AddGrit(value);
                 return;
             }
-            this.CmdAddGrit(value);
+            NetworkIdentity identity = base.GetComponent<NetworkIdentity>();
+            if (identity) new SyncAddGrit(identity.netId, value).Send(NetworkDestination.Server);
         }
 
-        [Command]
-        public void CmdAddGrit(float value)
-        {
-            this.AddGrit(value);
-        }
-
-        [Server]
         public void AddGrit(float amount)
         {
+            if (!NetworkServer.active) return;
             float maxGrit = this.GetMaxGrit();
             this.NetworkGrit = Mathf.Min(Mathf.Max(0, this.NetworkGrit + amount), maxGrit);
         }

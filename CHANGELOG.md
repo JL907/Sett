@@ -1,5 +1,13 @@
 # Changelog
 
+`4.8.1`
+* Fixed The Show Stopper not syncing to other players, so they now see the leap, indicator and landing
+* Fixed Sett staying immune to all damage after The Show Stopper when he isn't the host
+* Fixed spent Grit coming back a few seconds later when Sett isn't the host
+* Fixed The Show Stopper's landing effects and sound only showing for the player using it
+* Fixed The Haymaker and Facebreaker indicators not showing for other players
+* New ground indicator for The Show Stopper that follows the terrain and shrinks to show when Sett will land
+
 `4.8.0`
 * Fixed The Show Stopper's grab not being visible to other players in multiplayer
 * Fixed The Show Stopper's bonus damage not applying when Sett isn't the host

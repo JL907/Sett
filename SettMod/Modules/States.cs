@@ -19,6 +19,8 @@ namespace SettMod.Modules
 
             entityStates.Add(typeof(Dash));
 
+            entityStates.Add(typeof(ShowStopper));
+
             entityStates.Add(typeof(SettMain));
 
             entityStates.Add(typeof(HayMaker));

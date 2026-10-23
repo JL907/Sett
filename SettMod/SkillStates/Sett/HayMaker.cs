@@ -24,6 +24,7 @@ namespace SettMod.SkillStates
         private float gritSnapShot;
         private bool hasFired;
         private float maxGritSnapShot;
+        private static GameObject areaIndicatorPrefab;
         private Transform slamIndicatorInstance;
         private Transform chargeIndicatorInstance;
         private Material slamIndicatorMaterial;
@@ -285,9 +286,17 @@ namespace SettMod.SkillStates
             return aimRay.GetPoint(HayMaker.reachDistance);
         }
 
+        internal static GameObject GetAreaIndicatorPrefab()
+        {
+            if (HayMaker.areaIndicatorPrefab) return HayMaker.areaIndicatorPrefab;
+            HayMaker.areaIndicatorPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Characters/Huntress/HuntressArrowRainIndicator.prefab").WaitForCompletion();
+            if (!HayMaker.areaIndicatorPrefab) HayMaker.areaIndicatorPrefab = EntityStates.Huntress.ArrowRain.areaIndicatorPrefab;
+            return HayMaker.areaIndicatorPrefab;
+        }
+
         private void CreateIndicator()
         {
-            GameObject prefab = EntityStates.Huntress.ArrowRain.areaIndicatorPrefab;
+            GameObject prefab = HayMaker.GetAreaIndicatorPrefab();
             if (!prefab) return;
 
             Vector3 point = this.GetIndicatorPoint();

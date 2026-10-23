@@ -24,14 +24,13 @@ namespace SettMod.SkillStates
         protected Animator animator;
         protected float bonusDamage = 0f;
         private bool detonateNextFrame;
-        private Ray downRay;
         private Vector3 flyVector = Vector3.zero;
         private SettGrabController grabController;
         private bool hasDropped;
         private float initialTime;
         private Transform modelTransform;
-        private Transform slamCenterIndicatorInstance;
-        private Transform slamIndicatorInstance;
+        private SettGroundIndicator groundIndicator;
+        private float dropStartHeight;
         private CameraTargetParams.CameraParamsOverrideHandle handle;
 
         public override void FixedUpdate()
@@ -62,7 +61,7 @@ namespace SettMod.SkillStates
                 if (base.isAuthority) this.AttemptGrab(10f);
             }
 
-            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
+            if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.groundIndicator)
             {
                 this.CreateIndicator();
             }
@@ -119,8 +118,7 @@ namespace SettMod.SkillStates
             base.OnExit();
             this.ReleaseGrab();
 
-            if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
-            if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
+            if (this.groundIndicator) EntityState.Destroy(this.groundIndicator.gameObject);
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
@@ -140,6 +138,8 @@ namespace SettMod.SkillStates
             this.hasDropped = true;
             base.characterMotor.disableAirControlUntilCollision = true;
             base.characterMotor.velocity.y = -ShowStopper.dropForce;
+            RaycastHit dropHit;
+            this.dropStartHeight = Physics.Raycast(base.transform.position, Vector3.down, out dropHit, 250f, LayerIndex.world.mask) ? dropHit.distance : 0f;
             if (base.isAuthority) this.AttemptGrab(15f);
         }
 
@@ -147,7 +147,7 @@ namespace SettMod.SkillStates
         {
             base.Update();
 
-            if (this.slamIndicatorInstance) this.UpdateSlamIndicator();
+            if (this.groundIndicator) this.UpdateSlamIndicator();
         }
 
         private void AttemptGrab(float grabRadius)
@@ -220,19 +220,30 @@ namespace SettMod.SkillStates
 
         private void CreateIndicator()
         {
-            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
+            this.groundIndicator = SettGroundIndicator.Create(ShowStopper.slamRadius);
+            this.UpdateSlamIndicator();
+        }
+
+        private void UpdateSlamIndicator()
+        {
+            if (!this.groundIndicator) return;
+
+            RaycastHit raycastHit;
+            bool hit = Physics.Raycast(base.transform.position, Vector3.down, out raycastHit, 250f, LayerIndex.world.mask);
+            this.groundIndicator.gameObject.SetActive(hit);
+            if (!hit) return;
+
+            this.groundIndicator.SetGround(raycastHit.point, raycastHit.normal);
+
+            if (this.hasDropped && this.dropStartHeight > 0f)
             {
-                this.downRay = new Ray
-                {
-                    direction = Vector3.down,
-                    origin = base.transform.position
-                };
-
-                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamIndicatorInstance.localScale = Vector3.one * ShowStopper.slamRadius;
-
-                this.slamCenterIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.slamCenterIndicatorInstance.localScale = (Vector3.one * ShowStopper.slamRadius) / 3f;
+                this.groundIndicator.SetClosing(raycastHit.distance / this.dropStartHeight);
+                this.groundIndicator.SetIntensity(1.3f);
+            }
+            else
+            {
+                this.groundIndicator.SetClosing(1f);
+                this.groundIndicator.SetIntensity(1f);
             }
         }
 
@@ -279,7 +290,7 @@ namespace SettMod.SkillStates
                 bonusAttack.Fire();
             }
 
-            Util.PlaySound("SettRImpact", base.gameObject);
+            EffectManager.SimpleSoundEffect(Modules.Assets.showStopperImpactSoundEvent.index, base.characterBody.footPosition, true);
 
             for (int i = 0; i <= 4; i += 1)
             {
@@ -289,7 +300,7 @@ namespace SettMod.SkillStates
                 {
                     origin = effectPosition,
                     scale = 0.25f
-                }, false);
+                }, true);
             }
 
             Vector3 newPosition = new Vector3(base.characterBody.footPosition.x, base.characterBody.footPosition.y + 4f, base.characterBody.footPosition.z);
@@ -302,28 +313,5 @@ namespace SettMod.SkillStates
             this.detonateNextFrame = true;
         }
 
-        private void UpdateSlamIndicator()
-        {
-            if (this.slamIndicatorInstance)
-            {
-                float maxDistance = 250f;
-
-                this.downRay = new Ray
-                {
-                    direction = Vector3.down,
-                    origin = base.transform.position
-                };
-
-                RaycastHit raycastHit;
-                if (Physics.Raycast(this.downRay, out raycastHit, maxDistance, LayerIndex.world.mask))
-                {
-                    this.slamIndicatorInstance.transform.position = raycastHit.point;
-                    this.slamIndicatorInstance.transform.up = raycastHit.normal;
-
-                    this.slamCenterIndicatorInstance.transform.position = raycastHit.point;
-                    this.slamCenterIndicatorInstance.transform.up = raycastHit.normal;
-                }
-            }
-        }
     }
 }

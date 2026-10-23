@@ -172,7 +172,8 @@ namespace SettMod.SkillStates
 
         private void CreateIndicator()
         {
-            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
+            GameObject indicatorPrefab = HayMaker.GetAreaIndicatorPrefab();
+            if (indicatorPrefab)
             {
                 this.downRay = new Ray
                 {
@@ -180,7 +181,7 @@ namespace SettMod.SkillStates
                     origin = base.transform.position
                 };
 
-                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
+                this.slamIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(indicatorPrefab).transform;
                 this.slamIndicatorInstance.localScale = Vector3.one * Facebreaker.pullRadius;
 
                 for (int i = 0; i <= 18; i += 1)

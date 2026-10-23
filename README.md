@@ -18,7 +18,7 @@
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
 ## Patch Notes
-See the [Changelog](CHANGELOG.md).
+See the [Changelog](https://thunderstore.io/c/riskofrain2/p/lemonlust/SettMod/CHANGELOG).
 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
@@ -60,5 +60,4 @@ See the [Changelog](CHANGELOG.md).
 * The Showstopper may clip you or enemies into the floor if the primary target is big enough.
 
 ## Future Plans
-* Better Networking for multiplayer play.
 * Alternate skills for different play styles.

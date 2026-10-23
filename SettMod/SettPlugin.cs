@@ -30,7 +30,7 @@ namespace SettMod
 
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.8.0";
+        public const string MODVERSION = "4.8.1";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
@@ -61,6 +61,7 @@ namespace SettMod
                 Modules.States.RegisterStates();
                 NetworkingAPI.RegisterMessageType<SkillStates.SyncSettGrab>();
                 NetworkingAPI.RegisterMessageType<SkillStates.SyncSettRelease>();
+                NetworkingAPI.RegisterMessageType<SyncAddGrit>();
                 Modules.Buffs.RegisterBuffs();
                 Modules.Projectiles.RegisterProjectiles();
                 Modules.Tokens.AddTokens();
