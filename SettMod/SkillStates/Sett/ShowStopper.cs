@@ -28,7 +28,6 @@ namespace SettMod.SkillStates
         private SettGrabController grabController;
         private bool hasDropped;
         private float initialTime;
-        private Transform modelTransform;
         private SettGroundIndicator groundIndicator;
         private float dropStartHeight;
         private CameraTargetParams.CameraParamsOverrideHandle handle;
@@ -91,7 +90,6 @@ namespace SettMod.SkillStates
         {
             base.OnEnter();
             base.characterMotor.onMovementHit += this.OnMovementHit;
-            this.modelTransform = base.GetModelTransform();
             this.flyVector = Vector3.up;
             this.hasDropped = false;
             this.initialTime = Time.fixedTime;

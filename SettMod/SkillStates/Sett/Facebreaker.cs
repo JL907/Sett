@@ -54,7 +54,7 @@ namespace SettMod.SkillStates
 
                     if (Modules.Config.voiceLines.Value) Util.PlaySound("SettEVO", base.gameObject);
 
-                    string clip = "";
+                    string clip;
                     if (front && back)
                     {
                         clip = "Facebreaker_Both";
@@ -167,8 +167,6 @@ namespace SettMod.SkillStates
             Util.PlaySound("SettHitSFX", base.gameObject);
         }
 
-        // If the pull grabbed at least one enemy, halve the startup. Everything after the
-        // startup (hit timing, impact animation, end of skill) shifts earlier by the same amount.
         private void TryQuickStart()
         {
             this.checkedQuickStart = true;

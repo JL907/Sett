@@ -15,7 +15,6 @@ namespace SettMod.SkillStates
         private Light auraLight;
         private float intensity;
         private float bodyHeight;
-        private bool fullGrit;
         private bool stopping;
 
         public static SettGoldAura Create(CharacterBody body, bool fullGrit)
@@ -49,8 +48,6 @@ namespace SettMod.SkillStates
 
         private void Setup(CharacterBody body, bool fullGrit)
         {
-            this.fullGrit = fullGrit;
-
             CapsuleCollider capsule = body.GetComponent<CapsuleCollider>();
             this.bodyHeight = capsule ? capsule.height : 3f;
 

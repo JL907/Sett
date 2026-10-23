@@ -97,8 +97,6 @@ namespace SettMod.Modules
         {
             if (mainAssetBundle == null)
             {
-                // Read the whole bundle into memory. LoadFromStream keeps reading from the
-                // stream after it returns, so disposing it (the using block) breaks loading.
                 using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SettMod." + assetbundleName))
                 using (var memoryStream = new MemoryStream())
                 {
@@ -182,11 +180,6 @@ namespace SettMod.Modules
             }
 
             return rendererInfos;
-        }
-
-        private static void AddNewEffectDef(GameObject effectPrefab)
-        {
-            AddNewEffectDef(effectPrefab, "");
         }
 
         private static void AddNewEffectDef(GameObject effectPrefab, string soundName)

@@ -35,7 +35,6 @@ namespace SettMod.UI
             if (!hud || !hud.healthBar) return null;
 
             HealthBar template = hud.healthBar;
-            Transform parent = template.transform.parent;
 
             Sprite sprite = template.style ? template.style.trailingOverHealthBarStyle.sprite : null;
 

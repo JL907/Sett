@@ -4,8 +4,6 @@ using UnityEngine;
 
 public static class BuildSettBundle
 {
-    // Builds every asset bundle in the project (Assets/Sett is tagged "sett")
-    // and copies "sett" and "sett.manifest" into SettMod/, where the .csproj embeds it.
     [MenuItem("Sett/Build Asset Bundle")]
     public static void Build()
     {

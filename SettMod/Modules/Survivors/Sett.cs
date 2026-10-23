@@ -1,5 +1,4 @@
 ﻿using BepInEx.Configuration;
-using EntityStates;
 using RoR2;
 using RoR2.Skills;
 using SettMod.States;
@@ -229,7 +228,6 @@ namespace SettMod.Modules.Survivors
             CharacterModel characterModel = model.GetComponent<CharacterModel>();
 
             ModelSkinController skinController = model.AddComponent<ModelSkinController>();
-            ChildLocator childLocator = model.GetComponent<ChildLocator>();
 
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 

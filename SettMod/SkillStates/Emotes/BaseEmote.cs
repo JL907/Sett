@@ -79,9 +79,6 @@ namespace SettMod.SkillStates.Emotes
         {
             base.Update();
 
-            // Polled in Update, not FixedUpdate: GetKeyDown is only true for one rendered frame,
-            // so checking it in FixedUpdate drops most presses and makes emotes hard to spam.
-            // Pressing any emote key while emoting restarts that emote (and its voice line).
             if (!base.isAuthority || !base.characterMotor || !base.characterMotor.isGrounded || this.localUser == null || this.localUser.isUIFocused) return;
 
             if (Input.GetKeyDown(Modules.Config.tauntKeybind.Value))

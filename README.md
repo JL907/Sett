@@ -51,7 +51,7 @@ All base stats and skill values can be changed in the config file.
 
 * **Passive: Heart of the Half-Beast.** Sett regenerates an extra 0.25 health per second (+0.25 every 4 levels) for every 5% of his missing health.
 * **Primary: Knuckle Down.** Alternates between a Left Punch (260% damage) and a Right Punch (320% damage). Critical hits reset the attack timer and make the next punch deal double damage.
-* **Secondary: Facebreaker.** Pulls in all enemies within 20m for 380% damage, stunning and slowing them.
+* **Secondary: Facebreaker.** Pulls in all enemies within 20m for 380% damage, stunning and slowing them. If it pulls in at least one enemy, the windup is twice as fast.
 * **Utility: The Show Stopper.** Grabs an enemy, carries it into the air and slams it into the ground for 1600% damage, plus 10% of the target's maximum health and shield, to everything nearby.
 * **Special: The Haymaker.** Sett stores damage he takes as Grit. On cast he spends all of it to gain a barrier and punch an area for 2700% damage, plus 75% of the spent Grit (+5% every 4 levels), ignoring armor.
 

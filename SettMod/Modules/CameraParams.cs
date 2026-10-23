@@ -66,7 +66,7 @@ namespace SettMod.Modules
 
         internal static CharacterCameraParamsData GetNewSettParams(SettCameraParams camera)
         {
-            CharacterCameraParamsData paramsData = defaultCameraParamsSett;
+            CharacterCameraParamsData paramsData;
 
             switch (camera)
             {

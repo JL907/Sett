@@ -1,5 +1,11 @@
 # Changelog
 
+`4.9.2`
+* Sett now has a backpedal animation: moving backwards while attacking or aiming no longer slides his forward run in reverse
+* Facebreaker's windup is twice as fast when it pulls in at least one enemy, so the whole move finishes sooner. A whiff plays at the normal speed
+* Sett's assets now load more reliably at startup
+* Code cleanup: removed unused code. No gameplay changes
+
 `4.9.1`
 * Emotes are now spammable: pressing an emote key while emoting reliably restarts it, and its voice line, instead of often ignoring the press
 * Fixed a possible error during the Joke emote if Sett's portrait prop fails to load
