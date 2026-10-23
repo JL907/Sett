@@ -1,6 +1,7 @@
 # Changelog
 
 `4.9.1`
+* Emotes are now spammable: pressing an emote key while emoting reliably restarts it, and its voice line, instead of often ignoring the press
 * Fixed a possible error during the Joke emote if Sett's portrait prop fails to load
 * Code cleanup: removed unused code and tidied up skills, skins and item display setup. No gameplay changes
 

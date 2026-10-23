@@ -75,6 +75,33 @@ namespace SettMod.SkillStates.Emotes
             if (this.activePlayID != 0) AkSoundEngine.StopPlayingID(this.activePlayID);
         }
 
+        public override void Update()
+        {
+            base.Update();
+
+            // Polled in Update, not FixedUpdate: GetKeyDown is only true for one rendered frame,
+            // so checking it in FixedUpdate drops most presses and makes emotes hard to spam.
+            // Pressing any emote key while emoting restarts that emote (and its voice line).
+            if (!base.isAuthority || !base.characterMotor || !base.characterMotor.isGrounded || this.localUser == null || this.localUser.isUIFocused) return;
+
+            if (Input.GetKeyDown(Modules.Config.tauntKeybind.Value))
+            {
+                this.outer.SetInterruptState(new Taunt(), InterruptPriority.Any);
+            }
+            else if (Input.GetKeyDown(Modules.Config.jokeKeybind.Value))
+            {
+                this.outer.SetInterruptState(new Joke(), InterruptPriority.Any);
+            }
+            else if (Input.GetKeyDown(Modules.Config.laughKeybind.Value))
+            {
+                this.outer.SetInterruptState(new Laugh(), InterruptPriority.Any);
+            }
+            else if (Input.GetKeyDown(Modules.Config.danceKeybind.Value))
+            {
+                this.outer.SetInterruptState(new Dance { spam = this.outer.state is Dance }, InterruptPriority.Any);
+            }
+        }
+
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -96,30 +123,6 @@ namespace SettMod.SkillStates.Emotes
                 if (base.inputBank.jump.down) flag = true;
 
                 if (base.inputBank.moveVector != Vector3.zero) flag = true;
-            }
-
-            if (base.isAuthority && base.characterMotor.isGrounded && !this.localUser.isUIFocused)
-            {
-                if (Input.GetKeyDown(Modules.Config.tauntKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Taunt(), InterruptPriority.Any);
-                    return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.jokeKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Joke(), InterruptPriority.Any);
-                    return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.laughKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Laugh(), InterruptPriority.Any);
-                    return;
-                }
-                else if (Input.GetKeyDown(Modules.Config.danceKeybind.Value))
-                {
-                    this.outer.SetInterruptState(new Dance { spam = this.outer.state is Dance }, InterruptPriority.Any);
-                    return;
-                }
             }
 
             if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;
