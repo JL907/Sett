@@ -39,8 +39,6 @@ namespace SettMod.SkillStates
 
         private void AttemptSlam()
         {
-            Ray aimRay = this.GetAimRay();
-
             BullseyeSearch search = new BullseyeSearch
             {
                 teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam()),
@@ -60,9 +58,7 @@ namespace SettMod.SkillStates
             {
                 if (target.healthComponent && target.healthComponent.body)
                 {
-                    this.outer.SetNextState(new ShowStopper
-                    {
-                    });
+                    this.outer.SetNextState(new ShowStopper());
                 }
             }
         }

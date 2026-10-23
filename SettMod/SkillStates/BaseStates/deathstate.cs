@@ -6,11 +6,6 @@ namespace SettMod.SkillStates.BaseStates
 {
     internal class Death : GenericCharacterDeath
     {
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.Death;
@@ -25,11 +20,6 @@ namespace SettMod.SkillStates.BaseStates
             {
                 modelAnimator.CrossFadeInFixedTime("Death", 0.1f);
             }
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
         }
     }
 }

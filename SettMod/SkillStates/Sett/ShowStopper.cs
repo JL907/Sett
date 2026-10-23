@@ -138,8 +138,7 @@ namespace SettMod.SkillStates
             this.hasDropped = true;
             base.characterMotor.disableAirControlUntilCollision = true;
             base.characterMotor.velocity.y = -ShowStopper.dropForce;
-            RaycastHit dropHit;
-            this.dropStartHeight = Physics.Raycast(base.transform.position, Vector3.down, out dropHit, 250f, LayerIndex.world.mask) ? dropHit.distance : 0f;
+            this.dropStartHeight = Physics.Raycast(base.transform.position, Vector3.down, out RaycastHit dropHit, 250f, LayerIndex.world.mask) ? dropHit.distance : 0f;
             if (base.isAuthority) this.AttemptGrab(15f);
         }
 
@@ -153,8 +152,6 @@ namespace SettMod.SkillStates
         private void AttemptGrab(float grabRadius)
         {
             if (this.grabController) return;
-
-            Ray aimRay = base.GetAimRay();
 
             BullseyeSearch search = new BullseyeSearch
             {
@@ -228,8 +225,7 @@ namespace SettMod.SkillStates
         {
             if (!this.groundIndicator) return;
 
-            RaycastHit raycastHit;
-            bool hit = Physics.Raycast(base.transform.position, Vector3.down, out raycastHit, 250f, LayerIndex.world.mask);
+            bool hit = Physics.Raycast(base.transform.position, Vector3.down, out RaycastHit raycastHit, 250f, LayerIndex.world.mask);
             this.groundIndicator.gameObject.SetActive(hit);
             if (!hit) return;
 
@@ -312,6 +308,5 @@ namespace SettMod.SkillStates
         {
             this.detonateNextFrame = true;
         }
-
     }
 }

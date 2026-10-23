@@ -1,8 +1,7 @@
-﻿
-using RoR2;
+﻿using RoR2;
 using UnityEngine;
 
-    internal enum SettCameraParams
+internal enum SettCameraParams
 {
     DEFAULT,
     EMOTE,

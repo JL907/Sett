@@ -117,7 +117,7 @@ namespace SettMod.SkillStates.Emotes
                 }
                 else if (Input.GetKeyDown(Modules.Config.danceKeybind.Value))
                 {
-                    this.outer.SetInterruptState(new Dance { spam = this.outer.state is Dance ? true : false }, InterruptPriority.Any);
+                    this.outer.SetInterruptState(new Dance { spam = this.outer.state is Dance }, InterruptPriority.Any);
                     return;
                 }
             }

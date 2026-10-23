@@ -75,7 +75,7 @@ namespace SettMod.Modules
         }
 
         public static ILCursor CallDel_<TDelegate>(this ILCursor cursor, TDelegate target, out Int32 index)
-where TDelegate : Delegate
+            where TDelegate : Delegate
         {
             index = cursor.EmitDelegate<TDelegate>(target);
             return cursor;
@@ -112,7 +112,7 @@ where TDelegate : Delegate
                 ableToAdd = false;
                 for (Int32 i = 0; i < moddedUnlocks.Count; ++i)
                 {
-                    var (ach, unl, unstr) = moddedUnlocks[i];
+                    var (ach, _, _) = moddedUnlocks[i];
                     if (ach is null) continue;
                     identifiers.Add(ach.identifier);
                     list.Add(ach);
@@ -128,7 +128,7 @@ where TDelegate : Delegate
 
         private static void Init_Il(ILContext il) => new ILCursor(il)
             .GotoNext(MoveType.AfterLabel, x => x.MatchCallOrCallvirt(typeof(UnlockableCatalog), nameof(UnlockableCatalog.SetUnlockableDefs)))
-    .CallDel_(ArrayHelper.AppendDel(unlockableDefs));
+            .CallDel_(ArrayHelper.AppendDel(unlockableDefs));
 
         internal struct UnlockableInfo
         {
@@ -168,34 +168,5 @@ where TDelegate : Delegate
         public abstract string UnlockableNameToken { get; }
 
         #endregion Contract
-
-        #region Virtuals
-
-        public override bool wantsBodyCallbacks { get => base.wantsBodyCallbacks; }
-
-        public override BodyIndex LookUpRequiredBodyIndex()
-        {
-            return base.LookUpRequiredBodyIndex();
-        }
-
-        public override void OnBodyRequirementBroken() => base.OnBodyRequirementBroken();
-
-        public override void OnBodyRequirementMet() => base.OnBodyRequirementMet();
-
-        public override void OnGranted() => base.OnGranted();
-
-        public override void OnInstall()
-        {
-            base.OnInstall();
-        }
-
-        public override void OnUninstall()
-        {
-            base.OnUninstall();
-        }
-
-        public override Single ProgressForAchievement() => base.ProgressForAchievement();
-
-        #endregion Virtuals
     }
 }

@@ -3,7 +3,6 @@ using KinematicCharacterController;
 using R2API;
 using RoR2;
 using SettMod.Controllers;
-using SettMod.States;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -50,7 +49,7 @@ namespace SettMod.Modules
             GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"), modelName + "Prefab");
 
             GameObject model = CreateModel(newPrefab, modelName);
-            Transform modelBaseTransform = SetupModel(newPrefab, model.transform, bodyInfo);
+            SetupModel(newPrefab, model.transform, bodyInfo);
 
             model.AddComponent<CharacterModel>().baseRendererInfos = prefab.GetComponentInChildren<CharacterModel>().baseRendererInfos;
 
@@ -242,14 +241,11 @@ namespace SettMod.Modules
                 else
                 {
                     Renderer j = childLocator.FindChild(rendererInfo[i].childName).GetComponent<Renderer>();
-                    if (!j)
-                    {
-                    }
-                    else
+                    if (j)
                     {
                         rendererInfos.Add(new CharacterModel.RendererInfo
                         {
-                            renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<Renderer>(),
+                            renderer = j,
                             defaultMaterial = rendererInfo[i].material ?? j.materials.FirstOrDefault(),
                             ignoreOverlays = rendererInfo[i].ignoreOverlays,
                             defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
@@ -263,7 +259,7 @@ namespace SettMod.Modules
             characterModel.autoPopulateLightInfos = true;
             characterModel.temporaryOverlays = new List<TemporaryOverlayInstance>();
 
-            if (mainRendererIndex > characterModel.baseRendererInfos.Length)
+            if (mainRendererIndex >= characterModel.baseRendererInfos.Length)
             {
                 Debug.LogError("mainRendererIndex out of range: not setting mainSkinnedMeshRenderer for " + prefab.name);
                 return;

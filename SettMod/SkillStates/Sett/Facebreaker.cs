@@ -64,7 +64,7 @@ namespace SettMod.SkillStates
                     {
                         clip = "Facebreaker_Front";
                     }
-                    else if (!front && !back)
+                    else
                     {
                         clip = "Facebreaker_Miss";
                     }
@@ -109,9 +109,8 @@ namespace SettMod.SkillStates
 
             base.PlayCrossfade("Fullbody, Override", "Facebreaker_Start", "FaceBreakerStartUp.playbackRate", this.startUp, 0.05f);
 
-            HitBoxGroup hitBoxGroup = null;
             Transform modelTransform = base.GetModelTransform();
-            hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+            HitBoxGroup hitBoxGroup = Array.Find<HitBoxGroup>(modelTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 
             this.pullStrengthCurve = AnimationCurve.EaseInOut(0.1f, 0f, 1f, 1f);
 
@@ -253,9 +252,7 @@ namespace SettMod.SkillStates
                         if (component.useGravity)
                         {
                             component.rootMotion.y -= (Physics.gravity.y * deltaTime * d);
-                            if (Vector3.Dot(forward, toEnemy) < 0) back = true;
-                            else if (Vector3.Dot(forward, toEnemy) > 0) front = true;
-                            else if (Vector3.Dot(forward, toEnemy) == 0) front = true;
+                            this.MarkSide(forward, toEnemy);
                         }
                     }
                     else
@@ -264,13 +261,18 @@ namespace SettMod.SkillStates
                         if (component2)
                         {
                             component2.velocity += b;
-                            if (Vector3.Dot(forward, toEnemy) < 0) back = true;
-                            else if (Vector3.Dot(forward, toEnemy) > 0) front = true;
-                            else if (Vector3.Dot(forward, toEnemy) == 0) front = true;
+                            this.MarkSide(forward, toEnemy);
                         }
                     }
                 }
             }
+        }
+
+        private void MarkSide(Vector3 forward, Vector3 toEnemy)
+        {
+            float dot = Vector3.Dot(forward, toEnemy);
+            if (dot < 0) this.back = true;
+            else if (dot >= 0) this.front = true;
         }
 
         private void UpdateSlamIndicator()
@@ -285,8 +287,7 @@ namespace SettMod.SkillStates
                     origin = base.transform.position
                 };
 
-                RaycastHit raycastHit;
-                if (Physics.Raycast(this.downRay, out raycastHit, maxDistance, LayerIndex.world.mask))
+                if (Physics.Raycast(this.downRay, out RaycastHit raycastHit, maxDistance, LayerIndex.world.mask))
                 {
                     this.slamIndicatorInstance.transform.position = raycastHit.point;
                     this.slamIndicatorInstance.transform.up = raycastHit.normal;

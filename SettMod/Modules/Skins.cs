@@ -50,24 +50,7 @@ namespace SettMod.Modules
                 UnlockableDef = unlockableDef
             };
 
-            On.RoR2.SkinDef.Awake += DoNothing;
-
-            SkinDef skinDef = ScriptableObject.CreateInstance<RoR2.SkinDef>();
-            skinDef.baseSkins = skinDefInfo.BaseSkins;
-            skinDef.icon = skinDefInfo.Icon;
-            skinDef.unlockableDef = skinDefInfo.UnlockableDef;
-            skinDef.rootObject = skinDefInfo.RootObject;
-            skinDef.rendererInfos = skinDefInfo.RendererInfos;
-            skinDef.gameObjectActivations = skinDefInfo.GameObjectActivations;
-            skinDef.meshReplacements = skinDefInfo.MeshReplacements;
-            skinDef.projectileGhostReplacements = skinDefInfo.ProjectileGhostReplacements;
-            skinDef.minionSkinReplacements = skinDefInfo.MinionSkinReplacements;
-            skinDef.nameToken = skinDefInfo.NameToken;
-            skinDef.name = skinDefInfo.Name;
-
-            On.RoR2.SkinDef.Awake -= DoNothing;
-
-            return skinDef;
+            return CreateSkinDef(skinDefInfo);
         }
 
         private static void DoNothing(On.RoR2.SkinDef.orig_Awake orig, RoR2.SkinDef self)

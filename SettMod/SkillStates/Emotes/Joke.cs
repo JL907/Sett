@@ -1,5 +1,4 @@
 ﻿using EntityStates;
-using SettMod.Modules;
 using SettMod.SkillStates.Emotes;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace SettMod.States.Emotes
             this.duration = 8.667f;
             this.soundString = "SettJoke";
             base.OnEnter();
-            if(!this.mom)
+            if (!this.mom)
             {
                 this.mom = UnityEngine.Object.Instantiate<GameObject>(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("momPortrait"));
             }
@@ -32,14 +31,15 @@ namespace SettMod.States.Emotes
                 this.mom.transform.localRotation = Quaternion.Euler(-176.593f, 85.119f, -9.799011f);
             }
 
-            if (fixedAge >= 2.30f && !this.mom.activeSelf)
+            if (this.mom && fixedAge >= 2.30f && !this.mom.activeSelf)
             {
                 this.mom.SetActive(true);
             }
         }
+
         public override void OnExit()
         {
-            if (this.mom) EntityState.Destroy(this.mom.gameObject);
+            if (this.mom) EntityState.Destroy(this.mom);
             base.OnExit();
         }
     }

@@ -103,16 +103,16 @@ namespace SettMod.SkillStates.BaseStates
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.earlyExitDuration = this.duration * this.baseEarlyExitTime;
 
-            this.muzzleString = this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
+            this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             base.StartAimMode(0.5f, false);
 
             if (this.animator.GetBool("isMoving") || (!(this.animator.GetBool("isGrounded"))))
             {
-                base.PlayCrossfade("Gesture, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
+                base.PlayCrossfade("Gesture, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.duration, 0.05f);
             }
-            else if ((!(this.animator.GetBool("isMoving"))) && this.animator.GetBool("isGrounded"))
+            else
             {
-                base.PlayCrossfade("FullBody, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.swingIndex % 2 == 0 ? this.duration : this.duration, 0.05f);
+                base.PlayCrossfade("FullBody, Override", "Slash" + (1 + this.swingIndex), "Slash.playbackRate", this.duration, 0.05f);
             }
 
             if (!this.hasFired)
@@ -158,8 +158,7 @@ namespace SettMod.SkillStates.BaseStates
 
         private void CreateAttack()
         {
-            HitBoxGroup hitBoxGroup = null;
-            hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
+            HitBoxGroup hitBoxGroup = Array.Find<HitBoxGroup>(this.modelBaseTransform.GetComponents<HitBoxGroup>(), (HitBoxGroup element) => element.groupName == this.hitboxName);
 
             this.attack = new OverlapAttack();
             this.attack.damageType = this.damageType;
@@ -179,10 +178,7 @@ namespace SettMod.SkillStates.BaseStates
 
         private void FireAttack()
         {
-            if (!this.hasFired)
-            {
-                this.hasFired = true;
-            }
+            this.hasFired = true;
 
             if (base.isAuthority)
             {
@@ -234,7 +230,7 @@ namespace SettMod.SkillStates.BaseStates
                     baseDuration = index % 2 == 0 ? 0.7f : 1.2f,
                     baseEarlyExitTime = index % 2 == 0 ? 0.48f : 0.68f,
                     damageCoefficient = index % 2 == 0 ? Modules.Config.leftPunchDamageCoefficient.Value : Modules.Config.rightPunchDamageCoefficient.Value,
-                    extraDamage = isCrit ? true : false
+                    extraDamage = isCrit
                 });
             }
         }

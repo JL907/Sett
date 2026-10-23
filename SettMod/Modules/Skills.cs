@@ -197,5 +197,5 @@ internal class SkillDefInfo
 
         if (agile) this.keywordTokens = new string[] { "KEYWORD_AGILE" };
     }
-    #endregion construction complete
+    #endregion constructors
 }

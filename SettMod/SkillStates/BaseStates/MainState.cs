@@ -1,20 +1,16 @@
-﻿using RoR2;
-using EntityStates;
+﻿using EntityStates;
+using RoR2;
 using UnityEngine;
 
 namespace SettMod.States
 {
     public class SettMain : GenericCharacterMain
     {
-        private ChildLocator childLocator;
-        private Animator animator;
         public LocalUser localUser;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            this.childLocator = base.GetModelChildLocator();
-            this.animator = base.GetModelAnimator();
             this.localUser = LocalUserManager.readOnlyLocalUsersList[0];
         }
 
@@ -45,16 +41,6 @@ namespace SettMod.States
                     return;
                 }
             }
-        }
-
-        public override void FixedUpdate()
-        {
-            base.FixedUpdate();
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
         }
     }
 }

@@ -7,7 +7,6 @@ using SettMod.Modules;
 using SettMod.Modules.Survivors;
 using SettMod.UI;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace SettMod
@@ -33,7 +32,6 @@ namespace SettMod
         public const string MODVERSION = "4.9.0";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
-        internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
 
         private GritGauge gritGauge;
 
@@ -70,8 +68,6 @@ namespace SettMod
                 new Sett().Initialize();
 
                 new Modules.ContentPacks().Initialize();
-
-                RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
 
                 Hook();
             }
@@ -134,10 +130,6 @@ namespace SettMod
                     gritGauge.source = null;
                 }
             }
-        }
-
-        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
-        {
         }
 
         private void PickupPickerController_FixedUpdateServer(On.RoR2.PickupPickerController.orig_FixedUpdateServer orig, PickupPickerController self)

@@ -66,24 +66,12 @@ namespace SettMod.Modules
 
             foreach (MeshRenderer i in objectToConvert.GetComponentsInChildren<MeshRenderer>())
             {
-                if (i)
-                {
-                    if (i.material)
-                    {
-                        i.material.shader = hotpoo;
-                    }
-                }
+                if (i && i.material) i.material.shader = hotpoo;
             }
 
             foreach (SkinnedMeshRenderer i in objectToConvert.GetComponentsInChildren<SkinnedMeshRenderer>())
             {
-                if (i)
-                {
-                    if (i.material)
-                    {
-                        i.material.shader = hotpoo;
-                    }
-                }
+                if (i && i.material) i.material.shader = hotpoo;
             }
         }
 
@@ -125,8 +113,8 @@ namespace SettMod.Modules
 
         internal static GameObject LoadCrosshair(string crosshairName)
         {
-            if (RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair") == null) return RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
-            return RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
+            GameObject crosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
+            return crosshair ? crosshair : RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
         }
 
         internal static void LoadSoundbank()
@@ -232,7 +220,7 @@ namespace SettMod.Modules
                 if (assetNames[i].Contains(resourceName.ToLower()))
                 {
                     assetExists = true;
-                    i = assetNames.Length;
+                    break;
                 }
             }
 

@@ -10,10 +10,7 @@ namespace SettMod.Modules
 
         internal static GameObject LoadDisplay(string name)
         {
-            if (itemDisplayPrefabs.ContainsKey(name.ToLower()))
-            {
-                if (itemDisplayPrefabs[name.ToLower()]) return itemDisplayPrefabs[name.ToLower()];
-            }
+            if (itemDisplayPrefabs.TryGetValue(name.ToLower(), out GameObject prefab) && prefab) return prefab;
 
             return null;
         }

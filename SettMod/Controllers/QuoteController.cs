@@ -1,5 +1,4 @@
-﻿using HG;
-using RoR2;
+﻿using RoR2;
 using UnityEngine;
 
 namespace SettMod.Controllers
@@ -41,7 +40,7 @@ namespace SettMod.Controllers
 
         private void BossGroup_onBossGroupStartServer(BossGroup obj)
         {
-            if(!quotePlayed && Modules.Config.voiceLines.Value)
+            if (!quotePlayed && Modules.Config.voiceLines.Value)
             {
                 this.quotePlayed = true;
                 this.activePlayID = Util.PlaySound("SettBossQuote", base.gameObject);
