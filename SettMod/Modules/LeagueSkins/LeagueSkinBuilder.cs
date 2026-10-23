@@ -19,6 +19,7 @@ namespace SettMod.Modules.LeagueSkins
         internal string defaultTexture;
         internal Dictionary<string, string> partTextures = new Dictionary<string, string>();
         internal string[] hiddenParts = new string[0];
+        internal string[] rigidParts = new string[0];
     }
 
     internal class BuiltLeagueSkin
@@ -36,6 +37,9 @@ namespace SettMod.Modules.LeagueSkins
         internal const string BaseMeshFile = "sett.skn";
         internal const bool TransferExtraBoneWeights = true;
         internal static readonly string[] BaseExcludedParts = { "Joke", "Wolverine" };
+        internal const int TransferNeighbors = 8;
+        internal const int TransferSmoothIterations = 4;
+        internal const bool TransferLegsToHips = true;
         internal static readonly string[] TransferIgnoredBoneKeywords = { "Coattail", "Fur", "Emblem", "Tassle", "Jet", "Armor", "Photo", "Buffbone", "Vfx" };
         internal const string FallbackBone = "Root";
         internal const bool ReverseWinding = true;
@@ -220,6 +224,7 @@ namespace SettMod.Modules.LeagueSkins
                     {
                         Vector3 offset = (Vector3)baseRest.GetColumn(3) - (Vector3)skinRest.GetColumn(3);
                         jointMatrices[j] = leagueToRenderer * Matrix4x4.Translate(offset);
+                        jointIsExtra[j] = true;
                     }
                     else
                     {
@@ -330,15 +335,36 @@ namespace SettMod.Modules.LeagueSkins
                 triangles[i] = local;
             }
             int count = sourceVertices.Count;
+
+            bool useTransfer = weightSource != null && Array.IndexOf(definition.rigidParts, part.name) < 0;
+            if (useTransfer)
+            {
+                bool onlyExtra = true;
+                HashSet<Transform> extraAnchors = new HashSet<Transform>();
+                foreach (int source in sourceVertices)
+                {
+                    for (int k = 0; k < 4 && onlyExtra; k++)
+                    {
+                        if (mesh.weights[source * 4 + k] <= 0f) continue;
+                        int influence = mesh.boneIndices[source * 4 + k];
+                        if (influence >= skeleton.influences.Length) continue;
+                        int joint = skeleton.influences[influence];
+                        if (joint >= jointIsExtra.Length) continue;
+                        if (!jointIsExtra[joint]) onlyExtra = false;
+                        else extraAnchors.Add(jointTargets[joint]);
+                    }
+                    if (!onlyExtra) break;
+                }
+                if (onlyExtra && extraAnchors.Count <= 1) useTransfer = false;
+            }
             Vector3[] vertices = new Vector3[count];
             Vector3[] normals = new Vector3[count];
             Vector2[] uvs = new Vector2[count];
             BoneWeight[] boneWeights = new BoneWeight[count];
 
-            List<Transform> weightBones = new List<Transform>(8);
-            List<float> weightValues = new List<float>(8);
-            int[] slotIds = new int[4];
-            float[] slotWeights = new float[4];
+            Dictionary<Transform, float>[] vertexWeights = new Dictionary<Transform, float>[count];
+            bool[] transferred = new bool[count];
+            bool anyTransferred = false;
 
             for (int v = 0; v < count; v++)
             {
@@ -349,8 +375,7 @@ namespace SettMod.Modules.LeagueSkins
                 Vector3 outNormal = Vector3.zero;
                 float total = 0f;
                 float extraWeight = 0f;
-                weightBones.Clear();
-                weightValues.Clear();
+                Dictionary<Transform, float> weights = new Dictionary<Transform, float>();
 
                 for (int k = 0; k < 4; k++)
                 {
@@ -366,8 +391,8 @@ namespace SettMod.Modules.LeagueSkins
                     outNormal += weight * matrix.MultiplyVector(normal);
                     total += weight;
 
-                    if (jointIsExtra[joint] && weightSource != null) extraWeight += weight;
-                    else AddWeight(weightBones, weightValues, jointTargets[joint], weight);
+                    if (jointIsExtra[joint] && useTransfer) extraWeight += weight;
+                    else AddWeight(weights, jointTargets[joint], weight);
                 }
 
                 if (total <= 0f)
@@ -375,43 +400,96 @@ namespace SettMod.Modules.LeagueSkins
                     outPosition = jointMatrices[0].MultiplyPoint3x4(position);
                     outNormal = jointMatrices[0].MultiplyVector(normal);
                     total = 1f;
-                    AddWeight(weightBones, weightValues, jointTargets[0], 1f);
+                    AddWeight(weights, jointTargets[0], 1f);
                 }
 
                 Vector3 finalPosition = outPosition / total;
                 if (extraWeight > 0f)
                 {
-                    int nearest = weightSource.Nearest(finalPosition);
-                    if (nearest >= 0)
+                    List<KeyValuePair<int, float>> nearest = weightSource.Nearest(finalPosition, TransferNeighbors);
+                    float inverseSum = 0f;
+                    foreach (KeyValuePair<int, float> pair in nearest) inverseSum += 1f / Mathf.Max(pair.Value, weightSource.minDistance);
+                    foreach (KeyValuePair<int, float> pair in nearest)
                     {
+                        float share = extraWeight * (1f / Mathf.Max(pair.Value, weightSource.minDistance)) / inverseSum;
                         for (int k = 0; k < 4; k++)
                         {
-                            Transform bone = weightSource.bones[nearest * 4 + k];
-                            float weight = weightSource.weights[nearest * 4 + k];
-                            if (bone && weight > 0f) AddWeight(weightBones, weightValues, bone, extraWeight * weight);
+                            Transform bone = weightSource.bones[pair.Key * 4 + k];
+                            float weight = weightSource.weights[pair.Key * 4 + k];
+                            if (bone && weight > 0f) AddWeight(weights, bone, share * weight);
                         }
                     }
-                }
-                if (weightBones.Count == 0) AddWeight(weightBones, weightValues, jointTargets[0], 1f);
-
-                int used = 0;
-                foreach (int i in Enumerable.Range(0, weightBones.Count).OrderByDescending(i => weightValues[i]).Take(4))
-                {
-                    Transform target = weightBones[i];
-                    if (!slots.TryGetValue(target, out int slot))
+                    if (nearest.Count > 0)
                     {
-                        slot = bones.Count;
-                        bones.Add(target);
-                        slots[target] = slot;
+                        transferred[v] = true;
+                        anyTransferred = true;
                     }
-                    slotIds[used] = slot;
-                    slotWeights[used] = weightValues[i];
-                    used++;
                 }
+                if (weights.Count == 0) AddWeight(weights, jointTargets[0], 1f);
 
+                vertexWeights[v] = weights;
                 vertices[v] = finalPosition;
                 normals[v] = outNormal.normalized;
                 uvs[v] = mesh.uvs[source];
+            }
+
+            if (anyTransferred && TransferSmoothIterations > 0)
+            {
+                List<int>[] neighbors = new List<int>[count];
+                for (int i = 0; i < count; i++) neighbors[i] = new List<int>();
+                for (int i = 0; i + 2 < triangles.Length; i += 3)
+                {
+                    for (int e = 0; e < 3; e++)
+                    {
+                        int a = triangles[i + e];
+                        int b = triangles[i + (e + 1) % 3];
+                        if (!neighbors[a].Contains(b)) neighbors[a].Add(b);
+                        if (!neighbors[b].Contains(a)) neighbors[b].Add(a);
+                    }
+                }
+
+                for (int iteration = 0; iteration < TransferSmoothIterations; iteration++)
+                {
+                    Dictionary<Transform, float>[] smoothed = new Dictionary<Transform, float>[count];
+                    for (int v = 0; v < count; v++)
+                    {
+                        if (!transferred[v]) continue;
+                        Dictionary<Transform, float> sum = new Dictionary<Transform, float>(vertexWeights[v]);
+                        foreach (int n in neighbors[v])
+                        {
+                            foreach (KeyValuePair<Transform, float> pair in vertexWeights[n]) AddWeight(sum, pair.Key, pair.Value);
+                        }
+                        float total = sum.Values.Sum();
+                        if (total > 0f)
+                        {
+                            foreach (Transform key in sum.Keys.ToList()) sum[key] /= total;
+                        }
+                        smoothed[v] = sum;
+                    }
+                    for (int v = 0; v < count; v++)
+                    {
+                        if (smoothed[v] != null) vertexWeights[v] = smoothed[v];
+                    }
+                }
+            }
+
+            int[] slotIds = new int[4];
+            float[] slotWeights = new float[4];
+            for (int v = 0; v < count; v++)
+            {
+                int used = 0;
+                foreach (KeyValuePair<Transform, float> pair in vertexWeights[v].OrderByDescending(p => p.Value).Take(4))
+                {
+                    if (!slots.TryGetValue(pair.Key, out int slot))
+                    {
+                        slot = bones.Count;
+                        bones.Add(pair.Key);
+                        slots[pair.Key] = slot;
+                    }
+                    slotIds[used] = slot;
+                    slotWeights[used] = pair.Value;
+                    used++;
+                }
                 boneWeights[v] = ToBoneWeight(slotIds, slotWeights, used);
             }
 
@@ -436,18 +514,11 @@ namespace SettMod.Modules.LeagueSkins
             return unityMesh;
         }
 
-        private static void AddWeight(List<Transform> bones, List<float> weights, Transform bone, float weight)
+        private static void AddWeight(Dictionary<Transform, float> weights, Transform bone, float weight)
         {
-            int index = bones.IndexOf(bone);
-            if (index >= 0)
-            {
-                weights[index] += weight;
-            }
-            else
-            {
-                bones.Add(bone);
-                weights.Add(weight);
-            }
+            if (!bone) return;
+            weights.TryGetValue(bone, out float current);
+            weights[bone] = current + weight;
         }
 
         private static BoneWeight ToBoneWeight(int[] ids, float[] weights, int used)
@@ -528,6 +599,7 @@ namespace SettMod.Modules.LeagueSkins
         internal Transform[] bones;
         internal float[] weights;
         private float cellSize;
+        internal float minDistance;
         private readonly Dictionary<long, List<int>> grid = new Dictionary<long, List<int>>();
         private const int MaxRings = 30;
 
@@ -577,6 +649,7 @@ namespace SettMod.Modules.LeagueSkins
                     if (joint >= baseSkeleton.names.Length) continue;
                     string jointName = baseSkeleton.names[joint];
                     if (IsIgnored(jointName)) continue;
+                    if (LeagueSkinBuilder.TransferLegsToHips) jointName = LegToHip(jointName);
                     if (bodyBones.TryGetValue(jointName, out Transform bone))
                     {
                         result.bones[i * 4 + k] = bone;
@@ -602,6 +675,7 @@ namespace SettMod.Modules.LeagueSkins
 
             result.cellSize = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z) / 40f;
             if (result.cellSize <= 0f) result.cellSize = 0.05f;
+            result.minDistance = result.cellSize * 0.1f;
             for (int i = 0; i < result.positions.Length; i++)
             {
                 if (result.weights[i * 4] <= 0f && result.weights[i * 4 + 1] <= 0f && result.weights[i * 4 + 2] <= 0f && result.weights[i * 4 + 3] <= 0f) continue;
@@ -615,6 +689,16 @@ namespace SettMod.Modules.LeagueSkins
             }
 
             return result;
+        }
+
+        private static string LegToHip(string jointName)
+        {
+            if (jointName.Length < 3 || jointName[1] != '_' || (jointName[0] != 'L' && jointName[0] != 'R')) return jointName;
+            if (jointName.IndexOf("Knee", StringComparison.OrdinalIgnoreCase) >= 0 || jointName.IndexOf("Foot", StringComparison.OrdinalIgnoreCase) >= 0 || jointName.IndexOf("Toe", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                return jointName[0] + "_Hip";
+            }
+            return jointName;
         }
 
         private static bool IsIgnored(string jointName)
@@ -636,13 +720,12 @@ namespace SettMod.Modules.LeagueSkins
             return ((long)(x & 0x1FFFFF) << 42) | ((long)(y & 0x1FFFFF) << 21) | (long)(z & 0x1FFFFF);
         }
 
-        internal int Nearest(Vector3 point)
+        internal List<KeyValuePair<int, float>> Nearest(Vector3 point, int k)
         {
             int cx = this.Cell(point.x);
             int cy = this.Cell(point.y);
             int cz = this.Cell(point.z);
-            int best = -1;
-            float bestDistance = float.MaxValue;
+            List<KeyValuePair<int, float>> found = new List<KeyValuePair<int, float>>();
 
             for (int ring = 0; ring <= MaxRings; ring++)
             {
@@ -654,27 +737,23 @@ namespace SettMod.Modules.LeagueSkins
                         {
                             if (Math.Max(Math.Abs(dx), Math.Max(Math.Abs(dy), Math.Abs(dz))) != ring) continue;
                             if (!this.grid.TryGetValue(this.Key(cx + dx, cy + dy, cz + dz), out List<int> list)) continue;
-                            foreach (int i in list)
-                            {
-                                float distance = (this.positions[i] - point).sqrMagnitude;
-                                if (distance < bestDistance)
-                                {
-                                    bestDistance = distance;
-                                    best = i;
-                                }
-                            }
+                            foreach (int i in list) found.Add(new KeyValuePair<int, float>(i, (this.positions[i] - point).sqrMagnitude));
                         }
                     }
                 }
 
-                if (best >= 0)
+                if (found.Count >= k)
                 {
+                    found.Sort((a, b) => a.Value.CompareTo(b.Value));
                     float reach = ring * this.cellSize;
-                    if (bestDistance <= reach * reach) break;
+                    if (found[k - 1].Value <= reach * reach) break;
                 }
             }
 
-            return best;
+            found.Sort((a, b) => a.Value.CompareTo(b.Value));
+            if (found.Count > k) found.RemoveRange(k, found.Count - k);
+            for (int i = 0; i < found.Count; i++) found[i] = new KeyValuePair<int, float>(found[i].Key, Mathf.Sqrt(found[i].Value));
+            return found;
         }
     }
 }
