@@ -2,7 +2,6 @@ using BepInEx.Configuration;
 
 namespace Runes
 {
-    /// <summary>General settings and per-survivor toggles. Each keystone binds its own section in its BindConfig.</summary>
     internal static class KeystoneConfig
     {
         internal static ConfigFile file;
@@ -23,7 +22,6 @@ namespace Runes
             }
         }
 
-        /// <summary>Per-survivor toggle, created on demand once survivors are known.</summary>
         internal static ConfigEntry<bool> BindSurvivor(string bodyName, string displayName)
         {
             return file.Bind("Survivors", Sanitize(bodyName), true, "Give " + displayName + " a Keystone slot.");
@@ -31,7 +29,6 @@ namespace Runes
 
         private static string Sanitize(string key)
         {
-            // BepInEx rejects these characters in keys.
             foreach (char c in new[] { '=', '\n', '\t', '\\', '"', '\'', '[', ']' })
                 key = key.Replace(c, '_');
             return key;

@@ -10,12 +10,8 @@ using UnityEngine;
 
 namespace Runes
 {
-    /// <summary>The keystone registry, buffs, skill defs, the shared Keystone skill family, tokens and icons.</summary>
     internal static class KeystoneContent
     {
-        /// <summary>
-        /// Every keystone, in loadout order. Add new keystones to the end so existing loadouts keep their picks.
-        /// </summary>
         internal static readonly Keystone[] keystones =
         {
             new Conqueror(),
@@ -33,7 +29,6 @@ namespace Runes
         private static GameObject prefabHolder;
         private static readonly Dictionary<SkillDef, Keystone> keystoneBySkill = new Dictionary<SkillDef, Keystone>();
 
-        /// <summary>The keystone a loadout skill stands for, or null for No Keystone.</summary>
         internal static Keystone Get(SkillDef skillDef)
         {
             Keystone keystone;
@@ -46,7 +41,6 @@ namespace Runes
             Sprite noneIcon = LoadSprite("None_rune");
 
             List<SkillFamily.Variant> variants = new List<SkillFamily.Variant>();
-            // "None" first so vanilla survivors are unchanged until a player opts in.
             variants.Add(Variant(AddSkill("NONE", noneIcon, null)));
             LanguageAPI.Add("KEYSTONE_NONE_NAME", "<color=#9a9a9a>No Keystone</color>");
             LanguageAPI.Add("KEYSTONE_NONE_DESC", "Play without a keystone.");
@@ -81,10 +75,6 @@ namespace Runes
             return buffDef;
         }
 
-        /// <summary>
-        /// A new GameObject to use as a prefab. It sits under an inactive holder, so it never runs itself,
-        /// while copies made from it start active.
-        /// </summary>
         internal static GameObject CreatePrefab(string name)
         {
             if (!prefabHolder)
@@ -105,7 +95,6 @@ namespace Runes
 
         private static SkillDef AddSkill(string id, Sprite icon, Keystone keystone)
         {
-            // Passive-style skill: it is never activated, the slot only records the player's choice.
             SkillDef skillDef = ScriptableObject.CreateInstance<SkillDef>();
             skillDef.skillName = "KEYSTONE_" + id;
             (skillDef as ScriptableObject).name = "KEYSTONE_" + id;

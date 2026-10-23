@@ -40,7 +40,6 @@ namespace SettMod.Modules
 
         public static ConfigEntry<bool> voiceLines;
 
-
         public static void ReadConfig()
         {
             voiceLines = SettPlugin.instance.Config.Bind<bool>(new ConfigDefinition("00 - Other", "Voice Lines"), true, new ConfigDescription("Enable Voice Lines", null, Array.Empty<object>()));
@@ -87,7 +86,6 @@ namespace SettMod.Modules
             danceKeybind = SettPlugin.instance.Config.Bind<KeyCode>(new ConfigDefinition("06 - Emotes", "Dance"), KeyCode.Alpha4, new ConfigDescription("Keybind used to perform the Dance emote", null, Array.Empty<object>()));
         }
 
-        // this helper automatically makes config entries for disabling survivors
         internal static ConfigEntry<bool> CharacterEnableConfig(string characterName)
         {
             return SettPlugin.instance.Config.Bind<bool>(new ConfigDefinition(characterName, "Enabled"), true, new ConfigDescription("Set to false to disable this character"));

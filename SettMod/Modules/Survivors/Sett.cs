@@ -61,15 +61,14 @@ namespace SettMod.Modules.Survivors
 
         internal override Type characterMainState { get; set; } = typeof(SettMain);
 
-        // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
 
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
         internal override UnlockableDef characterUnlockableDef { get; set; }
-#pragma warning disable CS0169 // The field 'MyCharacter.masterySkinUnlockableDef' is never used
+#pragma warning disable CS0169
         private static UnlockableDef masterySkinUnlockableDef;
-#pragma warning restore CS0169 // The field 'MyCharacter.masterySkinUnlockableDef' is never used
+#pragma warning restore CS0169
 
         internal override void InitializeCharacter()
         {
@@ -79,7 +78,6 @@ namespace SettMod.Modules.Survivors
 
         internal override void InitializeUnlockables()
         {
-            //masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
         }
 
         internal override void InitializeDoppelganger()
@@ -225,7 +223,6 @@ namespace SettMod.Modules.Survivors
 
             #endregion Special
 
-            // Keystones now come from the standalone Runes mod.
             Runes.KeystoneAPI.RegisterSurvivor(bodyPrefab);
         }
 
@@ -443,9 +440,6 @@ namespace SettMod.Modules.Survivors
         internal override void SetItemDisplays()
         {
             itemDisplayRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
-
-            // add item displays here
-            //  HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
 
             #region Item Displays
 

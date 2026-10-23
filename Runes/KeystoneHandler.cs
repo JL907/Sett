@@ -4,10 +4,6 @@ using UnityEngine.Networking;
 
 namespace Runes
 {
-    /// <summary>
-    /// Lives on every body that has a Keystone slot. Passes the body's own hits (server only) to the
-    /// selected keystone and gives keystones shared helpers for stacking buffs.
-    /// </summary>
     public class KeystoneHandler : MonoBehaviour, IOnDamageDealtServerReceiver
     {
         private const float DecayInterval = 0.5f;
@@ -18,7 +14,6 @@ namespace Runes
         private float uptimeStopwatch;
         private float decayStopwatch;
 
-        /// <summary>The selected keystone, or null for No Keystone.</summary>
         internal Keystone Current
         {
             get { return keystoneSlot ? KeystoneContent.Get(keystoneSlot.skillDef) : null; }
@@ -57,8 +52,6 @@ namespace Runes
             Keystone keystone = Current;
             if (keystone == null) return;
 
-            // Replaces SettMod's "settDamage" tag: any real hit counts, DoT ticks and other zero-proc damage don't,
-            // unless the keystone asks for all damage.
             bool realHit = damageReport.damageInfo.procCoefficient > 0f;
             if (!realHit && keystone.RequiresProcCoefficient) return;
 
@@ -74,16 +67,11 @@ namespace Runes
             if (keystone != null) keystone.FixedUpdateServer(this);
         }
 
-        /// <summary>Adds one stack of a self buff, up to the cap.</summary>
         internal void AddStack(BuffDef buff, int maxStacks)
         {
             if (body.GetBuffCount(buff) < maxStacks) body.AddBuff(buff);
         }
 
-        /// <summary>
-        /// Call from FixedUpdateServer. Once the body has gone longer than duration without a hit,
-        /// drops one stack every DecayInterval.
-        /// </summary>
         internal void DecayStacks(BuffDef buff, float duration)
         {
             if (body.GetBuffCount(buff) <= 0)

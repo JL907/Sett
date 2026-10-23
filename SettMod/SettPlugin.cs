@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using R2API;
+using R2API.Networking;
 using R2API.Utils;
 using RoR2;
 using SettMod.Modules;
@@ -23,17 +24,13 @@ namespace SettMod
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class SettPlugin : BaseUnityPlugin
     {
-        // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "SETT";
 
         public const string MODNAME = "Sett";
 
-        // if you don't change these you're giving permission to deprecate the mod-
-        //  please change the names to your own stuff, thanks
-        //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.Sett";
 
-        public const string MODVERSION = "4.7.0";
+        public const string MODVERSION = "4.8.0";
         public static SettPlugin instance;
         public static DamageAPI.ModdedDamageType settDamage;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
@@ -58,20 +55,19 @@ namespace SettMod
             try
             {
                 settDamage = DamageAPI.ReserveDamageType();
-                // load assets and read config
                 Modules.Assets.Initialize();
                 Modules.Config.ReadConfig();
                 Modules.CameraParams.InitializeParams();
-                Modules.States.RegisterStates(); // register states for networking
-                Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
-                Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-                Modules.Tokens.AddTokens(); // register name tokens
-                Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+                Modules.States.RegisterStates();
+                NetworkingAPI.RegisterMessageType<SkillStates.SyncSettGrab>();
+                NetworkingAPI.RegisterMessageType<SkillStates.SyncSettRelease>();
+                Modules.Buffs.RegisterBuffs();
+                Modules.Projectiles.RegisterProjectiles();
+                Modules.Tokens.AddTokens();
+                Modules.ItemDisplays.PopulateDisplays();
 
-                // survivor initialization
                 new Sett().Initialize();
 
-                // now make a content pack and add it- this part will change with the next update
                 new Modules.ContentPacks().Initialize();
 
                 RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
@@ -101,28 +97,10 @@ namespace SettMod
 
         private void CreateGritGauge(RoR2.UI.HUD hud)
         {
-            if (!gritGauge)
-            {
-                if (hud != null && hud.mainUIPanel != null)
-                {
-                    gritGauge = hud.mainUIPanel.GetComponentInChildren<GritGauge>();
-                    if (!gritGauge)
-                    {
-                        var gritGaugePanel = Instantiate(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("GritGaugePanelNew"));
-                        gritGauge = gritGaugePanel.AddComponent<GritGauge>();
-                        gritGaugePanel.transform.SetParent(hud.mainUIPanel.transform);
-                        var rectTransform = gritGaugePanel.GetComponent<RectTransform>();
-                        rectTransform.anchorMin = new Vector2(0.5f, 0.5f);
-                        rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
-                        rectTransform.pivot = new Vector2(0.5f, 0.5f);
-                        rectTransform.sizeDelta = new Vector2(120, 120);
-                        rectTransform.anchoredPosition = new Vector2(-619, -478);
-                        rectTransform.localRotation = Quaternion.Euler(0, 354, 0);
-                        rectTransform.localScale = new Vector3(1, 1, 1);
-                        gritGaugePanel.gameObject.SetActive(false);
-                    }
-                }
-            }
+            if (gritGauge || hud == null) return;
+
+            gritGauge = hud.GetComponentInChildren<GritGauge>(true);
+            if (!gritGauge) gritGauge = GritGauge.Create(hud);
         }
 
         private void Hook()
@@ -159,8 +137,6 @@ namespace SettMod
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
-            // have to set item displays later now because they require direct object references..
-            //Modules.Survivors.MyCharacter.instance.SetItemDisplays();
         }
 
         private void PickupPickerController_FixedUpdateServer(On.RoR2.PickupPickerController.orig_FixedUpdateServer orig, PickupPickerController self)

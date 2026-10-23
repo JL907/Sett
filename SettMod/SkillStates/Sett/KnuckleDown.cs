@@ -91,6 +91,8 @@ namespace SettMod.SkillStates.BaseStates
         {
             base.OnDeserialize(reader);
             this.swingIndex = reader.ReadInt32();
+            this.baseDuration = reader.ReadSingle();
+            this.baseEarlyExitTime = reader.ReadSingle();
         }
 
         public override void OnEnter()
@@ -124,7 +126,6 @@ namespace SettMod.SkillStates.BaseStates
                 if (base.isAuthority)
                 {
                     EffectManager.SimpleMuzzleFlash(this.swingEffectPrefab, base.gameObject, this.muzzleString, true);
-                    //base.AddRecoil(-1f * this.attackRecoil, -2f * this.attackRecoil, -0.5f * this.attackRecoil, 0.5f * this.attackRecoil);
                 }
             }
 
@@ -141,6 +142,8 @@ namespace SettMod.SkillStates.BaseStates
         {
             base.OnSerialize(writer);
             writer.Write(this.swingIndex);
+            writer.Write(this.baseDuration);
+            writer.Write(this.baseEarlyExitTime);
         }
 
         protected virtual void SetNextState()

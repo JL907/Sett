@@ -77,7 +77,7 @@ namespace SettMod.SkillStates
             base.characterDirection.forward = this.dashVelocity;
             base.characterBody.isSprinting = true;
 
-            this.AttemptSlam();
+            if (base.isAuthority) this.AttemptSlam();
 
             if (base.fixedAge >= Dash.duration && isAuthority)
             {

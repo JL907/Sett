@@ -5,10 +5,6 @@ using UnityEngine;
 
 namespace Runes
 {
-    /// <summary>
-    /// Dealing a chunk of an enemy's max health within a short window grants a burst of movement speed
-    /// and slow resistance. Replaced Phase Rush in League, so it takes over Phase Rush's loadout slot.
-    /// </summary>
     internal sealed class StormraidersSurge : Keystone
     {
         internal static ConfigEntry<float> damageThreshold;
@@ -20,17 +16,14 @@ namespace Runes
         internal static BuffDef speedBuff;
 
         public override KeystoneType Type => KeystoneType.StormraidersSurge;
-        // Kept from Phase Rush (Riot did the same) so saved loadouts keep this pick.
         public override string Id => "PHASE_RUSH";
         public override string DisplayName => "Stormraider's Surge";
         public override string IconName => "Stormraiders_Surge_rune";
 
-        // Counts every point of damage, including damage-over-time ticks.
         internal override bool RequiresProcCoefficient => false;
 
         internal override void BindConfig(ConfigFile config)
         {
-            // BepInEx doesn't allow apostrophes in section names.
             const string section = "Stormraiders Surge";
             damageThreshold = config.Bind(section, "Damage Threshold", 0.25f, "Damage to one enemy, as a fraction of its max health (plus shield), needed to trigger.");
             window = config.Bind(section, "Damage Window", 3f, "Seconds the damage has to be dealt in.");
@@ -76,7 +69,6 @@ namespace Runes
 
             body.moveSpeed += body.moveSpeed * speed.Value;
 
-            // Vanilla divides speed by (1 + sum of active slows). Undo the resisted share of it.
             float resist = Mathf.Clamp01(slowResistance.Value);
             float slow = TotalSlow(body);
             if (resist > 0f && slow > 0f)
@@ -85,8 +77,6 @@ namespace Runes
             }
         }
 
-        // Vanilla slow buffs and how much each adds to the slow divisor. Looked up by name so a buff
-        // missing from this game version is simply skipped.
         private static readonly string[] slowBuffNames = { "bdSlow30", "bdSlow50", "bdSlow60", "bdSlow80", "bdClayGoo", "bdCripple", "bdJailerSlow" };
         private static readonly float[] slowBuffAmounts = { 0.3f, 0.5f, 0.6f, 0.8f, 0.5f, 1f, 1f };
         private static BuffIndex[] slowBuffs;
@@ -111,7 +101,6 @@ namespace Runes
         }
     }
 
-    /// <summary>Server side, on the attacker: recent damage per enemy for Stormraider's Surge.</summary>
     public class SurgeTracker : MonoBehaviour
     {
         private struct Hit
@@ -123,7 +112,6 @@ namespace Runes
         private readonly Dictionary<HealthComponent, List<Hit>> hits = new Dictionary<HealthComponent, List<Hit>>();
         private readonly List<HealthComponent> stale = new List<HealthComponent>();
 
-        /// <summary>Records damage to a victim and returns the total dealt to it within the window.</summary>
         internal float AddDamage(HealthComponent victim, float damage, float window)
         {
             float now = Time.fixedTime;

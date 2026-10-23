@@ -18,24 +18,18 @@ namespace SettMod.Modules
 
         internal static GameObject faceBreakerEffect;
 
-        // cache these and use to create our own materials
         internal static Shader hotpoo = RoR2.LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
 
-        // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
 
-        // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
 
         internal static GameObject swordHitImpactEffect;
 
-        // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
 
-        // particle effects
         internal static GameObject swordSwingEffect;
 
-        // CHANGE THIS
         private const string assetbundleName = "sett";
 
         private static string[] assetNames = new string[0];

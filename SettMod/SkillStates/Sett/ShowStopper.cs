@@ -1,5 +1,7 @@
 ﻿using EntityStates;
 using R2API;
+using R2API.Networking;
+using R2API.Networking.Interfaces;
 using RoR2;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +60,7 @@ namespace SettMod.SkillStates
                 base.characterMotor.rootMotion += this.flyVector * (8f * EntityStates.Mage.FlyUpState.speedCoefficientCurve.Evaluate(base.fixedAge / ShowStopper.jumpDuration) * Time.fixedDeltaTime);
                 base.characterMotor.velocity.y = 0f;
 
-                this.AttemptGrab(10f);
+                if (base.isAuthority) this.AttemptGrab(10f);
             }
 
             if (base.fixedAge >= (0.25f * ShowStopper.jumpDuration) && !this.slamIndicatorInstance)
@@ -116,7 +118,7 @@ namespace SettMod.SkillStates
         public override void OnExit()
         {
             base.OnExit();
-            if (this.grabController) this.grabController.Release();
+            this.ReleaseGrab();
 
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
             if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
@@ -139,7 +141,7 @@ namespace SettMod.SkillStates
             this.hasDropped = true;
             base.characterMotor.disableAirControlUntilCollision = true;
             base.characterMotor.velocity.y = -ShowStopper.dropForce;
-            this.AttemptGrab(15f);
+            if (base.isAuthority) this.AttemptGrab(15f);
         }
 
         public override void Update()
@@ -176,17 +178,32 @@ namespace SettMod.SkillStates
             {
                 if (target.healthComponent && target.healthComponent.body)
                 {
-                    if (BodyMeetsGrabConditions(target.healthComponent.body))
+                    GameObject targetObject = target.healthComponent.body.gameObject;
+                    NetworkIdentity targetIdentity = targetObject.GetComponent<NetworkIdentity>();
+                    NetworkIdentity selfIdentity = base.gameObject.GetComponent<NetworkIdentity>();
+
+                    if (BodyMeetsGrabConditions(target.healthComponent.body) && targetIdentity && selfIdentity)
                     {
                         this.bonusDamage = target.healthComponent.fullCombinedHealth * ShowStopper.bonusHealthCoefficient;
-                        this.grabController = target.healthComponent.body.gameObject.AddComponent<SettGrabController>();
-                        this.grabController.pivotTransform = this.FindModelChild("R_Hand");
-                    }
-                    if (NetworkServer.active && !base.characterBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
-                    {
-                        base.characterBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+
+                        this.grabController = SettGrabController.Apply(base.gameObject, targetObject);
+                        new SyncSettGrab(selfIdentity.netId, targetIdentity.netId).Send(NetworkDestination.Clients | NetworkDestination.Server);
                     }
                 }
+            }
+        }
+
+        private void ReleaseGrab()
+        {
+            if (!this.grabController) return;
+
+            NetworkIdentity targetIdentity = this.grabController.GetComponent<NetworkIdentity>();
+            this.grabController.Release();
+            this.grabController = null;
+
+            if (base.isAuthority && targetIdentity)
+            {
+                new SyncSettRelease(targetIdentity.netId).Send(NetworkDestination.Clients | NetworkDestination.Server);
             }
         }
 
@@ -198,8 +215,6 @@ namespace SettMod.SkillStates
         private bool BodyMeetsGrabConditions(CharacterBody targetBody)
         {
             bool meetsConditions = true;
-
-            //if (targetBody.hullClassification == HullClassification.BeetleQueen) meetsConditions = false;
 
             return meetsConditions;
         }
@@ -224,7 +239,7 @@ namespace SettMod.SkillStates
 
         private void LandingImpact()
         {
-            if (this.grabController) this.grabController.Release();
+            this.ReleaseGrab();
 
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
 
@@ -246,26 +261,23 @@ namespace SettMod.SkillStates
             DamageAPI.AddModdedDamageType(blastAttack, SettPlugin.settDamage);
             blastAttack.Fire();
 
-            if (NetworkServer.active)
+            if (this.bonusDamage > 0f)
             {
-                BlastAttack.HitPoint[] array = blastAttack.CollectHits();
-                foreach (BlastAttack.HitPoint hitPoint in array)
-                {
-                    HealthComponent healthComponent = hitPoint.hurtBox ? hitPoint.hurtBox.healthComponent : null;
-                    if (healthComponent)
-                    {
-                        DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = this.bonusDamage;
-                        damageInfo.damageColorIndex = DamageColorIndex.Item;
-                        damageInfo.force = Vector3.zero;
-                        damageInfo.crit = false;
-                        damageInfo.position = healthComponent.transform.position;
-                        damageInfo.damageType = DamageType.BypassArmor;
-                        healthComponent.TakeDamage(damageInfo);
-                        //GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
-                        //GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
-                    }
-                }
+                BlastAttack bonusAttack = new BlastAttack();
+                bonusAttack.radius = ShowStopper.slamRadius;
+                bonusAttack.procCoefficient = 0f;
+                bonusAttack.position = base.characterBody.footPosition;
+                bonusAttack.procChainMask = default;
+                bonusAttack.attacker = base.gameObject;
+                bonusAttack.crit = false;
+                bonusAttack.baseDamage = this.bonusDamage;
+                bonusAttack.falloffModel = BlastAttack.FalloffModel.None;
+                bonusAttack.baseForce = 0f;
+                bonusAttack.teamIndex = blastAttack.teamIndex;
+                bonusAttack.damageType = DamageType.BypassArmor;
+                bonusAttack.damageColorIndex = DamageColorIndex.Item;
+                bonusAttack.attackerFiltering = AttackerFiltering.NeverHitSelf;
+                bonusAttack.Fire();
             }
 
             Util.PlaySound("SettRImpact", base.gameObject);
@@ -288,15 +300,6 @@ namespace SettMod.SkillStates
 
         private void OnMovementHit(ref CharacterMotor.MovementHitInfo movementHitInfo)
         {
-            /*
-            HealthComponent healthComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<HealthComponent>();
-            TeamComponent teamComponent = movementHitInfo.hitCollider.transform.root.gameObject.GetComponent<TeamComponent>();
-            if (healthComponent && teamComponent.teamIndex != base.GetTeam())
-            {
-                this.detonateNextFrame = false;
-            }
-            else this.detonateNextFrame = true;
-            */
             this.detonateNextFrame = true;
         }
 

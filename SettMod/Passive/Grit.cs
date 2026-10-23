@@ -30,8 +30,83 @@ namespace SettMod.Modules
             this.outer = base.GetComponent<EntityStateMachine>();
         }
 
+        private bool coreAssigned;
+        private Transform core;
+        private float effectCheckTimer;
+        private TemporaryVisualEffect barrierEffect;
+
+        private void AssignCore()
+        {
+            this.coreAssigned = true;
+            if (!this.body) return;
+
+            ModelLocator modelLocator = this.body.modelLocator;
+            Transform modelBase = modelLocator && modelLocator.modelBaseTransform ? modelLocator.modelBaseTransform : this.transform.Find("ModelBase");
+            if (!modelBase) return;
+
+            Transform core = modelBase.Find("Core");
+            if (!core)
+            {
+                core = new GameObject("Core").transform;
+                core.SetParent(modelBase, false);
+                core.localPosition = new Vector3(0f, 1.5f, 0f);
+            }
+            this.core = core;
+            this.body.coreTransform = core;
+        }
+
+        private void RetargetVisualEffects()
+        {
+            if (!this.core || !this.body || !this.body.healthComponent) return;
+
+            foreach (TemporaryVisualEffect effect in UnityEngine.Object.FindObjectsOfType<TemporaryVisualEffect>())
+            {
+                if (effect.healthComponent != this.body.healthComponent) continue;
+
+                if (effect.parentTransform != this.core)
+                {
+                    effect.parentTransform = this.core;
+                    effect.transform.position = this.core.position;
+                }
+
+                if (effect.name.Contains("Barrier") && effect != this.barrierEffect && effect.visualState != TemporaryVisualEffect.VisualState.Exit)
+                {
+                    this.barrierEffect = effect;
+                }
+            }
+        }
+
+        private void LateUpdate()
+        {
+            if (!this.body || !this.body.healthComponent || this.body.healthComponent.barrier <= 0f) return;
+
+            if (!this.barrierEffect || this.barrierEffect.visualState == TemporaryVisualEffect.VisualState.Exit) this.RetargetVisualEffects();
+            if (!this.barrierEffect) return;
+
+            if (this.core && this.barrierEffect.parentTransform != this.core)
+            {
+                this.barrierEffect.parentTransform = this.core;
+                this.barrierEffect.transform.position = this.core.position;
+            }
+        }
+
         private void FixedUpdate()
         {
+            if (!this.coreAssigned) this.AssignCore();
+
+            if (this.body && this.body.healthComponent && this.body.healthComponent.barrier > 0f)
+            {
+                this.effectCheckTimer -= Time.fixedDeltaTime;
+                if (this.effectCheckTimer <= 0f)
+                {
+                    this.effectCheckTimer = 0.2f;
+                    this.RetargetVisualEffects();
+                }
+            }
+            else
+            {
+                this.effectCheckTimer = 0f;
+            }
             if (NetworkServer.active)
             {
                 this.ServerFixedUpdate();
@@ -44,7 +119,6 @@ namespace SettMod.Modules
 
         private void AuthorityFixedUpdate()
         {
-            //throw new NotImplementedException();
         }
 
         public void AddGritAuthority(float value)
@@ -157,7 +231,6 @@ namespace SettMod.Modules
 
         public void OnDamageDealtServer(DamageReport damageReport)
         {
-            //throw new NotImplementedException();
         }
 
         public void OnTakeDamageServer(DamageReport damageReport)

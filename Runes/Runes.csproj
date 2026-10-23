@@ -9,7 +9,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- Rune icons are embedded so the mod needs no asset bundle. Resource names: Runes.Icons.<File>.png -->
 		<EmbeddedResource Include="Icons\*.png" />
 	</ItemGroup>
 

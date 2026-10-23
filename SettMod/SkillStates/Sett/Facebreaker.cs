@@ -30,7 +30,6 @@ namespace SettMod.SkillStates
 
         private bool back;
 
-        //private Transform slamCenterIndicatorInstance;
         private Ray downRay;
 
         private bool front;
@@ -42,13 +41,6 @@ namespace SettMod.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            /*
-            CameraTargetParams ctp = base.cameraTargetParams;
-            float denom = (1 + Time.fixedTime - this.initialTime);
-            float smoothFactor = 8 / Mathf.Pow(denom, 2);
-            Vector3 smoothVector = new Vector3(-3 / 20, 1 / 16, -1);
-            ctp.idealLocalCameraPos = CameraPosition + smoothFactor * smoothVector;
-            */
             this.stopwatch += Time.fixedDeltaTime;
 
             if (this.stopwatch >= this.startUp)
@@ -134,9 +126,7 @@ namespace SettMod.SkillStates
 
         public override void OnExit()
         {
-            //base.PlayAnimation("FullBody, Override", "BufferEmpty");
             if (this.slamIndicatorInstance) EntityState.Destroy(this.slamIndicatorInstance.gameObject);
-            //if (this.slamCenterIndicatorInstance) EntityState.Destroy(this.slamCenterIndicatorInstance.gameObject);
             base.OnExit();
         }
 
@@ -205,9 +195,6 @@ namespace SettMod.SkillStates
                         rotation = Quaternion.LookRotation(_direction)
                     }, false);
                 }
-
-                //this.slamCenterIndicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                //this.slamCenterIndicatorInstance.localScale = (Vector3.one * Facebreaker.pullRadius) / 3f;
             }
         }
 
@@ -302,9 +289,6 @@ namespace SettMod.SkillStates
                 {
                     this.slamIndicatorInstance.transform.position = raycastHit.point;
                     this.slamIndicatorInstance.transform.up = raycastHit.normal;
-
-                    //this.slamCenterIndicatorInstance.transform.position = raycastHit.point;
-                    //this.slamCenterIndicatorInstance.transform.up = raycastHit.normal;
                 }
             }
         }

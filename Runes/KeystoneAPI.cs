@@ -4,20 +4,11 @@ using UnityEngine;
 
 namespace Runes
 {
-    /// <summary>
-    /// Public entry points for other survivor mods. Add
-    /// [BepInDependency(Runes.KeystonePlugin.GUID)] to your plugin and call these from Awake,
-    /// before content packs are assigned.
-    /// </summary>
     public static class KeystoneAPI
     {
         internal static readonly HashSet<string> registered = new HashSet<string>();
         internal static readonly HashSet<string> excluded = new HashSet<string>();
 
-        /// <summary>
-        /// Always give this survivor a Keystone slot, even when "Enable For All Survivors" is off.
-        /// Players can still switch it off per survivor in the config.
-        /// </summary>
         public static void RegisterSurvivor(GameObject bodyPrefab)
         {
             if (!bodyPrefab) return;
@@ -25,7 +16,6 @@ namespace Runes
             registered.Add(bodyPrefab.name);
         }
 
-        /// <summary>Never give this survivor a Keystone slot (e.g. its kit already has one).</summary>
         public static void ExcludeSurvivor(GameObject bodyPrefab)
         {
             if (!bodyPrefab) return;
@@ -33,7 +23,6 @@ namespace Runes
             excluded.Add(bodyPrefab.name);
         }
 
-        /// <summary>The keystone this body currently has selected, or None.</summary>
         public static KeystoneType GetKeystone(CharacterBody body)
         {
             if (!body) return KeystoneType.None;

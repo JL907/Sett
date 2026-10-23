@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>4.7.0</Version>
+		<Version>4.8.0</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -45,7 +45,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<!-- Runes ships as its own Thunderstore package; reference it but don't copy it. -->
 		<ProjectReference Include="..\Runes\Runes.csproj" Private="false" />
 	</ItemGroup>
 

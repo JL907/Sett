@@ -5,10 +5,6 @@ using UnityEngine;
 
 namespace Runes
 {
-    /// <summary>
-    /// Stacks build on the attacker, not the target: every third hit within the window, on any enemies,
-    /// calls down lightning on the enemy struck. If that hit was a kill, the bolt jumps to the nearest enemy.
-    /// </summary>
     internal sealed class Electrocute : Keystone
     {
         private const int HitsToStrike = 3;
@@ -36,7 +32,6 @@ namespace Runes
 
         internal override void CreateBuffs()
         {
-            // A self buff so the player can see their stacks; it moves with them from enemy to enemy.
             buff = KeystoneContent.AddBuff("KeystoneElectrocuteBuff", icon, true, false);
         }
 
@@ -50,7 +45,6 @@ namespace Runes
 
         internal override void OnHitServer(KeystoneHandler handler, DamageReport damageReport)
         {
-            // The lightning itself must not build stacks, or it would feed the next strike.
             if (damageReport.damageInfo.procChainMask.HasProc(ProcType.LightningStrikeOnHit)) return;
 
             CharacterBody body = handler.body;
@@ -61,7 +55,6 @@ namespace Runes
             }
             else
             {
-                // Each stack has its own timer, so only hits from the last few seconds count.
                 body.AddTimedBuff(buff, window.Value);
             }
         }
@@ -76,7 +69,6 @@ namespace Runes
             float levelSteps = Mathf.Floor(attacker.level / 4f);
             float coefficient = damage.Value + levelSteps * damagePerLevelStep.Value;
 
-            // Tagged as a lightning strike so it can't feed Electrocute or retrigger Charged Perforator.
             ProcChainMask procChainMask = default(ProcChainMask);
             procChainMask.AddProc(ProcType.LightningStrikeOnHit);
 

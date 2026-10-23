@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace SettMod.Modules
 {
-
     internal static class CameraParams
     {
         internal static CharacterCameraParamsData defaultCameraParamsSett;
@@ -42,10 +41,8 @@ namespace SettMod.Modules
             return newParams;
         }
 
-
         internal static CameraTargetParams.CameraParamsOverrideHandle OverrideSettCameraParams(CameraTargetParams camParams, SettCameraParams camera, float transitionDuration = 0.5f)
         {
-
             CharacterCameraParamsData paramsData = GetNewSettParams(camera);
 
             CameraTargetParams.CameraParamsOverrideRequest request = new CameraTargetParams.CameraParamsOverrideRequest
@@ -59,7 +56,6 @@ namespace SettMod.Modules
 
         internal static CharacterCameraParams CreateCameraParamsWithData(SettCameraParams camera)
         {
-
             CharacterCameraParams newSettCameraParams = ScriptableObject.CreateInstance<CharacterCameraParams>();
 
             newSettCameraParams.name = camera.ToString().ToLower() + "Params";
@@ -75,7 +71,6 @@ namespace SettMod.Modules
 
             switch (camera)
             {
-
                 default:
                 case SettCameraParams.DEFAULT:
                     paramsData = defaultCameraParamsSett;

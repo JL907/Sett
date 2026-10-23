@@ -30,7 +30,6 @@ namespace Runes
 
         internal override void CreateBuffs()
         {
-            // Buff names are prefixed so they don't collide with the old SettMod buffs if someone runs an outdated Sett.
             buff = KeystoneContent.AddBuff("KeystoneConquerorBuff", icon, true, false);
         }
 

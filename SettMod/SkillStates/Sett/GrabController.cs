@@ -1,11 +1,52 @@
-﻿using RoR2;
+﻿using EntityStates;
+using RoR2;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace SettMod.SkillStates
 {
     public class SettGrabController : MonoBehaviour
     {
         public Transform pivotTransform;
+        public GameObject grabber;
+
+        private EntityStateMachine grabberBodyMachine;
+        private bool seenGrabberInShowStopper;
+        private float age;
+        private bool released;
+
+        public static SettGrabController Apply(GameObject grabber, GameObject target)
+        {
+            if (!grabber || !target) return null;
+
+            Transform pivot = FindHand(grabber);
+            if (!pivot) return null;
+
+            SettGrabController controller = target.GetComponent<SettGrabController>();
+            if (!controller) controller = target.AddComponent<SettGrabController>();
+            controller.pivotTransform = pivot;
+            controller.grabber = grabber;
+            controller.grabberBodyMachine = EntityStateMachine.FindByCustomName(grabber, "Body");
+
+            if (NetworkServer.active)
+            {
+                CharacterBody grabberBody = grabber.GetComponent<CharacterBody>();
+                if (grabberBody && !grabberBody.HasBuff(RoR2Content.Buffs.HiddenInvincibility))
+                {
+                    grabberBody.AddBuff(RoR2Content.Buffs.HiddenInvincibility);
+                }
+            }
+
+            return controller;
+        }
+
+        private static Transform FindHand(GameObject grabber)
+        {
+            ModelLocator locator = grabber.GetComponent<ModelLocator>();
+            if (!locator || !locator.modelTransform) return null;
+            ChildLocator childLocator = locator.modelTransform.GetComponent<ChildLocator>();
+            return childLocator ? childLocator.FindChild("R_Hand") : null;
+        }
 
         private CharacterBody body;
         private CapsuleCollider capsuleCollider;
@@ -18,6 +59,8 @@ namespace SettMod.SkillStates
 
         public void Release()
         {
+            if (this.released) return;
+            this.released = true;
             if (this.modelLocator) this.modelLocator.enabled = true;
             if (this.modelTransform) this.modelTransform.rotation = this.originalRotation;
             if (this.direction) this.direction.enabled = true;
@@ -61,7 +104,31 @@ namespace SettMod.SkillStates
 
         private void FixedUpdate()
         {
-            if (this.motor)
+            this.age += Time.fixedDeltaTime;
+
+            if (!this.grabber)
+            {
+                this.Release();
+                return;
+            }
+            if (this.grabberBodyMachine)
+            {
+                bool inShowStopper = this.grabberBodyMachine.state is ShowStopper;
+                if (inShowStopper) this.seenGrabberInShowStopper = true;
+                if ((!inShowStopper && this.seenGrabberInShowStopper) || (!this.seenGrabberInShowStopper && this.age > 1f))
+                {
+                    this.Release();
+                    return;
+                }
+            }
+
+            if (!this.pivotTransform)
+            {
+                this.Release();
+                return;
+            }
+
+            if (this.motor && this.body && this.body.hasEffectiveAuthority)
             {
                 this.motor.disableAirControlUntilCollision = true;
                 this.motor.velocity = Vector3.zero;
@@ -70,14 +137,7 @@ namespace SettMod.SkillStates
                 this.motor.Motor.SetPosition(this.pivotTransform.position, true);
             }
 
-            if (this.pivotTransform)
-            {
-                this.transform.position = this.pivotTransform.position;
-            }
-            else
-            {
-                this.Release();
-            }
+            this.transform.position = this.pivotTransform.position;
 
             if (this.modelTransform)
             {

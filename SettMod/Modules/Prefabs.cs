@@ -10,12 +10,8 @@ using UnityEngine;
 
 namespace SettMod.Modules
 {
-    // module for creating body prefabs and whatnot
-    // recommended to simply avoid touching this unless you REALLY need to
-
     internal static class Prefabs
     {
-        // cache this just to give our ragdolls the same physic material as vanilla stuff
         private static PhysicMaterial ragdollMaterial;
 
         internal static List<SurvivorDef> survivorDefinitions = new List<SurvivorDef>();
@@ -25,7 +21,6 @@ namespace SettMod.Modules
 
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition, string nameString)
         {
-            //string fullNameString = "SETT_NAME";
             string fullDescString = "SETT_DESCRIPTION";
             string fullOutroString = "SETT_OUTRO_FLAVOR";
             string fullFailureString = "SETT_OUTRO_FAILURE";
@@ -91,7 +86,6 @@ namespace SettMod.Modules
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
-            //bodyComponent.crosshairPrefab = bodyInfo.crosshair;
 
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
             bodyComponent.rootMotionInMainState = false;
@@ -196,6 +190,13 @@ namespace SettMod.Modules
             aimOrigin.transform.localScale = Vector3.one;
             prefab.GetComponent<CharacterBody>().aimOriginTransform = aimOrigin.transform;
 
+            GameObject core = new GameObject("Core");
+            core.transform.parent = modelBase.transform;
+            core.transform.localPosition = bodyInfo.corePosition;
+            core.transform.localRotation = Quaternion.identity;
+            core.transform.localScale = Vector3.one;
+            prefab.GetComponent<CharacterBody>().coreTransform = core.transform;
+
             modelTransform.parent = modelBase.transform;
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localRotation = Quaternion.identity;
@@ -293,7 +294,6 @@ namespace SettMod.Modules
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("ModelBase").Find("CameraPivot");
             cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
             cameraTargetParams.recoil = Vector2.zero;
-            //cameraTargetParams.cameraParams.data.idealLocalCameraPos = Vector3.zero;
             cameraTargetParams.dontRaycastToPivot = false;
         }
 
@@ -353,7 +353,6 @@ namespace SettMod.Modules
             kinematicCharacterMotor.MinRequiredStepDepth = 0.1f;
             kinematicCharacterMotor.MaxStableSlopeAngle = 55f;
             kinematicCharacterMotor.MaxStableDistanceFromLedge = 0.5f;
-            //kinematicCharacterMotor.PreventSnappingOnLedges = false;
             kinematicCharacterMotor.MaxStableDenivelationAngle = 55f;
             kinematicCharacterMotor.RigidbodyInteractionType = RigidbodyInteractionType.None;
             kinematicCharacterMotor.PreserveAttachedRigidbodyMomentum = true;
@@ -475,14 +474,13 @@ namespace SettMod.Modules
     }
 }
 
-// for simplifying characterbody creation
 internal class BodyInfo
 {
     internal string bodyName = "";
     internal string bodyNameToken = "";
     internal string subtitleNameToken = "";
 
-    internal string bodyNameToClone = "Commando";// body prefab you're cloning for your character- commando is the safest
+    internal string bodyNameToClone = "Commando";
 
     internal Texture characterPortrait = null;
 
@@ -495,7 +493,7 @@ internal class BodyInfo
     internal float healthRegen = 0f;
     internal float regenGrowth = 0f;
 
-    internal float shield = 0f;// base shield is a thing apparently. neat
+    internal float shield = 0f;
     internal float shieldGrowth = 0f;
 
     internal float moveSpeed = 7f;
@@ -504,7 +502,7 @@ internal class BodyInfo
     internal float acceleration = 80f;
 
     internal float jumpPower = 15f;
-    internal float jumpPowerGrowth = 0f;// jump power per level exists for some reason
+    internal float jumpPowerGrowth = 0f;
 
     internal float damage = 12f;
     internal float damageGrowth = 0f;
@@ -525,14 +523,14 @@ internal class BodyInfo
     internal Vector3 aimOriginPosition = new Vector3(0f, 1.8f, 0f);
     internal Vector3 modelBasePosition = new Vector3(0f, -0.92f, 0f);
     internal Vector3 cameraPivotPosition = new Vector3(0f, 1.6f, 0f);
+    internal Vector3 corePosition = new Vector3(0f, 1.5f, 0f);
 }
 
-// for simplifying rendererinfo creation
 internal class CustomRendererInfo
 {
     internal string childName;
     internal Material material;
-#pragma warning disable CS0649 // Field 'CustomRendererInfo.ignoreOverlays' is never assigned to, and will always have its default value false
+#pragma warning disable CS0649
     internal bool ignoreOverlays;
-#pragma warning restore CS0649 // Field 'CustomRendererInfo.ignoreOverlays' is never assigned to, and will always have its default value false
+#pragma warning restore CS0649
 }

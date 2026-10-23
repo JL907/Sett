@@ -101,7 +101,6 @@ namespace SettMod.SkillStates.Emotes
                 if (base.inputBank.moveVector != Vector3.zero) flag = true;
             }
 
-            //emote cancels
             if (base.isAuthority && base.characterMotor.isGrounded && !this.localUser.isUIFocused)
             {
                 if (Input.GetKeyDown(Modules.Config.tauntKeybind.Value))
@@ -128,8 +127,6 @@ namespace SettMod.SkillStates.Emotes
 
             if (this.duration > 0 && base.fixedAge >= this.duration) flag = true;
 
-            //if (this.animator) this.animator.SetBool("inCombat", true);
-
             if (flag)
             {
                 this.outer.SetNextStateToMain();
@@ -141,5 +138,4 @@ namespace SettMod.SkillStates.Emotes
             return InterruptPriority.Any;
         }
     }
-
 }

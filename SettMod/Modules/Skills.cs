@@ -30,7 +30,6 @@ namespace SettMod.Modules
             skillLocator.utility = CreateGenericSkillWithSkillFamily(targetPrefab, "Utility");
             skillLocator.special = CreateGenericSkillWithSkillFamily(targetPrefab, "Special");
 
-
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = "SETT_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = "SETT_PASSIVE_DESC";
@@ -107,7 +106,6 @@ namespace SettMod.Modules
 
         public static T CreateSkillDef<T>(SkillDefInfo skillDefInfo) where T : SkillDef
         {
-            //pass in a type for a custom skilldef, e.g. HuntressTrackingSkillDef
             T skillDef = ScriptableObject.CreateInstance<T>();
 
             skillDef.skillName = skillDefInfo.skillName;
@@ -173,10 +171,6 @@ internal class SkillDefInfo
 
     #region constructors
     public SkillDefInfo() { }
-    /// <summary>
-    /// Creates a skilldef for a typical primary.
-    /// <para>combat skill, cooldown: 0, required stock: 0, InterruptPriority: Any</para>
-    /// </summary>
     public SkillDefInfo(string skillNameToken,
                         string skillDescriptionToken,
                         Sprite skillIcon,

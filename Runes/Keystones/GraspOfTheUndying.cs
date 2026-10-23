@@ -58,7 +58,6 @@ namespace Runes
             HealthComponent victimHealth = victim.healthComponent;
             if (victimHealth && victimHealth.alive)
             {
-                // Zero proc coefficient so the bonus hit can't trigger Grasp (or other keystones) again.
                 victimHealth.TakeDamage(new DamageInfo
                 {
                     attacker = body.gameObject,
@@ -95,7 +94,6 @@ namespace Runes
             GraspTracker tracker = GetTracker(body);
             if (!tracker) return;
 
-            // New body (new stage or respawn): restore the health earned so far.
             if (tracker.body != body)
             {
                 tracker.body = body;
@@ -120,7 +118,6 @@ namespace Runes
             int stacks = body.GetBuffCount(healthBuff);
             if (stacks > 0)
             {
-                // Added after vanilla's curse division, so scale it down the same way.
                 float cursePenalty = body.cursePenalty > 0f ? body.cursePenalty : 1f;
                 body.maxHealth += stacks * healthPerStack.Value / cursePenalty;
             }
@@ -136,10 +133,6 @@ namespace Runes
         }
     }
 
-    /// <summary>
-    /// Lives on a CharacterMaster (server side) so Grasp of the Undying's permanent health
-    /// survives stage changes and respawns. The body mirrors it as a networked buff count.
-    /// </summary>
     public class GraspTracker : MonoBehaviour
     {
         public int stacks;

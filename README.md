@@ -17,10 +17,21 @@
 ## Introduction
 A leader of Ionia's growing criminal underworld, Sett rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, Sett has muscled to the top, reigning over the pits he once fought in.
 
-## Latest Patch Notes `4.7.0`
+## Latest Patch Notes `4.8.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Keystones moved to the standalone [Runes](https://thunderstore.io/package/lemonlust/Runes/) mod, which now works on every survivor. Sett still gets the slot automatically; it now defaults to No Keystone, so pick one in the loadout screen.
+* Fixed The Show Stopper's grab not being visible to other players in multiplayer
+* Fixed The Show Stopper's bonus damage not applying when Sett isn't the host
+* Fixed The Haymaker giving double barrier when Sett isn't the host
+* Fixed The Haymaker's Grit bonus damage sometimes being lost in multiplayer
+* Fixed Sett's dash sometimes triggering The Show Stopper on other players' screens
+* Fixed Knuckle Down's second punch playing at the wrong speed for other players
+* Fixed the barrier shell not being centered on Sett
+* The Haymaker now makes Sett glow gold, glowing brighter at full Grit
+* The Haymaker now charges energy in Sett's fist as he winds up
+* New Haymaker indicator that shows the hit area and fills up as the punch charges
+* The Haymaker's knockback now pushes enemies along Sett's aim
+* Grit bar redesigned to match the game's health bar
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -66,6 +77,9 @@ A leader of Ionia's growing criminal underworld, Sett rose to prominence in the 
 ---
 
 ## Old Patch Notes
+`4.7.0`
+* Keystones moved to the standalone [Runes](https://thunderstore.io/package/lemonlust/Runes/) mod, which now works on every survivor. Sett still gets the slot automatically; it now defaults to No Keystone, so pick one in the loadout screen.
+
 `4.6.1`
 * Fixed an issue with Knuckle Down's swing speed and duration
 * Fixed an issue with Keystone Skill Family

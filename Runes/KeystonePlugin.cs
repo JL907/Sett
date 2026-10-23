@@ -31,8 +31,6 @@ namespace Runes
                 KeystoneContent.Init();
                 new KeystoneContentPack().Initialize();
 
-                // Fires after every mod's content pack is loaded but before BodyCatalog/SkillCatalog
-                // build their caches, so slots added here show up in the loadout screen.
                 ContentManager.onContentPacksAssigned += AddKeystoneSlots;
 
                 On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
@@ -94,7 +92,6 @@ namespace Runes
             string bodyName = survivorDef.bodyPrefab.name;
             if (KeystoneAPI.excluded.Contains(bodyName)) return false;
 
-            // Always create the entry so every survivor shows up in the config file.
             bool enabledInConfig = KeystoneConfig.BindSurvivor(bodyName, survivorDef.displayNameToken ?? bodyName).Value;
             if (!enabledInConfig) return false;
 
