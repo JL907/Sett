@@ -34,6 +34,9 @@ namespace SettMod.SkillStates
 
         private bool front;
         private bool hasFired;
+        private bool checkedQuickStart;
+        private float attackTime;
+        private float impactAnimDuration;
         private bool pulling;
         private List<CharacterBody> pullList = new List<CharacterBody>();
         private Transform slamIndicatorInstance;
@@ -68,13 +71,15 @@ namespace SettMod.SkillStates
                     {
                         clip = "Facebreaker_Miss";
                     }
-                    base.PlayCrossfade("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.duration, 0.05f);
+                    base.PlayCrossfade("Fullbody, Override", clip, "FaceBreaker.playbackRate", this.impactAnimDuration, 0.05f);
                 }
             }
 
             if (this.stopwatch <= this.duration) this.PullEnemies(Time.fixedDeltaTime);
 
-            if (this.stopwatch >= (this.duration * this.startUp))
+            if (!this.checkedQuickStart && this.pulling) this.TryQuickStart();
+
+            if (this.stopwatch >= this.attackTime)
             {
                 if (base.isAuthority)
                 {
@@ -104,6 +109,8 @@ namespace SettMod.SkillStates
             base.characterBody.SetAimTimer(2f);
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.startUp = this.startUp / this.attackSpeedStat;
+            this.attackTime = this.duration * this.startUp;
+            this.impactAnimDuration = this.duration;
             this.hasFired = false;
             this.animator = base.GetModelAnimator();
 
@@ -158,6 +165,24 @@ namespace SettMod.SkillStates
         protected virtual void OnHitEnemyAuthority()
         {
             Util.PlaySound("SettHitSFX", base.gameObject);
+        }
+
+        // If the pull grabbed at least one enemy, halve the startup. Everything after the
+        // startup (hit timing, impact animation, end of skill) shifts earlier by the same amount.
+        private void TryQuickStart()
+        {
+            this.checkedQuickStart = true;
+            if (this.hasFired || !this.pullList.Exists(body => body)) return;
+
+            float saved = this.startUp * 0.5f;
+            this.startUp -= saved;
+            this.attackTime = Mathf.Max(0f, this.attackTime - saved);
+            this.duration -= saved;
+
+            if (this.animator)
+            {
+                this.animator.SetFloat("FaceBreakerStartUp.playbackRate", this.animator.GetFloat("FaceBreakerStartUp.playbackRate") * 2f);
+            }
         }
 
         private void AddToPullList(GameObject affectedObject)

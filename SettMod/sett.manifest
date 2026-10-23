@@ -1,12 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3314873849
+CRC: 4086085537
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4696020f0f93150d4c7487abaf46a6ba
+    Hash: 0f271630a3f5cbb5db289437bd65d221
   TypeTreeHash:
     serializedVersion: 2
-    Hash: c7e8ecb2294e42f513bd2ed5e9033667
+    Hash: 6ccffce17bf942f3930d0960c3428130
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 0f271630a3f5cbb5db289437bd65d221
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -40,11 +43,11 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 115
@@ -118,6 +121,7 @@ Assets:
 - Assets/Sett/textures/skin1_0.png
 - Assets/Sett/VFX/Materials/matSwingEffect.mat
 - Assets/Sett/mdlSett.prefab
+- Assets/Sett/customanimations/BackpedalFootSteps.anim
 - Assets/Sett/ui/bluebar.png
 - Assets/Sett/ui/New Material.mat
 - Assets/Sett/VFX/Textures/sett_base_erode_a.dds
@@ -239,6 +243,7 @@ Assets:
 - Assets/Sett/VFX/Textures/sett_base_horizontal_mask_sawtooth_soft.dds
 - Assets/Sett/VFX/Textures/sett_base_emote_ground.dds
 - Assets/Sett/VFX/Textures/sett_base_vertical_erode_a.dds
+- Assets/Sett/VFX/Textures/Energy Charge.mat
 - Assets/Sett/VFX/SettFistSwingEffect.prefab
 - Assets/Sett/VFX/Textures/sett_base_w_tar_flipbook.dds
 - Assets/Sett/icons/pool_square.png
