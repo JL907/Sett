@@ -113,13 +113,26 @@ namespace Runes
             }
         }
 
-        internal override void RecalculateStats(CharacterBody body, float levelSteps)
+        internal override void Hook()
         {
+            R2API.RecalculateStatsAPI.GetStatCoefficients += GetStatCoefficients;
+        }
+
+        internal override void Unhook()
+        {
+            R2API.RecalculateStatsAPI.GetStatCoefficients -= GetStatCoefficients;
+        }
+
+        // Added through R2API rather than after RecalculateStats: the game caps current health to the max it
+        // calculated, so health added afterwards was cut off every time stats updated at full health.
+        // As flat base health, it works like Bison Steak (counts toward health multipliers and curse).
+        private static void GetStatCoefficients(CharacterBody body, R2API.RecalculateStatsAPI.StatHookEventArgs args)
+        {
+            if (!body || !healthBuff) return;
             int stacks = body.GetBuffCount(healthBuff);
             if (stacks > 0)
             {
-                float cursePenalty = body.cursePenalty > 0f ? body.cursePenalty : 1f;
-                body.maxHealth += stacks * healthPerStack.Value / cursePenalty;
+                args.baseHealthAdd += stacks * healthPerStack.Value;
             }
         }
 

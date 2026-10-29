@@ -13,8 +13,10 @@ namespace Runes
         internal static ConfigEntry<float> damage;
         internal static ConfigEntry<float> damagePerLevelStep;
         internal static ConfigEntry<float> retargetRange;
+        internal static ConfigEntry<float> cooldown;
 
         internal static BuffDef buff;
+        internal static BuffDef cooldownBuff;
 
         public override KeystoneType Type => KeystoneType.Electrocute;
         public override string Id => "ELECTROCUTE";
@@ -28,11 +30,15 @@ namespace Runes
             damage = config.Bind(section, "Damage Coefficient", 2f, "Lightning damage as a multiple of your damage stat.");
             damagePerLevelStep = config.Bind(section, "Damage Coefficient Per 4 Levels", 0.75f, "");
             retargetRange = config.Bind(section, "Retarget Range", 30f, "If the third hit kills its target, the lightning strikes the nearest enemy within this many meters instead.");
+            cooldown = config.Bind(section, "Cooldown", 4f, "Seconds after a lightning strike before hits build stacks again. 0 turns the cooldown off.");
         }
 
         internal override void CreateBuffs()
         {
             buff = KeystoneContent.AddBuff("KeystoneElectrocuteBuff", icon, true, false);
+            cooldownBuff = KeystoneContent.AddBuff("KeystoneElectrocuteCooldown", icon, false, false);
+            cooldownBuff.buffColor = new Color(0.45f, 0.45f, 0.45f);
+            cooldownBuff.isCooldown = true;
         }
 
         internal override string Description()
@@ -40,7 +46,8 @@ namespace Runes
             return Hit + " against enemies grant <color=#c9aa71>1</color> stack. Reaching <color=#ffffff>3</color> stacks within " +
                 Num(window.Value) + " seconds, on any enemies, strikes the enemy you hit with lightning for <color=#f68835>" + Pct(damage.Value) + "</color> " +
                 "<color=#d62d20>(+" + Pct(damagePerLevelStep.Value) + " every 4 levels)</color> damage. " +
-                "If that hit was a kill, the lightning strikes the nearest enemy instead.";
+                "If that hit was a kill, the lightning strikes the nearest enemy instead." +
+                (cooldown.Value > 0f ? " " + Num(cooldown.Value) + " second cooldown." : "");
         }
 
         internal override void OnHitServer(KeystoneHandler handler, DamageReport damageReport)
@@ -48,10 +55,14 @@ namespace Runes
             if (damageReport.damageInfo.procChainMask.HasProc(ProcType.LightningStrikeOnHit)) return;
 
             CharacterBody body = handler.body;
+            // Like League, hits during the cooldown don't build stacks.
+            if (body.HasBuff(cooldownBuff)) return;
+
             if (body.GetBuffCount(buff) + 1 >= HitsToStrike)
             {
                 body.ClearTimedBuffs(buff.buffIndex);
                 Fire(body, damageReport.victimBody);
+                if (cooldown.Value > 0f) body.AddTimedBuff(cooldownBuff, cooldown.Value);
             }
             else
             {
